@@ -19,7 +19,7 @@ float Positional_PID_Compute(PID_H_POS* pid_t,float target,float nowdata)
 {
  float error = target - nowdata;
  pid_t->error_sum += error ;
- pid_t->last_error = error ;
+ //pid_t->last_error = error ;
  
  if(pid_t->error_sum > pid_t->ErrorSumMax)
  {pid_t->error_sum=pid_t->ErrorSumMax;}
@@ -33,6 +33,7 @@ float Positional_PID_Compute(PID_H_POS* pid_t,float target,float nowdata)
  else if (output< -pid_t->OutputMAX||output< -pid_t->OutputMAX)
  {output=-pid_t->OutputMAX;}
 
+ pid_t->last_error = error ;
  return output;
 }
 
