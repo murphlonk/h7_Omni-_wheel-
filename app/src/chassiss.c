@@ -91,8 +91,8 @@ void chassiscan_init(void)
 
      //POWER_METER_COMPUTE_PER(rollcrrent, float speed,Power_K* Kvalues);
 	   
-      Motor_Drive_Frame( &chassis_fdcan,motordata[0].ContrlID,speedinto);//contrldata is the arry of contrl value
-    
+      //Motor_Drive_Frame( &chassis_fdcan,motordata[0].ContrlID,speedinto);//contrldata is the arry of contrl value
+      Motor_Drive_Frame(Txframe,motordata[0].ContrlID,speedinto);//contrldata is the arry of contrl value
 }
 
 #endif
@@ -131,13 +131,15 @@ void chassis_relative_ptzupdate()
 
    Reverso_Chassiss.status.phase_difference=Reverso_PTZ.Relative_chassiss_slove.YAW;
 }
-void  speedptztochassis(float ptzvx,float ptzvy)
+void  speedptztochassis(float *ptzvx,float *ptzvy)
 {
-   float chavx = cos(Reverso_Chassiss.status.phase_difference)*ptzvx
-                -sin(Reverso_Chassiss.status.phase_difference)*ptzvy;
-   float chavy = sin(Reverso_Chassiss.status.phase_difference)*ptzvx
-                +cos(Reverso_Chassiss.status.phase_difference)*ptzvy;
-  ptzvx=chavx;ptzvy=chavy; 
+
+   
+   float chavx = cos(Reverso_Chassiss.status.phase_difference)*(*ptzvx)
+                -sin(Reverso_Chassiss.status.phase_difference)*(*ptzvy);
+   float chavy = sin(Reverso_Chassiss.status.phase_difference)*(*ptzvx)
+                +cos(Reverso_Chassiss.status.phase_difference)*(*ptzvy);
+  *ptzvx=chavx;*ptzvy=chavy; 
 }
 
 void chassiss_disabled()
@@ -168,8 +170,8 @@ void chassiscan_init()
       }
 
      //POWER_METER_COMPUTE_PER(rollcrrent, float speed,Power_K* Kvalues);
-      Motor_Drive_Frame( &Chassiss_CAN,motordata[0].ContrlID,speedinto);//contrldata is the arry of contrl value
-    
+      //Motor_Drive_Frame( &Chassiss_CAN,motordata[0].ContrlID,speedinto);//contrldata is the arry of contrl value
+    Motor_Drive_Frame(Txframe,motordata[0].ContrlID,speedinto);//contrldata is the arry of contrl value
 }
 
 #endif
