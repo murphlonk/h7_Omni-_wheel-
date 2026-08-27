@@ -1,0 +1,829 @@
+	.text
+	.syntax unified
+	.eabi_attribute	67, "2.09"	@ Tag_conformance
+	.cpu	cortex-m7
+	.eabi_attribute	6, 13	@ Tag_CPU_arch
+	.eabi_attribute	7, 77	@ Tag_CPU_arch_profile
+	.eabi_attribute	8, 0	@ Tag_ARM_ISA_use
+	.eabi_attribute	9, 2	@ Tag_THUMB_ISA_use
+	.fpu	fpv5-d16
+	.eabi_attribute	36, 1	@ Tag_FP_HP_extension
+	.eabi_attribute	34, 1	@ Tag_CPU_unaligned_access
+	.eabi_attribute	17, 1	@ Tag_ABI_PCS_GOT_use
+	.eabi_attribute	20, 2	@ Tag_ABI_FP_denormal
+	.eabi_attribute	21, 0	@ Tag_ABI_FP_exceptions
+	.eabi_attribute	23, 1	@ Tag_ABI_FP_number_model
+	.eabi_attribute	24, 1	@ Tag_ABI_align_needed
+	.eabi_attribute	25, 1	@ Tag_ABI_align_preserved
+	.eabi_attribute	28, 1	@ Tag_ABI_VFP_args
+	.eabi_attribute	38, 1	@ Tag_ABI_FP_16bit_format
+	.eabi_attribute	18, 2	@ Tag_ABI_PCS_wchar_t
+	.eabi_attribute	26, 1	@ Tag_ABI_enum_size
+	.eabi_attribute	14, 0	@ Tag_ABI_PCS_R9_use
+	.file	"BayesFunctionsF16.c"
+	.file	1 "D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Include" "arm_math_types.h"
+	.section	.text.arm_gaussian_naive_bayes_predict_f16,"ax",%progbits
+	.hidden	arm_gaussian_naive_bayes_predict_f16 @ -- Begin function arm_gaussian_naive_bayes_predict_f16
+	.globl	arm_gaussian_naive_bayes_predict_f16
+	.p2align	3
+	.type	arm_gaussian_naive_bayes_predict_f16,%function
+	.code	16                              @ @arm_gaussian_naive_bayes_predict_f16
+	.thumb_func
+arm_gaussian_naive_bayes_predict_f16:
+.Lfunc_begin0:
+	.file	2 "D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/BayesFunctions" "arm_gaussian_naive_bayes_predict_f16.c"
+	.loc	2 149 0                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/BayesFunctions\arm_gaussian_naive_bayes_predict_f16.c:149:0
+	.fnstart
+	.cfi_sections .debug_frame
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#64
+	sub	sp, #64
+	.cfi_def_cfa_offset 72
+	str	r0, [sp, #60]
+	str	r1, [sp, #56]
+	str	r2, [sp, #52]
+	str	r3, [sp, #48]
+.Ltmp0:
+	.loc	2 152 31 prologue_end           @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/BayesFunctions\arm_gaussian_naive_bayes_predict_f16.c:152:31
+	ldr	r0, [sp, #60]
+	.loc	2 152 34 is_stmt 0              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/BayesFunctions\arm_gaussian_naive_bayes_predict_f16.c:152:34
+	ldr	r0, [r0, #16]
+	.loc	2 152 22                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/BayesFunctions\arm_gaussian_naive_bayes_predict_f16.c:152:22
+	str	r0, [sp, #36]
+	.loc	2 153 31 is_stmt 1              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/BayesFunctions\arm_gaussian_naive_bayes_predict_f16.c:153:31
+	ldr	r0, [sp, #60]
+	.loc	2 153 34 is_stmt 0              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/BayesFunctions\arm_gaussian_naive_bayes_predict_f16.c:153:34
+	ldr	r0, [r0, #8]
+	.loc	2 153 22                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/BayesFunctions\arm_gaussian_naive_bayes_predict_f16.c:153:22
+	str	r0, [sp, #32]
+	.loc	2 154 31 is_stmt 1              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/BayesFunctions\arm_gaussian_naive_bayes_predict_f16.c:154:31
+	ldr	r0, [sp, #60]
+	.loc	2 154 34 is_stmt 0              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/BayesFunctions\arm_gaussian_naive_bayes_predict_f16.c:154:34
+	ldr	r0, [r0, #12]
+	.loc	2 154 22                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/BayesFunctions\arm_gaussian_naive_bayes_predict_f16.c:154:22
+	str	r0, [sp, #28]
+	.loc	2 155 25 is_stmt 1              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/BayesFunctions\arm_gaussian_naive_bayes_predict_f16.c:155:25
+	ldr	r0, [sp, #52]
+	.loc	2 155 16 is_stmt 0              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/BayesFunctions\arm_gaussian_naive_bayes_predict_f16.c:155:16
+	str	r0, [sp, #24]
+	.loc	2 156 26 is_stmt 1              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/BayesFunctions\arm_gaussian_naive_bayes_predict_f16.c:156:26
+	ldr	r0, [sp, #56]
+	.loc	2 156 22 is_stmt 0              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/BayesFunctions\arm_gaussian_naive_bayes_predict_f16.c:156:22
+	str	r0, [sp, #20]
+	.loc	2 164 12 is_stmt 1              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/BayesFunctions\arm_gaussian_naive_bayes_predict_f16.c:164:12
+	ldr	r0, [sp, #60]
+	.loc	2 164 15 is_stmt 0              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/BayesFunctions\arm_gaussian_naive_bayes_predict_f16.c:164:15
+	ldr	r0, [r0, #8]
+	.loc	2 164 11                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/BayesFunctions\arm_gaussian_naive_bayes_predict_f16.c:164:11
+	str	r0, [sp, #32]
+	.loc	2 165 12 is_stmt 1              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/BayesFunctions\arm_gaussian_naive_bayes_predict_f16.c:165:12
+	ldr	r0, [sp, #60]
+	.loc	2 165 15 is_stmt 0              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/BayesFunctions\arm_gaussian_naive_bayes_predict_f16.c:165:15
+	ldr	r0, [r0, #12]
+	.loc	2 165 11                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/BayesFunctions\arm_gaussian_naive_bayes_predict_f16.c:165:11
+	str	r0, [sp, #28]
+	movs	r0, #0
+.Ltmp1:
+	.loc	2 167 17 is_stmt 1              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/BayesFunctions\arm_gaussian_naive_bayes_predict_f16.c:167:17
+	str	r0, [sp, #44]
+	.loc	2 167 9 is_stmt 0               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/BayesFunctions\arm_gaussian_naive_bayes_predict_f16.c:167:9
+	b	.LBB0_1
+.LBB0_1:                                @ =>This Loop Header: Depth=1
+                                        @     Child Loop BB0_3 Depth 2
+.Ltmp2:
+	.loc	2 167 22                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/BayesFunctions\arm_gaussian_naive_bayes_predict_f16.c:167:22
+	ldr	r0, [sp, #44]
+	.loc	2 167 32                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/BayesFunctions\arm_gaussian_naive_bayes_predict_f16.c:167:32
+	ldr	r1, [sp, #60]
+	.loc	2 167 35                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/BayesFunctions\arm_gaussian_naive_bayes_predict_f16.c:167:35
+	ldr	r1, [r1, #4]
+.Ltmp3:
+	.loc	2 167 5                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/BayesFunctions\arm_gaussian_naive_bayes_predict_f16.c:167:5
+	cmp	r0, r1
+	bhs.w	.LBB0_8
+	b	.LBB0_2
+.LBB0_2:                                @   in Loop: Header=BB0_1 Depth=1
+.Ltmp4:
+	.loc	2 171 15 is_stmt 1              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/BayesFunctions\arm_gaussian_naive_bayes_predict_f16.c:171:15
+	ldr	r0, [sp, #56]
+	.loc	2 171 13 is_stmt 0              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/BayesFunctions\arm_gaussian_naive_bayes_predict_f16.c:171:13
+	str	r0, [sp, #20]
+	movs	r0, #0
+	.loc	2 173 13 is_stmt 1              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/BayesFunctions\arm_gaussian_naive_bayes_predict_f16.c:173:13
+	strh.w	r0, [sp, #14]
+	.loc	2 174 14                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/BayesFunctions\arm_gaussian_naive_bayes_predict_f16.c:174:14
+	strh.w	r0, [sp, #12]
+	.loc	2 175 14                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/BayesFunctions\arm_gaussian_naive_bayes_predict_f16.c:175:14
+	strh.w	r0, [sp, #10]
+.Ltmp5:
+	.loc	2 176 19                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/BayesFunctions\arm_gaussian_naive_bayes_predict_f16.c:176:19
+	str	r0, [sp, #40]
+	.loc	2 176 13 is_stmt 0              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/BayesFunctions\arm_gaussian_naive_bayes_predict_f16.c:176:13
+	b	.LBB0_3
+.LBB0_3:                                @   Parent Loop BB0_1 Depth=1
+                                        @ =>  This Inner Loop Header: Depth=2
+.Ltmp6:
+	.loc	2 176 24                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/BayesFunctions\arm_gaussian_naive_bayes_predict_f16.c:176:24
+	ldr	r0, [sp, #40]
+	.loc	2 176 32                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/BayesFunctions\arm_gaussian_naive_bayes_predict_f16.c:176:32
+	ldr	r1, [sp, #60]
+	.loc	2 176 35                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/BayesFunctions\arm_gaussian_naive_bayes_predict_f16.c:176:35
+	ldr	r1, [r1]
+.Ltmp7:
+	.loc	2 176 9                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/BayesFunctions\arm_gaussian_naive_bayes_predict_f16.c:176:9
+	cmp	r0, r1
+	bhs	.LBB0_6
+	b	.LBB0_4
+.LBB0_4:                                @   in Loop: Header=BB0_3 Depth=2
+.Ltmp8:
+	.loc	2 178 31 is_stmt 1              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/BayesFunctions\arm_gaussian_naive_bayes_predict_f16.c:178:31
+	ldr	r0, [sp, #28]
+	.loc	2 178 30 is_stmt 0              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/BayesFunctions\arm_gaussian_naive_bayes_predict_f16.c:178:30
+	ldrh	r0, [r0]
+	.loc	2 178 38                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/BayesFunctions\arm_gaussian_naive_bayes_predict_f16.c:178:38
+	vmov	s0, r0
+	vcvtb.f32.f16	s0, s0
+	.loc	2 178 50                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/BayesFunctions\arm_gaussian_naive_bayes_predict_f16.c:178:50
+	ldr	r0, [sp, #60]
+	.loc	2 178 53                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/BayesFunctions\arm_gaussian_naive_bayes_predict_f16.c:178:53
+	ldrh	r0, [r0, #20]
+	.loc	2 178 38                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/BayesFunctions\arm_gaussian_naive_bayes_predict_f16.c:178:38
+	vmov	s2, r0
+	vcvtb.f32.f16	s2, s2
+	vadd.f32	s2, s0, s2
+                                        @ implicit-def: $s0
+	vcvtb.f16.f32	s0, s2
+	vmov	r0, s0
+	.loc	2 178 18                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/BayesFunctions\arm_gaussian_naive_bayes_predict_f16.c:178:18
+	strh.w	r0, [sp, #16]
+	.loc	2 179 58 is_stmt 1              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/BayesFunctions\arm_gaussian_naive_bayes_predict_f16.c:179:58
+	ldrh.w	r0, [sp, #16]
+	.loc	2 179 47 is_stmt 0              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/BayesFunctions\arm_gaussian_naive_bayes_predict_f16.c:179:47
+	vmov	s0, r0
+	vcvtb.f32.f16	s0, s0
+	vldr	s2, .LCPI0_0
+	.loc	2 179 45                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/BayesFunctions\arm_gaussian_naive_bayes_predict_f16.c:179:45
+	vmul.f32	s0, s0, s2
+	.loc	2 179 30                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/BayesFunctions\arm_gaussian_naive_bayes_predict_f16.c:179:30
+	bl	__hardfp_logf
+	vmov.f32	s2, s0
+                                        @ implicit-def: $s0
+	.loc	2 179 20                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/BayesFunctions\arm_gaussian_naive_bayes_predict_f16.c:179:20
+	vcvtb.f16.f32	s0, s2
+	vmov	r0, s0
+	.loc	2 179 17                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/BayesFunctions\arm_gaussian_naive_bayes_predict_f16.c:179:17
+	vmov	s0, r0
+	vcvtb.f32.f16	s2, s0
+	ldrh.w	r0, [sp, #12]
+	vmov	s0, r0
+	vcvtb.f32.f16	s0, s0
+	vadd.f32	s2, s0, s2
+                                        @ implicit-def: $s0
+	vcvtb.f16.f32	s0, s2
+	vmov	r0, s0
+	strh.w	r0, [sp, #12]
+	.loc	2 180 32 is_stmt 1              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/BayesFunctions\arm_gaussian_naive_bayes_predict_f16.c:180:32
+	ldr	r0, [sp, #20]
+	.loc	2 180 31 is_stmt 0              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/BayesFunctions\arm_gaussian_naive_bayes_predict_f16.c:180:31
+	ldrh	r0, [r0]
+	.loc	2 180 17                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/BayesFunctions\arm_gaussian_naive_bayes_predict_f16.c:180:17
+	vmov	s0, r0
+	vcvtb.f32.f16	s0, s0
+	.loc	2 180 49                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/BayesFunctions\arm_gaussian_naive_bayes_predict_f16.c:180:49
+	ldr	r0, [sp, #32]
+	.loc	2 180 48                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/BayesFunctions\arm_gaussian_naive_bayes_predict_f16.c:180:48
+	ldrh	r0, [r0]
+	.loc	2 180 17                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/BayesFunctions\arm_gaussian_naive_bayes_predict_f16.c:180:17
+	vmov	s2, r0
+	vcvtb.f32.f16	s2, s2
+	vsub.f32	s0, s0, s2
+	vmul.f32	s0, s0, s0
+	.loc	2 180 108                       @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/BayesFunctions\arm_gaussian_naive_bayes_predict_f16.c:180:108
+	ldrh.w	r0, [sp, #16]
+	.loc	2 180 17                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/BayesFunctions\arm_gaussian_naive_bayes_predict_f16.c:180:17
+	vmov	s2, r0
+	vcvtb.f32.f16	s2, s2
+	vdiv.f32	s2, s0, s2
+	ldrh.w	r0, [sp, #10]
+	vmov	s0, r0
+	vcvtb.f32.f16	s0, s0
+	vadd.f32	s2, s0, s2
+                                        @ implicit-def: $s0
+	vcvtb.f16.f32	s0, s2
+	vmov	r0, s0
+	strh.w	r0, [sp, #10]
+	.loc	2 182 15 is_stmt 1              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/BayesFunctions\arm_gaussian_naive_bayes_predict_f16.c:182:15
+	ldr	r0, [sp, #20]
+	adds	r0, #2
+	str	r0, [sp, #20]
+	.loc	2 183 18                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/BayesFunctions\arm_gaussian_naive_bayes_predict_f16.c:183:18
+	ldr	r0, [sp, #32]
+	adds	r0, #2
+	str	r0, [sp, #32]
+	.loc	2 184 18                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/BayesFunctions\arm_gaussian_naive_bayes_predict_f16.c:184:18
+	ldr	r0, [sp, #28]
+	adds	r0, #2
+	str	r0, [sp, #28]
+	.loc	2 185 9                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/BayesFunctions\arm_gaussian_naive_bayes_predict_f16.c:185:9
+	b	.LBB0_5
+.Ltmp9:
+.LBB0_5:                                @   in Loop: Header=BB0_3 Depth=2
+	.loc	2 176 57                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/BayesFunctions\arm_gaussian_naive_bayes_predict_f16.c:176:57
+	ldr	r0, [sp, #40]
+	adds	r0, #1
+	str	r0, [sp, #40]
+	.loc	2 176 9 is_stmt 0               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/BayesFunctions\arm_gaussian_naive_bayes_predict_f16.c:176:9
+	b	.LBB0_3
+.Ltmp10:
+.LBB0_6:                                @   in Loop: Header=BB0_1 Depth=1
+	.loc	2 187 35 is_stmt 1              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/BayesFunctions\arm_gaussian_naive_bayes_predict_f16.c:187:35
+	ldrh.w	r0, [sp, #12]
+	.loc	2 187 23 is_stmt 0              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/BayesFunctions\arm_gaussian_naive_bayes_predict_f16.c:187:23
+	vmov	s0, r0
+	vcvtb.f32.f16	s0, s0
+	vmov.f32	s4, #-5.000000e-01
+	vmul.f32	s2, s0, s4
+                                        @ implicit-def: $s0
+	vcvtb.f16.f32	s0, s2
+	vmov	r0, s0
+	.loc	2 187 13                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/BayesFunctions\arm_gaussian_naive_bayes_predict_f16.c:187:13
+	strh.w	r0, [sp, #14]
+	.loc	2 188 35 is_stmt 1              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/BayesFunctions\arm_gaussian_naive_bayes_predict_f16.c:188:35
+	ldrh.w	r0, [sp, #10]
+	.loc	2 188 13 is_stmt 0              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/BayesFunctions\arm_gaussian_naive_bayes_predict_f16.c:188:13
+	vmov	s0, r0
+	vcvtb.f32.f16	s0, s0
+	ldrh.w	r0, [sp, #14]
+	vmov	s2, r0
+	vcvtb.f32.f16	s2, s2
+	vfma.f32	s2, s0, s4
+                                        @ implicit-def: $s0
+	vcvtb.f16.f32	s0, s2
+	vmov	r0, s0
+	strh.w	r0, [sp, #14]
+	.loc	2 191 29 is_stmt 1              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/BayesFunctions\arm_gaussian_naive_bayes_predict_f16.c:191:29
+	ldrh.w	r0, [sp, #14]
+	.loc	2 191 33 is_stmt 0              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/BayesFunctions\arm_gaussian_naive_bayes_predict_f16.c:191:33
+	vmov	s0, r0
+	vcvtb.f32.f16	s0, s0
+	vstr	s0, [sp]                        @ 4-byte Spill
+	.loc	2 191 68                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/BayesFunctions\arm_gaussian_naive_bayes_predict_f16.c:191:68
+	ldr	r0, [sp, #36]
+	adds	r1, r0, #2
+	str	r1, [sp, #36]
+	.loc	2 191 61                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/BayesFunctions\arm_gaussian_naive_bayes_predict_f16.c:191:61
+	ldrh	r0, [r0]
+	.loc	2 191 50                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/BayesFunctions\arm_gaussian_naive_bayes_predict_f16.c:191:50
+	vmov	s0, r0
+	vcvtb.f32.f16	s0, s0
+	.loc	2 191 45                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/BayesFunctions\arm_gaussian_naive_bayes_predict_f16.c:191:45
+	bl	__hardfp_logf
+	vmov.f32	s4, s0
+	.loc	2 187 23 is_stmt 1              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/BayesFunctions\arm_gaussian_naive_bayes_predict_f16.c:187:23
+	vldr	s0, [sp]                        @ 4-byte Reload
+                                        @ implicit-def: $s2
+	.loc	2 191 35                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/BayesFunctions\arm_gaussian_naive_bayes_predict_f16.c:191:35
+	vcvtb.f16.f32	s2, s4
+	vmov	r0, s2
+	.loc	2 191 33 is_stmt 0              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/BayesFunctions\arm_gaussian_naive_bayes_predict_f16.c:191:33
+	vmov	s2, r0
+	vcvtb.f32.f16	s2, s2
+	vadd.f32	s2, s0, s2
+                                        @ implicit-def: $s0
+	vcvtb.f16.f32	s0, s2
+	vmov	r0, s0
+	.loc	2 191 10                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/BayesFunctions\arm_gaussian_naive_bayes_predict_f16.c:191:10
+	ldr	r1, [sp, #24]
+	.loc	2 191 17                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/BayesFunctions\arm_gaussian_naive_bayes_predict_f16.c:191:17
+	strh	r0, [r1]
+	.loc	2 192 15 is_stmt 1              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/BayesFunctions\arm_gaussian_naive_bayes_predict_f16.c:192:15
+	ldr	r0, [sp, #24]
+	adds	r0, #2
+	str	r0, [sp, #24]
+	.loc	2 193 5                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/BayesFunctions\arm_gaussian_naive_bayes_predict_f16.c:193:5
+	b	.LBB0_7
+.Ltmp11:
+.LBB0_7:                                @   in Loop: Header=BB0_1 Depth=1
+	.loc	2 167 59                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/BayesFunctions\arm_gaussian_naive_bayes_predict_f16.c:167:59
+	ldr	r0, [sp, #44]
+	adds	r0, #1
+	str	r0, [sp, #44]
+	.loc	2 167 5 is_stmt 0               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/BayesFunctions\arm_gaussian_naive_bayes_predict_f16.c:167:5
+	b	.LBB0_1
+.Ltmp12:
+.LBB0_8:
+	.loc	2 195 17 is_stmt 1              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/BayesFunctions\arm_gaussian_naive_bayes_predict_f16.c:195:17
+	ldr	r0, [sp, #52]
+	.loc	2 195 38 is_stmt 0              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/BayesFunctions\arm_gaussian_naive_bayes_predict_f16.c:195:38
+	ldr	r1, [sp, #60]
+	.loc	2 195 41                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/BayesFunctions\arm_gaussian_naive_bayes_predict_f16.c:195:41
+	ldr	r1, [r1, #4]
+	add.w	r2, sp, #18
+	add	r3, sp, #4
+	.loc	2 195 5                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/BayesFunctions\arm_gaussian_naive_bayes_predict_f16.c:195:5
+	bl	arm_max_f16
+	.loc	2 197 12 is_stmt 1              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/BayesFunctions\arm_gaussian_naive_bayes_predict_f16.c:197:12
+	ldr	r0, [sp, #4]
+	.loc	2 197 5 epilogue_begin is_stmt 0 @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/BayesFunctions\arm_gaussian_naive_bayes_predict_f16.c:197:5
+	add	sp, #64
+	pop	{r7, pc}
+.Ltmp13:
+	.loc	2 0 5                           @ :0:5
+.Ltmp14:
+	.p2align	2
+@ %bb.9:
+.LCPI0_0:
+	.long	0x40c90fdb                      @ float 6.28318548
+.Lfunc_end0:
+	.size	arm_gaussian_naive_bayes_predict_f16, .Lfunc_end0-arm_gaussian_naive_bayes_predict_f16
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.file	3 "D:\\keil_1\\keil\\ARM\\ARMCLANG\\bin\\..\\include" "stdint.h"
+	.file	4 "D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Include\\dsp" "bayes_functions_f16.h"
+	.file	5 "D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Include" "arm_math_types_f16.h"
+	.section	.debug_abbrev,"",%progbits
+	.byte	1                               @ Abbreviation Code
+	.byte	17                              @ DW_TAG_compile_unit
+	.byte	1                               @ DW_CHILDREN_yes
+	.byte	37                              @ DW_AT_producer
+	.byte	14                              @ DW_FORM_strp
+	.byte	19                              @ DW_AT_language
+	.byte	5                               @ DW_FORM_data2
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	16                              @ DW_AT_stmt_list
+	.byte	23                              @ DW_FORM_sec_offset
+	.byte	27                              @ DW_AT_comp_dir
+	.byte	14                              @ DW_FORM_strp
+	.byte	17                              @ DW_AT_low_pc
+	.byte	1                               @ DW_FORM_addr
+	.byte	18                              @ DW_AT_high_pc
+	.byte	6                               @ DW_FORM_data4
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	2                               @ Abbreviation Code
+	.byte	36                              @ DW_TAG_base_type
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	62                              @ DW_AT_encoding
+	.byte	11                              @ DW_FORM_data1
+	.byte	11                              @ DW_AT_byte_size
+	.byte	11                              @ DW_FORM_data1
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	3                               @ Abbreviation Code
+	.byte	22                              @ DW_TAG_typedef
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	5                               @ DW_FORM_data2
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	4                               @ Abbreviation Code
+	.byte	46                              @ DW_TAG_subprogram
+	.byte	1                               @ DW_CHILDREN_yes
+	.byte	17                              @ DW_AT_low_pc
+	.byte	1                               @ DW_FORM_addr
+	.byte	18                              @ DW_AT_high_pc
+	.byte	6                               @ DW_FORM_data4
+	.byte	64                              @ DW_AT_frame_base
+	.byte	24                              @ DW_FORM_exprloc
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	11                              @ DW_FORM_data1
+	.byte	39                              @ DW_AT_prototyped
+	.byte	25                              @ DW_FORM_flag_present
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	63                              @ DW_AT_external
+	.byte	25                              @ DW_FORM_flag_present
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	5                               @ Abbreviation Code
+	.byte	5                               @ DW_TAG_formal_parameter
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	2                               @ DW_AT_location
+	.byte	24                              @ DW_FORM_exprloc
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	11                              @ DW_FORM_data1
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	6                               @ Abbreviation Code
+	.byte	52                              @ DW_TAG_variable
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	2                               @ DW_AT_location
+	.byte	24                              @ DW_FORM_exprloc
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	11                              @ DW_FORM_data1
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	7                               @ Abbreviation Code
+	.byte	22                              @ DW_TAG_typedef
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	11                              @ DW_FORM_data1
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	8                               @ Abbreviation Code
+	.byte	15                              @ DW_TAG_pointer_type
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	9                               @ Abbreviation Code
+	.byte	38                              @ DW_TAG_const_type
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	10                              @ Abbreviation Code
+	.byte	19                              @ DW_TAG_structure_type
+	.byte	1                               @ DW_CHILDREN_yes
+	.byte	11                              @ DW_AT_byte_size
+	.byte	11                              @ DW_FORM_data1
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	11                              @ DW_FORM_data1
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	11                              @ Abbreviation Code
+	.byte	13                              @ DW_TAG_member
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	11                              @ DW_FORM_data1
+	.byte	56                              @ DW_AT_data_member_location
+	.byte	11                              @ DW_FORM_data1
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	0                               @ EOM(3)
+	.section	.debug_info,"",%progbits
+.Lcu_begin0:
+	.long	.Ldebug_info_end0-.Ldebug_info_start0 @ Length of Unit
+.Ldebug_info_start0:
+	.short	4                               @ DWARF version number
+	.long	.debug_abbrev                   @ Offset Into Abbrev. Section
+	.byte	4                               @ Address Size (in bytes)
+	.byte	1                               @ Abbrev [1] 0xb:0x1cf DW_TAG_compile_unit
+	.long	.Linfo_string0                  @ DW_AT_producer
+	.short	12                              @ DW_AT_language
+	.long	.Linfo_string1                  @ DW_AT_name
+	.long	.Lline_table_start0             @ DW_AT_stmt_list
+	.long	.Linfo_string2                  @ DW_AT_comp_dir
+	.long	.Lfunc_begin0                   @ DW_AT_low_pc
+	.long	.Lfunc_end0-.Lfunc_begin0       @ DW_AT_high_pc
+	.byte	2                               @ Abbrev [2] 0x26:0x7 DW_TAG_base_type
+	.long	.Linfo_string3                  @ DW_AT_name
+	.byte	4                               @ DW_AT_encoding
+	.byte	2                               @ DW_AT_byte_size
+	.byte	3                               @ Abbrev [3] 0x2d:0xc DW_TAG_typedef
+	.long	57                              @ DW_AT_type
+	.long	.Linfo_string5                  @ DW_AT_name
+	.byte	1                               @ DW_AT_decl_file
+	.short	334                             @ DW_AT_decl_line
+	.byte	2                               @ Abbrev [2] 0x39:0x7 DW_TAG_base_type
+	.long	.Linfo_string4                  @ DW_AT_name
+	.byte	4                               @ DW_AT_encoding
+	.byte	4                               @ DW_AT_byte_size
+	.byte	4                               @ Abbrev [4] 0x40:0x104 DW_TAG_subprogram
+	.long	.Lfunc_begin0                   @ DW_AT_low_pc
+	.long	.Lfunc_end0-.Lfunc_begin0       @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string6                  @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	145                             @ DW_AT_decl_line
+                                        @ DW_AT_prototyped
+	.long	324                             @ DW_AT_type
+                                        @ DW_AT_external
+	.byte	5                               @ Abbrev [5] 0x55:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	60
+	.long	.Linfo_string9                  @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	145                             @ DW_AT_decl_line
+	.long	342                             @ DW_AT_type
+	.byte	5                               @ Abbrev [5] 0x63:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	56
+	.long	.Linfo_string19                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	146                             @ DW_AT_decl_line
+	.long	440                             @ DW_AT_type
+	.byte	5                               @ Abbrev [5] 0x71:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	52
+	.long	.Linfo_string20                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	147                             @ DW_AT_decl_line
+	.long	468                             @ DW_AT_type
+	.byte	5                               @ Abbrev [5] 0x7f:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	48
+	.long	.Linfo_string21                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	148                             @ DW_AT_decl_line
+	.long	468                             @ DW_AT_type
+	.byte	6                               @ Abbrev [6] 0x8d:0xe DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	44
+	.long	.Linfo_string22                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	150                             @ DW_AT_decl_line
+	.long	324                             @ DW_AT_type
+	.byte	6                               @ Abbrev [6] 0x9b:0xe DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	40
+	.long	.Linfo_string23                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	151                             @ DW_AT_decl_line
+	.long	324                             @ DW_AT_type
+	.byte	6                               @ Abbrev [6] 0xa9:0xe DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	36
+	.long	.Linfo_string24                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	152                             @ DW_AT_decl_line
+	.long	440                             @ DW_AT_type
+	.byte	6                               @ Abbrev [6] 0xb7:0xe DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	32
+	.long	.Linfo_string25                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	153                             @ DW_AT_decl_line
+	.long	440                             @ DW_AT_type
+	.byte	6                               @ Abbrev [6] 0xc5:0xe DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	28
+	.long	.Linfo_string26                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	154                             @ DW_AT_decl_line
+	.long	440                             @ DW_AT_type
+	.byte	6                               @ Abbrev [6] 0xd3:0xe DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	24
+	.long	.Linfo_string27                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	155                             @ DW_AT_decl_line
+	.long	468                             @ DW_AT_type
+	.byte	6                               @ Abbrev [6] 0xe1:0xe DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	20
+	.long	.Linfo_string28                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	156                             @ DW_AT_decl_line
+	.long	440                             @ DW_AT_type
+	.byte	6                               @ Abbrev [6] 0xef:0xe DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	18
+	.long	.Linfo_string29                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	157                             @ DW_AT_decl_line
+	.long	450                             @ DW_AT_type
+	.byte	6                               @ Abbrev [6] 0xfd:0xe DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	16
+	.long	.Linfo_string15                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	158                             @ DW_AT_decl_line
+	.long	38                              @ DW_AT_type
+	.byte	6                               @ Abbrev [6] 0x10b:0xe DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	14
+	.long	.Linfo_string30                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	159                             @ DW_AT_decl_line
+	.long	38                              @ DW_AT_type
+	.byte	6                               @ Abbrev [6] 0x119:0xe DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	12
+	.long	.Linfo_string31                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	160                             @ DW_AT_decl_line
+	.long	38                              @ DW_AT_type
+	.byte	6                               @ Abbrev [6] 0x127:0xe DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	10
+	.long	.Linfo_string32                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	160                             @ DW_AT_decl_line
+	.long	38                              @ DW_AT_type
+	.byte	6                               @ Abbrev [6] 0x135:0xe DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	4
+	.long	.Linfo_string33                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	161                             @ DW_AT_decl_line
+	.long	324                             @ DW_AT_type
+	.byte	0                               @ End Of Children Mark
+	.byte	7                               @ Abbrev [7] 0x144:0xb DW_TAG_typedef
+	.long	335                             @ DW_AT_type
+	.long	.Linfo_string8                  @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.byte	64                              @ DW_AT_decl_line
+	.byte	2                               @ Abbrev [2] 0x14f:0x7 DW_TAG_base_type
+	.long	.Linfo_string7                  @ DW_AT_name
+	.byte	7                               @ DW_AT_encoding
+	.byte	4                               @ DW_AT_byte_size
+	.byte	8                               @ Abbrev [8] 0x156:0x5 DW_TAG_pointer_type
+	.long	347                             @ DW_AT_type
+	.byte	9                               @ Abbrev [9] 0x15b:0x5 DW_TAG_const_type
+	.long	352                             @ DW_AT_type
+	.byte	7                               @ Abbrev [7] 0x160:0xb DW_TAG_typedef
+	.long	363                             @ DW_AT_type
+	.long	.Linfo_string18                 @ DW_AT_name
+	.byte	4                               @ DW_AT_decl_file
+	.byte	56                              @ DW_AT_decl_line
+	.byte	10                              @ Abbrev [10] 0x16b:0x4d DW_TAG_structure_type
+	.byte	24                              @ DW_AT_byte_size
+	.byte	4                               @ DW_AT_decl_file
+	.byte	48                              @ DW_AT_decl_line
+	.byte	11                              @ Abbrev [11] 0x16f:0xc DW_TAG_member
+	.long	.Linfo_string10                 @ DW_AT_name
+	.long	324                             @ DW_AT_type
+	.byte	4                               @ DW_AT_decl_file
+	.byte	50                              @ DW_AT_decl_line
+	.byte	0                               @ DW_AT_data_member_location
+	.byte	11                              @ Abbrev [11] 0x17b:0xc DW_TAG_member
+	.long	.Linfo_string11                 @ DW_AT_name
+	.long	324                             @ DW_AT_type
+	.byte	4                               @ DW_AT_decl_file
+	.byte	51                              @ DW_AT_decl_line
+	.byte	4                               @ DW_AT_data_member_location
+	.byte	11                              @ Abbrev [11] 0x187:0xc DW_TAG_member
+	.long	.Linfo_string12                 @ DW_AT_name
+	.long	440                             @ DW_AT_type
+	.byte	4                               @ DW_AT_decl_file
+	.byte	52                              @ DW_AT_decl_line
+	.byte	8                               @ DW_AT_data_member_location
+	.byte	11                              @ Abbrev [11] 0x193:0xc DW_TAG_member
+	.long	.Linfo_string15                 @ DW_AT_name
+	.long	440                             @ DW_AT_type
+	.byte	4                               @ DW_AT_decl_file
+	.byte	53                              @ DW_AT_decl_line
+	.byte	12                              @ DW_AT_data_member_location
+	.byte	11                              @ Abbrev [11] 0x19f:0xc DW_TAG_member
+	.long	.Linfo_string16                 @ DW_AT_name
+	.long	440                             @ DW_AT_type
+	.byte	4                               @ DW_AT_decl_file
+	.byte	54                              @ DW_AT_decl_line
+	.byte	16                              @ DW_AT_data_member_location
+	.byte	11                              @ Abbrev [11] 0x1ab:0xc DW_TAG_member
+	.long	.Linfo_string17                 @ DW_AT_name
+	.long	450                             @ DW_AT_type
+	.byte	4                               @ DW_AT_decl_file
+	.byte	55                              @ DW_AT_decl_line
+	.byte	20                              @ DW_AT_data_member_location
+	.byte	0                               @ End Of Children Mark
+	.byte	8                               @ Abbrev [8] 0x1b8:0x5 DW_TAG_pointer_type
+	.long	445                             @ DW_AT_type
+	.byte	9                               @ Abbrev [9] 0x1bd:0x5 DW_TAG_const_type
+	.long	450                             @ DW_AT_type
+	.byte	7                               @ Abbrev [7] 0x1c2:0xb DW_TAG_typedef
+	.long	461                             @ DW_AT_type
+	.long	.Linfo_string14                 @ DW_AT_name
+	.byte	5                               @ DW_AT_decl_file
+	.byte	58                              @ DW_AT_decl_line
+	.byte	2                               @ Abbrev [2] 0x1cd:0x7 DW_TAG_base_type
+	.long	.Linfo_string13                 @ DW_AT_name
+	.byte	4                               @ DW_AT_encoding
+	.byte	2                               @ DW_AT_byte_size
+	.byte	8                               @ Abbrev [8] 0x1d4:0x5 DW_TAG_pointer_type
+	.long	450                             @ DW_AT_type
+	.byte	0                               @ End Of Children Mark
+.Ldebug_info_end0:
+	.section	.debug_str,"MS",%progbits,1
+.Linfo_string0:
+	.asciz	"Component: Arm Compiler for Embedded 6.24 Tool: armclang [5f371800]" @ string offset=0
+.Linfo_string1:
+	.asciz	"D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/BayesFunctions\\BayesFunctionsF16.c" @ string offset=68
+.Linfo_string2:
+	.asciz	"D:\\RM_projects\\h7_final_4\\MDK-ARM" @ string offset=151
+.Linfo_string3:
+	.asciz	"_Float16"                      @ string offset=185
+.Linfo_string4:
+	.asciz	"float"                         @ string offset=194
+.Linfo_string5:
+	.asciz	"float32_t"                     @ string offset=200
+.Linfo_string6:
+	.asciz	"arm_gaussian_naive_bayes_predict_f16" @ string offset=210
+.Linfo_string7:
+	.asciz	"unsigned int"                  @ string offset=247
+.Linfo_string8:
+	.asciz	"uint32_t"                      @ string offset=260
+.Linfo_string9:
+	.asciz	"S"                             @ string offset=269
+.Linfo_string10:
+	.asciz	"vectorDimension"               @ string offset=271
+.Linfo_string11:
+	.asciz	"numberOfClasses"               @ string offset=287
+.Linfo_string12:
+	.asciz	"theta"                         @ string offset=303
+.Linfo_string13:
+	.asciz	"__fp16"                        @ string offset=309
+.Linfo_string14:
+	.asciz	"float16_t"                     @ string offset=316
+.Linfo_string15:
+	.asciz	"sigma"                         @ string offset=326
+.Linfo_string16:
+	.asciz	"classPriors"                   @ string offset=332
+.Linfo_string17:
+	.asciz	"epsilon"                       @ string offset=344
+.Linfo_string18:
+	.asciz	"arm_gaussian_naive_bayes_instance_f16" @ string offset=352
+.Linfo_string19:
+	.asciz	"in"                            @ string offset=390
+.Linfo_string20:
+	.asciz	"pOutputProbabilities"          @ string offset=393
+.Linfo_string21:
+	.asciz	"pBufferB"                      @ string offset=414
+.Linfo_string22:
+	.asciz	"nbClass"                       @ string offset=423
+.Linfo_string23:
+	.asciz	"nbDim"                         @ string offset=431
+.Linfo_string24:
+	.asciz	"pPrior"                        @ string offset=437
+.Linfo_string25:
+	.asciz	"pTheta"                        @ string offset=444
+.Linfo_string26:
+	.asciz	"pSigma"                        @ string offset=451
+.Linfo_string27:
+	.asciz	"buffer"                        @ string offset=458
+.Linfo_string28:
+	.asciz	"pIn"                           @ string offset=465
+.Linfo_string29:
+	.asciz	"result"                        @ string offset=469
+.Linfo_string30:
+	.asciz	"tmp"                           @ string offset=476
+.Linfo_string31:
+	.asciz	"acc1"                          @ string offset=480
+.Linfo_string32:
+	.asciz	"acc2"                          @ string offset=485
+.Linfo_string33:
+	.asciz	"index"                         @ string offset=490
+	.ident	"Component: Arm Compiler for Embedded 6.24 Tool: armclang [5f371800]"
+	.section	".note.GNU-stack","",%progbits
+	.eabi_attribute	30, 6	@ Tag_ABI_optimization_goals
+	.ARM_attribute	16, 1	@ Tag_AV_eba
+	.section	.debug_line,"",%progbits
+.Lline_table_start0:

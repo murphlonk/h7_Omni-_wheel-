@@ -1,0 +1,2955 @@
+	.text
+	.syntax unified
+	.eabi_attribute	67, "2.09"	@ Tag_conformance
+	.cpu	cortex-m7
+	.eabi_attribute	6, 13	@ Tag_CPU_arch
+	.eabi_attribute	7, 77	@ Tag_CPU_arch_profile
+	.eabi_attribute	8, 0	@ Tag_ARM_ISA_use
+	.eabi_attribute	9, 2	@ Tag_THUMB_ISA_use
+	.fpu	fpv5-d16
+	.eabi_attribute	36, 1	@ Tag_FP_HP_extension
+	.eabi_attribute	34, 1	@ Tag_CPU_unaligned_access
+	.eabi_attribute	17, 1	@ Tag_ABI_PCS_GOT_use
+	.eabi_attribute	20, 2	@ Tag_ABI_FP_denormal
+	.eabi_attribute	21, 0	@ Tag_ABI_FP_exceptions
+	.eabi_attribute	23, 1	@ Tag_ABI_FP_number_model
+	.eabi_attribute	24, 1	@ Tag_ABI_align_needed
+	.eabi_attribute	25, 1	@ Tag_ABI_align_preserved
+	.eabi_attribute	28, 1	@ Tag_ABI_VFP_args
+	.eabi_attribute	38, 1	@ Tag_ABI_FP_16bit_format
+	.eabi_attribute	18, 2	@ Tag_ABI_PCS_wchar_t
+	.eabi_attribute	26, 1	@ Tag_ABI_enum_size
+	.eabi_attribute	14, 0	@ Tag_ABI_PCS_R9_use
+	.file	"FastMathFunctionsF16.c"
+	.file	1 "D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Include" "arm_math_types_f16.h"
+	.file	2 "D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions" "arm_vlog_f16.c"
+	.file	3 "D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions" "arm_atan2_f16.c"
+	.file	4 "D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Include" "arm_math_types.h"
+	.file	5 "D:\\keil_1\\keil\\ARM\\ARMCLANG\\bin\\..\\include" "stdint.h"
+	.section	.text.arm_vexp_f16,"ax",%progbits
+	.hidden	arm_vexp_f16                    @ -- Begin function arm_vexp_f16
+	.globl	arm_vexp_f16
+	.p2align	3
+	.type	arm_vexp_f16,%function
+	.code	16                              @ @arm_vexp_f16
+	.thumb_func
+arm_vexp_f16:
+.Lfunc_begin0:
+	.file	6 "D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions" "arm_vexp_f16.c"
+	.loc	6 52 0                          @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_vexp_f16.c:52:0
+	.fnstart
+	.cfi_sections .debug_frame
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 24
+	str	r0, [sp, #12]
+	str	r1, [sp, #8]
+	str	r2, [sp, #4]
+.Ltmp0:
+	.loc	6 76 13 prologue_end            @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_vexp_f16.c:76:13
+	ldr	r0, [sp, #4]
+	.loc	6 76 11 is_stmt 0               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_vexp_f16.c:76:11
+	str	r0, [sp]
+	.loc	6 79 4 is_stmt 1                @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_vexp_f16.c:79:4
+	b	.LBB0_1
+.LBB0_1:                                @ =>This Inner Loop Header: Depth=1
+	.loc	6 79 11 is_stmt 0               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_vexp_f16.c:79:11
+	ldr	r0, [sp]
+	.loc	6 79 4                          @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_vexp_f16.c:79:4
+	cbz	r0, .LBB0_3
+	b	.LBB0_2
+.LBB0_2:                                @   in Loop: Header=BB0_1 Depth=1
+.Ltmp1:
+	.loc	6 84 48 is_stmt 1               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_vexp_f16.c:84:48
+	ldr	r0, [sp, #12]
+	adds	r1, r0, #2
+	str	r1, [sp, #12]
+	.loc	6 84 43 is_stmt 0               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_vexp_f16.c:84:43
+	ldrh	r0, [r0]
+	.loc	6 84 32                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_vexp_f16.c:84:32
+	vmov	s0, r0
+	vcvtb.f32.f16	s0, s0
+	.loc	6 84 27                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_vexp_f16.c:84:27
+	bl	__hardfp_expf
+	vmov.f32	s2, s0
+                                        @ implicit-def: $s0
+	.loc	6 84 17                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_vexp_f16.c:84:17
+	vcvtb.f16.f32	s0, s2
+	vmov	r0, s0
+	.loc	6 84 12                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_vexp_f16.c:84:12
+	ldr	r1, [sp, #8]
+	adds	r2, r1, #2
+	str	r2, [sp, #8]
+	.loc	6 84 15                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_vexp_f16.c:84:15
+	strh	r0, [r1]
+	.loc	6 87 13 is_stmt 1               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_vexp_f16.c:87:13
+	ldr	r0, [sp]
+	subs	r0, #1
+	str	r0, [sp]
+.Ltmp2:
+	.loc	6 79 4                          @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_vexp_f16.c:79:4
+	b	.LBB0_1
+.LBB0_3:
+	.loc	6 89 1 epilogue_begin           @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_vexp_f16.c:89:1
+	add	sp, #16
+	pop	{r7, pc}
+.Ltmp3:
+.Lfunc_end0:
+	.size	arm_vexp_f16, .Lfunc_end0-arm_vexp_f16
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.arm_vlog_f16,"ax",%progbits
+	.hidden	arm_vlog_f16                    @ -- Begin function arm_vlog_f16
+	.globl	arm_vlog_f16
+	.p2align	3
+	.type	arm_vlog_f16,%function
+	.code	16                              @ @arm_vlog_f16
+	.thumb_func
+arm_vlog_f16:
+.Lfunc_begin1:
+	.loc	2 176 0                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_vlog_f16.c:176:0
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 24
+	str	r0, [sp, #12]
+	str	r1, [sp, #8]
+	str	r2, [sp, #4]
+.Ltmp4:
+	.loc	2 199 13 prologue_end           @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_vlog_f16.c:199:13
+	ldr	r0, [sp, #4]
+	.loc	2 199 11 is_stmt 0              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_vlog_f16.c:199:11
+	str	r0, [sp]
+	.loc	2 202 4 is_stmt 1               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_vlog_f16.c:202:4
+	b	.LBB1_1
+.LBB1_1:                                @ =>This Inner Loop Header: Depth=1
+	.loc	2 202 11 is_stmt 0              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_vlog_f16.c:202:11
+	ldr	r0, [sp]
+	.loc	2 202 4                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_vlog_f16.c:202:4
+	cbz	r0, .LBB1_3
+	b	.LBB1_2
+.LBB1_2:                                @   in Loop: Header=BB1_1 Depth=1
+.Ltmp5:
+	.loc	2 207 36 is_stmt 1              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_vlog_f16.c:207:36
+	ldr	r0, [sp, #12]
+	adds	r1, r0, #2
+	str	r1, [sp, #12]
+	.loc	2 207 17 is_stmt 0              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_vlog_f16.c:207:17
+	ldrh	r0, [r0]
+	vmov	s0, r0
+	bl	logf16_scalar
+	vmov	r0, s0
+	.loc	2 207 12                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_vlog_f16.c:207:12
+	ldr	r1, [sp, #8]
+	adds	r2, r1, #2
+	str	r2, [sp, #8]
+	.loc	2 207 15                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_vlog_f16.c:207:15
+	strh	r0, [r1]
+	.loc	2 210 13 is_stmt 1              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_vlog_f16.c:210:13
+	ldr	r0, [sp]
+	subs	r0, #1
+	str	r0, [sp]
+.Ltmp6:
+	.loc	2 202 4                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_vlog_f16.c:202:4
+	b	.LBB1_1
+.LBB1_3:
+	.loc	2 212 1 epilogue_begin          @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_vlog_f16.c:212:1
+	add	sp, #16
+	pop	{r7, pc}
+.Ltmp7:
+.Lfunc_end1:
+	.size	arm_vlog_f16, .Lfunc_end1-arm_vlog_f16
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.logf16_scalar,"ax",%progbits
+	.p2align	3                               @ -- Begin function logf16_scalar
+	.type	logf16_scalar,%function
+	.code	16                              @ @logf16_scalar
+	.thumb_func
+logf16_scalar:
+.Lfunc_begin2:
+	.loc	2 76 0                          @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_vlog_f16.c:76:0
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#32
+	sub	sp, #32
+	.cfi_def_cfa_offset 40
+	vmov	r0, s0
+	strh.w	r0, [sp, #30]
+.Ltmp8:
+	.loc	2 77 18 prologue_end            @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_vlog_f16.c:77:18
+	ldrh.w	r0, [sp, #30]
+	vmov	s0, r0
+	bl	arm_typecast_s16_f16
+	.loc	2 77 13 is_stmt 0               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_vlog_f16.c:77:13
+	strh.w	r0, [sp, #28]
+	.loc	2 79 31 is_stmt 1               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_vlog_f16.c:79:31
+	ldrsh.w	r1, [sp, #28]
+	mvn	r0, #14
+	.loc	2 79 40 is_stmt 0               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_vlog_f16.c:79:40
+	add.w	r0, r0, r1, asr #10
+	.loc	2 79 13                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_vlog_f16.c:79:13
+	str	r0, [sp, #24]
+	.loc	2 80 9 is_stmt 1                @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_vlog_f16.c:80:9
+	ldrh.w	r0, [sp, #28]
+	.loc	2 80 14 is_stmt 0               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_vlog_f16.c:80:14
+	ldr	r1, [sp, #24]
+	.loc	2 80 11                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_vlog_f16.c:80:11
+	sub.w	r0, r0, r1, lsl #10
+	.loc	2 80 7                          @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_vlog_f16.c:80:7
+	strh.w	r0, [sp, #28]
+	.loc	2 81 49 is_stmt 1               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_vlog_f16.c:81:49
+	ldrsh.w	r0, [sp, #28]
+	.loc	2 81 28 is_stmt 0               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_vlog_f16.c:81:28
+	bl	arm_typecast_f16_s16
+	vmov	r0, s0
+	.loc	2 81 15                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_vlog_f16.c:81:15
+	strh.w	r0, [sp, #22]
+	.loc	2 87 22 is_stmt 1               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_vlog_f16.c:87:22
+	ldrh.w	r0, [sp, #22]
+	.loc	2 87 43 is_stmt 0               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_vlog_f16.c:87:43
+	vmov	s0, r0
+	vcvtb.f32.f16	s0, s0
+	vmov.f32	s2, #-1.000000e+00
+	vadd.f32	s0, s0, s2
+	vmov.f32	s2, #8.000000e+00
+	vmul.f32	s2, s0, s2
+                                        @ implicit-def: $s0
+	vcvtb.f16.f32	s0, s2
+	vmov	r0, s0
+	.loc	2 87 9                          @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_vlog_f16.c:87:9
+	strh.w	r0, [sp, #10]
+	.loc	2 88 28 is_stmt 1               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_vlog_f16.c:88:28
+	ldrh.w	r0, [sp, #10]
+	.loc	2 88 20 is_stmt 0               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_vlog_f16.c:88:20
+	vmov	s0, r0
+	vcvtb.f64.f16	d0, s0
+	.loc	2 88 14                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_vlog_f16.c:88:14
+	vrintm.f64	d0, d0
+	.loc	2 88 7                          @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_vlog_f16.c:88:7
+	vcvt.s32.f64	s0, d0
+	vstr	s0, [sp, #12]
+	.loc	2 89 19 is_stmt 1               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_vlog_f16.c:89:19
+	ldrh.w	r0, [sp, #10]
+	.loc	2 89 23 is_stmt 0               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_vlog_f16.c:89:23
+	vmov	s0, r0
+	vcvtb.f32.f16	s0, s0
+	.loc	2 89 25                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_vlog_f16.c:89:25
+	vldr	s2, [sp, #12]
+	vcvt.f32.s32	s4, s2
+                                        @ implicit-def: $s2
+	vcvtb.f16.f32	s2, s4
+	vmov	r0, s2
+	.loc	2 89 23                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_vlog_f16.c:89:23
+	vmov	s2, r0
+	vcvtb.f32.f16	s2, s2
+	vsub.f32	s2, s0, s2
+                                        @ implicit-def: $s0
+	vcvtb.f16.f32	s0, s2
+	vmov	r0, s0
+	.loc	2 89 7                          @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_vlog_f16.c:89:7
+	strh.w	r0, [sp, #8]
+	.loc	2 91 24 is_stmt 1               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_vlog_f16.c:91:24
+	ldr	r1, [sp, #12]
+	.loc	2 91 22 is_stmt 0               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_vlog_f16.c:91:22
+	movw	r0, :lower16:lut_logf16
+	movt	r0, :upper16:lut_logf16
+	add.w	r0, r0, r1, lsl #3
+	.loc	2 91 9                          @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_vlog_f16.c:91:9
+	str	r0, [sp, #16]
+	.loc	2 93 21 is_stmt 1               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_vlog_f16.c:93:21
+	ldr	r0, [sp, #16]
+	ldrh	r0, [r0, #4]
+	.loc	2 93 15 is_stmt 0               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_vlog_f16.c:93:15
+	strh.w	r0, [sp, #6]
+	movs	r0, #1
+.Ltmp9:
+	.loc	2 94 13 is_stmt 1               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_vlog_f16.c:94:13
+	str	r0, [sp]
+	.loc	2 94 9 is_stmt 0                @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_vlog_f16.c:94:9
+	b	.LBB2_1
+.LBB2_1:                                @ =>This Inner Loop Header: Depth=1
+.Ltmp10:
+	.loc	2 94 32                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_vlog_f16.c:94:32
+	ldr	r0, [sp]
+.Ltmp11:
+	.loc	2 94 5                          @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_vlog_f16.c:94:5
+	cmp	r0, #0
+	bmi	.LBB2_4
+	b	.LBB2_2
+.LBB2_2:                                @   in Loop: Header=BB2_1 Depth=1
+.Ltmp12:
+	.loc	2 96 24 is_stmt 1               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_vlog_f16.c:96:24
+	ldr	r0, [sp, #16]
+	.loc	2 96 28 is_stmt 0               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_vlog_f16.c:96:28
+	ldr	r1, [sp]
+	.loc	2 96 24                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_vlog_f16.c:96:24
+	ldrh.w	r0, [r0, r1, lsl #1]
+	.loc	2 96 31                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_vlog_f16.c:96:31
+	vmov	s0, r0
+	vcvtb.f32.f16	s2, s0
+	.loc	2 96 43                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_vlog_f16.c:96:43
+	ldrh.w	r0, [sp, #8]
+	.loc	2 96 31                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_vlog_f16.c:96:31
+	vmov	s0, r0
+	vcvtb.f32.f16	s0, s0
+	.loc	2 96 57                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_vlog_f16.c:96:57
+	ldrh.w	r0, [sp, #6]
+	.loc	2 96 31                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_vlog_f16.c:96:31
+	vmov	s4, r0
+	vcvtb.f32.f16	s4, s4
+	vfma.f32	s2, s0, s4
+                                        @ implicit-def: $s0
+	vcvtb.f16.f32	s0, s2
+	vmov	r0, s0
+	.loc	2 96 12                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_vlog_f16.c:96:12
+	strh.w	r0, [sp, #6]
+	.loc	2 97 5 is_stmt 1                @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_vlog_f16.c:97:5
+	b	.LBB2_3
+.Ltmp13:
+.LBB2_3:                                @   in Loop: Header=BB2_1 Depth=1
+	.loc	2 94 41                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_vlog_f16.c:94:41
+	ldr	r0, [sp]
+	subs	r0, #1
+	str	r0, [sp]
+	.loc	2 94 5 is_stmt 0                @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_vlog_f16.c:94:5
+	b	.LBB2_1
+.Ltmp14:
+.LBB2_4:
+	.loc	2 99 21 is_stmt 1               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_vlog_f16.c:99:21
+	ldrh.w	r0, [sp, #6]
+	.loc	2 99 25 is_stmt 0               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_vlog_f16.c:99:25
+	vmov	s0, r0
+	vcvtb.f32.f16	s2, s0
+	.loc	2 99 41                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_vlog_f16.c:99:41
+	vldr	s0, [sp, #24]
+	vcvt.f32.s32	s4, s0
+                                        @ implicit-def: $s0
+	vcvtb.f16.f32	s0, s4
+	vmov	r0, s0
+	.loc	2 99 25                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_vlog_f16.c:99:25
+	vmov	s0, r0
+	vcvtb.f32.f16	s0, s0
+	vldr	s4, .LCPI2_0
+	vfma.f32	s2, s0, s4
+                                        @ implicit-def: $s0
+	vcvtb.f16.f32	s0, s2
+	vmov	r0, s0
+	.loc	2 99 9                          @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_vlog_f16.c:99:9
+	strh.w	r0, [sp, #6]
+	.loc	2 102 5 is_stmt 1               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_vlog_f16.c:102:5
+	ldrh.w	r0, [sp, #6]
+	vmov	s0, r0
+	.loc	2 102 5 epilogue_begin is_stmt 0 @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_vlog_f16.c:102:5
+	add	sp, #32
+	pop	{r7, pc}
+.Ltmp15:
+	.loc	2 0 5                           @ :0:5
+.Ltmp16:
+	.p2align	2
+@ %bb.5:
+.LCPI2_0:
+	.long	0x3f318000                      @ float 0.693359375
+.Lfunc_end2:
+	.size	logf16_scalar, .Lfunc_end2-logf16_scalar
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.arm_vinverse_f16,"ax",%progbits
+	.hidden	arm_vinverse_f16                @ -- Begin function arm_vinverse_f16
+	.globl	arm_vinverse_f16
+	.p2align	3
+	.type	arm_vinverse_f16,%function
+	.code	16                              @ @arm_vinverse_f16
+	.thumb_func
+arm_vinverse_f16:
+.Lfunc_begin3:
+	.file	7 "D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions" "arm_vinverse_f16.c"
+	.loc	7 41 0 is_stmt 1                @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_vinverse_f16.c:41:0
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 16
+	str	r0, [sp, #12]
+	str	r1, [sp, #8]
+	str	r2, [sp, #4]
+.Ltmp17:
+	.loc	7 65 13 prologue_end            @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_vinverse_f16.c:65:13
+	ldr	r0, [sp, #4]
+	.loc	7 65 11 is_stmt 0               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_vinverse_f16.c:65:11
+	str	r0, [sp]
+	.loc	7 68 4 is_stmt 1                @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_vinverse_f16.c:68:4
+	b	.LBB3_1
+.LBB3_1:                                @ =>This Inner Loop Header: Depth=1
+	.loc	7 68 11 is_stmt 0               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_vinverse_f16.c:68:11
+	ldr	r0, [sp]
+	.loc	7 68 4                          @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_vinverse_f16.c:68:4
+	cbz	r0, .LBB3_3
+	b	.LBB3_2
+.LBB3_2:                                @   in Loop: Header=BB3_1 Depth=1
+.Ltmp18:
+	.loc	7 71 41 is_stmt 1               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_vinverse_f16.c:71:41
+	ldr	r0, [sp, #12]
+	adds	r1, r0, #2
+	str	r1, [sp, #12]
+	.loc	7 71 36 is_stmt 0               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_vinverse_f16.c:71:36
+	ldrh	r0, [r0]
+	.loc	7 71 24                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_vinverse_f16.c:71:24
+	vmov	s0, r0
+	vcvtb.f32.f16	s2, s0
+	vmov.f32	s0, #1.000000e+00
+	vdiv.f32	s2, s0, s2
+                                        @ implicit-def: $s0
+	vcvtb.f16.f32	s0, s2
+	vmov	r0, s0
+	.loc	7 71 12                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_vinverse_f16.c:71:12
+	ldr	r1, [sp, #8]
+	adds	r2, r1, #2
+	str	r2, [sp, #8]
+	.loc	7 71 15                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_vinverse_f16.c:71:15
+	strh	r0, [r1]
+	.loc	7 74 13 is_stmt 1               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_vinverse_f16.c:74:13
+	ldr	r0, [sp]
+	subs	r0, #1
+	str	r0, [sp]
+.Ltmp19:
+	.loc	7 68 4                          @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_vinverse_f16.c:68:4
+	b	.LBB3_1
+.LBB3_3:
+	.loc	7 76 1 epilogue_begin           @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_vinverse_f16.c:76:1
+	add	sp, #16
+	bx	lr
+.Ltmp20:
+.Lfunc_end3:
+	.size	arm_vinverse_f16, .Lfunc_end3-arm_vinverse_f16
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.arm_atan2_f16,"ax",%progbits
+	.hidden	arm_atan2_f16                   @ -- Begin function arm_atan2_f16
+	.globl	arm_atan2_f16
+	.p2align	3
+	.type	arm_atan2_f16,%function
+	.code	16                              @ @arm_atan2_f16
+	.thumb_func
+arm_atan2_f16:
+.Lfunc_begin4:
+	.loc	3 120 0                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:120:0
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#88
+	sub	sp, #88
+	.cfi_def_cfa_offset 96
+	vmov	r1, s1
+	vmov	r2, s0
+	strh.w	r2, [sp, #10]
+	strh.w	r1, [sp, #8]
+	str	r0, [sp, #4]
+.Ltmp21:
+	.loc	3 121 19 prologue_end           @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:121:19
+	ldrh.w	r0, [sp, #8]
+	.loc	3 121 21 is_stmt 0              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:121:21
+	vmov	s0, r0
+	vcvtb.f32.f16	s0, s0
+.Ltmp22:
+	.loc	3 121 9                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:121:9
+	vcmp.f32	s0, #0
+	vmrs	APSR_nzcv, fpscr
+	ble.w	.LBB4_15
+	b	.LBB4_1
+.LBB4_1:
+.Ltmp23:
+	.loc	3 123 40 is_stmt 1              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:123:40
+	ldrh.w	r0, [sp, #10]
+	.loc	3 123 41 is_stmt 0              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:123:41
+	vmov	s0, r0
+	vcvtb.f32.f16	s0, s0
+	.loc	3 123 52                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:123:52
+	ldrh.w	r0, [sp, #8]
+	.loc	3 123 41                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:123:41
+	vmov	s2, r0
+	vcvtb.f32.f16	s2, s2
+	vdiv.f32	s2, s0, s2
+                                        @ implicit-def: $s0
+	vcvtb.f16.f32	s0, s2
+	vmov	r0, s0
+	strh.w	r0, [sp, #38]
+	movs	r0, #0
+.Ltmp24:
+	.loc	3 69 8 is_stmt 1                @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:69:8
+	str	r0, [sp, #32]
+	.loc	3 70 14                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:70:14
+	strh.w	r0, [sp, #30]
+.Ltmp25:
+	.loc	3 72 18                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:72:18
+	ldrh.w	r0, [sp, #38]
+	.loc	3 72 20 is_stmt 0               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:72:20
+	vmov	s0, r0
+	vcvtb.f32.f16	s0, s0
+.Ltmp26:
+	.loc	3 72 8                          @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:72:8
+	vcmp.f32	s0, #0
+	vmrs	APSR_nzcv, fpscr
+	bge	.LBB4_3
+	b	.LBB4_2
+.LBB4_2:
+	.loc	3 0 8                           @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:0:8
+	movs	r0, #1
+.Ltmp27:
+	.loc	3 74 11 is_stmt 1               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:74:11
+	str	r0, [sp, #32]
+	.loc	3 75 20                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:75:20
+	ldrh.w	r0, [sp, #38]
+	.loc	3 75 9 is_stmt 0                @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:75:9
+	vmov	s0, r0
+	vcvtb.f32.f16	s0, s0
+	vneg.f32	s2, s0
+                                        @ implicit-def: $s0
+	vcvtb.f16.f32	s0, s2
+	vmov	r0, s0
+	.loc	3 75 8                          @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:75:8
+	strh.w	r0, [sp, #38]
+	.loc	3 76 4 is_stmt 1                @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:76:4
+	b	.LBB4_3
+.Ltmp28:
+.LBB4_3:
+	.loc	3 78 18                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:78:18
+	ldrh.w	r0, [sp, #38]
+	.loc	3 78 20 is_stmt 0               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:78:20
+	vmov	s0, r0
+	vcvtb.f32.f16	s0, s0
+	vmov.f32	s2, #1.000000e+00
+.Ltmp29:
+	.loc	3 78 8                          @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:78:8
+	vcmp.f32	s0, s2
+	vmrs	APSR_nzcv, fpscr
+	ble	.LBB4_8
+	b	.LBB4_4
+.LBB4_4:
+.Ltmp30:
+	.loc	3 80 30 is_stmt 1               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:80:30
+	ldrh.w	r0, [sp, #38]
+	.loc	3 80 18 is_stmt 0               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:80:18
+	vmov	s0, r0
+	vcvtb.f32.f16	s2, s0
+	vmov.f32	s0, #1.000000e+00
+	vdiv.f32	s2, s0, s2
+                                        @ implicit-def: $s0
+	vcvtb.f16.f32	s0, s2
+	vmov	r0, s0
+	.loc	3 80 9                          @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:80:9
+	strh.w	r0, [sp, #38]
+	.loc	3 81 65 is_stmt 1               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:81:65
+	ldrh.w	r0, [sp, #38]
+	strh.w	r0, [sp, #46]
+	movw	r0, #12509
+.Ltmp31:
+	.loc	3 56 15                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:56:15
+	strh.w	r0, [sp, #44]
+	movs	r0, #1
+	.loc	3 57 9                          @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:57:9
+	str	r0, [sp, #40]
+.Ltmp32:
+	.loc	3 58 10                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:58:10
+	str	r0, [sp, #40]
+	.loc	3 58 9 is_stmt 0                @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:58:9
+	b	.LBB4_5
+.LBB4_5:                                @ =>This Inner Loop Header: Depth=1
+.Ltmp33:
+	.loc	3 58 13                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:58:13
+	ldr	r0, [sp, #40]
+.Ltmp34:
+	.loc	3 58 5                          @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:58:5
+	cmp	r0, #4
+	bgt	.LBB4_7
+	b	.LBB4_6
+.LBB4_6:                                @   in Loop: Header=BB4_5 Depth=1
+.Ltmp35:
+	.loc	3 60 25 is_stmt 1               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:60:25
+	ldrh.w	r0, [sp, #46]
+	.loc	3 60 41 is_stmt 0               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:60:41
+	vmov	s0, r0
+	vcvtb.f32.f16	s0, s0
+	.loc	3 60 37                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:60:37
+	ldrh.w	r0, [sp, #44]
+	.loc	3 60 41                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:60:41
+	vmov	s2, r0
+	vcvtb.f32.f16	s4, s2
+	.loc	3 60 90                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:60:90
+	ldr	r0, [sp, #40]
+	.loc	3 60 89                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:60:89
+	rsb.w	r1, r0, #4
+	.loc	3 60 53                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:60:53
+	movw	r0, :lower16:atan2_coefs_f16
+	movt	r0, :upper16:atan2_coefs_f16
+	ldrh.w	r0, [r0, r1, lsl #1]
+	.loc	3 60 41                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:60:41
+	vmov	s2, r0
+	vcvtb.f32.f16	s2, s2
+	vfma.f32	s2, s0, s4
+                                        @ implicit-def: $s0
+	vcvtb.f16.f32	s0, s2
+	vmov	r0, s0
+	.loc	3 60 13                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:60:13
+	strh.w	r0, [sp, #44]
+.Ltmp36:
+	.loc	3 58 35 is_stmt 1               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:58:35
+	ldr	r0, [sp, #40]
+	adds	r0, #1
+	str	r0, [sp, #40]
+	.loc	3 58 5 is_stmt 0                @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:58:5
+	b	.LBB4_5
+.Ltmp37:
+.LBB4_7:
+	.loc	3 64 12 is_stmt 1               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:64:12
+	ldrh.w	r0, [sp, #44]
+.Ltmp38:
+	.loc	3 81 32                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:81:32
+	vmov	s0, r0
+	vcvtb.f32.f16	s2, s0
+	vldr	s0, .LCPI4_3
+	vsub.f32	s2, s0, s2
+                                        @ implicit-def: $s0
+	vcvtb.f16.f32	s0, s2
+	vmov	r0, s0
+	.loc	3 81 11 is_stmt 0               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:81:11
+	strh.w	r0, [sp, #30]
+	.loc	3 82 4 is_stmt 1                @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:82:4
+	b	.LBB4_12
+.Ltmp39:
+.LBB4_8:
+	.loc	3 85 44                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:85:44
+	ldrh.w	r0, [sp, #38]
+	strh.w	r0, [sp, #54]
+	movw	r0, #12509
+.Ltmp40:
+	.loc	3 56 15                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:56:15
+	strh.w	r0, [sp, #52]
+	movs	r0, #1
+	.loc	3 57 9                          @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:57:9
+	str	r0, [sp, #48]
+.Ltmp41:
+	.loc	3 58 10                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:58:10
+	str	r0, [sp, #48]
+	.loc	3 58 9 is_stmt 0                @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:58:9
+	b	.LBB4_9
+.LBB4_9:                                @ =>This Inner Loop Header: Depth=1
+.Ltmp42:
+	.loc	3 58 13                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:58:13
+	ldr	r0, [sp, #48]
+.Ltmp43:
+	.loc	3 58 5                          @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:58:5
+	cmp	r0, #4
+	bgt	.LBB4_11
+	b	.LBB4_10
+.LBB4_10:                               @   in Loop: Header=BB4_9 Depth=1
+.Ltmp44:
+	.loc	3 60 25 is_stmt 1               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:60:25
+	ldrh.w	r0, [sp, #54]
+	.loc	3 60 41 is_stmt 0               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:60:41
+	vmov	s0, r0
+	vcvtb.f32.f16	s0, s0
+	.loc	3 60 37                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:60:37
+	ldrh.w	r0, [sp, #52]
+	.loc	3 60 41                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:60:41
+	vmov	s2, r0
+	vcvtb.f32.f16	s4, s2
+	.loc	3 60 90                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:60:90
+	ldr	r0, [sp, #48]
+	.loc	3 60 89                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:60:89
+	rsb.w	r1, r0, #4
+	.loc	3 60 53                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:60:53
+	movw	r0, :lower16:atan2_coefs_f16
+	movt	r0, :upper16:atan2_coefs_f16
+	ldrh.w	r0, [r0, r1, lsl #1]
+	.loc	3 60 41                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:60:41
+	vmov	s2, r0
+	vcvtb.f32.f16	s2, s2
+	vfma.f32	s2, s0, s4
+                                        @ implicit-def: $s0
+	vcvtb.f16.f32	s0, s2
+	vmov	r0, s0
+	.loc	3 60 13                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:60:13
+	strh.w	r0, [sp, #52]
+.Ltmp45:
+	.loc	3 58 35 is_stmt 1               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:58:35
+	ldr	r0, [sp, #48]
+	adds	r0, #1
+	str	r0, [sp, #48]
+	.loc	3 58 5 is_stmt 0                @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:58:5
+	b	.LBB4_9
+.Ltmp46:
+.LBB4_11:
+	.loc	3 64 12 is_stmt 1               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:64:12
+	ldrh.w	r1, [sp, #52]
+.Ltmp47:
+	.loc	3 85 10                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:85:10
+	ldrh.w	r0, [sp, #30]
+	vmov	s0, r1
+	vcvtb.f32.f16	s2, s0
+	vmov	s0, r0
+	vcvtb.f32.f16	s0, s0
+	vadd.f32	s2, s0, s2
+                                        @ implicit-def: $s0
+	vcvtb.f16.f32	s0, s2
+	vmov	r0, s0
+	strh.w	r0, [sp, #30]
+	b	.LBB4_12
+.Ltmp48:
+.LBB4_12:
+	.loc	3 89 8                          @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:89:8
+	ldr	r0, [sp, #32]
+.Ltmp49:
+	.loc	3 89 8 is_stmt 0                @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:89:8
+	cbz	r0, .LBB4_14
+	b	.LBB4_13
+.LBB4_13:
+.Ltmp50:
+	.loc	3 91 23 is_stmt 1               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:91:23
+	ldrh.w	r0, [sp, #30]
+	.loc	3 91 12 is_stmt 0               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:91:12
+	vmov	s0, r0
+	vcvtb.f32.f16	s0, s0
+	vneg.f32	s2, s0
+                                        @ implicit-def: $s0
+	vcvtb.f16.f32	s0, s2
+	vmov	r0, s0
+	.loc	3 91 10                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:91:10
+	strh.w	r0, [sp, #30]
+	.loc	3 92 4 is_stmt 1                @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:92:4
+	b	.LBB4_14
+.Ltmp51:
+.LBB4_14:
+	.loc	3 94 11                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:94:11
+	ldrh.w	r0, [sp, #30]
+.Ltmp52:
+	.loc	3 123 10                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:123:10
+	ldr	r1, [sp, #4]
+	.loc	3 123 16 is_stmt 0              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:123:16
+	strh	r0, [r1]
+	movs	r0, #0
+	.loc	3 124 9 is_stmt 1               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:124:9
+	strb.w	r0, [sp, #13]
+	b	.LBB4_62
+.Ltmp53:
+.LBB4_15:
+	.loc	3 126 19                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:126:19
+	ldrh.w	r0, [sp, #8]
+	.loc	3 126 21 is_stmt 0              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:126:21
+	vmov	s0, r0
+	vcvtb.f32.f16	s0, s0
+.Ltmp54:
+	.loc	3 126 9                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:126:9
+	vcmp.f32	s0, #0
+	vmrs	APSR_nzcv, fpscr
+	bge.w	.LBB4_55
+	b	.LBB4_16
+.LBB4_16:
+.Ltmp55:
+	.loc	3 128 23 is_stmt 1              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:128:23
+	ldrh.w	r0, [sp, #10]
+	.loc	3 128 25 is_stmt 0              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:128:25
+	vmov	s0, r0
+	vcvtb.f32.f16	s0, s0
+.Ltmp56:
+	.loc	3 128 13                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:128:13
+	vcmp.f32	s0, #0
+	vmrs	APSR_nzcv, fpscr
+	ble.w	.LBB4_31
+	b	.LBB4_17
+.LBB4_17:
+.Ltmp57:
+	.loc	3 130 53 is_stmt 1              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:130:53
+	ldrh.w	r0, [sp, #10]
+	.loc	3 130 54 is_stmt 0              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:130:54
+	vmov	s0, r0
+	vcvtb.f32.f16	s0, s0
+	.loc	3 130 65                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:130:65
+	ldrh.w	r0, [sp, #8]
+	.loc	3 130 54                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:130:54
+	vmov	s2, r0
+	vcvtb.f32.f16	s2, s2
+	vdiv.f32	s2, s0, s2
+                                        @ implicit-def: $s0
+	vcvtb.f16.f32	s0, s2
+	vmov	r0, s0
+	strh.w	r0, [sp, #28]
+	movs	r0, #0
+.Ltmp58:
+	.loc	3 69 8 is_stmt 1                @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:69:8
+	str	r0, [sp, #24]
+	.loc	3 70 14                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:70:14
+	strh.w	r0, [sp, #22]
+.Ltmp59:
+	.loc	3 72 18                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:72:18
+	ldrh.w	r0, [sp, #28]
+	.loc	3 72 20 is_stmt 0               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:72:20
+	vmov	s0, r0
+	vcvtb.f32.f16	s0, s0
+.Ltmp60:
+	.loc	3 72 8                          @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:72:8
+	vcmp.f32	s0, #0
+	vmrs	APSR_nzcv, fpscr
+	bge	.LBB4_19
+	b	.LBB4_18
+.LBB4_18:
+	.loc	3 0 8                           @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:0:8
+	movs	r0, #1
+.Ltmp61:
+	.loc	3 74 11 is_stmt 1               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:74:11
+	str	r0, [sp, #24]
+	.loc	3 75 20                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:75:20
+	ldrh.w	r0, [sp, #28]
+	.loc	3 75 9 is_stmt 0                @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:75:9
+	vmov	s0, r0
+	vcvtb.f32.f16	s0, s0
+	vneg.f32	s2, s0
+                                        @ implicit-def: $s0
+	vcvtb.f16.f32	s0, s2
+	vmov	r0, s0
+	.loc	3 75 8                          @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:75:8
+	strh.w	r0, [sp, #28]
+	.loc	3 76 4 is_stmt 1                @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:76:4
+	b	.LBB4_19
+.Ltmp62:
+.LBB4_19:
+	.loc	3 78 18                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:78:18
+	ldrh.w	r0, [sp, #28]
+	.loc	3 78 20 is_stmt 0               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:78:20
+	vmov	s0, r0
+	vcvtb.f32.f16	s0, s0
+	vmov.f32	s2, #1.000000e+00
+.Ltmp63:
+	.loc	3 78 8                          @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:78:8
+	vcmp.f32	s0, s2
+	vmrs	APSR_nzcv, fpscr
+	ble	.LBB4_24
+	b	.LBB4_20
+.LBB4_20:
+.Ltmp64:
+	.loc	3 80 30 is_stmt 1               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:80:30
+	ldrh.w	r0, [sp, #28]
+	.loc	3 80 18 is_stmt 0               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:80:18
+	vmov	s0, r0
+	vcvtb.f32.f16	s2, s0
+	vmov.f32	s0, #1.000000e+00
+	vdiv.f32	s2, s0, s2
+                                        @ implicit-def: $s0
+	vcvtb.f16.f32	s0, s2
+	vmov	r0, s0
+	.loc	3 80 9                          @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:80:9
+	strh.w	r0, [sp, #28]
+	.loc	3 81 65 is_stmt 1               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:81:65
+	ldrh.w	r0, [sp, #28]
+	strh.w	r0, [sp, #62]
+	movw	r0, #12509
+.Ltmp65:
+	.loc	3 56 15                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:56:15
+	strh.w	r0, [sp, #60]
+	movs	r0, #1
+	.loc	3 57 9                          @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:57:9
+	str	r0, [sp, #56]
+.Ltmp66:
+	.loc	3 58 10                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:58:10
+	str	r0, [sp, #56]
+	.loc	3 58 9 is_stmt 0                @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:58:9
+	b	.LBB4_21
+.LBB4_21:                               @ =>This Inner Loop Header: Depth=1
+.Ltmp67:
+	.loc	3 58 13                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:58:13
+	ldr	r0, [sp, #56]
+.Ltmp68:
+	.loc	3 58 5                          @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:58:5
+	cmp	r0, #4
+	bgt	.LBB4_23
+	b	.LBB4_22
+.LBB4_22:                               @   in Loop: Header=BB4_21 Depth=1
+.Ltmp69:
+	.loc	3 60 25 is_stmt 1               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:60:25
+	ldrh.w	r0, [sp, #62]
+	.loc	3 60 41 is_stmt 0               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:60:41
+	vmov	s0, r0
+	vcvtb.f32.f16	s0, s0
+	.loc	3 60 37                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:60:37
+	ldrh.w	r0, [sp, #60]
+	.loc	3 60 41                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:60:41
+	vmov	s2, r0
+	vcvtb.f32.f16	s4, s2
+	.loc	3 60 90                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:60:90
+	ldr	r0, [sp, #56]
+	.loc	3 60 89                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:60:89
+	rsb.w	r1, r0, #4
+	.loc	3 60 53                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:60:53
+	movw	r0, :lower16:atan2_coefs_f16
+	movt	r0, :upper16:atan2_coefs_f16
+	ldrh.w	r0, [r0, r1, lsl #1]
+	.loc	3 60 41                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:60:41
+	vmov	s2, r0
+	vcvtb.f32.f16	s2, s2
+	vfma.f32	s2, s0, s4
+                                        @ implicit-def: $s0
+	vcvtb.f16.f32	s0, s2
+	vmov	r0, s0
+	.loc	3 60 13                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:60:13
+	strh.w	r0, [sp, #60]
+.Ltmp70:
+	.loc	3 58 35 is_stmt 1               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:58:35
+	ldr	r0, [sp, #56]
+	adds	r0, #1
+	str	r0, [sp, #56]
+	.loc	3 58 5 is_stmt 0                @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:58:5
+	b	.LBB4_21
+.Ltmp71:
+.LBB4_23:
+	.loc	3 64 12 is_stmt 1               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:64:12
+	ldrh.w	r0, [sp, #60]
+.Ltmp72:
+	.loc	3 81 32                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:81:32
+	vmov	s0, r0
+	vcvtb.f32.f16	s2, s0
+	vldr	s0, .LCPI4_3
+	vsub.f32	s2, s0, s2
+                                        @ implicit-def: $s0
+	vcvtb.f16.f32	s0, s2
+	vmov	r0, s0
+	.loc	3 81 11 is_stmt 0               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:81:11
+	strh.w	r0, [sp, #22]
+	.loc	3 82 4 is_stmt 1                @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:82:4
+	b	.LBB4_28
+.Ltmp73:
+.LBB4_24:
+	.loc	3 85 44                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:85:44
+	ldrh.w	r0, [sp, #28]
+	strh.w	r0, [sp, #70]
+	movw	r0, #12509
+.Ltmp74:
+	.loc	3 56 15                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:56:15
+	strh.w	r0, [sp, #68]
+	movs	r0, #1
+	.loc	3 57 9                          @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:57:9
+	str	r0, [sp, #64]
+.Ltmp75:
+	.loc	3 58 10                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:58:10
+	str	r0, [sp, #64]
+	.loc	3 58 9 is_stmt 0                @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:58:9
+	b	.LBB4_25
+.LBB4_25:                               @ =>This Inner Loop Header: Depth=1
+.Ltmp76:
+	.loc	3 58 13                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:58:13
+	ldr	r0, [sp, #64]
+.Ltmp77:
+	.loc	3 58 5                          @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:58:5
+	cmp	r0, #4
+	bgt	.LBB4_27
+	b	.LBB4_26
+.LBB4_26:                               @   in Loop: Header=BB4_25 Depth=1
+.Ltmp78:
+	.loc	3 60 25 is_stmt 1               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:60:25
+	ldrh.w	r0, [sp, #70]
+	.loc	3 60 41 is_stmt 0               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:60:41
+	vmov	s0, r0
+	vcvtb.f32.f16	s0, s0
+	.loc	3 60 37                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:60:37
+	ldrh.w	r0, [sp, #68]
+	.loc	3 60 41                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:60:41
+	vmov	s2, r0
+	vcvtb.f32.f16	s4, s2
+	.loc	3 60 90                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:60:90
+	ldr	r0, [sp, #64]
+	.loc	3 60 89                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:60:89
+	rsb.w	r1, r0, #4
+	.loc	3 60 53                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:60:53
+	movw	r0, :lower16:atan2_coefs_f16
+	movt	r0, :upper16:atan2_coefs_f16
+	ldrh.w	r0, [r0, r1, lsl #1]
+	.loc	3 60 41                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:60:41
+	vmov	s2, r0
+	vcvtb.f32.f16	s2, s2
+	vfma.f32	s2, s0, s4
+                                        @ implicit-def: $s0
+	vcvtb.f16.f32	s0, s2
+	vmov	r0, s0
+	.loc	3 60 13                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:60:13
+	strh.w	r0, [sp, #68]
+.Ltmp79:
+	.loc	3 58 35 is_stmt 1               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:58:35
+	ldr	r0, [sp, #64]
+	adds	r0, #1
+	str	r0, [sp, #64]
+	.loc	3 58 5 is_stmt 0                @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:58:5
+	b	.LBB4_25
+.Ltmp80:
+.LBB4_27:
+	.loc	3 64 12 is_stmt 1               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:64:12
+	ldrh.w	r1, [sp, #68]
+.Ltmp81:
+	.loc	3 85 10                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:85:10
+	ldrh.w	r0, [sp, #22]
+	vmov	s0, r1
+	vcvtb.f32.f16	s2, s0
+	vmov	s0, r0
+	vcvtb.f32.f16	s0, s0
+	vadd.f32	s2, s0, s2
+                                        @ implicit-def: $s0
+	vcvtb.f16.f32	s0, s2
+	vmov	r0, s0
+	strh.w	r0, [sp, #22]
+	b	.LBB4_28
+.Ltmp82:
+.LBB4_28:
+	.loc	3 89 8                          @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:89:8
+	ldr	r0, [sp, #24]
+.Ltmp83:
+	.loc	3 89 8 is_stmt 0                @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:89:8
+	cbz	r0, .LBB4_30
+	b	.LBB4_29
+.LBB4_29:
+.Ltmp84:
+	.loc	3 91 23 is_stmt 1               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:91:23
+	ldrh.w	r0, [sp, #22]
+	.loc	3 91 12 is_stmt 0               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:91:12
+	vmov	s0, r0
+	vcvtb.f32.f16	s0, s0
+	vneg.f32	s2, s0
+                                        @ implicit-def: $s0
+	vcvtb.f16.f32	s0, s2
+	vmov	r0, s0
+	.loc	3 91 10                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:91:10
+	strh.w	r0, [sp, #22]
+	.loc	3 92 4 is_stmt 1                @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:92:4
+	b	.LBB4_30
+.Ltmp85:
+.LBB4_30:
+	.loc	3 94 11                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:94:11
+	ldrh.w	r0, [sp, #22]
+.Ltmp86:
+	.loc	3 130 68                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:130:68
+	vmov	s0, r0
+	vcvtb.f32.f16	s0, s0
+	vldr	s2, .LCPI4_2
+	vadd.f32	s2, s0, s2
+                                        @ implicit-def: $s0
+	vcvtb.f16.f32	s0, s2
+	vmov	r0, s0
+	.loc	3 130 13 is_stmt 0              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:130:13
+	ldr	r1, [sp, #4]
+	.loc	3 130 19                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:130:19
+	strh	r0, [r1]
+	.loc	3 131 9 is_stmt 1               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:131:9
+	b	.LBB4_54
+.Ltmp87:
+.LBB4_31:
+	.loc	3 132 28                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:132:28
+	ldrh.w	r0, [sp, #10]
+	.loc	3 132 30 is_stmt 0              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:132:30
+	vmov	s0, r0
+	vcvtb.f32.f16	s0, s0
+.Ltmp88:
+	.loc	3 132 18                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:132:18
+	vcmp.f32	s0, #0
+	vmrs	APSR_nzcv, fpscr
+	bge.w	.LBB4_47
+	b	.LBB4_32
+.LBB4_32:
+.Ltmp89:
+	.loc	3 134 53 is_stmt 1              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:134:53
+	ldrh.w	r0, [sp, #10]
+	.loc	3 134 54 is_stmt 0              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:134:54
+	vmov	s0, r0
+	vcvtb.f32.f16	s0, s0
+	.loc	3 134 65                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:134:65
+	ldrh.w	r0, [sp, #8]
+	.loc	3 134 54                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:134:54
+	vmov	s2, r0
+	vcvtb.f32.f16	s2, s2
+	vdiv.f32	s2, s0, s2
+                                        @ implicit-def: $s0
+	vcvtb.f16.f32	s0, s2
+	vmov	r0, s0
+	strh.w	r0, [sp, #20]
+	movs	r0, #0
+.Ltmp90:
+	.loc	3 69 8 is_stmt 1                @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:69:8
+	str	r0, [sp, #16]
+	.loc	3 70 14                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:70:14
+	strh.w	r0, [sp, #14]
+.Ltmp91:
+	.loc	3 72 18                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:72:18
+	ldrh.w	r0, [sp, #20]
+	.loc	3 72 20 is_stmt 0               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:72:20
+	vmov	s0, r0
+	vcvtb.f32.f16	s0, s0
+.Ltmp92:
+	.loc	3 72 8                          @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:72:8
+	vcmp.f32	s0, #0
+	vmrs	APSR_nzcv, fpscr
+	bge	.LBB4_35
+	b	.LBB4_34
+	.loc	3 0 8                           @ :0:8
+.Ltmp93:
+	.p2align	2
+@ %bb.33:
+.LCPI4_3:
+	.long	0x3fc92000                      @ float 1.57128906
+	.p2align	1
+.LBB4_34:
+	movs	r0, #1
+.Ltmp94:
+	.loc	3 74 11 is_stmt 1               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:74:11
+	str	r0, [sp, #16]
+	.loc	3 75 20                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:75:20
+	ldrh.w	r0, [sp, #20]
+	.loc	3 75 9 is_stmt 0                @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:75:9
+	vmov	s0, r0
+	vcvtb.f32.f16	s0, s0
+	vneg.f32	s2, s0
+                                        @ implicit-def: $s0
+	vcvtb.f16.f32	s0, s2
+	vmov	r0, s0
+	.loc	3 75 8                          @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:75:8
+	strh.w	r0, [sp, #20]
+	.loc	3 76 4 is_stmt 1                @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:76:4
+	b	.LBB4_35
+.Ltmp95:
+.LBB4_35:
+	.loc	3 78 18                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:78:18
+	ldrh.w	r0, [sp, #20]
+	.loc	3 78 20 is_stmt 0               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:78:20
+	vmov	s0, r0
+	vcvtb.f32.f16	s0, s0
+	vmov.f32	s2, #1.000000e+00
+.Ltmp96:
+	.loc	3 78 8                          @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:78:8
+	vcmp.f32	s0, s2
+	vmrs	APSR_nzcv, fpscr
+	ble	.LBB4_40
+	b	.LBB4_36
+.LBB4_36:
+.Ltmp97:
+	.loc	3 80 30 is_stmt 1               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:80:30
+	ldrh.w	r0, [sp, #20]
+	.loc	3 80 18 is_stmt 0               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:80:18
+	vmov	s0, r0
+	vcvtb.f32.f16	s2, s0
+	vmov.f32	s0, #1.000000e+00
+	vdiv.f32	s2, s0, s2
+                                        @ implicit-def: $s0
+	vcvtb.f16.f32	s0, s2
+	vmov	r0, s0
+	.loc	3 80 9                          @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:80:9
+	strh.w	r0, [sp, #20]
+	.loc	3 81 65 is_stmt 1               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:81:65
+	ldrh.w	r0, [sp, #20]
+	strh.w	r0, [sp, #78]
+	movw	r0, #12509
+.Ltmp98:
+	.loc	3 56 15                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:56:15
+	strh.w	r0, [sp, #76]
+	movs	r0, #1
+	.loc	3 57 9                          @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:57:9
+	str	r0, [sp, #72]
+.Ltmp99:
+	.loc	3 58 10                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:58:10
+	str	r0, [sp, #72]
+	.loc	3 58 9 is_stmt 0                @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:58:9
+	b	.LBB4_37
+.LBB4_37:                               @ =>This Inner Loop Header: Depth=1
+.Ltmp100:
+	.loc	3 58 13                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:58:13
+	ldr	r0, [sp, #72]
+.Ltmp101:
+	.loc	3 58 5                          @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:58:5
+	cmp	r0, #4
+	bgt	.LBB4_39
+	b	.LBB4_38
+.LBB4_38:                               @   in Loop: Header=BB4_37 Depth=1
+.Ltmp102:
+	.loc	3 60 25 is_stmt 1               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:60:25
+	ldrh.w	r0, [sp, #78]
+	.loc	3 60 41 is_stmt 0               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:60:41
+	vmov	s0, r0
+	vcvtb.f32.f16	s0, s0
+	.loc	3 60 37                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:60:37
+	ldrh.w	r0, [sp, #76]
+	.loc	3 60 41                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:60:41
+	vmov	s2, r0
+	vcvtb.f32.f16	s4, s2
+	.loc	3 60 90                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:60:90
+	ldr	r0, [sp, #72]
+	.loc	3 60 89                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:60:89
+	rsb.w	r1, r0, #4
+	.loc	3 60 53                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:60:53
+	movw	r0, :lower16:atan2_coefs_f16
+	movt	r0, :upper16:atan2_coefs_f16
+	ldrh.w	r0, [r0, r1, lsl #1]
+	.loc	3 60 41                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:60:41
+	vmov	s2, r0
+	vcvtb.f32.f16	s2, s2
+	vfma.f32	s2, s0, s4
+                                        @ implicit-def: $s0
+	vcvtb.f16.f32	s0, s2
+	vmov	r0, s0
+	.loc	3 60 13                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:60:13
+	strh.w	r0, [sp, #76]
+.Ltmp103:
+	.loc	3 58 35 is_stmt 1               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:58:35
+	ldr	r0, [sp, #72]
+	adds	r0, #1
+	str	r0, [sp, #72]
+	.loc	3 58 5 is_stmt 0                @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:58:5
+	b	.LBB4_37
+.Ltmp104:
+.LBB4_39:
+	.loc	3 64 12 is_stmt 1               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:64:12
+	ldrh.w	r0, [sp, #76]
+.Ltmp105:
+	.loc	3 81 32                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:81:32
+	vmov	s0, r0
+	vcvtb.f32.f16	s2, s0
+	vldr	s0, .LCPI4_0
+	vsub.f32	s2, s0, s2
+                                        @ implicit-def: $s0
+	vcvtb.f16.f32	s0, s2
+	vmov	r0, s0
+	.loc	3 81 11 is_stmt 0               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:81:11
+	strh.w	r0, [sp, #14]
+	.loc	3 82 4 is_stmt 1                @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:82:4
+	b	.LBB4_44
+.Ltmp106:
+.LBB4_40:
+	.loc	3 85 44                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:85:44
+	ldrh.w	r0, [sp, #20]
+	strh.w	r0, [sp, #86]
+	movw	r0, #12509
+.Ltmp107:
+	.loc	3 56 15                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:56:15
+	strh.w	r0, [sp, #84]
+	movs	r0, #1
+	.loc	3 57 9                          @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:57:9
+	str	r0, [sp, #80]
+.Ltmp108:
+	.loc	3 58 10                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:58:10
+	str	r0, [sp, #80]
+	.loc	3 58 9 is_stmt 0                @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:58:9
+	b	.LBB4_41
+.LBB4_41:                               @ =>This Inner Loop Header: Depth=1
+.Ltmp109:
+	.loc	3 58 13                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:58:13
+	ldr	r0, [sp, #80]
+.Ltmp110:
+	.loc	3 58 5                          @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:58:5
+	cmp	r0, #4
+	bgt	.LBB4_43
+	b	.LBB4_42
+.LBB4_42:                               @   in Loop: Header=BB4_41 Depth=1
+.Ltmp111:
+	.loc	3 60 25 is_stmt 1               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:60:25
+	ldrh.w	r0, [sp, #86]
+	.loc	3 60 41 is_stmt 0               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:60:41
+	vmov	s0, r0
+	vcvtb.f32.f16	s0, s0
+	.loc	3 60 37                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:60:37
+	ldrh.w	r0, [sp, #84]
+	.loc	3 60 41                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:60:41
+	vmov	s2, r0
+	vcvtb.f32.f16	s4, s2
+	.loc	3 60 90                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:60:90
+	ldr	r0, [sp, #80]
+	.loc	3 60 89                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:60:89
+	rsb.w	r1, r0, #4
+	.loc	3 60 53                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:60:53
+	movw	r0, :lower16:atan2_coefs_f16
+	movt	r0, :upper16:atan2_coefs_f16
+	ldrh.w	r0, [r0, r1, lsl #1]
+	.loc	3 60 41                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:60:41
+	vmov	s2, r0
+	vcvtb.f32.f16	s2, s2
+	vfma.f32	s2, s0, s4
+                                        @ implicit-def: $s0
+	vcvtb.f16.f32	s0, s2
+	vmov	r0, s0
+	.loc	3 60 13                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:60:13
+	strh.w	r0, [sp, #84]
+.Ltmp112:
+	.loc	3 58 35 is_stmt 1               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:58:35
+	ldr	r0, [sp, #80]
+	adds	r0, #1
+	str	r0, [sp, #80]
+	.loc	3 58 5 is_stmt 0                @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:58:5
+	b	.LBB4_41
+.Ltmp113:
+.LBB4_43:
+	.loc	3 64 12 is_stmt 1               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:64:12
+	ldrh.w	r1, [sp, #84]
+.Ltmp114:
+	.loc	3 85 10                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:85:10
+	ldrh.w	r0, [sp, #14]
+	vmov	s0, r1
+	vcvtb.f32.f16	s2, s0
+	vmov	s0, r0
+	vcvtb.f32.f16	s0, s0
+	vadd.f32	s2, s0, s2
+                                        @ implicit-def: $s0
+	vcvtb.f16.f32	s0, s2
+	vmov	r0, s0
+	strh.w	r0, [sp, #14]
+	b	.LBB4_44
+.Ltmp115:
+.LBB4_44:
+	.loc	3 89 8                          @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:89:8
+	ldr	r0, [sp, #16]
+.Ltmp116:
+	.loc	3 89 8 is_stmt 0                @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:89:8
+	cbz	r0, .LBB4_46
+	b	.LBB4_45
+.LBB4_45:
+.Ltmp117:
+	.loc	3 91 23 is_stmt 1               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:91:23
+	ldrh.w	r0, [sp, #14]
+	.loc	3 91 12 is_stmt 0               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:91:12
+	vmov	s0, r0
+	vcvtb.f32.f16	s0, s0
+	vneg.f32	s2, s0
+                                        @ implicit-def: $s0
+	vcvtb.f16.f32	s0, s2
+	vmov	r0, s0
+	.loc	3 91 10                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:91:10
+	strh.w	r0, [sp, #14]
+	.loc	3 92 4 is_stmt 1                @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:92:4
+	b	.LBB4_46
+.Ltmp118:
+.LBB4_46:
+	.loc	3 94 11                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:94:11
+	ldrh.w	r0, [sp, #14]
+.Ltmp119:
+	.loc	3 134 68                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:134:68
+	vmov	s0, r0
+	vcvtb.f32.f16	s0, s0
+	vldr	s2, .LCPI4_1
+	vadd.f32	s2, s0, s2
+                                        @ implicit-def: $s0
+	vcvtb.f16.f32	s0, s2
+	vmov	r0, s0
+	.loc	3 134 13 is_stmt 0              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:134:13
+	ldr	r1, [sp, #4]
+	.loc	3 134 19                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:134:19
+	strh	r0, [r1]
+	.loc	3 135 9 is_stmt 1               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:135:9
+	b	.LBB4_53
+.Ltmp120:
+.LBB4_47:
+	.loc	3 0 9 is_stmt 0                 @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:0:9
+	movs	r0, #0
+.Ltmp121:
+	.loc	3 138 17 is_stmt 1              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:138:17
+	cbnz	r0, .LBB4_49
+	b	.LBB4_48
+.LBB4_48:
+.Ltmp122:
+	.loc	3 138 17 is_stmt 0              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:138:17
+	ldrh.w	r0, [sp, #10]
+	vmov	s0, r0
+	vcvtb.f32.f16	s0, s0
+	vmov	r0, s0
+	bl	__ARM_signbitf
+	cbnz	r0, .LBB4_50
+	b	.LBB4_51
+.LBB4_49:
+	ldrh.w	r0, [sp, #10]
+	vmov	s0, r0
+	vcvtb.f64.f16	d0, s0
+	vmov	r0, r1, d0
+	bl	__ARM_signbit
+.Ltmp123:
+	.loc	3 138 17                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:138:17
+	cbz	r0, .LBB4_51
+	b	.LBB4_50
+.LBB4_50:
+.Ltmp124:
+	.loc	3 140 17 is_stmt 1              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:140:17
+	ldr	r1, [sp, #4]
+	movw	r0, #49736
+	.loc	3 140 23 is_stmt 0              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:140:23
+	strh	r0, [r1]
+	.loc	3 141 13 is_stmt 1              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:141:13
+	b	.LBB4_52
+.Ltmp125:
+.LBB4_51:
+	.loc	3 144 17                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:144:17
+	ldr	r1, [sp, #4]
+	movw	r0, #16968
+	.loc	3 144 23 is_stmt 0              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:144:23
+	strh	r0, [r1]
+	b	.LBB4_52
+.Ltmp126:
+.LBB4_52:
+	.loc	3 0 23                          @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:0:23
+	b	.LBB4_53
+.LBB4_53:
+	b	.LBB4_54
+.LBB4_54:
+	movs	r0, #0
+	.loc	3 147 9 is_stmt 1               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:147:9
+	strb.w	r0, [sp, #13]
+	b	.LBB4_62
+.Ltmp127:
+.LBB4_55:
+	.loc	3 149 19                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:149:19
+	ldrh.w	r0, [sp, #8]
+	.loc	3 149 21 is_stmt 0              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:149:21
+	vmov	s0, r0
+	vcvtb.f32.f16	s0, s0
+.Ltmp128:
+	.loc	3 149 9                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:149:9
+	vcmp.f32	s0, #0
+	vmrs	APSR_nzcv, fpscr
+	bne	.LBB4_61
+	b	.LBB4_56
+.LBB4_56:
+.Ltmp129:
+	.loc	3 151 23 is_stmt 1              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:151:23
+	ldrh.w	r0, [sp, #10]
+	.loc	3 151 25 is_stmt 0              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:151:25
+	vmov	s0, r0
+	vcvtb.f32.f16	s0, s0
+.Ltmp130:
+	.loc	3 151 13                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:151:13
+	vcmp.f32	s0, #0
+	vmrs	APSR_nzcv, fpscr
+	ble	.LBB4_58
+	b	.LBB4_57
+.LBB4_57:
+.Ltmp131:
+	.loc	3 153 14 is_stmt 1              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:153:14
+	ldr	r1, [sp, #4]
+	movw	r0, #15945
+	.loc	3 153 20 is_stmt 0              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:153:20
+	strh	r0, [r1]
+	movs	r0, #0
+	.loc	3 154 13 is_stmt 1              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:154:13
+	strb.w	r0, [sp, #13]
+	b	.LBB4_62
+.Ltmp132:
+.LBB4_58:
+	.loc	3 156 23                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:156:23
+	ldrh.w	r0, [sp, #10]
+	.loc	3 156 25 is_stmt 0              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:156:25
+	vmov	s0, r0
+	vcvtb.f32.f16	s0, s0
+.Ltmp133:
+	.loc	3 156 13                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:156:13
+	vcmp.f32	s0, #0
+	vmrs	APSR_nzcv, fpscr
+	bge	.LBB4_60
+	b	.LBB4_59
+.LBB4_59:
+.Ltmp134:
+	.loc	3 158 14 is_stmt 1              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:158:14
+	ldr	r1, [sp, #4]
+	movw	r0, #48713
+	.loc	3 158 20 is_stmt 0              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:158:20
+	strh	r0, [r1]
+	movs	r0, #0
+	.loc	3 159 13 is_stmt 1              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:159:13
+	strb.w	r0, [sp, #13]
+	b	.LBB4_62
+.Ltmp135:
+.LBB4_60:
+	.loc	3 161 5                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:161:5
+	b	.LBB4_61
+.Ltmp136:
+.LBB4_61:
+	.loc	3 0 5 is_stmt 0                 @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:0:5
+	movs	r0, #252
+	.loc	3 164 5 is_stmt 1               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:164:5
+	strb.w	r0, [sp, #13]
+	b	.LBB4_62
+.LBB4_62:
+	.loc	3 166 1                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:166:1
+	ldrsb.w	r0, [sp, #13]
+	.loc	3 166 1 epilogue_begin is_stmt 0 @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\arm_atan2_f16.c:166:1
+	add	sp, #88
+	pop	{r7, pc}
+.Ltmp137:
+	.loc	3 0 1                           @ :0:1
+.Ltmp138:
+	.p2align	2
+@ %bb.63:
+.LCPI4_0:
+	.long	0x3fc92000                      @ float 1.57128906
+.LCPI4_1:
+	.long	0xc0490000                      @ float -3.140625
+.LCPI4_2:
+	.long	0x40490000                      @ float 3.140625
+.Lfunc_end4:
+	.size	arm_atan2_f16, .Lfunc_end4-arm_atan2_f16
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.__ARM_signbitf,"ax",%progbits
+	.p2align	3                               @ -- Begin function __ARM_signbitf
+	.type	__ARM_signbitf,%function
+	.code	16                              @ @__ARM_signbitf
+	.thumb_func
+__ARM_signbitf:
+.Lfunc_begin5:
+	.file	8 "D:\\keil_1\\keil\\ARM\\ARMCLANG\\bin\\..\\include" "math.h"
+	.loc	8 234 0 is_stmt 1               @ D:\keil_1\keil\ARM\ARMCLANG\bin\..\include\math.h:234:0
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	vmov	s0, r0
+	str	r0, [sp]
+.Ltmp139:
+	.loc	8 235 12 prologue_end           @ D:\keil_1\keil\ARM\ARMCLANG\bin\..\include\math.h:235:12
+	ldr	r0, [sp]
+	.loc	8 235 23 is_stmt 0              @ D:\keil_1\keil\ARM\ARMCLANG\bin\..\include\math.h:235:23
+	lsrs	r0, r0, #31
+	.loc	8 235 5 epilogue_begin          @ D:\keil_1\keil\ARM\ARMCLANG\bin\..\include\math.h:235:5
+	add	sp, #4
+	bx	lr
+.Ltmp140:
+.Lfunc_end5:
+	.size	__ARM_signbitf, .Lfunc_end5-__ARM_signbitf
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.__ARM_signbit,"ax",%progbits
+	.p2align	3                               @ -- Begin function __ARM_signbit
+	.type	__ARM_signbit,%function
+	.code	16                              @ @__ARM_signbit
+	.thumb_func
+__ARM_signbit:
+.Lfunc_begin6:
+	.loc	8 238 0 is_stmt 1               @ D:\keil_1\keil\ARM\ARMCLANG\bin\..\include\math.h:238:0
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+	vmov	d0, r0, r1
+	vstr	d0, [sp]
+.Ltmp141:
+	.loc	8 239 12 prologue_end           @ D:\keil_1\keil\ARM\ARMCLANG\bin\..\include\math.h:239:12
+	ldr	r0, [sp, #4]
+	.loc	8 239 22 is_stmt 0              @ D:\keil_1\keil\ARM\ARMCLANG\bin\..\include\math.h:239:22
+	lsrs	r0, r0, #31
+	.loc	8 239 5 epilogue_begin          @ D:\keil_1\keil\ARM\ARMCLANG\bin\..\include\math.h:239:5
+	add	sp, #8
+	bx	lr
+.Ltmp142:
+.Lfunc_end6:
+	.size	__ARM_signbit, .Lfunc_end6-__ARM_signbit
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.arm_typecast_s16_f16,"ax",%progbits
+	.p2align	3                               @ -- Begin function arm_typecast_s16_f16
+	.type	arm_typecast_s16_f16,%function
+	.code	16                              @ @arm_typecast_s16_f16
+	.thumb_func
+arm_typecast_s16_f16:
+.Lfunc_begin7:
+	.file	9 "D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Include\\dsp" "support_functions_f16.h"
+	.loc	9 168 0 is_stmt 1               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Include\dsp/support_functions_f16.h:168:0
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+	vmov	r0, s0
+	strh.w	r0, [sp, #2]
+.Ltmp143:
+	.loc	9 170 19 prologue_end           @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Include\dsp/support_functions_f16.h:170:19
+	ldrh.w	r0, [sp, #2]
+	strh.w	r0, [sp]
+	.loc	9 171 11                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Include\dsp/support_functions_f16.h:171:11
+	ldrsh.w	r0, [sp]
+	.loc	9 171 4 epilogue_begin is_stmt 0 @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Include\dsp/support_functions_f16.h:171:4
+	add	sp, #4
+	bx	lr
+.Ltmp144:
+.Lfunc_end7:
+	.size	arm_typecast_s16_f16, .Lfunc_end7-arm_typecast_s16_f16
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.arm_typecast_f16_s16,"ax",%progbits
+	.p2align	3                               @ -- Begin function arm_typecast_f16_s16
+	.type	arm_typecast_f16_s16,%function
+	.code	16                              @ @arm_typecast_f16_s16
+	.thumb_func
+arm_typecast_f16_s16:
+.Lfunc_begin8:
+	.loc	9 187 0 is_stmt 1               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Include\dsp/support_functions_f16.h:187:0
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 4
+                                        @ kill: def $r1 killed $r0
+	strh.w	r0, [sp, #2]
+.Ltmp145:
+	.loc	9 189 21 prologue_end           @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Include\dsp/support_functions_f16.h:189:21
+	ldrh.w	r0, [sp, #2]
+	strh.w	r0, [sp]
+	.loc	9 190 4                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Include\dsp/support_functions_f16.h:190:4
+	ldrh.w	r0, [sp]
+	vmov	s0, r0
+	.loc	9 190 4 epilogue_begin is_stmt 0 @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Include\dsp/support_functions_f16.h:190:4
+	add	sp, #4
+	bx	lr
+.Ltmp146:
+.Lfunc_end8:
+	.size	arm_typecast_f16_s16, .Lfunc_end8-arm_typecast_f16_s16
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.type	lut_logf16,%object              @ @lut_logf16
+	.section	.data.lut_logf16,"aw",%progbits
+	.p2align	1, 0x0
+lut_logf16:
+	.short	0x0000                          @ half 0
+	.short	0x3000                          @ half 0.125
+	.short	0xa000                          @ half -0.0078125
+	.short	0x113e                          @ half 6.3992E-4
+	.short	0x2f8a                          @ half 0.1178
+	.short	0x2f1c                          @ half 0.11108
+	.short	0x9e52                          @ half -0.0061722
+	.short	0x0f57                          @ half 4.4799E-4
+	.short	0x3324                          @ half 0.22314
+	.short	0x2e66                          @ half 0.099976
+	.short	0x9d1f                          @ half -0.0050011
+	.short	0x0d5c                          @ half 3.2711E-4
+	.short	0x3518                          @ half 0.31836
+	.short	0x2dd1                          @ half 0.090881
+	.short	0x9c3b                          @ half -0.0041313
+	.short	0x0c09                          @ half 2.4629E-4
+	.short	0x367d                          @ half 0.40552
+	.short	0x2d55                          @ half 0.083313
+	.short	0x9b1c                          @ half -0.0034714
+	.short	0x0a39                          @ half 1.899E-4
+	.short	0x37c5                          @ half 0.4856
+	.short	0x2cec                          @ half 0.076904
+	.short	0x9a0f                          @ half -0.0029583
+	.short	0x08e7                          @ half 1.4961E-4
+	.short	0x387a                          @ half 0.55957
+	.short	0x2c92                          @ half 0.071411
+	.short	0x9939                          @ half -0.0025501
+	.short	0x07db                          @ half 1.1986E-4
+	.short	0x3907                          @ half 0.62842
+	.short	0x2c44                          @ half 0.06665
+	.short	0x988d                          @ half -0.0022221
+	.short	0x0665                          @ half 9.7572E-5
+	.short	0x398c                          @ half 0.69336
+	.short	0x2c00                          @ half 0.0625
+	.short	0x9800                          @ half -0.0019531
+	.short	0x0545                          @ half 8.0406E-5
+	.size	lut_logf16, 72
+
+	.type	atan2_coefs_f16,%object         @ @atan2_coefs_f16
+	.section	.rodata.atan2_coefs_f16,"a",%progbits
+	.p2align	1, 0x0
+atan2_coefs_f16:
+	.short	0x0000                          @ half 0
+	.short	0x3c00                          @ half 1
+	.short	0x0000                          @ half 0
+	.short	0xb5df                          @ half -0.36694
+	.short	0x30dd                          @ half 0.15198
+	.size	atan2_coefs_f16, 10
+
+	.section	.debug_abbrev,"",%progbits
+	.byte	1                               @ Abbreviation Code
+	.byte	17                              @ DW_TAG_compile_unit
+	.byte	1                               @ DW_CHILDREN_yes
+	.byte	37                              @ DW_AT_producer
+	.byte	14                              @ DW_FORM_strp
+	.byte	19                              @ DW_AT_language
+	.byte	5                               @ DW_FORM_data2
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	16                              @ DW_AT_stmt_list
+	.byte	23                              @ DW_FORM_sec_offset
+	.byte	27                              @ DW_AT_comp_dir
+	.byte	14                              @ DW_FORM_strp
+	.byte	17                              @ DW_AT_low_pc
+	.byte	1                               @ DW_FORM_addr
+	.byte	85                              @ DW_AT_ranges
+	.byte	23                              @ DW_FORM_sec_offset
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	2                               @ Abbreviation Code
+	.byte	52                              @ DW_TAG_variable
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	11                              @ DW_FORM_data1
+	.byte	2                               @ DW_AT_location
+	.byte	24                              @ DW_FORM_exprloc
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	3                               @ Abbreviation Code
+	.byte	1                               @ DW_TAG_array_type
+	.byte	1                               @ DW_CHILDREN_yes
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	4                               @ Abbreviation Code
+	.byte	33                              @ DW_TAG_subrange_type
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	55                              @ DW_AT_count
+	.byte	11                              @ DW_FORM_data1
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	5                               @ Abbreviation Code
+	.byte	22                              @ DW_TAG_typedef
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	11                              @ DW_FORM_data1
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	6                               @ Abbreviation Code
+	.byte	36                              @ DW_TAG_base_type
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	62                              @ DW_AT_encoding
+	.byte	11                              @ DW_FORM_data1
+	.byte	11                              @ DW_AT_byte_size
+	.byte	11                              @ DW_FORM_data1
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	7                               @ Abbreviation Code
+	.byte	36                              @ DW_TAG_base_type
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	11                              @ DW_AT_byte_size
+	.byte	11                              @ DW_FORM_data1
+	.byte	62                              @ DW_AT_encoding
+	.byte	11                              @ DW_FORM_data1
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	8                               @ Abbreviation Code
+	.byte	38                              @ DW_TAG_const_type
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	9                               @ Abbreviation Code
+	.byte	4                               @ DW_TAG_enumeration_type
+	.byte	1                               @ DW_CHILDREN_yes
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	11                              @ DW_AT_byte_size
+	.byte	11                              @ DW_FORM_data1
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	5                               @ DW_FORM_data2
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	10                              @ Abbreviation Code
+	.byte	40                              @ DW_TAG_enumerator
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	28                              @ DW_AT_const_value
+	.byte	13                              @ DW_FORM_sdata
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	11                              @ Abbreviation Code
+	.byte	22                              @ DW_TAG_typedef
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	5                               @ DW_FORM_data2
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	12                              @ Abbreviation Code
+	.byte	15                              @ DW_TAG_pointer_type
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	13                              @ Abbreviation Code
+	.byte	46                              @ DW_TAG_subprogram
+	.byte	1                               @ DW_CHILDREN_yes
+	.byte	17                              @ DW_AT_low_pc
+	.byte	1                               @ DW_FORM_addr
+	.byte	18                              @ DW_AT_high_pc
+	.byte	6                               @ DW_FORM_data4
+	.byte	64                              @ DW_AT_frame_base
+	.byte	24                              @ DW_FORM_exprloc
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	11                              @ DW_FORM_data1
+	.byte	39                              @ DW_AT_prototyped
+	.byte	25                              @ DW_FORM_flag_present
+	.byte	63                              @ DW_AT_external
+	.byte	25                              @ DW_FORM_flag_present
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	14                              @ Abbreviation Code
+	.byte	5                               @ DW_TAG_formal_parameter
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	2                               @ DW_AT_location
+	.byte	24                              @ DW_FORM_exprloc
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	11                              @ DW_FORM_data1
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	15                              @ Abbreviation Code
+	.byte	52                              @ DW_TAG_variable
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	2                               @ DW_AT_location
+	.byte	24                              @ DW_FORM_exprloc
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	11                              @ DW_FORM_data1
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	16                              @ Abbreviation Code
+	.byte	46                              @ DW_TAG_subprogram
+	.byte	1                               @ DW_CHILDREN_yes
+	.byte	17                              @ DW_AT_low_pc
+	.byte	1                               @ DW_FORM_addr
+	.byte	18                              @ DW_AT_high_pc
+	.byte	6                               @ DW_FORM_data4
+	.byte	64                              @ DW_AT_frame_base
+	.byte	24                              @ DW_FORM_exprloc
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	11                              @ DW_FORM_data1
+	.byte	39                              @ DW_AT_prototyped
+	.byte	25                              @ DW_FORM_flag_present
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	17                              @ Abbreviation Code
+	.byte	11                              @ DW_TAG_lexical_block
+	.byte	1                               @ DW_CHILDREN_yes
+	.byte	17                              @ DW_AT_low_pc
+	.byte	1                               @ DW_FORM_addr
+	.byte	18                              @ DW_AT_high_pc
+	.byte	6                               @ DW_FORM_data4
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	18                              @ Abbreviation Code
+	.byte	46                              @ DW_TAG_subprogram
+	.byte	1                               @ DW_CHILDREN_yes
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	11                              @ DW_FORM_data1
+	.byte	39                              @ DW_AT_prototyped
+	.byte	25                              @ DW_FORM_flag_present
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	32                              @ DW_AT_inline
+	.byte	11                              @ DW_FORM_data1
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	19                              @ Abbreviation Code
+	.byte	5                               @ DW_TAG_formal_parameter
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	11                              @ DW_FORM_data1
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	20                              @ Abbreviation Code
+	.byte	52                              @ DW_TAG_variable
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	11                              @ DW_FORM_data1
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	21                              @ Abbreviation Code
+	.byte	46                              @ DW_TAG_subprogram
+	.byte	1                               @ DW_CHILDREN_yes
+	.byte	17                              @ DW_AT_low_pc
+	.byte	1                               @ DW_FORM_addr
+	.byte	18                              @ DW_AT_high_pc
+	.byte	6                               @ DW_FORM_data4
+	.byte	64                              @ DW_AT_frame_base
+	.byte	24                              @ DW_FORM_exprloc
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	11                              @ DW_FORM_data1
+	.byte	39                              @ DW_AT_prototyped
+	.byte	25                              @ DW_FORM_flag_present
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	63                              @ DW_AT_external
+	.byte	25                              @ DW_FORM_flag_present
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	22                              @ Abbreviation Code
+	.byte	29                              @ DW_TAG_inlined_subroutine
+	.byte	1                               @ DW_CHILDREN_yes
+	.byte	49                              @ DW_AT_abstract_origin
+	.byte	19                              @ DW_FORM_ref4
+	.byte	17                              @ DW_AT_low_pc
+	.byte	1                               @ DW_FORM_addr
+	.byte	18                              @ DW_AT_high_pc
+	.byte	6                               @ DW_FORM_data4
+	.byte	88                              @ DW_AT_call_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	89                              @ DW_AT_call_line
+	.byte	11                              @ DW_FORM_data1
+	.byte	87                              @ DW_AT_call_column
+	.byte	11                              @ DW_FORM_data1
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	23                              @ Abbreviation Code
+	.byte	5                               @ DW_TAG_formal_parameter
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	2                               @ DW_AT_location
+	.byte	24                              @ DW_FORM_exprloc
+	.byte	49                              @ DW_AT_abstract_origin
+	.byte	19                              @ DW_FORM_ref4
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	24                              @ Abbreviation Code
+	.byte	52                              @ DW_TAG_variable
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	2                               @ DW_AT_location
+	.byte	24                              @ DW_FORM_exprloc
+	.byte	49                              @ DW_AT_abstract_origin
+	.byte	19                              @ DW_FORM_ref4
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	25                              @ Abbreviation Code
+	.byte	46                              @ DW_TAG_subprogram
+	.byte	1                               @ DW_CHILDREN_yes
+	.byte	17                              @ DW_AT_low_pc
+	.byte	1                               @ DW_FORM_addr
+	.byte	18                              @ DW_AT_high_pc
+	.byte	6                               @ DW_FORM_data4
+	.byte	64                              @ DW_AT_frame_base
+	.byte	24                              @ DW_FORM_exprloc
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	11                              @ DW_FORM_data1
+	.byte	39                              @ DW_AT_prototyped
+	.byte	25                              @ DW_FORM_flag_present
+	.byte	54                              @ DW_AT_calling_convention
+	.byte	11                              @ DW_FORM_data1
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	0                               @ EOM(3)
+	.section	.debug_info,"",%progbits
+.Lcu_begin0:
+	.long	.Ldebug_info_end0-.Ldebug_info_start0 @ Length of Unit
+.Ldebug_info_start0:
+	.short	4                               @ DWARF version number
+	.long	.debug_abbrev                   @ Offset Into Abbrev. Section
+	.byte	4                               @ Address Size (in bytes)
+	.byte	1                               @ Abbrev [1] 0xb:0x586 DW_TAG_compile_unit
+	.long	.Linfo_string0                  @ DW_AT_producer
+	.short	12                              @ DW_AT_language
+	.long	.Linfo_string1                  @ DW_AT_name
+	.long	.Lline_table_start0             @ DW_AT_stmt_list
+	.long	.Linfo_string2                  @ DW_AT_comp_dir
+	.long	0                               @ DW_AT_low_pc
+	.long	.Ldebug_ranges0                 @ DW_AT_ranges
+	.byte	2                               @ Abbrev [2] 0x26:0x11 DW_TAG_variable
+	.long	.Linfo_string3                  @ DW_AT_name
+	.long	55                              @ DW_AT_type
+	.byte	2                               @ DW_AT_decl_file
+	.byte	63                              @ DW_AT_decl_line
+	.byte	5                               @ DW_AT_location
+	.byte	3
+	.long	lut_logf16
+	.byte	3                               @ Abbrev [3] 0x37:0xc DW_TAG_array_type
+	.long	67                              @ DW_AT_type
+	.byte	4                               @ Abbrev [4] 0x3c:0x6 DW_TAG_subrange_type
+	.long	85                              @ DW_AT_type
+	.byte	36                              @ DW_AT_count
+	.byte	0                               @ End Of Children Mark
+	.byte	5                               @ Abbrev [5] 0x43:0xb DW_TAG_typedef
+	.long	78                              @ DW_AT_type
+	.long	.Linfo_string5                  @ DW_AT_name
+	.byte	1                               @ DW_AT_decl_file
+	.byte	58                              @ DW_AT_decl_line
+	.byte	6                               @ Abbrev [6] 0x4e:0x7 DW_TAG_base_type
+	.long	.Linfo_string4                  @ DW_AT_name
+	.byte	4                               @ DW_AT_encoding
+	.byte	2                               @ DW_AT_byte_size
+	.byte	7                               @ Abbrev [7] 0x55:0x7 DW_TAG_base_type
+	.long	.Linfo_string6                  @ DW_AT_name
+	.byte	8                               @ DW_AT_byte_size
+	.byte	7                               @ DW_AT_encoding
+	.byte	2                               @ Abbrev [2] 0x5c:0x11 DW_TAG_variable
+	.long	.Linfo_string7                  @ DW_AT_name
+	.long	109                             @ DW_AT_type
+	.byte	3                               @ DW_AT_decl_file
+	.byte	47                              @ DW_AT_decl_line
+	.byte	5                               @ DW_AT_location
+	.byte	3
+	.long	atan2_coefs_f16
+	.byte	3                               @ Abbrev [3] 0x6d:0xc DW_TAG_array_type
+	.long	121                             @ DW_AT_type
+	.byte	4                               @ Abbrev [4] 0x72:0x6 DW_TAG_subrange_type
+	.long	85                              @ DW_AT_type
+	.byte	5                               @ DW_AT_count
+	.byte	0                               @ End Of Children Mark
+	.byte	8                               @ Abbrev [8] 0x79:0x5 DW_TAG_const_type
+	.long	67                              @ DW_AT_type
+	.byte	9                               @ Abbrev [9] 0x7e:0x3a DW_TAG_enumeration_type
+	.long	184                             @ DW_AT_type
+	.byte	1                               @ DW_AT_byte_size
+	.byte	4                               @ DW_AT_decl_file
+	.short	588                             @ DW_AT_decl_line
+	.byte	10                              @ Abbrev [10] 0x87:0x6 DW_TAG_enumerator
+	.long	.Linfo_string9                  @ DW_AT_name
+	.byte	0                               @ DW_AT_const_value
+	.byte	10                              @ Abbrev [10] 0x8d:0x6 DW_TAG_enumerator
+	.long	.Linfo_string10                 @ DW_AT_name
+	.byte	127                             @ DW_AT_const_value
+	.byte	10                              @ Abbrev [10] 0x93:0x6 DW_TAG_enumerator
+	.long	.Linfo_string11                 @ DW_AT_name
+	.byte	126                             @ DW_AT_const_value
+	.byte	10                              @ Abbrev [10] 0x99:0x6 DW_TAG_enumerator
+	.long	.Linfo_string12                 @ DW_AT_name
+	.byte	125                             @ DW_AT_const_value
+	.byte	10                              @ Abbrev [10] 0x9f:0x6 DW_TAG_enumerator
+	.long	.Linfo_string13                 @ DW_AT_name
+	.byte	124                             @ DW_AT_const_value
+	.byte	10                              @ Abbrev [10] 0xa5:0x6 DW_TAG_enumerator
+	.long	.Linfo_string14                 @ DW_AT_name
+	.byte	123                             @ DW_AT_const_value
+	.byte	10                              @ Abbrev [10] 0xab:0x6 DW_TAG_enumerator
+	.long	.Linfo_string15                 @ DW_AT_name
+	.byte	122                             @ DW_AT_const_value
+	.byte	10                              @ Abbrev [10] 0xb1:0x6 DW_TAG_enumerator
+	.long	.Linfo_string16                 @ DW_AT_name
+	.byte	121                             @ DW_AT_const_value
+	.byte	0                               @ End Of Children Mark
+	.byte	6                               @ Abbrev [6] 0xb8:0x7 DW_TAG_base_type
+	.long	.Linfo_string8                  @ DW_AT_name
+	.byte	6                               @ DW_AT_encoding
+	.byte	1                               @ DW_AT_byte_size
+	.byte	6                               @ Abbrev [6] 0xbf:0x7 DW_TAG_base_type
+	.long	.Linfo_string17                 @ DW_AT_name
+	.byte	4                               @ DW_AT_encoding
+	.byte	2                               @ DW_AT_byte_size
+	.byte	11                              @ Abbrev [11] 0xc6:0xc DW_TAG_typedef
+	.long	210                             @ DW_AT_type
+	.long	.Linfo_string19                 @ DW_AT_name
+	.byte	4                               @ DW_AT_decl_file
+	.short	334                             @ DW_AT_decl_line
+	.byte	6                               @ Abbrev [6] 0xd2:0x7 DW_TAG_base_type
+	.long	.Linfo_string18                 @ DW_AT_name
+	.byte	4                               @ DW_AT_encoding
+	.byte	4                               @ DW_AT_byte_size
+	.byte	6                               @ Abbrev [6] 0xd9:0x7 DW_TAG_base_type
+	.long	.Linfo_string20                 @ DW_AT_name
+	.byte	5                               @ DW_AT_encoding
+	.byte	4                               @ DW_AT_byte_size
+	.byte	6                               @ Abbrev [6] 0xe0:0x7 DW_TAG_base_type
+	.long	.Linfo_string21                 @ DW_AT_name
+	.byte	4                               @ DW_AT_encoding
+	.byte	8                               @ DW_AT_byte_size
+	.byte	12                              @ Abbrev [12] 0xe7:0x5 DW_TAG_pointer_type
+	.long	236                             @ DW_AT_type
+	.byte	5                               @ Abbrev [5] 0xec:0xb DW_TAG_typedef
+	.long	247                             @ DW_AT_type
+	.long	.Linfo_string23                 @ DW_AT_name
+	.byte	5                               @ DW_AT_decl_file
+	.byte	57                              @ DW_AT_decl_line
+	.byte	6                               @ Abbrev [6] 0xf7:0x7 DW_TAG_base_type
+	.long	.Linfo_string22                 @ DW_AT_name
+	.byte	5                               @ DW_AT_encoding
+	.byte	2                               @ DW_AT_byte_size
+	.byte	12                              @ Abbrev [12] 0xfe:0x5 DW_TAG_pointer_type
+	.long	259                             @ DW_AT_type
+	.byte	6                               @ Abbrev [6] 0x103:0x7 DW_TAG_base_type
+	.long	.Linfo_string24                 @ DW_AT_name
+	.byte	8                               @ DW_AT_encoding
+	.byte	1                               @ DW_AT_byte_size
+	.byte	12                              @ Abbrev [12] 0x10a:0x5 DW_TAG_pointer_type
+	.long	67                              @ DW_AT_type
+	.byte	12                              @ Abbrev [12] 0x10f:0x5 DW_TAG_pointer_type
+	.long	276                             @ DW_AT_type
+	.byte	6                               @ Abbrev [6] 0x114:0x7 DW_TAG_base_type
+	.long	.Linfo_string25                 @ DW_AT_name
+	.byte	7                               @ DW_AT_encoding
+	.byte	4                               @ DW_AT_byte_size
+	.byte	13                              @ Abbrev [13] 0x11b:0x4a DW_TAG_subprogram
+	.long	.Lfunc_begin0                   @ DW_AT_low_pc
+	.long	.Lfunc_end0-.Lfunc_begin0       @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string32                 @ DW_AT_name
+	.byte	6                               @ DW_AT_decl_file
+	.byte	48                              @ DW_AT_decl_line
+                                        @ DW_AT_prototyped
+                                        @ DW_AT_external
+	.byte	14                              @ Abbrev [14] 0x12c:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	12
+	.long	.Linfo_string42                 @ DW_AT_name
+	.byte	6                               @ DW_AT_decl_file
+	.byte	49                              @ DW_AT_decl_line
+	.long	1397                            @ DW_AT_type
+	.byte	14                              @ Abbrev [14] 0x13a:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	8
+	.long	.Linfo_string43                 @ DW_AT_name
+	.byte	6                               @ DW_AT_decl_file
+	.byte	50                              @ DW_AT_decl_line
+	.long	266                             @ DW_AT_type
+	.byte	14                              @ Abbrev [14] 0x148:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	4
+	.long	.Linfo_string44                 @ DW_AT_name
+	.byte	6                               @ DW_AT_decl_file
+	.byte	51                              @ DW_AT_decl_line
+	.long	1402                            @ DW_AT_type
+	.byte	15                              @ Abbrev [15] 0x156:0xe DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	0
+	.long	.Linfo_string46                 @ DW_AT_name
+	.byte	6                               @ DW_AT_decl_file
+	.byte	53                              @ DW_AT_decl_line
+	.long	1402                            @ DW_AT_type
+	.byte	0                               @ End Of Children Mark
+	.byte	13                              @ Abbrev [13] 0x165:0x4a DW_TAG_subprogram
+	.long	.Lfunc_begin1                   @ DW_AT_low_pc
+	.long	.Lfunc_end1-.Lfunc_begin1       @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string33                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	172                             @ DW_AT_decl_line
+                                        @ DW_AT_prototyped
+                                        @ DW_AT_external
+	.byte	14                              @ Abbrev [14] 0x176:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	12
+	.long	.Linfo_string42                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	173                             @ DW_AT_decl_line
+	.long	1397                            @ DW_AT_type
+	.byte	14                              @ Abbrev [14] 0x184:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	8
+	.long	.Linfo_string43                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	174                             @ DW_AT_decl_line
+	.long	266                             @ DW_AT_type
+	.byte	14                              @ Abbrev [14] 0x192:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	4
+	.long	.Linfo_string44                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	175                             @ DW_AT_decl_line
+	.long	1402                            @ DW_AT_type
+	.byte	15                              @ Abbrev [15] 0x1a0:0xe DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	0
+	.long	.Linfo_string46                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	177                             @ DW_AT_decl_line
+	.long	1402                            @ DW_AT_type
+	.byte	0                               @ End Of Children Mark
+	.byte	16                              @ Abbrev [16] 0x1af:0xac DW_TAG_subprogram
+	.long	.Lfunc_begin2                   @ DW_AT_low_pc
+	.long	.Lfunc_end2-.Lfunc_begin2       @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string34                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	75                              @ DW_AT_decl_line
+                                        @ DW_AT_prototyped
+	.long	67                              @ DW_AT_type
+	.byte	14                              @ Abbrev [14] 0x1c4:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	30
+	.long	.Linfo_string27                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	75                              @ DW_AT_decl_line
+	.long	67                              @ DW_AT_type
+	.byte	15                              @ Abbrev [15] 0x1d2:0xe DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	28
+	.long	.Linfo_string31                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	77                              @ DW_AT_decl_line
+	.long	236                             @ DW_AT_type
+	.byte	15                              @ Abbrev [15] 0x1e0:0xe DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	24
+	.long	.Linfo_string47                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	79                              @ DW_AT_decl_line
+	.long	1413                            @ DW_AT_type
+	.byte	15                              @ Abbrev [15] 0x1ee:0xe DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	22
+	.long	.Linfo_string49                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	81                              @ DW_AT_decl_line
+	.long	67                              @ DW_AT_type
+	.byte	15                              @ Abbrev [15] 0x1fc:0xe DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	16
+	.long	.Linfo_string50                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	83                              @ DW_AT_decl_line
+	.long	266                             @ DW_AT_type
+	.byte	15                              @ Abbrev [15] 0x20a:0xe DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	12
+	.long	.Linfo_string51                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	84                              @ DW_AT_decl_line
+	.long	217                             @ DW_AT_type
+	.byte	15                              @ Abbrev [15] 0x218:0xe DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	10
+	.long	.Linfo_string52                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	85                              @ DW_AT_decl_line
+	.long	67                              @ DW_AT_type
+	.byte	15                              @ Abbrev [15] 0x226:0xe DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	8
+	.long	.Linfo_string53                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	85                              @ DW_AT_decl_line
+	.long	67                              @ DW_AT_type
+	.byte	15                              @ Abbrev [15] 0x234:0xe DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	6
+	.long	.Linfo_string29                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	93                              @ DW_AT_decl_line
+	.long	67                              @ DW_AT_type
+	.byte	17                              @ Abbrev [17] 0x242:0x18 DW_TAG_lexical_block
+	.long	.Ltmp9                          @ DW_AT_low_pc
+	.long	.Ltmp14-.Ltmp9                  @ DW_AT_high_pc
+	.byte	15                              @ Abbrev [15] 0x24b:0xe DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	0
+	.long	.Linfo_string54                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	94                              @ DW_AT_decl_line
+	.long	217                             @ DW_AT_type
+	.byte	0                               @ End Of Children Mark
+	.byte	0                               @ End Of Children Mark
+	.byte	13                              @ Abbrev [13] 0x25b:0x4a DW_TAG_subprogram
+	.long	.Lfunc_begin3                   @ DW_AT_low_pc
+	.long	.Lfunc_end3-.Lfunc_begin3       @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string35                 @ DW_AT_name
+	.byte	7                               @ DW_AT_decl_file
+	.byte	37                              @ DW_AT_decl_line
+                                        @ DW_AT_prototyped
+                                        @ DW_AT_external
+	.byte	14                              @ Abbrev [14] 0x26c:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	12
+	.long	.Linfo_string42                 @ DW_AT_name
+	.byte	7                               @ DW_AT_decl_file
+	.byte	38                              @ DW_AT_decl_line
+	.long	1397                            @ DW_AT_type
+	.byte	14                              @ Abbrev [14] 0x27a:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	8
+	.long	.Linfo_string43                 @ DW_AT_name
+	.byte	7                               @ DW_AT_decl_file
+	.byte	39                              @ DW_AT_decl_line
+	.long	266                             @ DW_AT_type
+	.byte	14                              @ Abbrev [14] 0x288:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	4
+	.long	.Linfo_string44                 @ DW_AT_name
+	.byte	7                               @ DW_AT_decl_file
+	.byte	40                              @ DW_AT_decl_line
+	.long	1402                            @ DW_AT_type
+	.byte	15                              @ Abbrev [15] 0x296:0xe DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	0
+	.long	.Linfo_string46                 @ DW_AT_name
+	.byte	7                               @ DW_AT_decl_file
+	.byte	42                              @ DW_AT_decl_line
+	.long	1402                            @ DW_AT_type
+	.byte	0                               @ End Of Children Mark
+	.byte	18                              @ Abbrev [18] 0x2a5:0x2e DW_TAG_subprogram
+	.long	.Linfo_string26                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.byte	67                              @ DW_AT_decl_line
+                                        @ DW_AT_prototyped
+	.long	67                              @ DW_AT_type
+	.byte	1                               @ DW_AT_inline
+	.byte	19                              @ Abbrev [19] 0x2b1:0xb DW_TAG_formal_parameter
+	.long	.Linfo_string27                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.byte	67                              @ DW_AT_decl_line
+	.long	67                              @ DW_AT_type
+	.byte	20                              @ Abbrev [20] 0x2bc:0xb DW_TAG_variable
+	.long	.Linfo_string28                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.byte	69                              @ DW_AT_decl_line
+	.long	217                             @ DW_AT_type
+	.byte	20                              @ Abbrev [20] 0x2c7:0xb DW_TAG_variable
+	.long	.Linfo_string29                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.byte	70                              @ DW_AT_decl_line
+	.long	67                              @ DW_AT_type
+	.byte	0                               @ End Of Children Mark
+	.byte	18                              @ Abbrev [18] 0x2d3:0x2e DW_TAG_subprogram
+	.long	.Linfo_string30                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.byte	54                              @ DW_AT_decl_line
+                                        @ DW_AT_prototyped
+	.long	67                              @ DW_AT_type
+	.byte	1                               @ DW_AT_inline
+	.byte	19                              @ Abbrev [19] 0x2df:0xb DW_TAG_formal_parameter
+	.long	.Linfo_string27                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.byte	54                              @ DW_AT_decl_line
+	.long	67                              @ DW_AT_type
+	.byte	20                              @ Abbrev [20] 0x2ea:0xb DW_TAG_variable
+	.long	.Linfo_string29                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.byte	56                              @ DW_AT_decl_line
+	.long	67                              @ DW_AT_type
+	.byte	20                              @ Abbrev [20] 0x2f5:0xb DW_TAG_variable
+	.long	.Linfo_string31                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.byte	57                              @ DW_AT_decl_line
+	.long	217                             @ DW_AT_type
+	.byte	0                               @ End Of Children Mark
+	.byte	21                              @ Abbrev [21] 0x301:0x1ba DW_TAG_subprogram
+	.long	.Lfunc_begin4                   @ DW_AT_low_pc
+	.long	.Lfunc_end4-.Lfunc_begin4       @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string36                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.byte	119                             @ DW_AT_decl_line
+                                        @ DW_AT_prototyped
+	.long	1385                            @ DW_AT_type
+                                        @ DW_AT_external
+	.byte	14                              @ Abbrev [14] 0x316:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	10
+	.long	.Linfo_string55                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.byte	119                             @ DW_AT_decl_line
+	.long	67                              @ DW_AT_type
+	.byte	14                              @ Abbrev [14] 0x324:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	8
+	.long	.Linfo_string27                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.byte	119                             @ DW_AT_decl_line
+	.long	67                              @ DW_AT_type
+	.byte	14                              @ Abbrev [14] 0x332:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	4
+	.long	.Linfo_string56                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.byte	119                             @ DW_AT_decl_line
+	.long	266                             @ DW_AT_type
+	.byte	22                              @ Abbrev [22] 0x340:0x7b DW_TAG_inlined_subroutine
+	.long	677                             @ DW_AT_abstract_origin
+	.long	.Ltmp24                         @ DW_AT_low_pc
+	.long	.Ltmp52-.Ltmp24                 @ DW_AT_high_pc
+	.byte	3                               @ DW_AT_call_file
+	.byte	123                             @ DW_AT_call_line
+	.byte	17                              @ DW_AT_call_column
+	.byte	23                              @ Abbrev [23] 0x350:0x8 DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	38
+	.long	689                             @ DW_AT_abstract_origin
+	.byte	24                              @ Abbrev [24] 0x358:0x8 DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	32
+	.long	700                             @ DW_AT_abstract_origin
+	.byte	24                              @ Abbrev [24] 0x360:0x8 DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	30
+	.long	711                             @ DW_AT_abstract_origin
+	.byte	22                              @ Abbrev [22] 0x368:0x29 DW_TAG_inlined_subroutine
+	.long	723                             @ DW_AT_abstract_origin
+	.long	.Ltmp31                         @ DW_AT_low_pc
+	.long	.Ltmp38-.Ltmp31                 @ DW_AT_high_pc
+	.byte	3                               @ DW_AT_call_file
+	.byte	81                              @ DW_AT_call_line
+	.byte	44                              @ DW_AT_call_column
+	.byte	23                              @ Abbrev [23] 0x378:0x8 DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	46
+	.long	735                             @ DW_AT_abstract_origin
+	.byte	24                              @ Abbrev [24] 0x380:0x8 DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	44
+	.long	746                             @ DW_AT_abstract_origin
+	.byte	24                              @ Abbrev [24] 0x388:0x8 DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	40
+	.long	757                             @ DW_AT_abstract_origin
+	.byte	0                               @ End Of Children Mark
+	.byte	22                              @ Abbrev [22] 0x391:0x29 DW_TAG_inlined_subroutine
+	.long	723                             @ DW_AT_abstract_origin
+	.long	.Ltmp40                         @ DW_AT_low_pc
+	.long	.Ltmp47-.Ltmp40                 @ DW_AT_high_pc
+	.byte	3                               @ DW_AT_call_file
+	.byte	85                              @ DW_AT_call_line
+	.byte	23                              @ DW_AT_call_column
+	.byte	23                              @ Abbrev [23] 0x3a1:0x8 DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	54
+	.long	735                             @ DW_AT_abstract_origin
+	.byte	24                              @ Abbrev [24] 0x3a9:0x8 DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	52
+	.long	746                             @ DW_AT_abstract_origin
+	.byte	24                              @ Abbrev [24] 0x3b1:0x8 DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	48
+	.long	757                             @ DW_AT_abstract_origin
+	.byte	0                               @ End Of Children Mark
+	.byte	0                               @ End Of Children Mark
+	.byte	22                              @ Abbrev [22] 0x3bb:0x7e DW_TAG_inlined_subroutine
+	.long	677                             @ DW_AT_abstract_origin
+	.long	.Ltmp58                         @ DW_AT_low_pc
+	.long	.Ltmp86-.Ltmp58                 @ DW_AT_high_pc
+	.byte	3                               @ DW_AT_call_file
+	.byte	130                             @ DW_AT_call_line
+	.byte	30                              @ DW_AT_call_column
+	.byte	23                              @ Abbrev [23] 0x3cb:0x8 DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	28
+	.long	689                             @ DW_AT_abstract_origin
+	.byte	24                              @ Abbrev [24] 0x3d3:0x8 DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	24
+	.long	700                             @ DW_AT_abstract_origin
+	.byte	24                              @ Abbrev [24] 0x3db:0x8 DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	22
+	.long	711                             @ DW_AT_abstract_origin
+	.byte	22                              @ Abbrev [22] 0x3e3:0x29 DW_TAG_inlined_subroutine
+	.long	723                             @ DW_AT_abstract_origin
+	.long	.Ltmp65                         @ DW_AT_low_pc
+	.long	.Ltmp72-.Ltmp65                 @ DW_AT_high_pc
+	.byte	3                               @ DW_AT_call_file
+	.byte	81                              @ DW_AT_call_line
+	.byte	44                              @ DW_AT_call_column
+	.byte	23                              @ Abbrev [23] 0x3f3:0x8 DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	62
+	.long	735                             @ DW_AT_abstract_origin
+	.byte	24                              @ Abbrev [24] 0x3fb:0x8 DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	60
+	.long	746                             @ DW_AT_abstract_origin
+	.byte	24                              @ Abbrev [24] 0x403:0x8 DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	56
+	.long	757                             @ DW_AT_abstract_origin
+	.byte	0                               @ End Of Children Mark
+	.byte	22                              @ Abbrev [22] 0x40c:0x2c DW_TAG_inlined_subroutine
+	.long	723                             @ DW_AT_abstract_origin
+	.long	.Ltmp74                         @ DW_AT_low_pc
+	.long	.Ltmp81-.Ltmp74                 @ DW_AT_high_pc
+	.byte	3                               @ DW_AT_call_file
+	.byte	85                              @ DW_AT_call_line
+	.byte	23                              @ DW_AT_call_column
+	.byte	23                              @ Abbrev [23] 0x41c:0x9 DW_TAG_formal_parameter
+	.byte	3                               @ DW_AT_location
+	.byte	145
+	.asciz	"\306"
+	.long	735                             @ DW_AT_abstract_origin
+	.byte	24                              @ Abbrev [24] 0x425:0x9 DW_TAG_variable
+	.byte	3                               @ DW_AT_location
+	.byte	145
+	.asciz	"\304"
+	.long	746                             @ DW_AT_abstract_origin
+	.byte	24                              @ Abbrev [24] 0x42e:0x9 DW_TAG_variable
+	.byte	3                               @ DW_AT_location
+	.byte	145
+	.asciz	"\300"
+	.long	757                             @ DW_AT_abstract_origin
+	.byte	0                               @ End Of Children Mark
+	.byte	0                               @ End Of Children Mark
+	.byte	22                              @ Abbrev [22] 0x439:0x81 DW_TAG_inlined_subroutine
+	.long	677                             @ DW_AT_abstract_origin
+	.long	.Ltmp90                         @ DW_AT_low_pc
+	.long	.Ltmp119-.Ltmp90                @ DW_AT_high_pc
+	.byte	3                               @ DW_AT_call_file
+	.byte	134                             @ DW_AT_call_line
+	.byte	30                              @ DW_AT_call_column
+	.byte	23                              @ Abbrev [23] 0x449:0x8 DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	20
+	.long	689                             @ DW_AT_abstract_origin
+	.byte	24                              @ Abbrev [24] 0x451:0x8 DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	16
+	.long	700                             @ DW_AT_abstract_origin
+	.byte	24                              @ Abbrev [24] 0x459:0x8 DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	14
+	.long	711                             @ DW_AT_abstract_origin
+	.byte	22                              @ Abbrev [22] 0x461:0x2c DW_TAG_inlined_subroutine
+	.long	723                             @ DW_AT_abstract_origin
+	.long	.Ltmp98                         @ DW_AT_low_pc
+	.long	.Ltmp105-.Ltmp98                @ DW_AT_high_pc
+	.byte	3                               @ DW_AT_call_file
+	.byte	81                              @ DW_AT_call_line
+	.byte	44                              @ DW_AT_call_column
+	.byte	23                              @ Abbrev [23] 0x471:0x9 DW_TAG_formal_parameter
+	.byte	3                               @ DW_AT_location
+	.byte	145
+	.asciz	"\316"
+	.long	735                             @ DW_AT_abstract_origin
+	.byte	24                              @ Abbrev [24] 0x47a:0x9 DW_TAG_variable
+	.byte	3                               @ DW_AT_location
+	.byte	145
+	.asciz	"\314"
+	.long	746                             @ DW_AT_abstract_origin
+	.byte	24                              @ Abbrev [24] 0x483:0x9 DW_TAG_variable
+	.byte	3                               @ DW_AT_location
+	.byte	145
+	.asciz	"\310"
+	.long	757                             @ DW_AT_abstract_origin
+	.byte	0                               @ End Of Children Mark
+	.byte	22                              @ Abbrev [22] 0x48d:0x2c DW_TAG_inlined_subroutine
+	.long	723                             @ DW_AT_abstract_origin
+	.long	.Ltmp107                        @ DW_AT_low_pc
+	.long	.Ltmp114-.Ltmp107               @ DW_AT_high_pc
+	.byte	3                               @ DW_AT_call_file
+	.byte	85                              @ DW_AT_call_line
+	.byte	23                              @ DW_AT_call_column
+	.byte	23                              @ Abbrev [23] 0x49d:0x9 DW_TAG_formal_parameter
+	.byte	3                               @ DW_AT_location
+	.byte	145
+	.asciz	"\326"
+	.long	735                             @ DW_AT_abstract_origin
+	.byte	24                              @ Abbrev [24] 0x4a6:0x9 DW_TAG_variable
+	.byte	3                               @ DW_AT_location
+	.byte	145
+	.asciz	"\324"
+	.long	746                             @ DW_AT_abstract_origin
+	.byte	24                              @ Abbrev [24] 0x4af:0x9 DW_TAG_variable
+	.byte	3                               @ DW_AT_location
+	.byte	145
+	.asciz	"\320"
+	.long	757                             @ DW_AT_abstract_origin
+	.byte	0                               @ End Of Children Mark
+	.byte	0                               @ End Of Children Mark
+	.byte	0                               @ End Of Children Mark
+	.byte	25                              @ Abbrev [25] 0x4bb:0x25 DW_TAG_subprogram
+	.long	.Lfunc_begin5                   @ DW_AT_low_pc
+	.long	.Lfunc_end5-.Lfunc_begin5       @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string38                 @ DW_AT_name
+	.byte	8                               @ DW_AT_decl_file
+	.byte	233                             @ DW_AT_decl_line
+                                        @ DW_AT_prototyped
+	.byte	195                             @ DW_AT_calling_convention
+	.long	217                             @ DW_AT_type
+	.byte	14                              @ Abbrev [14] 0x4d1:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	0
+	.long	.Linfo_string57                 @ DW_AT_name
+	.byte	8                               @ DW_AT_decl_file
+	.byte	233                             @ DW_AT_decl_line
+	.long	210                             @ DW_AT_type
+	.byte	0                               @ End Of Children Mark
+	.byte	25                              @ Abbrev [25] 0x4e0:0x25 DW_TAG_subprogram
+	.long	.Lfunc_begin6                   @ DW_AT_low_pc
+	.long	.Lfunc_end6-.Lfunc_begin6       @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string39                 @ DW_AT_name
+	.byte	8                               @ DW_AT_decl_file
+	.byte	237                             @ DW_AT_decl_line
+                                        @ DW_AT_prototyped
+	.byte	195                             @ DW_AT_calling_convention
+	.long	217                             @ DW_AT_type
+	.byte	14                              @ Abbrev [14] 0x4f6:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	0
+	.long	.Linfo_string57                 @ DW_AT_name
+	.byte	8                               @ DW_AT_decl_file
+	.byte	237                             @ DW_AT_decl_line
+	.long	224                             @ DW_AT_type
+	.byte	0                               @ End Of Children Mark
+	.byte	16                              @ Abbrev [16] 0x505:0x32 DW_TAG_subprogram
+	.long	.Lfunc_begin7                   @ DW_AT_low_pc
+	.long	.Lfunc_end7-.Lfunc_begin7       @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string40                 @ DW_AT_name
+	.byte	9                               @ DW_AT_decl_file
+	.byte	167                             @ DW_AT_decl_line
+                                        @ DW_AT_prototyped
+	.long	236                             @ DW_AT_type
+	.byte	14                              @ Abbrev [14] 0x51a:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	2
+	.long	.Linfo_string27                 @ DW_AT_name
+	.byte	9                               @ DW_AT_decl_file
+	.byte	167                             @ DW_AT_decl_line
+	.long	67                              @ DW_AT_type
+	.byte	15                              @ Abbrev [15] 0x528:0xe DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	0
+	.long	.Linfo_string29                 @ DW_AT_name
+	.byte	9                               @ DW_AT_decl_file
+	.byte	169                             @ DW_AT_decl_line
+	.long	236                             @ DW_AT_type
+	.byte	0                               @ End Of Children Mark
+	.byte	16                              @ Abbrev [16] 0x537:0x32 DW_TAG_subprogram
+	.long	.Lfunc_begin8                   @ DW_AT_low_pc
+	.long	.Lfunc_end8-.Lfunc_begin8       @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string41                 @ DW_AT_name
+	.byte	9                               @ DW_AT_decl_file
+	.byte	186                             @ DW_AT_decl_line
+                                        @ DW_AT_prototyped
+	.long	67                              @ DW_AT_type
+	.byte	14                              @ Abbrev [14] 0x54c:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	2
+	.long	.Linfo_string27                 @ DW_AT_name
+	.byte	9                               @ DW_AT_decl_file
+	.byte	186                             @ DW_AT_decl_line
+	.long	236                             @ DW_AT_type
+	.byte	15                              @ Abbrev [15] 0x55a:0xe DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	0
+	.long	.Linfo_string29                 @ DW_AT_name
+	.byte	9                               @ DW_AT_decl_file
+	.byte	188                             @ DW_AT_decl_line
+	.long	67                              @ DW_AT_type
+	.byte	0                               @ End Of Children Mark
+	.byte	11                              @ Abbrev [11] 0x569:0xc DW_TAG_typedef
+	.long	126                             @ DW_AT_type
+	.long	.Linfo_string37                 @ DW_AT_name
+	.byte	4                               @ DW_AT_decl_file
+	.short	598                             @ DW_AT_decl_line
+	.byte	12                              @ Abbrev [12] 0x575:0x5 DW_TAG_pointer_type
+	.long	121                             @ DW_AT_type
+	.byte	5                               @ Abbrev [5] 0x57a:0xb DW_TAG_typedef
+	.long	276                             @ DW_AT_type
+	.long	.Linfo_string45                 @ DW_AT_name
+	.byte	5                               @ DW_AT_decl_file
+	.byte	64                              @ DW_AT_decl_line
+	.byte	5                               @ Abbrev [5] 0x585:0xb DW_TAG_typedef
+	.long	217                             @ DW_AT_type
+	.long	.Linfo_string48                 @ DW_AT_name
+	.byte	5                               @ DW_AT_decl_file
+	.byte	58                              @ DW_AT_decl_line
+	.byte	0                               @ End Of Children Mark
+.Ldebug_info_end0:
+	.section	.debug_ranges,"",%progbits
+.Ldebug_ranges0:
+	.long	.Lfunc_begin0
+	.long	.Lfunc_end0
+	.long	.Lfunc_begin1
+	.long	.Lfunc_end1
+	.long	.Lfunc_begin2
+	.long	.Lfunc_end2
+	.long	.Lfunc_begin3
+	.long	.Lfunc_end3
+	.long	.Lfunc_begin4
+	.long	.Lfunc_end4
+	.long	.Lfunc_begin5
+	.long	.Lfunc_end5
+	.long	.Lfunc_begin6
+	.long	.Lfunc_end6
+	.long	.Lfunc_begin7
+	.long	.Lfunc_end7
+	.long	.Lfunc_begin8
+	.long	.Lfunc_end8
+	.long	0
+	.long	0
+	.section	.debug_str,"MS",%progbits,1
+.Linfo_string0:
+	.asciz	"Component: Arm Compiler for Embedded 6.24 Tool: armclang [5f371800]" @ string offset=0
+.Linfo_string1:
+	.asciz	"D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/FastMathFunctions\\FastMathFunctionsF16.c" @ string offset=68
+.Linfo_string2:
+	.asciz	"D:\\RM_projects\\h7_final_4\\MDK-ARM" @ string offset=157
+.Linfo_string3:
+	.asciz	"lut_logf16"                    @ string offset=191
+.Linfo_string4:
+	.asciz	"__fp16"                        @ string offset=202
+.Linfo_string5:
+	.asciz	"float16_t"                     @ string offset=209
+.Linfo_string6:
+	.asciz	"__ARRAY_SIZE_TYPE__"           @ string offset=219
+.Linfo_string7:
+	.asciz	"atan2_coefs_f16"               @ string offset=239
+.Linfo_string8:
+	.asciz	"signed char"                   @ string offset=255
+.Linfo_string9:
+	.asciz	"ARM_MATH_SUCCESS"              @ string offset=267
+.Linfo_string10:
+	.asciz	"ARM_MATH_ARGUMENT_ERROR"       @ string offset=284
+.Linfo_string11:
+	.asciz	"ARM_MATH_LENGTH_ERROR"         @ string offset=308
+.Linfo_string12:
+	.asciz	"ARM_MATH_SIZE_MISMATCH"        @ string offset=330
+.Linfo_string13:
+	.asciz	"ARM_MATH_NANINF"               @ string offset=353
+.Linfo_string14:
+	.asciz	"ARM_MATH_SINGULAR"             @ string offset=369
+.Linfo_string15:
+	.asciz	"ARM_MATH_TEST_FAILURE"         @ string offset=387
+.Linfo_string16:
+	.asciz	"ARM_MATH_DECOMPOSITION_FAILURE" @ string offset=409
+.Linfo_string17:
+	.asciz	"_Float16"                      @ string offset=440
+.Linfo_string18:
+	.asciz	"float"                         @ string offset=449
+.Linfo_string19:
+	.asciz	"float32_t"                     @ string offset=455
+.Linfo_string20:
+	.asciz	"int"                           @ string offset=465
+.Linfo_string21:
+	.asciz	"double"                        @ string offset=469
+.Linfo_string22:
+	.asciz	"short"                         @ string offset=476
+.Linfo_string23:
+	.asciz	"int16_t"                       @ string offset=482
+.Linfo_string24:
+	.asciz	"char"                          @ string offset=490
+.Linfo_string25:
+	.asciz	"unsigned int"                  @ string offset=495
+.Linfo_string26:
+	.asciz	"arm_atan_f16"                  @ string offset=508
+.Linfo_string27:
+	.asciz	"x"                             @ string offset=521
+.Linfo_string28:
+	.asciz	"sign"                          @ string offset=523
+.Linfo_string29:
+	.asciz	"res"                           @ string offset=528
+.Linfo_string30:
+	.asciz	"arm_atan_limited_f16"          @ string offset=532
+.Linfo_string31:
+	.asciz	"i"                             @ string offset=553
+.Linfo_string32:
+	.asciz	"arm_vexp_f16"                  @ string offset=555
+.Linfo_string33:
+	.asciz	"arm_vlog_f16"                  @ string offset=568
+.Linfo_string34:
+	.asciz	"logf16_scalar"                 @ string offset=581
+.Linfo_string35:
+	.asciz	"arm_vinverse_f16"              @ string offset=595
+.Linfo_string36:
+	.asciz	"arm_atan2_f16"                 @ string offset=612
+.Linfo_string37:
+	.asciz	"arm_status"                    @ string offset=626
+.Linfo_string38:
+	.asciz	"__ARM_signbitf"                @ string offset=637
+.Linfo_string39:
+	.asciz	"__ARM_signbit"                 @ string offset=652
+.Linfo_string40:
+	.asciz	"arm_typecast_s16_f16"          @ string offset=666
+.Linfo_string41:
+	.asciz	"arm_typecast_f16_s16"          @ string offset=687
+.Linfo_string42:
+	.asciz	"pSrc"                          @ string offset=708
+.Linfo_string43:
+	.asciz	"pDst"                          @ string offset=713
+.Linfo_string44:
+	.asciz	"blockSize"                     @ string offset=718
+.Linfo_string45:
+	.asciz	"uint32_t"                      @ string offset=728
+.Linfo_string46:
+	.asciz	"blkCnt"                        @ string offset=737
+.Linfo_string47:
+	.asciz	"vecExpUnBiased"                @ string offset=744
+.Linfo_string48:
+	.asciz	"int32_t"                       @ string offset=759
+.Linfo_string49:
+	.asciz	"vecTmpFlt1"                    @ string offset=767
+.Linfo_string50:
+	.asciz	"lut"                           @ string offset=778
+.Linfo_string51:
+	.asciz	"n"                             @ string offset=782
+.Linfo_string52:
+	.asciz	"tmp"                           @ string offset=784
+.Linfo_string53:
+	.asciz	"v"                             @ string offset=788
+.Linfo_string54:
+	.asciz	"j"                             @ string offset=790
+.Linfo_string55:
+	.asciz	"y"                             @ string offset=792
+.Linfo_string56:
+	.asciz	"result"                        @ string offset=794
+.Linfo_string57:
+	.asciz	"__x"                           @ string offset=801
+	.ident	"Component: Arm Compiler for Embedded 6.24 Tool: armclang [5f371800]"
+	.section	".note.GNU-stack","",%progbits
+	.eabi_attribute	30, 6	@ Tag_ABI_optimization_goals
+	.ARM_attribute	16, 1	@ Tag_AV_eba
+	.section	.debug_line,"",%progbits
+.Lline_table_start0:

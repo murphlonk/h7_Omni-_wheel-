@@ -1,0 +1,3232 @@
+	.text
+	.syntax unified
+	.eabi_attribute	67, "2.09"	@ Tag_conformance
+	.cpu	cortex-m7
+	.eabi_attribute	6, 13	@ Tag_CPU_arch
+	.eabi_attribute	7, 77	@ Tag_CPU_arch_profile
+	.eabi_attribute	8, 0	@ Tag_ARM_ISA_use
+	.eabi_attribute	9, 2	@ Tag_THUMB_ISA_use
+	.fpu	fpv5-d16
+	.eabi_attribute	36, 1	@ Tag_FP_HP_extension
+	.eabi_attribute	34, 1	@ Tag_CPU_unaligned_access
+	.eabi_attribute	17, 1	@ Tag_ABI_PCS_GOT_use
+	.eabi_attribute	20, 2	@ Tag_ABI_FP_denormal
+	.eabi_attribute	21, 0	@ Tag_ABI_FP_exceptions
+	.eabi_attribute	23, 1	@ Tag_ABI_FP_number_model
+	.eabi_attribute	24, 1	@ Tag_ABI_align_needed
+	.eabi_attribute	25, 1	@ Tag_ABI_align_preserved
+	.eabi_attribute	28, 1	@ Tag_ABI_VFP_args
+	.eabi_attribute	38, 1	@ Tag_ABI_FP_16bit_format
+	.eabi_attribute	18, 2	@ Tag_ABI_PCS_wchar_t
+	.eabi_attribute	26, 1	@ Tag_ABI_enum_size
+	.eabi_attribute	14, 0	@ Tag_ABI_PCS_R9_use
+	.file	"DistanceFunctionsF16.c"
+	.file	1 "D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Include" "arm_math_types.h"
+	.file	2 "D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Include" "arm_math_types_f16.h"
+	.section	.text.arm_braycurtis_distance_f16,"ax",%progbits
+	.hidden	arm_braycurtis_distance_f16     @ -- Begin function arm_braycurtis_distance_f16
+	.globl	arm_braycurtis_distance_f16
+	.p2align	3
+	.type	arm_braycurtis_distance_f16,%function
+	.code	16                              @ @arm_braycurtis_distance_f16
+	.thumb_func
+arm_braycurtis_distance_f16:
+.Lfunc_begin0:
+	.file	3 "D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions" "arm_braycurtis_distance_f16.c"
+	.loc	3 129 0                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_braycurtis_distance_f16.c:129:0
+	.fnstart
+	.cfi_sections .debug_frame
+	.cfi_startproc
+@ %bb.0:
+	.pad	#20
+	sub	sp, #20
+	.cfi_def_cfa_offset 20
+	str	r0, [sp, #16]
+	str	r1, [sp, #12]
+	str	r2, [sp, #8]
+	movs	r0, #0
+.Ltmp0:
+	.loc	3 130 13 prologue_end           @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_braycurtis_distance_f16.c:130:13
+	strh.w	r0, [sp, #6]
+	.loc	3 130 31 is_stmt 0              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_braycurtis_distance_f16.c:130:31
+	strh.w	r0, [sp, #4]
+	.loc	3 132 4 is_stmt 1               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_braycurtis_distance_f16.c:132:4
+	b	.LBB0_1
+.LBB0_1:                                @ =>This Inner Loop Header: Depth=1
+	.loc	3 132 10 is_stmt 0              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_braycurtis_distance_f16.c:132:10
+	ldr	r0, [sp, #8]
+	.loc	3 132 4                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_braycurtis_distance_f16.c:132:4
+	cmp	r0, #0
+	beq	.LBB0_3
+	b	.LBB0_2
+.LBB0_2:                                @   in Loop: Header=BB0_1 Depth=1
+.Ltmp1:
+	.loc	3 134 17 is_stmt 1              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_braycurtis_distance_f16.c:134:17
+	ldr	r0, [sp, #16]
+	adds	r1, r0, #2
+	str	r1, [sp, #16]
+	.loc	3 134 14 is_stmt 0              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_braycurtis_distance_f16.c:134:14
+	ldrh	r0, [r0]
+	.loc	3 134 12                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_braycurtis_distance_f16.c:134:12
+	strh.w	r0, [sp, #2]
+	.loc	3 135 17 is_stmt 1              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_braycurtis_distance_f16.c:135:17
+	ldr	r0, [sp, #12]
+	adds	r1, r0, #2
+	str	r1, [sp, #12]
+	.loc	3 135 14 is_stmt 0              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_braycurtis_distance_f16.c:135:14
+	ldrh	r0, [r0]
+	.loc	3 135 12                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_braycurtis_distance_f16.c:135:12
+	strh.w	r0, [sp]
+	.loc	3 136 58 is_stmt 1              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_braycurtis_distance_f16.c:136:58
+	ldrh.w	r0, [sp, #2]
+	.loc	3 136 63 is_stmt 0              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_braycurtis_distance_f16.c:136:63
+	vmov	s0, r0
+	vcvtb.f32.f16	s0, s0
+	.loc	3 136 75                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_braycurtis_distance_f16.c:136:75
+	ldrh.w	r0, [sp]
+	.loc	3 136 63                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_braycurtis_distance_f16.c:136:63
+	vmov	s2, r0
+	vcvtb.f32.f16	s2, s2
+	vsub.f32	s2, s0, s2
+                                        @ implicit-def: $s0
+	vcvtb.f16.f32	s0, s2
+	vmov	r0, s0
+	.loc	3 136 36                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_braycurtis_distance_f16.c:136:36
+	vmov	s0, r0
+	vcvtb.f32.f16	s0, s0
+	.loc	3 136 30                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_braycurtis_distance_f16.c:136:30
+	vabs.f32	s2, s0
+                                        @ implicit-def: $s0
+	.loc	3 136 20                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_braycurtis_distance_f16.c:136:20
+	vcvtb.f16.f32	s0, s2
+	vmov	r0, s0
+	.loc	3 136 17                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_braycurtis_distance_f16.c:136:17
+	vmov	s0, r0
+	vcvtb.f32.f16	s2, s0
+	ldrh.w	r0, [sp, #6]
+	vmov	s0, r0
+	vcvtb.f32.f16	s0, s0
+	vadd.f32	s2, s0, s2
+                                        @ implicit-def: $s0
+	vcvtb.f16.f32	s0, s2
+	vmov	r0, s0
+	strh.w	r0, [sp, #6]
+	.loc	3 137 57 is_stmt 1              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_braycurtis_distance_f16.c:137:57
+	ldrh.w	r0, [sp, #2]
+	.loc	3 137 62 is_stmt 0              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_braycurtis_distance_f16.c:137:62
+	vmov	s0, r0
+	vcvtb.f32.f16	s0, s0
+	.loc	3 137 74                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_braycurtis_distance_f16.c:137:74
+	ldrh.w	r0, [sp]
+	.loc	3 137 62                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_braycurtis_distance_f16.c:137:62
+	vmov	s2, r0
+	vcvtb.f32.f16	s2, s2
+	vadd.f32	s2, s0, s2
+                                        @ implicit-def: $s0
+	vcvtb.f16.f32	s0, s2
+	vmov	r0, s0
+	.loc	3 137 35                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_braycurtis_distance_f16.c:137:35
+	vmov	s0, r0
+	vcvtb.f32.f16	s0, s0
+	.loc	3 137 29                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_braycurtis_distance_f16.c:137:29
+	vabs.f32	s2, s0
+                                        @ implicit-def: $s0
+	.loc	3 137 19                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_braycurtis_distance_f16.c:137:19
+	vcvtb.f16.f32	s0, s2
+	vmov	r0, s0
+	.loc	3 137 16                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_braycurtis_distance_f16.c:137:16
+	vmov	s0, r0
+	vcvtb.f32.f16	s2, s0
+	ldrh.w	r0, [sp, #4]
+	vmov	s0, r0
+	vcvtb.f32.f16	s0, s0
+	vadd.f32	s2, s0, s2
+                                        @ implicit-def: $s0
+	vcvtb.f16.f32	s0, s2
+	vmov	r0, s0
+	strh.w	r0, [sp, #4]
+	.loc	3 138 17 is_stmt 1              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_braycurtis_distance_f16.c:138:17
+	ldr	r0, [sp, #8]
+	subs	r0, #1
+	str	r0, [sp, #8]
+.Ltmp2:
+	.loc	3 132 4                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_braycurtis_distance_f16.c:132:4
+	b	.LBB0_1
+.LBB0_3:
+	.loc	3 146 11                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_braycurtis_distance_f16.c:146:11
+	ldrh.w	r0, [sp, #6]
+	.loc	3 146 21 is_stmt 0              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_braycurtis_distance_f16.c:146:21
+	vmov	s0, r0
+	vcvtb.f32.f16	s0, s0
+	.loc	3 146 23                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_braycurtis_distance_f16.c:146:23
+	ldrh.w	r0, [sp, #4]
+	.loc	3 146 21                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_braycurtis_distance_f16.c:146:21
+	vmov	s2, r0
+	vcvtb.f32.f16	s2, s2
+	vdiv.f32	s2, s0, s2
+                                        @ implicit-def: $s0
+	vcvtb.f16.f32	s0, s2
+	vmov	r0, s0
+	.loc	3 146 4                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_braycurtis_distance_f16.c:146:4
+	vmov	s0, r0
+	.loc	3 146 4 epilogue_begin          @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_braycurtis_distance_f16.c:146:4
+	add	sp, #20
+	bx	lr
+.Ltmp3:
+.Lfunc_end0:
+	.size	arm_braycurtis_distance_f16, .Lfunc_end0-arm_braycurtis_distance_f16
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.arm_canberra_distance_f16,"ax",%progbits
+	.hidden	arm_canberra_distance_f16       @ -- Begin function arm_canberra_distance_f16
+	.globl	arm_canberra_distance_f16
+	.p2align	3
+	.type	arm_canberra_distance_f16,%function
+	.code	16                              @ @arm_canberra_distance_f16
+	.thumb_func
+arm_canberra_distance_f16:
+.Lfunc_begin1:
+	.file	4 "D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions" "arm_canberra_distance_f16.c"
+	.loc	4 145 0 is_stmt 1               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_canberra_distance_f16.c:145:0
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#24
+	sub	sp, #24
+	.cfi_def_cfa_offset 24
+	str	r0, [sp, #20]
+	str	r1, [sp, #16]
+	str	r2, [sp, #12]
+	movs	r0, #0
+.Ltmp4:
+	.loc	4 146 13 prologue_end           @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_canberra_distance_f16.c:146:13
+	strh.w	r0, [sp, #10]
+	.loc	4 148 4                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_canberra_distance_f16.c:148:4
+	b	.LBB1_1
+.LBB1_1:                                @ =>This Inner Loop Header: Depth=1
+	.loc	4 148 10 is_stmt 0              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_canberra_distance_f16.c:148:10
+	ldr	r0, [sp, #12]
+	.loc	4 148 4                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_canberra_distance_f16.c:148:4
+	cmp	r0, #0
+	beq.w	.LBB1_6
+	b	.LBB1_2
+.LBB1_2:                                @   in Loop: Header=BB1_1 Depth=1
+.Ltmp5:
+	.loc	4 150 17 is_stmt 1              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_canberra_distance_f16.c:150:17
+	ldr	r0, [sp, #20]
+	adds	r1, r0, #2
+	str	r1, [sp, #20]
+	.loc	4 150 14 is_stmt 0              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_canberra_distance_f16.c:150:14
+	ldrh	r0, [r0]
+	.loc	4 150 12                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_canberra_distance_f16.c:150:12
+	strh.w	r0, [sp, #8]
+	.loc	4 151 17 is_stmt 1              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_canberra_distance_f16.c:151:17
+	ldr	r0, [sp, #16]
+	adds	r1, r0, #2
+	str	r1, [sp, #16]
+	.loc	4 151 14 is_stmt 0              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_canberra_distance_f16.c:151:14
+	ldrh	r0, [r0]
+	.loc	4 151 12                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_canberra_distance_f16.c:151:12
+	strh.w	r0, [sp, #6]
+	.loc	4 153 42 is_stmt 1              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_canberra_distance_f16.c:153:42
+	ldrh.w	r0, [sp, #8]
+	.loc	4 153 47 is_stmt 0              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_canberra_distance_f16.c:153:47
+	vmov	s0, r0
+	vcvtb.f32.f16	s0, s0
+	.loc	4 153 59                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_canberra_distance_f16.c:153:59
+	ldrh.w	r0, [sp, #6]
+	.loc	4 153 47                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_canberra_distance_f16.c:153:47
+	vmov	s2, r0
+	vcvtb.f32.f16	s2, s2
+	vsub.f32	s2, s0, s2
+                                        @ implicit-def: $s0
+	vcvtb.f16.f32	s0, s2
+	vmov	r0, s0
+	.loc	4 153 20                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_canberra_distance_f16.c:153:20
+	vmov	s0, r0
+	vcvtb.f32.f16	s0, s0
+	.loc	4 153 14                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_canberra_distance_f16.c:153:14
+	vabs.f32	s2, s0
+                                        @ implicit-def: $s0
+	vcvtb.f16.f32	s0, s2
+	vmov	r0, s0
+	.loc	4 153 12                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_canberra_distance_f16.c:153:12
+	strh.w	r0, [sp, #4]
+	.loc	4 154 40 is_stmt 1              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_canberra_distance_f16.c:154:40
+	ldrh.w	r0, [sp, #8]
+	.loc	4 154 29 is_stmt 0              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_canberra_distance_f16.c:154:29
+	vmov	s0, r0
+	vcvtb.f32.f16	s0, s0
+	.loc	4 154 23                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_canberra_distance_f16.c:154:23
+	vabs.f32	s2, s0
+                                        @ implicit-def: $s0
+	.loc	4 154 13                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_canberra_distance_f16.c:154:13
+	vcvtb.f16.f32	s0, s2
+	vmov	r0, s0
+	.loc	4 154 46                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_canberra_distance_f16.c:154:46
+	vmov	s0, r0
+	vcvtb.f32.f16	s0, s0
+	.loc	4 154 75                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_canberra_distance_f16.c:154:75
+	ldrh.w	r0, [sp, #6]
+	.loc	4 154 64                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_canberra_distance_f16.c:154:64
+	vmov	s2, r0
+	vcvtb.f32.f16	s2, s2
+	.loc	4 154 58                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_canberra_distance_f16.c:154:58
+	vabs.f32	s4, s2
+                                        @ implicit-def: $s2
+	.loc	4 154 48                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_canberra_distance_f16.c:154:48
+	vcvtb.f16.f32	s2, s4
+	vmov	r0, s2
+	.loc	4 154 46                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_canberra_distance_f16.c:154:46
+	vmov	s2, r0
+	vcvtb.f32.f16	s2, s2
+	vadd.f32	s2, s0, s2
+                                        @ implicit-def: $s0
+	vcvtb.f16.f32	s0, s2
+	vmov	r0, s0
+	.loc	4 154 11                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_canberra_distance_f16.c:154:11
+	strh.w	r0, [sp, #2]
+.Ltmp6:
+	.loc	4 155 22 is_stmt 1              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_canberra_distance_f16.c:155:22
+	ldrh.w	r0, [sp, #8]
+	.loc	4 155 27 is_stmt 0              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_canberra_distance_f16.c:155:27
+	vmov	s0, r0
+	vcvtb.f32.f16	s0, s0
+	.loc	4 155 38                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_canberra_distance_f16.c:155:38
+	vcmp.f32	s0, #0
+	vmrs	APSR_nzcv, fpscr
+	bne	.LBB1_4
+	b	.LBB1_3
+.LBB1_3:                                @   in Loop: Header=BB1_1 Depth=1
+	.loc	4 155 52                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_canberra_distance_f16.c:155:52
+	ldrh.w	r0, [sp, #6]
+	.loc	4 155 57                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_canberra_distance_f16.c:155:57
+	vmov	s0, r0
+	vcvtb.f32.f16	s0, s0
+.Ltmp7:
+	.loc	4 155 11                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_canberra_distance_f16.c:155:11
+	vcmp.f32	s0, #0
+	vmrs	APSR_nzcv, fpscr
+	beq	.LBB1_5
+	b	.LBB1_4
+.LBB1_4:                                @   in Loop: Header=BB1_1 Depth=1
+.Ltmp8:
+	.loc	4 157 30 is_stmt 1              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_canberra_distance_f16.c:157:30
+	ldrh.w	r0, [sp, #4]
+	.loc	4 157 16 is_stmt 0              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_canberra_distance_f16.c:157:16
+	vmov	s0, r0
+	vcvtb.f32.f16	s0, s0
+	.loc	4 157 47                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_canberra_distance_f16.c:157:47
+	ldrh.w	r0, [sp, #2]
+	.loc	4 157 16                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_canberra_distance_f16.c:157:16
+	vmov	s2, r0
+	vcvtb.f32.f16	s2, s2
+	vdiv.f32	s2, s0, s2
+	ldrh.w	r0, [sp, #10]
+	vmov	s0, r0
+	vcvtb.f32.f16	s0, s0
+	vadd.f32	s2, s0, s2
+                                        @ implicit-def: $s0
+	vcvtb.f16.f32	s0, s2
+	vmov	r0, s0
+	strh.w	r0, [sp, #10]
+	.loc	4 158 7 is_stmt 1               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_canberra_distance_f16.c:158:7
+	b	.LBB1_5
+.Ltmp9:
+.LBB1_5:                                @   in Loop: Header=BB1_1 Depth=1
+	.loc	4 159 17                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_canberra_distance_f16.c:159:17
+	ldr	r0, [sp, #12]
+	subs	r0, #1
+	str	r0, [sp, #12]
+.Ltmp10:
+	.loc	4 148 4                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_canberra_distance_f16.c:148:4
+	b	.LBB1_1
+.LBB1_6:
+	.loc	4 161 4                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_canberra_distance_f16.c:161:4
+	ldrh.w	r0, [sp, #10]
+	vmov	s0, r0
+	.loc	4 161 4 epilogue_begin is_stmt 0 @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_canberra_distance_f16.c:161:4
+	add	sp, #24
+	bx	lr
+.Ltmp11:
+.Lfunc_end1:
+	.size	arm_canberra_distance_f16, .Lfunc_end1-arm_canberra_distance_f16
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.arm_chebyshev_distance_f16,"ax",%progbits
+	.hidden	arm_chebyshev_distance_f16      @ -- Begin function arm_chebyshev_distance_f16
+	.globl	arm_chebyshev_distance_f16
+	.p2align	3
+	.type	arm_chebyshev_distance_f16,%function
+	.code	16                              @ @arm_chebyshev_distance_f16
+	.thumb_func
+arm_chebyshev_distance_f16:
+.Lfunc_begin2:
+	.file	5 "D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions" "arm_chebyshev_distance_f16.c"
+	.loc	5 115 0 is_stmt 1               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_chebyshev_distance_f16.c:115:0
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#20
+	sub	sp, #20
+	.cfi_def_cfa_offset 20
+	str	r0, [sp, #16]
+	str	r1, [sp, #12]
+	str	r2, [sp, #8]
+	movs	r0, #0
+.Ltmp12:
+	.loc	5 116 13 prologue_end           @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_chebyshev_distance_f16.c:116:13
+	strh.w	r0, [sp, #6]
+	.loc	5 118 14                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_chebyshev_distance_f16.c:118:14
+	ldr	r0, [sp, #16]
+	adds	r1, r0, #2
+	str	r1, [sp, #16]
+	.loc	5 118 11 is_stmt 0              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_chebyshev_distance_f16.c:118:11
+	ldrh	r0, [r0]
+	.loc	5 118 9                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_chebyshev_distance_f16.c:118:9
+	strh.w	r0, [sp, #2]
+	.loc	5 119 14 is_stmt 1              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_chebyshev_distance_f16.c:119:14
+	ldr	r0, [sp, #12]
+	adds	r1, r0, #2
+	str	r1, [sp, #12]
+	.loc	5 119 11 is_stmt 0              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_chebyshev_distance_f16.c:119:11
+	ldrh	r0, [r0]
+	.loc	5 119 9                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_chebyshev_distance_f16.c:119:9
+	strh.w	r0, [sp]
+	.loc	5 120 49 is_stmt 1              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_chebyshev_distance_f16.c:120:49
+	ldrh.w	r0, [sp, #2]
+	.loc	5 120 54 is_stmt 0              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_chebyshev_distance_f16.c:120:54
+	vmov	s0, r0
+	vcvtb.f32.f16	s0, s0
+	.loc	5 120 66                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_chebyshev_distance_f16.c:120:66
+	ldrh.w	r0, [sp]
+	.loc	5 120 54                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_chebyshev_distance_f16.c:120:54
+	vmov	s2, r0
+	vcvtb.f32.f16	s2, s2
+	vsub.f32	s2, s0, s2
+                                        @ implicit-def: $s0
+	vcvtb.f16.f32	s0, s2
+	vmov	r0, s0
+	.loc	5 120 27                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_chebyshev_distance_f16.c:120:27
+	vmov	s0, r0
+	vcvtb.f32.f16	s0, s0
+	.loc	5 120 21                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_chebyshev_distance_f16.c:120:21
+	vabs.f32	s2, s0
+                                        @ implicit-def: $s0
+	.loc	5 120 11                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_chebyshev_distance_f16.c:120:11
+	vcvtb.f16.f32	s0, s2
+	vmov	r0, s0
+	.loc	5 120 9                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_chebyshev_distance_f16.c:120:9
+	strh.w	r0, [sp, #6]
+	.loc	5 121 13 is_stmt 1              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_chebyshev_distance_f16.c:121:13
+	ldrh.w	r0, [sp, #6]
+	.loc	5 121 11 is_stmt 0              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_chebyshev_distance_f16.c:121:11
+	strh.w	r0, [sp, #4]
+	.loc	5 122 13 is_stmt 1              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_chebyshev_distance_f16.c:122:13
+	ldr	r0, [sp, #8]
+	subs	r0, #1
+	str	r0, [sp, #8]
+	.loc	5 124 4                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_chebyshev_distance_f16.c:124:4
+	b	.LBB2_1
+.LBB2_1:                                @ =>This Inner Loop Header: Depth=1
+	.loc	5 124 10 is_stmt 0              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_chebyshev_distance_f16.c:124:10
+	ldr	r0, [sp, #8]
+	.loc	5 124 4                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_chebyshev_distance_f16.c:124:4
+	cmp	r0, #0
+	beq	.LBB2_5
+	b	.LBB2_2
+.LBB2_2:                                @   in Loop: Header=BB2_1 Depth=1
+.Ltmp13:
+	.loc	5 126 17 is_stmt 1              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_chebyshev_distance_f16.c:126:17
+	ldr	r0, [sp, #16]
+	adds	r1, r0, #2
+	str	r1, [sp, #16]
+	.loc	5 126 14 is_stmt 0              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_chebyshev_distance_f16.c:126:14
+	ldrh	r0, [r0]
+	.loc	5 126 12                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_chebyshev_distance_f16.c:126:12
+	strh.w	r0, [sp, #2]
+	.loc	5 127 17 is_stmt 1              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_chebyshev_distance_f16.c:127:17
+	ldr	r0, [sp, #12]
+	adds	r1, r0, #2
+	str	r1, [sp, #12]
+	.loc	5 127 14 is_stmt 0              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_chebyshev_distance_f16.c:127:14
+	ldrh	r0, [r0]
+	.loc	5 127 12                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_chebyshev_distance_f16.c:127:12
+	strh.w	r0, [sp]
+	.loc	5 128 52 is_stmt 1              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_chebyshev_distance_f16.c:128:52
+	ldrh.w	r0, [sp, #2]
+	.loc	5 128 57 is_stmt 0              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_chebyshev_distance_f16.c:128:57
+	vmov	s0, r0
+	vcvtb.f32.f16	s0, s0
+	.loc	5 128 69                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_chebyshev_distance_f16.c:128:69
+	ldrh.w	r0, [sp]
+	.loc	5 128 57                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_chebyshev_distance_f16.c:128:57
+	vmov	s2, r0
+	vcvtb.f32.f16	s2, s2
+	vsub.f32	s2, s0, s2
+                                        @ implicit-def: $s0
+	vcvtb.f16.f32	s0, s2
+	vmov	r0, s0
+	.loc	5 128 30                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_chebyshev_distance_f16.c:128:30
+	vmov	s0, r0
+	vcvtb.f32.f16	s0, s0
+	.loc	5 128 24                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_chebyshev_distance_f16.c:128:24
+	vabs.f32	s2, s0
+                                        @ implicit-def: $s0
+	.loc	5 128 14                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_chebyshev_distance_f16.c:128:14
+	vcvtb.f16.f32	s0, s2
+	vmov	r0, s0
+	.loc	5 128 12                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_chebyshev_distance_f16.c:128:12
+	strh.w	r0, [sp, #6]
+.Ltmp14:
+	.loc	5 129 21 is_stmt 1              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_chebyshev_distance_f16.c:129:21
+	ldrh.w	r0, [sp, #6]
+	.loc	5 129 38 is_stmt 0              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_chebyshev_distance_f16.c:129:38
+	ldrh.w	r1, [sp, #4]
+	.loc	5 129 26                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_chebyshev_distance_f16.c:129:26
+	vmov	s0, r1
+	vcvtb.f32.f16	s2, s0
+	vmov	s0, r0
+	vcvtb.f32.f16	s0, s0
+.Ltmp15:
+	.loc	5 129 11                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_chebyshev_distance_f16.c:129:11
+	vcmp.f32	s0, s2
+	vmrs	APSR_nzcv, fpscr
+	ble	.LBB2_4
+	b	.LBB2_3
+.LBB2_3:                                @   in Loop: Header=BB2_1 Depth=1
+.Ltmp16:
+	.loc	5 131 18 is_stmt 1              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_chebyshev_distance_f16.c:131:18
+	ldrh.w	r0, [sp, #6]
+	.loc	5 131 16 is_stmt 0              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_chebyshev_distance_f16.c:131:16
+	strh.w	r0, [sp, #4]
+	.loc	5 132 7 is_stmt 1               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_chebyshev_distance_f16.c:132:7
+	b	.LBB2_4
+.Ltmp17:
+.LBB2_4:                                @   in Loop: Header=BB2_1 Depth=1
+	.loc	5 133 17                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_chebyshev_distance_f16.c:133:17
+	ldr	r0, [sp, #8]
+	subs	r0, #1
+	str	r0, [sp, #8]
+.Ltmp18:
+	.loc	5 124 4                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_chebyshev_distance_f16.c:124:4
+	b	.LBB2_1
+.LBB2_5:
+	.loc	5 136 4                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_chebyshev_distance_f16.c:136:4
+	ldrh.w	r0, [sp, #4]
+	vmov	s0, r0
+	.loc	5 136 4 epilogue_begin is_stmt 0 @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_chebyshev_distance_f16.c:136:4
+	add	sp, #20
+	bx	lr
+.Ltmp19:
+.Lfunc_end2:
+	.size	arm_chebyshev_distance_f16, .Lfunc_end2-arm_chebyshev_distance_f16
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.arm_cityblock_distance_f16,"ax",%progbits
+	.hidden	arm_cityblock_distance_f16      @ -- Begin function arm_cityblock_distance_f16
+	.globl	arm_cityblock_distance_f16
+	.p2align	3
+	.type	arm_cityblock_distance_f16,%function
+	.code	16                              @ @arm_cityblock_distance_f16
+	.thumb_func
+arm_cityblock_distance_f16:
+.Lfunc_begin3:
+	.file	6 "D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions" "arm_cityblock_distance_f16.c"
+	.loc	6 106 0 is_stmt 1               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_cityblock_distance_f16.c:106:0
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#20
+	sub	sp, #20
+	.cfi_def_cfa_offset 20
+	str	r0, [sp, #16]
+	str	r1, [sp, #12]
+	str	r2, [sp, #8]
+	movs	r0, #0
+.Ltmp20:
+	.loc	6 109 10 prologue_end           @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_cityblock_distance_f16.c:109:10
+	strh.w	r0, [sp, #6]
+	.loc	6 110 4                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_cityblock_distance_f16.c:110:4
+	b	.LBB3_1
+.LBB3_1:                                @ =>This Inner Loop Header: Depth=1
+	.loc	6 110 10 is_stmt 0              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_cityblock_distance_f16.c:110:10
+	ldr	r0, [sp, #8]
+	.loc	6 110 4                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_cityblock_distance_f16.c:110:4
+	cmp	r0, #0
+	beq	.LBB3_3
+	b	.LBB3_2
+.LBB3_2:                                @   in Loop: Header=BB3_1 Depth=1
+.Ltmp21:
+	.loc	6 112 17 is_stmt 1              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_cityblock_distance_f16.c:112:17
+	ldr	r0, [sp, #16]
+	adds	r1, r0, #2
+	str	r1, [sp, #16]
+	.loc	6 112 14 is_stmt 0              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_cityblock_distance_f16.c:112:14
+	ldrh	r0, [r0]
+	.loc	6 112 12                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_cityblock_distance_f16.c:112:12
+	strh.w	r0, [sp, #4]
+	.loc	6 113 17 is_stmt 1              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_cityblock_distance_f16.c:113:17
+	ldr	r0, [sp, #12]
+	adds	r1, r0, #2
+	str	r1, [sp, #12]
+	.loc	6 113 14 is_stmt 0              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_cityblock_distance_f16.c:113:14
+	ldrh	r0, [r0]
+	.loc	6 113 12                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_cityblock_distance_f16.c:113:12
+	strh.w	r0, [sp, #2]
+	.loc	6 114 55 is_stmt 1              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_cityblock_distance_f16.c:114:55
+	ldrh.w	r0, [sp, #4]
+	.loc	6 114 60 is_stmt 0              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_cityblock_distance_f16.c:114:60
+	vmov	s0, r0
+	vcvtb.f32.f16	s0, s0
+	.loc	6 114 72                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_cityblock_distance_f16.c:114:72
+	ldrh.w	r0, [sp, #2]
+	.loc	6 114 60                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_cityblock_distance_f16.c:114:60
+	vmov	s2, r0
+	vcvtb.f32.f16	s2, s2
+	vsub.f32	s2, s0, s2
+                                        @ implicit-def: $s0
+	vcvtb.f16.f32	s0, s2
+	vmov	r0, s0
+	.loc	6 114 33                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_cityblock_distance_f16.c:114:33
+	vmov	s0, r0
+	vcvtb.f32.f16	s0, s0
+	.loc	6 114 27                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_cityblock_distance_f16.c:114:27
+	vabs.f32	s2, s0
+                                        @ implicit-def: $s0
+	.loc	6 114 17                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_cityblock_distance_f16.c:114:17
+	vcvtb.f16.f32	s0, s2
+	vmov	r0, s0
+	.loc	6 114 14                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_cityblock_distance_f16.c:114:14
+	vmov	s0, r0
+	vcvtb.f32.f16	s2, s0
+	ldrh.w	r0, [sp, #6]
+	vmov	s0, r0
+	vcvtb.f32.f16	s0, s0
+	vadd.f32	s2, s0, s2
+                                        @ implicit-def: $s0
+	vcvtb.f16.f32	s0, s2
+	vmov	r0, s0
+	strh.w	r0, [sp, #6]
+	.loc	6 116 17 is_stmt 1              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_cityblock_distance_f16.c:116:17
+	ldr	r0, [sp, #8]
+	subs	r0, #1
+	str	r0, [sp, #8]
+.Ltmp22:
+	.loc	6 110 4                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_cityblock_distance_f16.c:110:4
+	b	.LBB3_1
+.LBB3_3:
+	.loc	6 119 4                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_cityblock_distance_f16.c:119:4
+	ldrh.w	r0, [sp, #6]
+	vmov	s0, r0
+	.loc	6 119 4 epilogue_begin is_stmt 0 @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_cityblock_distance_f16.c:119:4
+	add	sp, #20
+	bx	lr
+.Ltmp23:
+.Lfunc_end3:
+	.size	arm_cityblock_distance_f16, .Lfunc_end3-arm_cityblock_distance_f16
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.arm_correlation_distance_f16,"ax",%progbits
+	.hidden	arm_correlation_distance_f16    @ -- Begin function arm_correlation_distance_f16
+	.globl	arm_correlation_distance_f16
+	.p2align	3
+	.type	arm_correlation_distance_f16,%function
+	.code	16                              @ @arm_correlation_distance_f16
+	.thumb_func
+arm_correlation_distance_f16:
+.Lfunc_begin4:
+	.file	7 "D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions" "arm_correlation_distance_f16.c"
+	.loc	7 67 0 is_stmt 1                @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_correlation_distance_f16.c:67:0
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#56
+	sub	sp, #56
+	.cfi_def_cfa_offset 64
+	str	r0, [sp, #24]
+	str	r1, [sp, #20]
+	str	r2, [sp, #16]
+.Ltmp24:
+	.loc	7 70 18 prologue_end            @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_correlation_distance_f16.c:70:18
+	ldr	r0, [sp, #24]
+	.loc	7 70 22 is_stmt 0               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_correlation_distance_f16.c:70:22
+	ldr	r1, [sp, #16]
+	add.w	r2, sp, #14
+	.loc	7 70 5                          @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_correlation_distance_f16.c:70:5
+	bl	arm_mean_f16
+	.loc	7 71 18 is_stmt 1               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_correlation_distance_f16.c:71:18
+	ldr	r0, [sp, #20]
+	.loc	7 71 22 is_stmt 0               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_correlation_distance_f16.c:71:22
+	ldr	r1, [sp, #16]
+	add	r2, sp, #12
+	.loc	7 71 5                          @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_correlation_distance_f16.c:71:5
+	bl	arm_mean_f16
+	.loc	7 73 20 is_stmt 1               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_correlation_distance_f16.c:73:20
+	ldr	r1, [sp, #24]
+	.loc	7 73 35 is_stmt 0               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_correlation_distance_f16.c:73:35
+	ldrh.w	r0, [sp, #14]
+	.loc	7 73 24                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_correlation_distance_f16.c:73:24
+	vmov	s0, r0
+	vcvtb.f32.f16	s0, s0
+	vneg.f32	s2, s0
+                                        @ implicit-def: $s0
+	vcvtb.f16.f32	s0, s2
+	vmov	r0, s0
+	.loc	7 73 43                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_correlation_distance_f16.c:73:43
+	ldr	r2, [sp, #16]
+	.loc	7 73 5                          @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_correlation_distance_f16.c:73:5
+	vmov	s0, r0
+	mov	r0, r1
+	bl	arm_offset_f16
+	.loc	7 74 20 is_stmt 1               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_correlation_distance_f16.c:74:20
+	ldr	r1, [sp, #20]
+	.loc	7 74 35 is_stmt 0               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_correlation_distance_f16.c:74:35
+	ldrh.w	r0, [sp, #12]
+	.loc	7 74 24                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_correlation_distance_f16.c:74:24
+	vmov	s0, r0
+	vcvtb.f32.f16	s0, s0
+	vneg.f32	s2, s0
+                                        @ implicit-def: $s0
+	vcvtb.f16.f32	s0, s2
+	vmov	r0, s0
+	.loc	7 74 43                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_correlation_distance_f16.c:74:43
+	ldr	r2, [sp, #16]
+	.loc	7 74 5                          @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_correlation_distance_f16.c:74:5
+	vmov	s0, r0
+	mov	r0, r1
+	bl	arm_offset_f16
+	.loc	7 76 19 is_stmt 1               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_correlation_distance_f16.c:76:19
+	ldr	r0, [sp, #24]
+	.loc	7 76 23 is_stmt 0               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_correlation_distance_f16.c:76:23
+	ldr	r1, [sp, #16]
+	add.w	r2, sp, #10
+	.loc	7 76 5                          @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_correlation_distance_f16.c:76:5
+	bl	arm_power_f16
+	.loc	7 77 19 is_stmt 1               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_correlation_distance_f16.c:77:19
+	ldr	r0, [sp, #20]
+	.loc	7 77 23 is_stmt 0               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_correlation_distance_f16.c:77:23
+	ldr	r1, [sp, #16]
+	add	r2, sp, #8
+	.loc	7 77 5                          @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_correlation_distance_f16.c:77:5
+	bl	arm_power_f16
+	.loc	7 79 22 is_stmt 1               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_correlation_distance_f16.c:79:22
+	ldr	r0, [sp, #24]
+	.loc	7 79 25 is_stmt 0               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_correlation_distance_f16.c:79:25
+	ldr	r1, [sp, #20]
+	.loc	7 79 28                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_correlation_distance_f16.c:79:28
+	ldr	r2, [sp, #16]
+	add.w	r3, sp, #6
+	.loc	7 79 5                          @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_correlation_distance_f16.c:79:5
+	bl	arm_dot_prod_f16
+	.loc	7 81 21 is_stmt 1               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_correlation_distance_f16.c:81:21
+	ldrh.w	r0, [sp, #6]
+	.loc	7 81 25 is_stmt 0               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_correlation_distance_f16.c:81:25
+	vmov	s0, r0
+	vcvtb.f32.f16	s0, s0
+	.loc	7 81 27                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_correlation_distance_f16.c:81:27
+	vldr	s2, [sp, #16]
+	vcvt.f32.u32	s4, s2
+                                        @ implicit-def: $s2
+	vcvtb.f16.f32	s2, s4
+	vmov	r0, s2
+	.loc	7 81 25                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_correlation_distance_f16.c:81:25
+	vmov	s2, r0
+	vcvtb.f32.f16	s2, s2
+	vdiv.f32	s2, s0, s2
+                                        @ implicit-def: $s0
+	vcvtb.f16.f32	s0, s2
+	vmov	r0, s0
+	.loc	7 81 9                          @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_correlation_distance_f16.c:81:9
+	strh.w	r0, [sp, #6]
+	.loc	7 82 22 is_stmt 1               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_correlation_distance_f16.c:82:22
+	ldrh.w	r0, [sp, #10]
+	.loc	7 82 27 is_stmt 0               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_correlation_distance_f16.c:82:27
+	vmov	s0, r0
+	vcvtb.f32.f16	s0, s0
+	.loc	7 82 29                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_correlation_distance_f16.c:82:29
+	vldr	s2, [sp, #16]
+	vcvt.f32.u32	s4, s2
+                                        @ implicit-def: $s2
+	vcvtb.f16.f32	s2, s4
+	vmov	r0, s2
+	.loc	7 82 27                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_correlation_distance_f16.c:82:27
+	vmov	s2, r0
+	vcvtb.f32.f16	s2, s2
+	vdiv.f32	s2, s0, s2
+                                        @ implicit-def: $s0
+	vcvtb.f16.f32	s0, s2
+	vmov	r0, s0
+	.loc	7 82 10                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_correlation_distance_f16.c:82:10
+	strh.w	r0, [sp, #10]
+	.loc	7 83 22 is_stmt 1               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_correlation_distance_f16.c:83:22
+	ldrh.w	r0, [sp, #8]
+	.loc	7 83 27 is_stmt 0               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_correlation_distance_f16.c:83:27
+	vmov	s0, r0
+	vcvtb.f32.f16	s0, s0
+	.loc	7 83 29                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_correlation_distance_f16.c:83:29
+	vldr	s2, [sp, #16]
+	vcvt.f32.u32	s4, s2
+                                        @ implicit-def: $s2
+	vcvtb.f16.f32	s2, s4
+	vmov	r0, s2
+	.loc	7 83 27                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_correlation_distance_f16.c:83:27
+	vmov	s2, r0
+	vcvtb.f32.f16	s2, s2
+	vdiv.f32	s2, s0, s2
+                                        @ implicit-def: $s0
+	vcvtb.f16.f32	s0, s2
+	vmov	r0, s0
+	.loc	7 83 10                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_correlation_distance_f16.c:83:10
+	strh.w	r0, [sp, #8]
+	.loc	7 85 28 is_stmt 1               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_correlation_distance_f16.c:85:28
+	ldrh.w	r0, [sp, #10]
+	.loc	7 85 33 is_stmt 0               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_correlation_distance_f16.c:85:33
+	vmov	s0, r0
+	vcvtb.f32.f16	s0, s0
+	.loc	7 85 45                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_correlation_distance_f16.c:85:45
+	ldrh.w	r0, [sp, #8]
+	.loc	7 85 33                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_correlation_distance_f16.c:85:33
+	vmov	s2, r0
+	vcvtb.f32.f16	s2, s2
+	vmul.f32	s2, s0, s2
+                                        @ implicit-def: $s0
+	vcvtb.f16.f32	s0, s2
+	vmov	r0, s0
+	strh.w	r0, [sp, #42]
+	add	r0, sp, #4
+	str	r0, [sp, #36]
+.Ltmp25:
+	.file	8 "D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Include\\dsp" "fast_math_functions_f16.h"
+	.loc	8 65 36 is_stmt 1               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Include\dsp/fast_math_functions_f16.h:65:36
+	ldrh.w	r0, [sp, #42]
+	.loc	8 65 25 is_stmt 0               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Include\dsp/fast_math_functions_f16.h:65:25
+	vmov	s0, r0
+	vcvtb.f32.f16	s0, s0
+	vstr	s0, [sp, #48]
+	add	r0, sp, #32
+	str	r0, [sp, #44]
+.Ltmp26:
+	.file	9 "D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Include\\dsp" "fast_math_functions.h"
+	.loc	9 238 9 is_stmt 1               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Include\dsp/fast_math_functions.h:238:9
+	vldr	s0, [sp, #48]
+.Ltmp27:
+	.loc	9 238 9 is_stmt 0               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Include\dsp/fast_math_functions.h:238:9
+	vcmp.f32	s0, #0
+	vmrs	APSR_nzcv, fpscr
+	blt	.LBB4_2
+	b	.LBB4_1
+.LBB4_1:
+.Ltmp28:
+	.loc	9 255 22 is_stmt 1              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Include\dsp/fast_math_functions.h:255:22
+	vldr	s0, [sp, #48]
+	.loc	9 255 15 is_stmt 0              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Include\dsp/fast_math_functions.h:255:15
+	bl	_sqrtf
+	.loc	9 255 8                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Include\dsp/fast_math_functions.h:255:8
+	ldr	r0, [sp, #44]
+	.loc	9 255 13                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Include\dsp/fast_math_functions.h:255:13
+	vstr	s0, [r0]
+	movs	r0, #0
+	.loc	9 268 7 is_stmt 1               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Include\dsp/fast_math_functions.h:268:7
+	strb.w	r0, [sp, #55]
+	b	.LBB4_3
+.Ltmp29:
+.LBB4_2:
+	.loc	9 272 8                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Include\dsp/fast_math_functions.h:272:8
+	ldr	r1, [sp, #44]
+	movs	r0, #0
+	.loc	9 272 13 is_stmt 0              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Include\dsp/fast_math_functions.h:272:13
+	str	r0, [r1]
+	movs	r0, #255
+	.loc	9 273 7 is_stmt 1               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Include\dsp/fast_math_functions.h:273:7
+	strb.w	r0, [sp, #55]
+	b	.LBB4_3
+.Ltmp30:
+.LBB4_3:
+	.loc	9 275 3                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Include\dsp/fast_math_functions.h:275:3
+	ldrb.w	r0, [sp, #55]
+.Ltmp31:
+	.loc	8 65 11                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Include\dsp/fast_math_functions_f16.h:65:11
+	strb.w	r0, [sp, #31]
+	.loc	8 66 22                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Include\dsp/fast_math_functions_f16.h:66:22
+	vldr	s2, [sp, #32]
+                                        @ implicit-def: $s0
+	.loc	8 66 11 is_stmt 0               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Include\dsp/fast_math_functions_f16.h:66:11
+	vcvtb.f16.f32	s0, s2
+	vmov	r0, s0
+	.loc	8 66 6                          @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Include\dsp/fast_math_functions_f16.h:66:6
+	ldr	r1, [sp, #36]
+	.loc	8 66 10                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Include\dsp/fast_math_functions_f16.h:66:10
+	strh	r0, [r1]
+.Ltmp32:
+	.loc	7 87 31 is_stmt 1               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_correlation_distance_f16.c:87:31
+	ldrh.w	r0, [sp, #6]
+	.loc	7 87 19 is_stmt 0               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_correlation_distance_f16.c:87:19
+	vmov	s0, r0
+	vcvtb.f32.f16	s0, s0
+	.loc	7 87 47                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_correlation_distance_f16.c:87:47
+	ldrh.w	r0, [sp, #4]
+	.loc	7 87 19                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_correlation_distance_f16.c:87:19
+	vmov	s2, r0
+	vcvtb.f32.f16	s2, s2
+	vdiv.f32	s2, s0, s2
+	vmov.f32	s0, #1.000000e+00
+	vsub.f32	s2, s0, s2
+                                        @ implicit-def: $s0
+	vcvtb.f16.f32	s0, s2
+	vmov	r0, s0
+	.loc	7 87 5                          @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_correlation_distance_f16.c:87:5
+	vmov	s0, r0
+	.loc	7 87 5 epilogue_begin           @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_correlation_distance_f16.c:87:5
+	add	sp, #56
+	pop	{r7, pc}
+.Ltmp33:
+.Lfunc_end4:
+	.size	arm_correlation_distance_f16, .Lfunc_end4-arm_correlation_distance_f16
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.arm_cosine_distance_f16,"ax",%progbits
+	.hidden	arm_cosine_distance_f16         @ -- Begin function arm_cosine_distance_f16
+	.globl	arm_cosine_distance_f16
+	.p2align	3
+	.type	arm_cosine_distance_f16,%function
+	.code	16                              @ @arm_cosine_distance_f16
+	.thumb_func
+arm_cosine_distance_f16:
+.Lfunc_begin5:
+	.file	10 "D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions" "arm_cosine_distance_f16.c"
+	.loc	10 68 0 is_stmt 1               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_cosine_distance_f16.c:68:0
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#48
+	sub	sp, #48
+	.cfi_def_cfa_offset 56
+	str	r0, [sp, #16]
+	str	r1, [sp, #12]
+	str	r2, [sp, #8]
+.Ltmp34:
+	.loc	10 71 19 prologue_end           @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_cosine_distance_f16.c:71:19
+	ldr	r0, [sp, #16]
+	.loc	10 71 23 is_stmt 0              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_cosine_distance_f16.c:71:23
+	ldr	r1, [sp, #8]
+	add.w	r2, sp, #6
+	.loc	10 71 5                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_cosine_distance_f16.c:71:5
+	bl	arm_power_f16
+	.loc	10 72 19 is_stmt 1              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_cosine_distance_f16.c:72:19
+	ldr	r0, [sp, #12]
+	.loc	10 72 23 is_stmt 0              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_cosine_distance_f16.c:72:23
+	ldr	r1, [sp, #8]
+	add	r2, sp, #4
+	.loc	10 72 5                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_cosine_distance_f16.c:72:5
+	bl	arm_power_f16
+	.loc	10 74 22 is_stmt 1              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_cosine_distance_f16.c:74:22
+	ldr	r0, [sp, #16]
+	.loc	10 74 25 is_stmt 0              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_cosine_distance_f16.c:74:25
+	ldr	r1, [sp, #12]
+	.loc	10 74 28                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_cosine_distance_f16.c:74:28
+	ldr	r2, [sp, #8]
+	add.w	r3, sp, #2
+	.loc	10 74 5                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_cosine_distance_f16.c:74:5
+	bl	arm_dot_prod_f16
+	.loc	10 76 28 is_stmt 1              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_cosine_distance_f16.c:76:28
+	ldrh.w	r0, [sp, #6]
+	.loc	10 76 33 is_stmt 0              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_cosine_distance_f16.c:76:33
+	vmov	s0, r0
+	vcvtb.f32.f16	s0, s0
+	.loc	10 76 45                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_cosine_distance_f16.c:76:45
+	ldrh.w	r0, [sp, #4]
+	.loc	10 76 33                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_cosine_distance_f16.c:76:33
+	vmov	s2, r0
+	vcvtb.f32.f16	s2, s2
+	vmul.f32	s2, s0, s2
+                                        @ implicit-def: $s0
+	vcvtb.f16.f32	s0, s2
+	vmov	r0, s0
+	strh.w	r0, [sp, #34]
+	mov	r0, sp
+	str	r0, [sp, #28]
+.Ltmp35:
+	.loc	8 65 36 is_stmt 1               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Include\dsp/fast_math_functions_f16.h:65:36
+	ldrh.w	r0, [sp, #34]
+	.loc	8 65 25 is_stmt 0               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Include\dsp/fast_math_functions_f16.h:65:25
+	vmov	s0, r0
+	vcvtb.f32.f16	s0, s0
+	vstr	s0, [sp, #40]
+	add	r0, sp, #24
+	str	r0, [sp, #36]
+.Ltmp36:
+	.loc	9 238 9 is_stmt 1               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Include\dsp/fast_math_functions.h:238:9
+	vldr	s0, [sp, #40]
+.Ltmp37:
+	.loc	9 238 9 is_stmt 0               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Include\dsp/fast_math_functions.h:238:9
+	vcmp.f32	s0, #0
+	vmrs	APSR_nzcv, fpscr
+	blt	.LBB5_2
+	b	.LBB5_1
+.LBB5_1:
+.Ltmp38:
+	.loc	9 255 22 is_stmt 1              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Include\dsp/fast_math_functions.h:255:22
+	vldr	s0, [sp, #40]
+	.loc	9 255 15 is_stmt 0              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Include\dsp/fast_math_functions.h:255:15
+	bl	_sqrtf
+	.loc	9 255 8                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Include\dsp/fast_math_functions.h:255:8
+	ldr	r0, [sp, #36]
+	.loc	9 255 13                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Include\dsp/fast_math_functions.h:255:13
+	vstr	s0, [r0]
+	movs	r0, #0
+	.loc	9 268 7 is_stmt 1               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Include\dsp/fast_math_functions.h:268:7
+	strb.w	r0, [sp, #47]
+	b	.LBB5_3
+.Ltmp39:
+.LBB5_2:
+	.loc	9 272 8                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Include\dsp/fast_math_functions.h:272:8
+	ldr	r1, [sp, #36]
+	movs	r0, #0
+	.loc	9 272 13 is_stmt 0              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Include\dsp/fast_math_functions.h:272:13
+	str	r0, [r1]
+	movs	r0, #255
+	.loc	9 273 7 is_stmt 1               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Include\dsp/fast_math_functions.h:273:7
+	strb.w	r0, [sp, #47]
+	b	.LBB5_3
+.Ltmp40:
+.LBB5_3:
+	.loc	9 275 3                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Include\dsp/fast_math_functions.h:275:3
+	ldrb.w	r0, [sp, #47]
+.Ltmp41:
+	.loc	8 65 11                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Include\dsp/fast_math_functions_f16.h:65:11
+	strb.w	r0, [sp, #23]
+	.loc	8 66 22                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Include\dsp/fast_math_functions_f16.h:66:22
+	vldr	s2, [sp, #24]
+                                        @ implicit-def: $s0
+	.loc	8 66 11 is_stmt 0               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Include\dsp/fast_math_functions_f16.h:66:11
+	vcvtb.f16.f32	s0, s2
+	vmov	r0, s0
+	.loc	8 66 6                          @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Include\dsp/fast_math_functions_f16.h:66:6
+	ldr	r1, [sp, #28]
+	.loc	8 66 10                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Include\dsp/fast_math_functions_f16.h:66:10
+	strh	r0, [r1]
+.Ltmp42:
+	.loc	10 77 31 is_stmt 1              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_cosine_distance_f16.c:77:31
+	ldrh.w	r0, [sp, #2]
+	.loc	10 77 19 is_stmt 0              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_cosine_distance_f16.c:77:19
+	vmov	s0, r0
+	vcvtb.f32.f16	s0, s0
+	.loc	10 77 47                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_cosine_distance_f16.c:77:47
+	ldrh.w	r0, [sp]
+	.loc	10 77 19                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_cosine_distance_f16.c:77:19
+	vmov	s2, r0
+	vcvtb.f32.f16	s2, s2
+	vdiv.f32	s2, s0, s2
+	vmov.f32	s0, #1.000000e+00
+	vsub.f32	s2, s0, s2
+                                        @ implicit-def: $s0
+	vcvtb.f16.f32	s0, s2
+	vmov	r0, s0
+	.loc	10 77 5                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_cosine_distance_f16.c:77:5
+	vmov	s0, r0
+	.loc	10 77 5 epilogue_begin          @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_cosine_distance_f16.c:77:5
+	add	sp, #48
+	pop	{r7, pc}
+.Ltmp43:
+.Lfunc_end5:
+	.size	arm_cosine_distance_f16, .Lfunc_end5-arm_cosine_distance_f16
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.arm_euclidean_distance_f16,"ax",%progbits
+	.hidden	arm_euclidean_distance_f16      @ -- Begin function arm_euclidean_distance_f16
+	.globl	arm_euclidean_distance_f16
+	.p2align	3
+	.type	arm_euclidean_distance_f16,%function
+	.code	16                              @ @arm_euclidean_distance_f16
+	.thumb_func
+arm_euclidean_distance_f16:
+.Lfunc_begin6:
+	.file	11 "D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions" "arm_euclidean_distance_f16.c"
+	.loc	11 109 0 is_stmt 1              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_euclidean_distance_f16.c:109:0
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#56
+	sub	sp, #56
+	.cfi_def_cfa_offset 64
+	add	r3, sp, #32
+	str	r3, [sp, #4]                    @ 4-byte Spill
+	str	r0, [sp, #24]
+	str	r1, [sp, #20]
+	str	r2, [sp, #16]
+	movs	r0, #0
+.Ltmp44:
+	.loc	11 110 13 prologue_end          @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_euclidean_distance_f16.c:110:13
+	strh.w	r0, [sp, #14]
+	.loc	11 113 4                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_euclidean_distance_f16.c:113:4
+	b	.LBB6_1
+.LBB6_1:                                @ =>This Inner Loop Header: Depth=1
+	.loc	11 113 10 is_stmt 0             @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_euclidean_distance_f16.c:113:10
+	ldr	r0, [sp, #16]
+	.loc	11 113 4                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_euclidean_distance_f16.c:113:4
+	cbz	r0, .LBB6_3
+	b	.LBB6_2
+.LBB6_2:                                @   in Loop: Header=BB6_1 Depth=1
+.Ltmp45:
+	.loc	11 115 26 is_stmt 1             @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_euclidean_distance_f16.c:115:26
+	ldr	r0, [sp, #24]
+	adds	r1, r0, #2
+	str	r1, [sp, #24]
+	.loc	11 115 23 is_stmt 0             @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_euclidean_distance_f16.c:115:23
+	ldrh	r0, [r0]
+	.loc	11 115 29                       @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_euclidean_distance_f16.c:115:29
+	vmov	s0, r0
+	vcvtb.f32.f16	s0, s0
+	.loc	11 115 44                       @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_euclidean_distance_f16.c:115:44
+	ldr	r0, [sp, #20]
+	adds	r1, r0, #2
+	str	r1, [sp, #20]
+	.loc	11 115 41                       @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_euclidean_distance_f16.c:115:41
+	ldrh	r0, [r0]
+	.loc	11 115 29                       @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_euclidean_distance_f16.c:115:29
+	vmov	s2, r0
+	vcvtb.f32.f16	s2, s2
+	vsub.f32	s2, s0, s2
+                                        @ implicit-def: $s0
+	vcvtb.f16.f32	s0, s2
+	vmov	r0, s0
+	.loc	11 115 11                       @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_euclidean_distance_f16.c:115:11
+	strh.w	r0, [sp, #12]
+	.loc	11 116 16 is_stmt 1             @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_euclidean_distance_f16.c:116:16
+	ldrh.w	r0, [sp, #12]
+	.loc	11 116 13 is_stmt 0             @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_euclidean_distance_f16.c:116:13
+	vmov	s0, r0
+	vcvtb.f32.f16	s0, s0
+	ldrh.w	r0, [sp, #14]
+	vmov	s2, r0
+	vcvtb.f32.f16	s2, s2
+	vfma.f32	s2, s0, s0
+                                        @ implicit-def: $s0
+	vcvtb.f16.f32	s0, s2
+	vmov	r0, s0
+	strh.w	r0, [sp, #14]
+	.loc	11 117 17 is_stmt 1             @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_euclidean_distance_f16.c:117:17
+	ldr	r0, [sp, #16]
+	subs	r0, #1
+	str	r0, [sp, #16]
+.Ltmp46:
+	.loc	11 113 4                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_euclidean_distance_f16.c:113:4
+	b	.LBB6_1
+.LBB6_3:
+	.loc	11 119 17                       @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_euclidean_distance_f16.c:119:17
+	ldr	r0, [sp, #4]                    @ 4-byte Reload
+	ldrh.w	r1, [sp, #14]
+	strh.w	r1, [sp, #42]
+	add.w	r1, sp, #10
+	str	r1, [sp, #36]
+.Ltmp47:
+	.loc	8 65 36                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Include\dsp/fast_math_functions_f16.h:65:36
+	ldrh.w	r1, [sp, #42]
+	.loc	8 65 25 is_stmt 0               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Include\dsp/fast_math_functions_f16.h:65:25
+	vmov	s0, r1
+	vcvtb.f32.f16	s0, s0
+	vstr	s0, [r0, #16]
+	add	r1, sp, #32
+	str	r1, [sp, #44]
+.Ltmp48:
+	.loc	9 238 9 is_stmt 1               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Include\dsp/fast_math_functions.h:238:9
+	vldr	s0, [r0, #16]
+.Ltmp49:
+	.loc	9 238 9 is_stmt 0               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Include\dsp/fast_math_functions.h:238:9
+	vcmp.f32	s0, #0
+	vmrs	APSR_nzcv, fpscr
+	blt	.LBB6_5
+	b	.LBB6_4
+.LBB6_4:
+.Ltmp50:
+	.loc	9 255 22 is_stmt 1              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Include\dsp/fast_math_functions.h:255:22
+	ldr	r0, [sp, #4]                    @ 4-byte Reload
+	vldr	s0, [r0, #16]
+	.loc	9 255 15 is_stmt 0              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Include\dsp/fast_math_functions.h:255:15
+	bl	_sqrtf
+	.loc	9 255 8                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Include\dsp/fast_math_functions.h:255:8
+	ldr	r0, [sp, #44]
+	.loc	9 255 13                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Include\dsp/fast_math_functions.h:255:13
+	vstr	s0, [r0]
+	movs	r0, #0
+	.loc	9 268 7 is_stmt 1               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Include\dsp/fast_math_functions.h:268:7
+	strb.w	r0, [sp, #55]
+	b	.LBB6_6
+.Ltmp51:
+.LBB6_5:
+	.loc	9 272 8                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Include\dsp/fast_math_functions.h:272:8
+	ldr	r1, [sp, #44]
+	movs	r0, #0
+	.loc	9 272 13 is_stmt 0              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Include\dsp/fast_math_functions.h:272:13
+	str	r0, [r1]
+	movs	r0, #255
+	.loc	9 273 7 is_stmt 1               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Include\dsp/fast_math_functions.h:273:7
+	strb.w	r0, [sp, #55]
+	b	.LBB6_6
+.Ltmp52:
+.LBB6_6:
+	.loc	9 275 3                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Include\dsp/fast_math_functions.h:275:3
+	ldr	r0, [sp, #4]                    @ 4-byte Reload
+	ldrb.w	r1, [sp, #55]
+.Ltmp53:
+	.loc	8 65 11                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Include\dsp/fast_math_functions_f16.h:65:11
+	strb.w	r1, [sp, #31]
+	.loc	8 66 22                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Include\dsp/fast_math_functions_f16.h:66:22
+	vldr	s2, [r0]
+                                        @ implicit-def: $s0
+	.loc	8 66 11 is_stmt 0               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Include\dsp/fast_math_functions_f16.h:66:11
+	vcvtb.f16.f32	s0, s2
+	vmov	r0, s0
+	.loc	8 66 6                          @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Include\dsp/fast_math_functions_f16.h:66:6
+	ldr	r1, [sp, #36]
+	.loc	8 66 10                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Include\dsp/fast_math_functions_f16.h:66:10
+	strh	r0, [r1]
+.Ltmp54:
+	.loc	11 120 4 is_stmt 1              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_euclidean_distance_f16.c:120:4
+	ldrh.w	r0, [sp, #10]
+	vmov	s0, r0
+	.loc	11 120 4 epilogue_begin is_stmt 0 @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_euclidean_distance_f16.c:120:4
+	add	sp, #56
+	pop	{r7, pc}
+.Ltmp55:
+.Lfunc_end6:
+	.size	arm_euclidean_distance_f16, .Lfunc_end6-arm_euclidean_distance_f16
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.arm_jensenshannon_distance_f16,"ax",%progbits
+	.hidden	arm_jensenshannon_distance_f16  @ -- Begin function arm_jensenshannon_distance_f16
+	.globl	arm_jensenshannon_distance_f16
+	.p2align	3
+	.type	arm_jensenshannon_distance_f16,%function
+	.code	16                              @ @arm_jensenshannon_distance_f16
+	.thumb_func
+arm_jensenshannon_distance_f16:
+.Lfunc_begin7:
+	.file	12 "D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions" "arm_jensenshannon_distance_f16.c"
+	.loc	12 149 0 is_stmt 1              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_jensenshannon_distance_f16.c:149:0
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#56
+	sub	sp, #56
+	.cfi_def_cfa_offset 64
+	str	r0, [sp, #24]
+	str	r1, [sp, #20]
+	str	r2, [sp, #16]
+	movs	r0, #0
+.Ltmp56:
+	.loc	12 154 10 prologue_end          @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_jensenshannon_distance_f16.c:154:10
+	strh.w	r0, [sp, #14]
+	.loc	12 155 11                       @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_jensenshannon_distance_f16.c:155:11
+	strh.w	r0, [sp, #12]
+.Ltmp57:
+	.loc	12 156 10                       @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_jensenshannon_distance_f16.c:156:10
+	str	r0, [sp]
+	.loc	12 156 9 is_stmt 0              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_jensenshannon_distance_f16.c:156:9
+	b	.LBB7_1
+.LBB7_1:                                @ =>This Inner Loop Header: Depth=1
+.Ltmp58:
+	.loc	12 156 14                       @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_jensenshannon_distance_f16.c:156:14
+	ldr	r0, [sp]
+	.loc	12 156 18                       @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_jensenshannon_distance_f16.c:156:18
+	ldr	r1, [sp, #16]
+.Ltmp59:
+	.loc	12 156 5                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_jensenshannon_distance_f16.c:156:5
+	cmp	r0, r1
+	bhs	.LBB7_4
+	b	.LBB7_2
+.LBB7_2:                                @   in Loop: Header=BB7_1 Depth=1
+.Ltmp60:
+	.loc	12 158 24 is_stmt 1             @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_jensenshannon_distance_f16.c:158:24
+	ldr	r0, [sp, #24]
+	.loc	12 158 27 is_stmt 0             @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_jensenshannon_distance_f16.c:158:27
+	ldr	r1, [sp]
+	.loc	12 158 24                       @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_jensenshannon_distance_f16.c:158:24
+	ldrh.w	r0, [r0, r1, lsl #1]
+	.loc	12 158 49                       @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_jensenshannon_distance_f16.c:158:49
+	vmov	s0, r0
+	vcvtb.f32.f16	s0, s0
+	.loc	12 158 42                       @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_jensenshannon_distance_f16.c:158:42
+	ldr	r0, [sp, #20]
+	ldrh.w	r0, [r0, r1, lsl #1]
+	.loc	12 158 49                       @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_jensenshannon_distance_f16.c:158:49
+	vmov	s2, r0
+	vcvtb.f32.f16	s2, s2
+	vadd.f32	s0, s0, s2
+	vmov.f32	s2, #5.000000e-01
+	vmul.f32	s2, s0, s2
+                                        @ implicit-def: $s0
+	vcvtb.f16.f32	s0, s2
+	vmov	r0, s0
+	.loc	12 158 11                       @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_jensenshannon_distance_f16.c:158:11
+	strh.w	r0, [sp, #8]
+	.loc	12 159 35 is_stmt 1             @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_jensenshannon_distance_f16.c:159:35
+	ldr	r0, [sp, #24]
+	.loc	12 159 38 is_stmt 0             @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_jensenshannon_distance_f16.c:159:38
+	ldr	r1, [sp]
+	.loc	12 159 26                       @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_jensenshannon_distance_f16.c:159:26
+	ldrh.w	r0, [r0, r1, lsl #1]
+	vmov	s0, r0
+	ldrh.w	r0, [sp, #8]
+	vmov	s1, r0
+	bl	rel_entr
+	vmov	r0, s0
+	.loc	12 159 13                       @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_jensenshannon_distance_f16.c:159:13
+	vmov	s0, r0
+	vcvtb.f32.f16	s2, s0
+	ldrh.w	r0, [sp, #14]
+	vmov	s0, r0
+	vcvtb.f32.f16	s0, s0
+	vadd.f32	s2, s0, s2
+                                        @ implicit-def: $s0
+	vcvtb.f16.f32	s0, s2
+	vmov	r0, s0
+	strh.w	r0, [sp, #14]
+	.loc	12 160 35 is_stmt 1             @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_jensenshannon_distance_f16.c:160:35
+	ldr	r0, [sp, #20]
+	.loc	12 160 38 is_stmt 0             @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_jensenshannon_distance_f16.c:160:38
+	ldr	r1, [sp]
+	.loc	12 160 26                       @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_jensenshannon_distance_f16.c:160:26
+	ldrh.w	r0, [r0, r1, lsl #1]
+	vmov	s0, r0
+	ldrh.w	r0, [sp, #8]
+	vmov	s1, r0
+	bl	rel_entr
+	vmov	r0, s0
+	.loc	12 160 13                       @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_jensenshannon_distance_f16.c:160:13
+	vmov	s0, r0
+	vcvtb.f32.f16	s2, s0
+	ldrh.w	r0, [sp, #12]
+	vmov	s0, r0
+	vcvtb.f32.f16	s0, s0
+	vadd.f32	s2, s0, s2
+                                        @ implicit-def: $s0
+	vcvtb.f16.f32	s0, s2
+	vmov	r0, s0
+	strh.w	r0, [sp, #12]
+	.loc	12 161 5 is_stmt 1              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_jensenshannon_distance_f16.c:161:5
+	b	.LBB7_3
+.Ltmp61:
+.LBB7_3:                                @   in Loop: Header=BB7_1 Depth=1
+	.loc	12 156 30                       @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_jensenshannon_distance_f16.c:156:30
+	ldr	r0, [sp]
+	adds	r0, #1
+	str	r0, [sp]
+	.loc	12 156 5 is_stmt 0              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_jensenshannon_distance_f16.c:156:5
+	b	.LBB7_1
+.Ltmp62:
+.LBB7_4:
+	.loc	12 164 11 is_stmt 1             @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_jensenshannon_distance_f16.c:164:11
+	ldrh.w	r0, [sp, #14]
+	.loc	12 164 16 is_stmt 0             @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_jensenshannon_distance_f16.c:164:16
+	vmov	s0, r0
+	vcvtb.f32.f16	s0, s0
+	.loc	12 164 18                       @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_jensenshannon_distance_f16.c:164:18
+	ldrh.w	r0, [sp, #12]
+	.loc	12 164 16                       @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_jensenshannon_distance_f16.c:164:16
+	vmov	s2, r0
+	vcvtb.f32.f16	s2, s2
+	vadd.f32	s2, s0, s2
+                                        @ implicit-def: $s0
+	vcvtb.f16.f32	s0, s2
+	vmov	r0, s0
+	.loc	12 164 9                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_jensenshannon_distance_f16.c:164:9
+	strh.w	r0, [sp, #10]
+	.loc	12 165 28 is_stmt 1             @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_jensenshannon_distance_f16.c:165:28
+	ldrh.w	r0, [sp, #10]
+	.loc	12 165 31 is_stmt 0             @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_jensenshannon_distance_f16.c:165:31
+	vmov	s0, r0
+	vcvtb.f32.f16	s0, s0
+	vmov.f32	s2, #5.000000e-01
+	vmul.f32	s2, s0, s2
+                                        @ implicit-def: $s0
+	vcvtb.f16.f32	s0, s2
+	vmov	r0, s0
+	strh.w	r0, [sp, #42]
+	add.w	r0, sp, #6
+	str	r0, [sp, #36]
+.Ltmp63:
+	.loc	8 65 36 is_stmt 1               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Include\dsp/fast_math_functions_f16.h:65:36
+	ldrh.w	r0, [sp, #42]
+	.loc	8 65 25 is_stmt 0               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Include\dsp/fast_math_functions_f16.h:65:25
+	vmov	s0, r0
+	vcvtb.f32.f16	s0, s0
+	vstr	s0, [sp, #48]
+	add	r0, sp, #32
+	str	r0, [sp, #44]
+.Ltmp64:
+	.loc	9 238 9 is_stmt 1               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Include\dsp/fast_math_functions.h:238:9
+	vldr	s0, [sp, #48]
+.Ltmp65:
+	.loc	9 238 9 is_stmt 0               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Include\dsp/fast_math_functions.h:238:9
+	vcmp.f32	s0, #0
+	vmrs	APSR_nzcv, fpscr
+	blt	.LBB7_6
+	b	.LBB7_5
+.LBB7_5:
+.Ltmp66:
+	.loc	9 255 22 is_stmt 1              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Include\dsp/fast_math_functions.h:255:22
+	vldr	s0, [sp, #48]
+	.loc	9 255 15 is_stmt 0              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Include\dsp/fast_math_functions.h:255:15
+	bl	_sqrtf
+	.loc	9 255 8                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Include\dsp/fast_math_functions.h:255:8
+	ldr	r0, [sp, #44]
+	.loc	9 255 13                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Include\dsp/fast_math_functions.h:255:13
+	vstr	s0, [r0]
+	movs	r0, #0
+	.loc	9 268 7 is_stmt 1               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Include\dsp/fast_math_functions.h:268:7
+	strb.w	r0, [sp, #55]
+	b	.LBB7_7
+.Ltmp67:
+.LBB7_6:
+	.loc	9 272 8                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Include\dsp/fast_math_functions.h:272:8
+	ldr	r1, [sp, #44]
+	movs	r0, #0
+	.loc	9 272 13 is_stmt 0              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Include\dsp/fast_math_functions.h:272:13
+	str	r0, [r1]
+	movs	r0, #255
+	.loc	9 273 7 is_stmt 1               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Include\dsp/fast_math_functions.h:273:7
+	strb.w	r0, [sp, #55]
+	b	.LBB7_7
+.Ltmp68:
+.LBB7_7:
+	.loc	9 275 3                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Include\dsp/fast_math_functions.h:275:3
+	ldrb.w	r0, [sp, #55]
+.Ltmp69:
+	.loc	8 65 11                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Include\dsp/fast_math_functions_f16.h:65:11
+	strb.w	r0, [sp, #31]
+	.loc	8 66 22                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Include\dsp/fast_math_functions_f16.h:66:22
+	vldr	s2, [sp, #32]
+                                        @ implicit-def: $s0
+	.loc	8 66 11 is_stmt 0               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Include\dsp/fast_math_functions_f16.h:66:11
+	vcvtb.f16.f32	s0, s2
+	vmov	r0, s0
+	.loc	8 66 6                          @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Include\dsp/fast_math_functions_f16.h:66:6
+	ldr	r1, [sp, #36]
+	.loc	8 66 10                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Include\dsp/fast_math_functions_f16.h:66:10
+	strh	r0, [r1]
+.Ltmp70:
+	.loc	12 166 5 is_stmt 1              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_jensenshannon_distance_f16.c:166:5
+	ldrh.w	r0, [sp, #6]
+	vmov	s0, r0
+	.loc	12 166 5 epilogue_begin is_stmt 0 @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_jensenshannon_distance_f16.c:166:5
+	add	sp, #56
+	pop	{r7, pc}
+.Ltmp71:
+.Lfunc_end7:
+	.size	arm_jensenshannon_distance_f16, .Lfunc_end7-arm_jensenshannon_distance_f16
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.rel_entr,"ax",%progbits
+	.p2align	3                               @ -- Begin function rel_entr
+	.type	rel_entr,%function
+	.code	16                              @ @rel_entr
+	.thumb_func
+rel_entr:
+.Lfunc_begin8:
+	.loc	12 56 0 is_stmt 1               @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_jensenshannon_distance_f16.c:56:0
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 16
+	vmov	r0, s1
+	vmov	r1, s0
+	strh.w	r1, [sp, #6]
+	strh.w	r0, [sp, #4]
+.Ltmp72:
+	.loc	12 57 23 prologue_end           @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_jensenshannon_distance_f16.c:57:23
+	ldrh.w	r0, [sp, #6]
+	.loc	12 57 25 is_stmt 0              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_jensenshannon_distance_f16.c:57:25
+	vmov	s0, r0
+	vcvtb.f32.f16	s0, s0
+	vstr	s0, [sp]                        @ 4-byte Spill
+	.loc	12 57 78                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_jensenshannon_distance_f16.c:57:78
+	ldrh.w	r0, [sp, #4]
+	.loc	12 57 66                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_jensenshannon_distance_f16.c:57:66
+	vmov	s2, r0
+	vcvtb.f32.f16	s2, s2
+	vdiv.f32	s2, s0, s2
+                                        @ implicit-def: $s0
+	vcvtb.f16.f32	s0, s2
+	vmov	r0, s0
+	.loc	12 57 42                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_jensenshannon_distance_f16.c:57:42
+	vmov	s0, r0
+	vcvtb.f32.f16	s0, s0
+	.loc	12 57 37                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_jensenshannon_distance_f16.c:57:37
+	bl	__hardfp_logf
+	vmov.f32	s4, s0
+	.loc	12 57 66                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_jensenshannon_distance_f16.c:57:66
+	vldr	s0, [sp]                        @ 4-byte Reload
+                                        @ implicit-def: $s2
+	.loc	12 57 27                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_jensenshannon_distance_f16.c:57:27
+	vcvtb.f16.f32	s2, s4
+	vmov	r0, s2
+	.loc	12 57 25                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_jensenshannon_distance_f16.c:57:25
+	vmov	s2, r0
+	vcvtb.f32.f16	s2, s2
+	vmul.f32	s2, s0, s2
+                                        @ implicit-def: $s0
+	vcvtb.f16.f32	s0, s2
+	vmov	r0, s0
+	.loc	12 57 5                         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_jensenshannon_distance_f16.c:57:5
+	vmov	s0, r0
+	.loc	12 57 5 epilogue_begin          @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_jensenshannon_distance_f16.c:57:5
+	add	sp, #8
+	pop	{r7, pc}
+.Ltmp73:
+.Lfunc_end8:
+	.size	rel_entr, .Lfunc_end8-rel_entr
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.arm_minkowski_distance_f16,"ax",%progbits
+	.hidden	arm_minkowski_distance_f16      @ -- Begin function arm_minkowski_distance_f16
+	.globl	arm_minkowski_distance_f16
+	.p2align	3
+	.type	arm_minkowski_distance_f16,%function
+	.code	16                              @ @arm_minkowski_distance_f16
+	.thumb_func
+arm_minkowski_distance_f16:
+.Lfunc_begin9:
+	.file	13 "D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions" "arm_minkowski_distance_f16.c"
+	.loc	13 114 0 is_stmt 1              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_minkowski_distance_f16.c:114:0
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#24
+	sub	sp, #24
+	.cfi_def_cfa_offset 32
+	str	r0, [sp, #20]
+	str	r1, [sp, #16]
+	str	r2, [sp, #12]
+	str	r3, [sp, #8]
+	movs	r0, #0
+.Ltmp74:
+	.loc	13 118 9 prologue_end           @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_minkowski_distance_f16.c:118:9
+	strh.w	r0, [sp, #6]
+.Ltmp75:
+	.loc	13 119 10                       @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_minkowski_distance_f16.c:119:10
+	str	r0, [sp]
+	.loc	13 119 9 is_stmt 0              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_minkowski_distance_f16.c:119:9
+	b	.LBB9_1
+.LBB9_1:                                @ =>This Inner Loop Header: Depth=1
+.Ltmp76:
+	.loc	13 119 14                       @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_minkowski_distance_f16.c:119:14
+	ldr	r0, [sp]
+	.loc	13 119 18                       @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_minkowski_distance_f16.c:119:18
+	ldr	r1, [sp, #8]
+.Ltmp77:
+	.loc	13 119 5                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_minkowski_distance_f16.c:119:5
+	cmp	r0, r1
+	bhs	.LBB9_4
+	b	.LBB9_2
+.LBB9_2:                                @   in Loop: Header=BB9_1 Depth=1
+.Ltmp78:
+	.loc	13 121 58 is_stmt 1             @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_minkowski_distance_f16.c:121:58
+	ldr	r0, [sp, #20]
+	.loc	13 121 61 is_stmt 0             @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_minkowski_distance_f16.c:121:61
+	ldr	r1, [sp]
+	.loc	13 121 58                       @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_minkowski_distance_f16.c:121:58
+	ldrh.w	r0, [r0, r1, lsl #1]
+	.loc	13 121 64                       @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_minkowski_distance_f16.c:121:64
+	vmov	s0, r0
+	vcvtb.f32.f16	s0, s0
+	.loc	13 121 76                       @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_minkowski_distance_f16.c:121:76
+	ldr	r0, [sp, #16]
+	ldrh.w	r0, [r0, r1, lsl #1]
+	.loc	13 121 64                       @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_minkowski_distance_f16.c:121:64
+	vmov	s2, r0
+	vcvtb.f32.f16	s2, s2
+	vsub.f32	s2, s0, s2
+                                        @ implicit-def: $s0
+	vcvtb.f16.f32	s0, s2
+	vmov	r0, s0
+	.loc	13 121 36                       @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_minkowski_distance_f16.c:121:36
+	vmov	s0, r0
+	vcvtb.f32.f16	s0, s0
+	.loc	13 121 30                       @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_minkowski_distance_f16.c:121:30
+	vabs.f32	s0, s0
+	.loc	13 121 84                       @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_minkowski_distance_f16.c:121:84
+	vldr	s2, [sp, #12]
+	vcvt.f32.s32	s1, s2
+	.loc	13 121 25                       @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_minkowski_distance_f16.c:121:25
+	bl	__hardfp_powf
+	vmov.f32	s2, s0
+                                        @ implicit-def: $s0
+	.loc	13 121 15                       @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_minkowski_distance_f16.c:121:15
+	vcvtb.f16.f32	s0, s2
+	vmov	r0, s0
+	.loc	13 121 12                       @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_minkowski_distance_f16.c:121:12
+	vmov	s0, r0
+	vcvtb.f32.f16	s2, s0
+	ldrh.w	r0, [sp, #6]
+	vmov	s0, r0
+	vcvtb.f32.f16	s0, s0
+	vadd.f32	s2, s0, s2
+                                        @ implicit-def: $s0
+	vcvtb.f16.f32	s0, s2
+	vmov	r0, s0
+	strh.w	r0, [sp, #6]
+	.loc	13 122 5 is_stmt 1              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_minkowski_distance_f16.c:122:5
+	b	.LBB9_3
+.Ltmp79:
+.LBB9_3:                                @   in Loop: Header=BB9_1 Depth=1
+	.loc	13 119 30                       @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_minkowski_distance_f16.c:119:30
+	ldr	r0, [sp]
+	adds	r0, #1
+	str	r0, [sp]
+	.loc	13 119 5 is_stmt 0              @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_minkowski_distance_f16.c:119:5
+	b	.LBB9_1
+.Ltmp80:
+.LBB9_4:
+	.loc	13 125 38 is_stmt 1             @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_minkowski_distance_f16.c:125:38
+	ldrh.w	r0, [sp, #6]
+	.loc	13 125 27 is_stmt 0             @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_minkowski_distance_f16.c:125:27
+	vmov	s0, r0
+	vcvtb.f32.f16	s0, s0
+	.loc	13 125 48                       @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_minkowski_distance_f16.c:125:48
+	vldr	s2, [sp, #12]
+	vcvt.f32.s32	s4, s2
+	vmov.f32	s2, #1.000000e+00
+	.loc	13 125 47                       @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_minkowski_distance_f16.c:125:47
+	vdiv.f32	s1, s2, s4
+	.loc	13 125 22                       @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_minkowski_distance_f16.c:125:22
+	bl	__hardfp_powf
+	vmov.f32	s2, s0
+                                        @ implicit-def: $s0
+	.loc	13 125 11                       @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_minkowski_distance_f16.c:125:11
+	vcvtb.f16.f32	s0, s2
+	vmov	r0, s0
+	.loc	13 125 5                        @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_minkowski_distance_f16.c:125:5
+	vmov	s0, r0
+	.loc	13 125 5 epilogue_begin         @ D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\arm_minkowski_distance_f16.c:125:5
+	add	sp, #24
+	pop	{r7, pc}
+.Ltmp81:
+.Lfunc_end9:
+	.size	arm_minkowski_distance_f16, .Lfunc_end9-arm_minkowski_distance_f16
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text._sqrtf,"ax",%progbits
+	.p2align	3                               @ -- Begin function _sqrtf
+	.type	_sqrtf,%function
+	.code	16                              @ @_sqrtf
+	.thumb_func
+_sqrtf:
+.Lfunc_begin10:
+	.file	14 "D:\\keil_1\\keil\\ARM\\ARMCLANG\\bin\\..\\include" "math.h"
+	.loc	14 425 0 is_stmt 1              @ D:\keil_1\keil\ARM\ARMCLANG\bin\..\include\math.h:425:0
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+	vstr	s0, [sp]
+.Ltmp82:
+	.loc	14 425 61 prologue_end          @ D:\keil_1\keil\ARM\ARMCLANG\bin\..\include\math.h:425:61
+	ldr	r0, [sp]
+	str	r0, [sp, #4]
+.Ltmp83:
+	.loc	14 415 7                        @ D:\keil_1\keil\ARM\ARMCLANG\bin\..\include\math.h:415:7
+	vldr	s0, [sp, #4]
+	@APP
+	vsqrt.f32	s0, s0
+	@NO_APP
+	vstr	s0, [sp, #4]
+	.loc	14 422 14                       @ D:\keil_1\keil\ARM\ARMCLANG\bin\..\include\math.h:422:14
+	vldr	s0, [sp, #4]
+.Ltmp84:
+	.loc	14 425 46 epilogue_begin        @ D:\keil_1\keil\ARM\ARMCLANG\bin\..\include\math.h:425:46
+	add	sp, #8
+	bx	lr
+.Ltmp85:
+.Lfunc_end10:
+	.size	_sqrtf, .Lfunc_end10-_sqrtf
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.file	15 "D:\\keil_1\\keil\\ARM\\ARMCLANG\\bin\\..\\include" "stdint.h"
+	.section	.debug_abbrev,"",%progbits
+	.byte	1                               @ Abbreviation Code
+	.byte	17                              @ DW_TAG_compile_unit
+	.byte	1                               @ DW_CHILDREN_yes
+	.byte	37                              @ DW_AT_producer
+	.byte	14                              @ DW_FORM_strp
+	.byte	19                              @ DW_AT_language
+	.byte	5                               @ DW_FORM_data2
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	16                              @ DW_AT_stmt_list
+	.byte	23                              @ DW_FORM_sec_offset
+	.byte	27                              @ DW_AT_comp_dir
+	.byte	14                              @ DW_FORM_strp
+	.byte	17                              @ DW_AT_low_pc
+	.byte	1                               @ DW_FORM_addr
+	.byte	85                              @ DW_AT_ranges
+	.byte	23                              @ DW_FORM_sec_offset
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	2                               @ Abbreviation Code
+	.byte	4                               @ DW_TAG_enumeration_type
+	.byte	1                               @ DW_CHILDREN_yes
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	11                              @ DW_AT_byte_size
+	.byte	11                              @ DW_FORM_data1
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	5                               @ DW_FORM_data2
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	3                               @ Abbreviation Code
+	.byte	40                              @ DW_TAG_enumerator
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	28                              @ DW_AT_const_value
+	.byte	13                              @ DW_FORM_sdata
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	4                               @ Abbreviation Code
+	.byte	36                              @ DW_TAG_base_type
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	62                              @ DW_AT_encoding
+	.byte	11                              @ DW_FORM_data1
+	.byte	11                              @ DW_AT_byte_size
+	.byte	11                              @ DW_FORM_data1
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	5                               @ Abbreviation Code
+	.byte	22                              @ DW_TAG_typedef
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	5                               @ DW_FORM_data2
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	6                               @ Abbreviation Code
+	.byte	22                              @ DW_TAG_typedef
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	11                              @ DW_FORM_data1
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	7                               @ Abbreviation Code
+	.byte	46                              @ DW_TAG_subprogram
+	.byte	1                               @ DW_CHILDREN_yes
+	.byte	17                              @ DW_AT_low_pc
+	.byte	1                               @ DW_FORM_addr
+	.byte	18                              @ DW_AT_high_pc
+	.byte	6                               @ DW_FORM_data4
+	.byte	64                              @ DW_AT_frame_base
+	.byte	24                              @ DW_FORM_exprloc
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	11                              @ DW_FORM_data1
+	.byte	39                              @ DW_AT_prototyped
+	.byte	25                              @ DW_FORM_flag_present
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	63                              @ DW_AT_external
+	.byte	25                              @ DW_FORM_flag_present
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	8                               @ Abbreviation Code
+	.byte	5                               @ DW_TAG_formal_parameter
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	2                               @ DW_AT_location
+	.byte	24                              @ DW_FORM_exprloc
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	11                              @ DW_FORM_data1
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	9                               @ Abbreviation Code
+	.byte	52                              @ DW_TAG_variable
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	2                               @ DW_AT_location
+	.byte	24                              @ DW_FORM_exprloc
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	11                              @ DW_FORM_data1
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	10                              @ Abbreviation Code
+	.byte	46                              @ DW_TAG_subprogram
+	.byte	1                               @ DW_CHILDREN_yes
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	11                              @ DW_FORM_data1
+	.byte	39                              @ DW_AT_prototyped
+	.byte	25                              @ DW_FORM_flag_present
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	32                              @ DW_AT_inline
+	.byte	11                              @ DW_FORM_data1
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	11                              @ Abbreviation Code
+	.byte	5                               @ DW_TAG_formal_parameter
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	11                              @ DW_FORM_data1
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	12                              @ Abbreviation Code
+	.byte	52                              @ DW_TAG_variable
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	11                              @ DW_FORM_data1
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	13                              @ Abbreviation Code
+	.byte	15                              @ DW_TAG_pointer_type
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	14                              @ Abbreviation Code
+	.byte	38                              @ DW_TAG_const_type
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	15                              @ Abbreviation Code
+	.byte	29                              @ DW_TAG_inlined_subroutine
+	.byte	1                               @ DW_CHILDREN_yes
+	.byte	49                              @ DW_AT_abstract_origin
+	.byte	19                              @ DW_FORM_ref4
+	.byte	17                              @ DW_AT_low_pc
+	.byte	1                               @ DW_FORM_addr
+	.byte	18                              @ DW_AT_high_pc
+	.byte	6                               @ DW_FORM_data4
+	.byte	88                              @ DW_AT_call_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	89                              @ DW_AT_call_line
+	.byte	11                              @ DW_FORM_data1
+	.byte	87                              @ DW_AT_call_column
+	.byte	11                              @ DW_FORM_data1
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	16                              @ Abbreviation Code
+	.byte	5                               @ DW_TAG_formal_parameter
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	2                               @ DW_AT_location
+	.byte	24                              @ DW_FORM_exprloc
+	.byte	49                              @ DW_AT_abstract_origin
+	.byte	19                              @ DW_FORM_ref4
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	17                              @ Abbreviation Code
+	.byte	52                              @ DW_TAG_variable
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	2                               @ DW_AT_location
+	.byte	24                              @ DW_FORM_exprloc
+	.byte	49                              @ DW_AT_abstract_origin
+	.byte	19                              @ DW_FORM_ref4
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	18                              @ Abbreviation Code
+	.byte	46                              @ DW_TAG_subprogram
+	.byte	1                               @ DW_CHILDREN_yes
+	.byte	17                              @ DW_AT_low_pc
+	.byte	1                               @ DW_FORM_addr
+	.byte	18                              @ DW_AT_high_pc
+	.byte	6                               @ DW_FORM_data4
+	.byte	64                              @ DW_AT_frame_base
+	.byte	24                              @ DW_FORM_exprloc
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	11                              @ DW_FORM_data1
+	.byte	39                              @ DW_AT_prototyped
+	.byte	25                              @ DW_FORM_flag_present
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	19                              @ Abbreviation Code
+	.byte	46                              @ DW_TAG_subprogram
+	.byte	1                               @ DW_CHILDREN_yes
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	5                               @ DW_FORM_data2
+	.byte	39                              @ DW_AT_prototyped
+	.byte	25                              @ DW_FORM_flag_present
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	32                              @ DW_AT_inline
+	.byte	11                              @ DW_FORM_data1
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	20                              @ Abbreviation Code
+	.byte	5                               @ DW_TAG_formal_parameter
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	5                               @ DW_FORM_data2
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	21                              @ Abbreviation Code
+	.byte	46                              @ DW_TAG_subprogram
+	.byte	1                               @ DW_CHILDREN_yes
+	.byte	17                              @ DW_AT_low_pc
+	.byte	1                               @ DW_FORM_addr
+	.byte	18                              @ DW_AT_high_pc
+	.byte	6                               @ DW_FORM_data4
+	.byte	64                              @ DW_AT_frame_base
+	.byte	24                              @ DW_FORM_exprloc
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	5                               @ DW_FORM_data2
+	.byte	39                              @ DW_AT_prototyped
+	.byte	25                              @ DW_FORM_flag_present
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	22                              @ Abbreviation Code
+	.byte	5                               @ DW_TAG_formal_parameter
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	2                               @ DW_AT_location
+	.byte	24                              @ DW_FORM_exprloc
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	5                               @ DW_FORM_data2
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	23                              @ Abbreviation Code
+	.byte	29                              @ DW_TAG_inlined_subroutine
+	.byte	1                               @ DW_CHILDREN_yes
+	.byte	49                              @ DW_AT_abstract_origin
+	.byte	19                              @ DW_FORM_ref4
+	.byte	17                              @ DW_AT_low_pc
+	.byte	1                               @ DW_FORM_addr
+	.byte	18                              @ DW_AT_high_pc
+	.byte	6                               @ DW_FORM_data4
+	.byte	88                              @ DW_AT_call_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	89                              @ DW_AT_call_line
+	.byte	5                               @ DW_FORM_data2
+	.byte	87                              @ DW_AT_call_column
+	.byte	11                              @ DW_FORM_data1
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	0                               @ EOM(3)
+	.section	.debug_info,"",%progbits
+.Lcu_begin0:
+	.long	.Ldebug_info_end0-.Ldebug_info_start0 @ Length of Unit
+.Ldebug_info_start0:
+	.short	4                               @ DWARF version number
+	.long	.debug_abbrev                   @ Offset Into Abbrev. Section
+	.byte	4                               @ Address Size (in bytes)
+	.byte	1                               @ Abbrev [1] 0xb:0x756 DW_TAG_compile_unit
+	.long	.Linfo_string0                  @ DW_AT_producer
+	.short	12                              @ DW_AT_language
+	.long	.Linfo_string1                  @ DW_AT_name
+	.long	.Lline_table_start0             @ DW_AT_stmt_list
+	.long	.Linfo_string2                  @ DW_AT_comp_dir
+	.long	0                               @ DW_AT_low_pc
+	.long	.Ldebug_ranges0                 @ DW_AT_ranges
+	.byte	2                               @ Abbrev [2] 0x26:0x3a DW_TAG_enumeration_type
+	.long	96                              @ DW_AT_type
+	.byte	1                               @ DW_AT_byte_size
+	.byte	1                               @ DW_AT_decl_file
+	.short	588                             @ DW_AT_decl_line
+	.byte	3                               @ Abbrev [3] 0x2f:0x6 DW_TAG_enumerator
+	.long	.Linfo_string4                  @ DW_AT_name
+	.byte	0                               @ DW_AT_const_value
+	.byte	3                               @ Abbrev [3] 0x35:0x6 DW_TAG_enumerator
+	.long	.Linfo_string5                  @ DW_AT_name
+	.byte	127                             @ DW_AT_const_value
+	.byte	3                               @ Abbrev [3] 0x3b:0x6 DW_TAG_enumerator
+	.long	.Linfo_string6                  @ DW_AT_name
+	.byte	126                             @ DW_AT_const_value
+	.byte	3                               @ Abbrev [3] 0x41:0x6 DW_TAG_enumerator
+	.long	.Linfo_string7                  @ DW_AT_name
+	.byte	125                             @ DW_AT_const_value
+	.byte	3                               @ Abbrev [3] 0x47:0x6 DW_TAG_enumerator
+	.long	.Linfo_string8                  @ DW_AT_name
+	.byte	124                             @ DW_AT_const_value
+	.byte	3                               @ Abbrev [3] 0x4d:0x6 DW_TAG_enumerator
+	.long	.Linfo_string9                  @ DW_AT_name
+	.byte	123                             @ DW_AT_const_value
+	.byte	3                               @ Abbrev [3] 0x53:0x6 DW_TAG_enumerator
+	.long	.Linfo_string10                 @ DW_AT_name
+	.byte	122                             @ DW_AT_const_value
+	.byte	3                               @ Abbrev [3] 0x59:0x6 DW_TAG_enumerator
+	.long	.Linfo_string11                 @ DW_AT_name
+	.byte	121                             @ DW_AT_const_value
+	.byte	0                               @ End Of Children Mark
+	.byte	4                               @ Abbrev [4] 0x60:0x7 DW_TAG_base_type
+	.long	.Linfo_string3                  @ DW_AT_name
+	.byte	6                               @ DW_AT_encoding
+	.byte	1                               @ DW_AT_byte_size
+	.byte	4                               @ Abbrev [4] 0x67:0x7 DW_TAG_base_type
+	.long	.Linfo_string12                 @ DW_AT_name
+	.byte	4                               @ DW_AT_encoding
+	.byte	2                               @ DW_AT_byte_size
+	.byte	5                               @ Abbrev [5] 0x6e:0xc DW_TAG_typedef
+	.long	122                             @ DW_AT_type
+	.long	.Linfo_string14                 @ DW_AT_name
+	.byte	1                               @ DW_AT_decl_file
+	.short	334                             @ DW_AT_decl_line
+	.byte	4                               @ Abbrev [4] 0x7a:0x7 DW_TAG_base_type
+	.long	.Linfo_string13                 @ DW_AT_name
+	.byte	4                               @ DW_AT_encoding
+	.byte	4                               @ DW_AT_byte_size
+	.byte	6                               @ Abbrev [6] 0x81:0xb DW_TAG_typedef
+	.long	140                             @ DW_AT_type
+	.long	.Linfo_string16                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	58                              @ DW_AT_decl_line
+	.byte	4                               @ Abbrev [4] 0x8c:0x7 DW_TAG_base_type
+	.long	.Linfo_string15                 @ DW_AT_name
+	.byte	4                               @ DW_AT_encoding
+	.byte	2                               @ DW_AT_byte_size
+	.byte	7                               @ Abbrev [7] 0x93:0x78 DW_TAG_subprogram
+	.long	.Lfunc_begin0                   @ DW_AT_low_pc
+	.long	.Lfunc_end0-.Lfunc_begin0       @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string26                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.byte	128                             @ DW_AT_decl_line
+                                        @ DW_AT_prototyped
+	.long	129                             @ DW_AT_type
+                                        @ DW_AT_external
+	.byte	8                               @ Abbrev [8] 0xa8:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	16
+	.long	.Linfo_string37                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.byte	128                             @ DW_AT_decl_line
+	.long	1842                            @ DW_AT_type
+	.byte	8                               @ Abbrev [8] 0xb6:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	12
+	.long	.Linfo_string38                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.byte	128                             @ DW_AT_decl_line
+	.long	1842                            @ DW_AT_type
+	.byte	8                               @ Abbrev [8] 0xc4:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	8
+	.long	.Linfo_string39                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.byte	128                             @ DW_AT_decl_line
+	.long	1852                            @ DW_AT_type
+	.byte	9                               @ Abbrev [9] 0xd2:0xe DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	6
+	.long	.Linfo_string42                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.byte	130                             @ DW_AT_decl_line
+	.long	103                             @ DW_AT_type
+	.byte	9                               @ Abbrev [9] 0xe0:0xe DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	4
+	.long	.Linfo_string43                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.byte	130                             @ DW_AT_decl_line
+	.long	103                             @ DW_AT_type
+	.byte	9                               @ Abbrev [9] 0xee:0xe DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	2
+	.long	.Linfo_string44                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.byte	130                             @ DW_AT_decl_line
+	.long	103                             @ DW_AT_type
+	.byte	9                               @ Abbrev [9] 0xfc:0xe DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	0
+	.long	.Linfo_string45                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.byte	130                             @ DW_AT_decl_line
+	.long	103                             @ DW_AT_type
+	.byte	0                               @ End Of Children Mark
+	.byte	7                               @ Abbrev [7] 0x10b:0x86 DW_TAG_subprogram
+	.long	.Lfunc_begin1                   @ DW_AT_low_pc
+	.long	.Lfunc_end1-.Lfunc_begin1       @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string27                 @ DW_AT_name
+	.byte	4                               @ DW_AT_decl_file
+	.byte	144                             @ DW_AT_decl_line
+                                        @ DW_AT_prototyped
+	.long	129                             @ DW_AT_type
+                                        @ DW_AT_external
+	.byte	8                               @ Abbrev [8] 0x120:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	20
+	.long	.Linfo_string37                 @ DW_AT_name
+	.byte	4                               @ DW_AT_decl_file
+	.byte	144                             @ DW_AT_decl_line
+	.long	1842                            @ DW_AT_type
+	.byte	8                               @ Abbrev [8] 0x12e:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	16
+	.long	.Linfo_string38                 @ DW_AT_name
+	.byte	4                               @ DW_AT_decl_file
+	.byte	144                             @ DW_AT_decl_line
+	.long	1842                            @ DW_AT_type
+	.byte	8                               @ Abbrev [8] 0x13c:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	12
+	.long	.Linfo_string39                 @ DW_AT_name
+	.byte	4                               @ DW_AT_decl_file
+	.byte	144                             @ DW_AT_decl_line
+	.long	1852                            @ DW_AT_type
+	.byte	9                               @ Abbrev [9] 0x14a:0xe DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	10
+	.long	.Linfo_string46                 @ DW_AT_name
+	.byte	4                               @ DW_AT_decl_file
+	.byte	146                             @ DW_AT_decl_line
+	.long	103                             @ DW_AT_type
+	.byte	9                               @ Abbrev [9] 0x158:0xe DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	8
+	.long	.Linfo_string44                 @ DW_AT_name
+	.byte	4                               @ DW_AT_decl_file
+	.byte	146                             @ DW_AT_decl_line
+	.long	103                             @ DW_AT_type
+	.byte	9                               @ Abbrev [9] 0x166:0xe DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	6
+	.long	.Linfo_string45                 @ DW_AT_name
+	.byte	4                               @ DW_AT_decl_file
+	.byte	146                             @ DW_AT_decl_line
+	.long	103                             @ DW_AT_type
+	.byte	9                               @ Abbrev [9] 0x174:0xe DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	4
+	.long	.Linfo_string47                 @ DW_AT_name
+	.byte	4                               @ DW_AT_decl_file
+	.byte	146                             @ DW_AT_decl_line
+	.long	103                             @ DW_AT_type
+	.byte	9                               @ Abbrev [9] 0x182:0xe DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	2
+	.long	.Linfo_string48                 @ DW_AT_name
+	.byte	4                               @ DW_AT_decl_file
+	.byte	146                             @ DW_AT_decl_line
+	.long	103                             @ DW_AT_type
+	.byte	0                               @ End Of Children Mark
+	.byte	7                               @ Abbrev [7] 0x191:0x78 DW_TAG_subprogram
+	.long	.Lfunc_begin2                   @ DW_AT_low_pc
+	.long	.Lfunc_end2-.Lfunc_begin2       @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string28                 @ DW_AT_name
+	.byte	5                               @ DW_AT_decl_file
+	.byte	114                             @ DW_AT_decl_line
+                                        @ DW_AT_prototyped
+	.long	129                             @ DW_AT_type
+                                        @ DW_AT_external
+	.byte	8                               @ Abbrev [8] 0x1a6:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	16
+	.long	.Linfo_string37                 @ DW_AT_name
+	.byte	5                               @ DW_AT_decl_file
+	.byte	114                             @ DW_AT_decl_line
+	.long	1842                            @ DW_AT_type
+	.byte	8                               @ Abbrev [8] 0x1b4:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	12
+	.long	.Linfo_string38                 @ DW_AT_name
+	.byte	5                               @ DW_AT_decl_file
+	.byte	114                             @ DW_AT_decl_line
+	.long	1842                            @ DW_AT_type
+	.byte	8                               @ Abbrev [8] 0x1c2:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	8
+	.long	.Linfo_string39                 @ DW_AT_name
+	.byte	5                               @ DW_AT_decl_file
+	.byte	114                             @ DW_AT_decl_line
+	.long	1852                            @ DW_AT_type
+	.byte	9                               @ Abbrev [9] 0x1d0:0xe DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	6
+	.long	.Linfo_string47                 @ DW_AT_name
+	.byte	5                               @ DW_AT_decl_file
+	.byte	116                             @ DW_AT_decl_line
+	.long	103                             @ DW_AT_type
+	.byte	9                               @ Abbrev [9] 0x1de:0xe DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	4
+	.long	.Linfo_string49                 @ DW_AT_name
+	.byte	5                               @ DW_AT_decl_file
+	.byte	116                             @ DW_AT_decl_line
+	.long	103                             @ DW_AT_type
+	.byte	9                               @ Abbrev [9] 0x1ec:0xe DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	2
+	.long	.Linfo_string44                 @ DW_AT_name
+	.byte	5                               @ DW_AT_decl_file
+	.byte	116                             @ DW_AT_decl_line
+	.long	103                             @ DW_AT_type
+	.byte	9                               @ Abbrev [9] 0x1fa:0xe DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	0
+	.long	.Linfo_string45                 @ DW_AT_name
+	.byte	5                               @ DW_AT_decl_file
+	.byte	116                             @ DW_AT_decl_line
+	.long	103                             @ DW_AT_type
+	.byte	0                               @ End Of Children Mark
+	.byte	7                               @ Abbrev [7] 0x209:0x6a DW_TAG_subprogram
+	.long	.Lfunc_begin3                   @ DW_AT_low_pc
+	.long	.Lfunc_end3-.Lfunc_begin3       @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string29                 @ DW_AT_name
+	.byte	6                               @ DW_AT_decl_file
+	.byte	105                             @ DW_AT_decl_line
+                                        @ DW_AT_prototyped
+	.long	129                             @ DW_AT_type
+                                        @ DW_AT_external
+	.byte	8                               @ Abbrev [8] 0x21e:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	16
+	.long	.Linfo_string37                 @ DW_AT_name
+	.byte	6                               @ DW_AT_decl_file
+	.byte	105                             @ DW_AT_decl_line
+	.long	1842                            @ DW_AT_type
+	.byte	8                               @ Abbrev [8] 0x22c:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	12
+	.long	.Linfo_string38                 @ DW_AT_name
+	.byte	6                               @ DW_AT_decl_file
+	.byte	105                             @ DW_AT_decl_line
+	.long	1842                            @ DW_AT_type
+	.byte	8                               @ Abbrev [8] 0x23a:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	8
+	.long	.Linfo_string39                 @ DW_AT_name
+	.byte	6                               @ DW_AT_decl_file
+	.byte	105                             @ DW_AT_decl_line
+	.long	1852                            @ DW_AT_type
+	.byte	9                               @ Abbrev [9] 0x248:0xe DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	6
+	.long	.Linfo_string46                 @ DW_AT_name
+	.byte	6                               @ DW_AT_decl_file
+	.byte	107                             @ DW_AT_decl_line
+	.long	103                             @ DW_AT_type
+	.byte	9                               @ Abbrev [9] 0x256:0xe DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	4
+	.long	.Linfo_string44                 @ DW_AT_name
+	.byte	6                               @ DW_AT_decl_file
+	.byte	107                             @ DW_AT_decl_line
+	.long	103                             @ DW_AT_type
+	.byte	9                               @ Abbrev [9] 0x264:0xe DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	2
+	.long	.Linfo_string45                 @ DW_AT_name
+	.byte	6                               @ DW_AT_decl_file
+	.byte	107                             @ DW_AT_decl_line
+	.long	103                             @ DW_AT_type
+	.byte	0                               @ End Of Children Mark
+	.byte	10                              @ Abbrev [10] 0x273:0x39 DW_TAG_subprogram
+	.long	.Linfo_string17                 @ DW_AT_name
+	.byte	8                               @ DW_AT_decl_file
+	.byte	59                              @ DW_AT_decl_line
+                                        @ DW_AT_prototyped
+	.long	684                             @ DW_AT_type
+	.byte	1                               @ DW_AT_inline
+	.byte	11                              @ Abbrev [11] 0x27f:0xb DW_TAG_formal_parameter
+	.long	.Linfo_string19                 @ DW_AT_name
+	.byte	8                               @ DW_AT_decl_file
+	.byte	60                              @ DW_AT_decl_line
+	.long	129                             @ DW_AT_type
+	.byte	11                              @ Abbrev [11] 0x28a:0xb DW_TAG_formal_parameter
+	.long	.Linfo_string20                 @ DW_AT_name
+	.byte	8                               @ DW_AT_decl_file
+	.byte	61                              @ DW_AT_decl_line
+	.long	696                             @ DW_AT_type
+	.byte	12                              @ Abbrev [12] 0x295:0xb DW_TAG_variable
+	.long	.Linfo_string21                 @ DW_AT_name
+	.byte	8                               @ DW_AT_decl_file
+	.byte	63                              @ DW_AT_decl_line
+	.long	110                             @ DW_AT_type
+	.byte	12                              @ Abbrev [12] 0x2a0:0xb DW_TAG_variable
+	.long	.Linfo_string22                 @ DW_AT_name
+	.byte	8                               @ DW_AT_decl_file
+	.byte	64                              @ DW_AT_decl_line
+	.long	684                             @ DW_AT_type
+	.byte	0                               @ End Of Children Mark
+	.byte	5                               @ Abbrev [5] 0x2ac:0xc DW_TAG_typedef
+	.long	38                              @ DW_AT_type
+	.long	.Linfo_string18                 @ DW_AT_name
+	.byte	1                               @ DW_AT_decl_file
+	.short	598                             @ DW_AT_decl_line
+	.byte	13                              @ Abbrev [13] 0x2b8:0x5 DW_TAG_pointer_type
+	.long	129                             @ DW_AT_type
+	.byte	10                              @ Abbrev [10] 0x2bd:0x23 DW_TAG_subprogram
+	.long	.Linfo_string23                 @ DW_AT_name
+	.byte	9                               @ DW_AT_decl_file
+	.byte	234                             @ DW_AT_decl_line
+                                        @ DW_AT_prototyped
+	.long	684                             @ DW_AT_type
+	.byte	1                               @ DW_AT_inline
+	.byte	11                              @ Abbrev [11] 0x2c9:0xb DW_TAG_formal_parameter
+	.long	.Linfo_string19                 @ DW_AT_name
+	.byte	9                               @ DW_AT_decl_file
+	.byte	235                             @ DW_AT_decl_line
+	.long	736                             @ DW_AT_type
+	.byte	11                              @ Abbrev [11] 0x2d4:0xb DW_TAG_formal_parameter
+	.long	.Linfo_string20                 @ DW_AT_name
+	.byte	9                               @ DW_AT_decl_file
+	.byte	236                             @ DW_AT_decl_line
+	.long	741                             @ DW_AT_type
+	.byte	0                               @ End Of Children Mark
+	.byte	14                              @ Abbrev [14] 0x2e0:0x5 DW_TAG_const_type
+	.long	110                             @ DW_AT_type
+	.byte	13                              @ Abbrev [13] 0x2e5:0x5 DW_TAG_pointer_type
+	.long	110                             @ DW_AT_type
+	.byte	7                               @ Abbrev [7] 0x2ea:0xe6 DW_TAG_subprogram
+	.long	.Lfunc_begin4                   @ DW_AT_low_pc
+	.long	.Lfunc_end4-.Lfunc_begin4       @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string30                 @ DW_AT_name
+	.byte	7                               @ DW_AT_decl_file
+	.byte	66                              @ DW_AT_decl_line
+                                        @ DW_AT_prototyped
+	.long	129                             @ DW_AT_type
+                                        @ DW_AT_external
+	.byte	8                               @ Abbrev [8] 0x2ff:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	24
+	.long	.Linfo_string37                 @ DW_AT_name
+	.byte	7                               @ DW_AT_decl_file
+	.byte	66                              @ DW_AT_decl_line
+	.long	696                             @ DW_AT_type
+	.byte	8                               @ Abbrev [8] 0x30d:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	20
+	.long	.Linfo_string38                 @ DW_AT_name
+	.byte	7                               @ DW_AT_decl_file
+	.byte	66                              @ DW_AT_decl_line
+	.long	696                             @ DW_AT_type
+	.byte	8                               @ Abbrev [8] 0x31b:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	16
+	.long	.Linfo_string39                 @ DW_AT_name
+	.byte	7                               @ DW_AT_decl_file
+	.byte	66                              @ DW_AT_decl_line
+	.long	1852                            @ DW_AT_type
+	.byte	9                               @ Abbrev [9] 0x329:0xe DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	14
+	.long	.Linfo_string50                 @ DW_AT_name
+	.byte	7                               @ DW_AT_decl_file
+	.byte	68                              @ DW_AT_decl_line
+	.long	129                             @ DW_AT_type
+	.byte	9                               @ Abbrev [9] 0x337:0xe DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	12
+	.long	.Linfo_string51                 @ DW_AT_name
+	.byte	7                               @ DW_AT_decl_file
+	.byte	68                              @ DW_AT_decl_line
+	.long	129                             @ DW_AT_type
+	.byte	9                               @ Abbrev [9] 0x345:0xe DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	10
+	.long	.Linfo_string52                 @ DW_AT_name
+	.byte	7                               @ DW_AT_decl_file
+	.byte	68                              @ DW_AT_decl_line
+	.long	129                             @ DW_AT_type
+	.byte	9                               @ Abbrev [9] 0x353:0xe DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	8
+	.long	.Linfo_string53                 @ DW_AT_name
+	.byte	7                               @ DW_AT_decl_file
+	.byte	68                              @ DW_AT_decl_line
+	.long	129                             @ DW_AT_type
+	.byte	9                               @ Abbrev [9] 0x361:0xe DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	6
+	.long	.Linfo_string54                 @ DW_AT_name
+	.byte	7                               @ DW_AT_decl_file
+	.byte	68                              @ DW_AT_decl_line
+	.long	129                             @ DW_AT_type
+	.byte	9                               @ Abbrev [9] 0x36f:0xe DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	4
+	.long	.Linfo_string55                 @ DW_AT_name
+	.byte	7                               @ DW_AT_decl_file
+	.byte	68                              @ DW_AT_decl_line
+	.long	129                             @ DW_AT_type
+	.byte	15                              @ Abbrev [15] 0x37d:0x52 DW_TAG_inlined_subroutine
+	.long	627                             @ DW_AT_abstract_origin
+	.long	.Ltmp25                         @ DW_AT_low_pc
+	.long	.Ltmp32-.Ltmp25                 @ DW_AT_high_pc
+	.byte	7                               @ DW_AT_call_file
+	.byte	85                              @ DW_AT_call_line
+	.byte	5                               @ DW_AT_call_column
+	.byte	16                              @ Abbrev [16] 0x38d:0x8 DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	42
+	.long	639                             @ DW_AT_abstract_origin
+	.byte	16                              @ Abbrev [16] 0x395:0x8 DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	36
+	.long	650                             @ DW_AT_abstract_origin
+	.byte	17                              @ Abbrev [17] 0x39d:0x8 DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	32
+	.long	661                             @ DW_AT_abstract_origin
+	.byte	17                              @ Abbrev [17] 0x3a5:0x8 DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	31
+	.long	672                             @ DW_AT_abstract_origin
+	.byte	15                              @ Abbrev [15] 0x3ad:0x21 DW_TAG_inlined_subroutine
+	.long	701                             @ DW_AT_abstract_origin
+	.long	.Ltmp26                         @ DW_AT_low_pc
+	.long	.Ltmp31-.Ltmp26                 @ DW_AT_high_pc
+	.byte	8                               @ DW_AT_call_file
+	.byte	65                              @ DW_AT_call_line
+	.byte	12                              @ DW_AT_call_column
+	.byte	16                              @ Abbrev [16] 0x3bd:0x8 DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	48
+	.long	713                             @ DW_AT_abstract_origin
+	.byte	16                              @ Abbrev [16] 0x3c5:0x8 DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	44
+	.long	724                             @ DW_AT_abstract_origin
+	.byte	0                               @ End Of Children Mark
+	.byte	0                               @ End Of Children Mark
+	.byte	0                               @ End Of Children Mark
+	.byte	7                               @ Abbrev [7] 0x3d0:0xca DW_TAG_subprogram
+	.long	.Lfunc_begin5                   @ DW_AT_low_pc
+	.long	.Lfunc_end5-.Lfunc_begin5       @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string31                 @ DW_AT_name
+	.byte	10                              @ DW_AT_decl_file
+	.byte	67                              @ DW_AT_decl_line
+                                        @ DW_AT_prototyped
+	.long	129                             @ DW_AT_type
+                                        @ DW_AT_external
+	.byte	8                               @ Abbrev [8] 0x3e5:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	16
+	.long	.Linfo_string37                 @ DW_AT_name
+	.byte	10                              @ DW_AT_decl_file
+	.byte	67                              @ DW_AT_decl_line
+	.long	1842                            @ DW_AT_type
+	.byte	8                               @ Abbrev [8] 0x3f3:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	12
+	.long	.Linfo_string38                 @ DW_AT_name
+	.byte	10                              @ DW_AT_decl_file
+	.byte	67                              @ DW_AT_decl_line
+	.long	1842                            @ DW_AT_type
+	.byte	8                               @ Abbrev [8] 0x401:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	8
+	.long	.Linfo_string39                 @ DW_AT_name
+	.byte	10                              @ DW_AT_decl_file
+	.byte	67                              @ DW_AT_decl_line
+	.long	1852                            @ DW_AT_type
+	.byte	9                               @ Abbrev [9] 0x40f:0xe DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	6
+	.long	.Linfo_string52                 @ DW_AT_name
+	.byte	10                              @ DW_AT_decl_file
+	.byte	69                              @ DW_AT_decl_line
+	.long	129                             @ DW_AT_type
+	.byte	9                               @ Abbrev [9] 0x41d:0xe DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	4
+	.long	.Linfo_string53                 @ DW_AT_name
+	.byte	10                              @ DW_AT_decl_file
+	.byte	69                              @ DW_AT_decl_line
+	.long	129                             @ DW_AT_type
+	.byte	9                               @ Abbrev [9] 0x42b:0xe DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	2
+	.long	.Linfo_string54                 @ DW_AT_name
+	.byte	10                              @ DW_AT_decl_file
+	.byte	69                              @ DW_AT_decl_line
+	.long	129                             @ DW_AT_type
+	.byte	9                               @ Abbrev [9] 0x439:0xe DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	0
+	.long	.Linfo_string55                 @ DW_AT_name
+	.byte	10                              @ DW_AT_decl_file
+	.byte	69                              @ DW_AT_decl_line
+	.long	129                             @ DW_AT_type
+	.byte	15                              @ Abbrev [15] 0x447:0x52 DW_TAG_inlined_subroutine
+	.long	627                             @ DW_AT_abstract_origin
+	.long	.Ltmp35                         @ DW_AT_low_pc
+	.long	.Ltmp42-.Ltmp35                 @ DW_AT_high_pc
+	.byte	10                              @ DW_AT_call_file
+	.byte	76                              @ DW_AT_call_line
+	.byte	5                               @ DW_AT_call_column
+	.byte	16                              @ Abbrev [16] 0x457:0x8 DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	34
+	.long	639                             @ DW_AT_abstract_origin
+	.byte	16                              @ Abbrev [16] 0x45f:0x8 DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	28
+	.long	650                             @ DW_AT_abstract_origin
+	.byte	17                              @ Abbrev [17] 0x467:0x8 DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	24
+	.long	661                             @ DW_AT_abstract_origin
+	.byte	17                              @ Abbrev [17] 0x46f:0x8 DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	23
+	.long	672                             @ DW_AT_abstract_origin
+	.byte	15                              @ Abbrev [15] 0x477:0x21 DW_TAG_inlined_subroutine
+	.long	701                             @ DW_AT_abstract_origin
+	.long	.Ltmp36                         @ DW_AT_low_pc
+	.long	.Ltmp41-.Ltmp36                 @ DW_AT_high_pc
+	.byte	8                               @ DW_AT_call_file
+	.byte	65                              @ DW_AT_call_line
+	.byte	12                              @ DW_AT_call_column
+	.byte	16                              @ Abbrev [16] 0x487:0x8 DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	40
+	.long	713                             @ DW_AT_abstract_origin
+	.byte	16                              @ Abbrev [16] 0x48f:0x8 DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	36
+	.long	724                             @ DW_AT_abstract_origin
+	.byte	0                               @ End Of Children Mark
+	.byte	0                               @ End Of Children Mark
+	.byte	0                               @ End Of Children Mark
+	.byte	7                               @ Abbrev [7] 0x49a:0xbc DW_TAG_subprogram
+	.long	.Lfunc_begin6                   @ DW_AT_low_pc
+	.long	.Lfunc_end6-.Lfunc_begin6       @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string32                 @ DW_AT_name
+	.byte	11                              @ DW_AT_decl_file
+	.byte	108                             @ DW_AT_decl_line
+                                        @ DW_AT_prototyped
+	.long	129                             @ DW_AT_type
+                                        @ DW_AT_external
+	.byte	8                               @ Abbrev [8] 0x4af:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	24
+	.long	.Linfo_string37                 @ DW_AT_name
+	.byte	11                              @ DW_AT_decl_file
+	.byte	108                             @ DW_AT_decl_line
+	.long	1842                            @ DW_AT_type
+	.byte	8                               @ Abbrev [8] 0x4bd:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	20
+	.long	.Linfo_string38                 @ DW_AT_name
+	.byte	11                              @ DW_AT_decl_file
+	.byte	108                             @ DW_AT_decl_line
+	.long	1842                            @ DW_AT_type
+	.byte	8                               @ Abbrev [8] 0x4cb:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	16
+	.long	.Linfo_string39                 @ DW_AT_name
+	.byte	11                              @ DW_AT_decl_file
+	.byte	108                             @ DW_AT_decl_line
+	.long	1852                            @ DW_AT_type
+	.byte	9                               @ Abbrev [9] 0x4d9:0xe DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	14
+	.long	.Linfo_string46                 @ DW_AT_name
+	.byte	11                              @ DW_AT_decl_file
+	.byte	110                             @ DW_AT_decl_line
+	.long	103                             @ DW_AT_type
+	.byte	9                               @ Abbrev [9] 0x4e7:0xe DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	12
+	.long	.Linfo_string55                 @ DW_AT_name
+	.byte	11                              @ DW_AT_decl_file
+	.byte	110                             @ DW_AT_decl_line
+	.long	103                             @ DW_AT_type
+	.byte	9                               @ Abbrev [9] 0x4f5:0xe DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	10
+	.long	.Linfo_string56                 @ DW_AT_name
+	.byte	11                              @ DW_AT_decl_file
+	.byte	111                             @ DW_AT_decl_line
+	.long	129                             @ DW_AT_type
+	.byte	15                              @ Abbrev [15] 0x503:0x52 DW_TAG_inlined_subroutine
+	.long	627                             @ DW_AT_abstract_origin
+	.long	.Ltmp47                         @ DW_AT_low_pc
+	.long	.Ltmp54-.Ltmp47                 @ DW_AT_high_pc
+	.byte	11                              @ DW_AT_call_file
+	.byte	119                             @ DW_AT_call_line
+	.byte	4                               @ DW_AT_call_column
+	.byte	16                              @ Abbrev [16] 0x513:0x8 DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	42
+	.long	639                             @ DW_AT_abstract_origin
+	.byte	16                              @ Abbrev [16] 0x51b:0x8 DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	36
+	.long	650                             @ DW_AT_abstract_origin
+	.byte	17                              @ Abbrev [17] 0x523:0x8 DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	32
+	.long	661                             @ DW_AT_abstract_origin
+	.byte	17                              @ Abbrev [17] 0x52b:0x8 DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	31
+	.long	672                             @ DW_AT_abstract_origin
+	.byte	15                              @ Abbrev [15] 0x533:0x21 DW_TAG_inlined_subroutine
+	.long	701                             @ DW_AT_abstract_origin
+	.long	.Ltmp48                         @ DW_AT_low_pc
+	.long	.Ltmp53-.Ltmp48                 @ DW_AT_high_pc
+	.byte	8                               @ DW_AT_call_file
+	.byte	65                              @ DW_AT_call_line
+	.byte	12                              @ DW_AT_call_column
+	.byte	16                              @ Abbrev [16] 0x543:0x8 DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	48
+	.long	713                             @ DW_AT_abstract_origin
+	.byte	16                              @ Abbrev [16] 0x54b:0x8 DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	44
+	.long	724                             @ DW_AT_abstract_origin
+	.byte	0                               @ End Of Children Mark
+	.byte	0                               @ End Of Children Mark
+	.byte	0                               @ End Of Children Mark
+	.byte	7                               @ Abbrev [7] 0x556:0xe6 DW_TAG_subprogram
+	.long	.Lfunc_begin7                   @ DW_AT_low_pc
+	.long	.Lfunc_end7-.Lfunc_begin7       @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string33                 @ DW_AT_name
+	.byte	12                              @ DW_AT_decl_file
+	.byte	148                             @ DW_AT_decl_line
+                                        @ DW_AT_prototyped
+	.long	129                             @ DW_AT_type
+                                        @ DW_AT_external
+	.byte	8                               @ Abbrev [8] 0x56b:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	24
+	.long	.Linfo_string37                 @ DW_AT_name
+	.byte	12                              @ DW_AT_decl_file
+	.byte	148                             @ DW_AT_decl_line
+	.long	1842                            @ DW_AT_type
+	.byte	8                               @ Abbrev [8] 0x579:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	20
+	.long	.Linfo_string38                 @ DW_AT_name
+	.byte	12                              @ DW_AT_decl_file
+	.byte	148                             @ DW_AT_decl_line
+	.long	1842                            @ DW_AT_type
+	.byte	8                               @ Abbrev [8] 0x587:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	16
+	.long	.Linfo_string39                 @ DW_AT_name
+	.byte	12                              @ DW_AT_decl_file
+	.byte	148                             @ DW_AT_decl_line
+	.long	1852                            @ DW_AT_type
+	.byte	9                               @ Abbrev [9] 0x595:0xe DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	14
+	.long	.Linfo_string57                 @ DW_AT_name
+	.byte	12                              @ DW_AT_decl_file
+	.byte	150                             @ DW_AT_decl_line
+	.long	103                             @ DW_AT_type
+	.byte	9                               @ Abbrev [9] 0x5a3:0xe DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	12
+	.long	.Linfo_string58                 @ DW_AT_name
+	.byte	12                              @ DW_AT_decl_file
+	.byte	150                             @ DW_AT_decl_line
+	.long	103                             @ DW_AT_type
+	.byte	9                               @ Abbrev [9] 0x5b1:0xe DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	10
+	.long	.Linfo_string48                 @ DW_AT_name
+	.byte	12                              @ DW_AT_decl_file
+	.byte	150                             @ DW_AT_decl_line
+	.long	103                             @ DW_AT_type
+	.byte	9                               @ Abbrev [9] 0x5bf:0xe DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	8
+	.long	.Linfo_string55                 @ DW_AT_name
+	.byte	12                              @ DW_AT_decl_file
+	.byte	150                             @ DW_AT_decl_line
+	.long	103                             @ DW_AT_type
+	.byte	9                               @ Abbrev [9] 0x5cd:0xe DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	6
+	.long	.Linfo_string56                 @ DW_AT_name
+	.byte	12                              @ DW_AT_decl_file
+	.byte	151                             @ DW_AT_decl_line
+	.long	129                             @ DW_AT_type
+	.byte	9                               @ Abbrev [9] 0x5db:0xe DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	0
+	.long	.Linfo_string59                 @ DW_AT_name
+	.byte	12                              @ DW_AT_decl_file
+	.byte	152                             @ DW_AT_decl_line
+	.long	1852                            @ DW_AT_type
+	.byte	15                              @ Abbrev [15] 0x5e9:0x52 DW_TAG_inlined_subroutine
+	.long	627                             @ DW_AT_abstract_origin
+	.long	.Ltmp63                         @ DW_AT_low_pc
+	.long	.Ltmp70-.Ltmp63                 @ DW_AT_high_pc
+	.byte	12                              @ DW_AT_call_file
+	.byte	165                             @ DW_AT_call_line
+	.byte	5                               @ DW_AT_call_column
+	.byte	16                              @ Abbrev [16] 0x5f9:0x8 DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	42
+	.long	639                             @ DW_AT_abstract_origin
+	.byte	16                              @ Abbrev [16] 0x601:0x8 DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	36
+	.long	650                             @ DW_AT_abstract_origin
+	.byte	17                              @ Abbrev [17] 0x609:0x8 DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	32
+	.long	661                             @ DW_AT_abstract_origin
+	.byte	17                              @ Abbrev [17] 0x611:0x8 DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	31
+	.long	672                             @ DW_AT_abstract_origin
+	.byte	15                              @ Abbrev [15] 0x619:0x21 DW_TAG_inlined_subroutine
+	.long	701                             @ DW_AT_abstract_origin
+	.long	.Ltmp64                         @ DW_AT_low_pc
+	.long	.Ltmp69-.Ltmp64                 @ DW_AT_high_pc
+	.byte	8                               @ DW_AT_call_file
+	.byte	65                              @ DW_AT_call_line
+	.byte	12                              @ DW_AT_call_column
+	.byte	16                              @ Abbrev [16] 0x629:0x8 DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	48
+	.long	713                             @ DW_AT_abstract_origin
+	.byte	16                              @ Abbrev [16] 0x631:0x8 DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	44
+	.long	724                             @ DW_AT_abstract_origin
+	.byte	0                               @ End Of Children Mark
+	.byte	0                               @ End Of Children Mark
+	.byte	0                               @ End Of Children Mark
+	.byte	18                              @ Abbrev [18] 0x63c:0x32 DW_TAG_subprogram
+	.long	.Lfunc_begin8                   @ DW_AT_low_pc
+	.long	.Lfunc_end8-.Lfunc_begin8       @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string34                 @ DW_AT_name
+	.byte	12                              @ DW_AT_decl_file
+	.byte	55                              @ DW_AT_decl_line
+                                        @ DW_AT_prototyped
+	.long	129                             @ DW_AT_type
+	.byte	8                               @ Abbrev [8] 0x651:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	6
+	.long	.Linfo_string60                 @ DW_AT_name
+	.byte	12                              @ DW_AT_decl_file
+	.byte	55                              @ DW_AT_decl_line
+	.long	129                             @ DW_AT_type
+	.byte	8                               @ Abbrev [8] 0x65f:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	4
+	.long	.Linfo_string61                 @ DW_AT_name
+	.byte	12                              @ DW_AT_decl_file
+	.byte	55                              @ DW_AT_decl_line
+	.long	129                             @ DW_AT_type
+	.byte	0                               @ End Of Children Mark
+	.byte	7                               @ Abbrev [7] 0x66e:0x6a DW_TAG_subprogram
+	.long	.Lfunc_begin9                   @ DW_AT_low_pc
+	.long	.Lfunc_end9-.Lfunc_begin9       @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string35                 @ DW_AT_name
+	.byte	13                              @ DW_AT_decl_file
+	.byte	113                             @ DW_AT_decl_line
+                                        @ DW_AT_prototyped
+	.long	129                             @ DW_AT_type
+                                        @ DW_AT_external
+	.byte	8                               @ Abbrev [8] 0x683:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	20
+	.long	.Linfo_string37                 @ DW_AT_name
+	.byte	13                              @ DW_AT_decl_file
+	.byte	113                             @ DW_AT_decl_line
+	.long	1842                            @ DW_AT_type
+	.byte	8                               @ Abbrev [8] 0x691:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	16
+	.long	.Linfo_string38                 @ DW_AT_name
+	.byte	13                              @ DW_AT_decl_file
+	.byte	113                             @ DW_AT_decl_line
+	.long	1842                            @ DW_AT_type
+	.byte	8                               @ Abbrev [8] 0x69f:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	12
+	.long	.Linfo_string62                 @ DW_AT_name
+	.byte	13                              @ DW_AT_decl_file
+	.byte	113                             @ DW_AT_decl_line
+	.long	1870                            @ DW_AT_type
+	.byte	8                               @ Abbrev [8] 0x6ad:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	8
+	.long	.Linfo_string39                 @ DW_AT_name
+	.byte	13                              @ DW_AT_decl_file
+	.byte	113                             @ DW_AT_decl_line
+	.long	1852                            @ DW_AT_type
+	.byte	9                               @ Abbrev [9] 0x6bb:0xe DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	6
+	.long	.Linfo_string48                 @ DW_AT_name
+	.byte	13                              @ DW_AT_decl_file
+	.byte	115                             @ DW_AT_decl_line
+	.long	103                             @ DW_AT_type
+	.byte	9                               @ Abbrev [9] 0x6c9:0xe DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	0
+	.long	.Linfo_string59                 @ DW_AT_name
+	.byte	13                              @ DW_AT_decl_file
+	.byte	116                             @ DW_AT_decl_line
+	.long	1852                            @ DW_AT_type
+	.byte	0                               @ End Of Children Mark
+	.byte	19                              @ Abbrev [19] 0x6d8:0x1a DW_TAG_subprogram
+	.long	.Linfo_string24                 @ DW_AT_name
+	.byte	14                              @ DW_AT_decl_file
+	.short	414                             @ DW_AT_decl_line
+                                        @ DW_AT_prototyped
+	.long	122                             @ DW_AT_type
+	.byte	1                               @ DW_AT_inline
+	.byte	20                              @ Abbrev [20] 0x6e5:0xc DW_TAG_formal_parameter
+	.long	.Linfo_string25                 @ DW_AT_name
+	.byte	14                              @ DW_AT_decl_file
+	.short	414                             @ DW_AT_decl_line
+	.long	122                             @ DW_AT_type
+	.byte	0                               @ End Of Children Mark
+	.byte	21                              @ Abbrev [21] 0x6f2:0x40 DW_TAG_subprogram
+	.long	.Lfunc_begin10                  @ DW_AT_low_pc
+	.long	.Lfunc_end10-.Lfunc_begin10     @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string36                 @ DW_AT_name
+	.byte	14                              @ DW_AT_decl_file
+	.short	425                             @ DW_AT_decl_line
+                                        @ DW_AT_prototyped
+	.long	122                             @ DW_AT_type
+	.byte	22                              @ Abbrev [22] 0x708:0xf DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	0
+	.long	.Linfo_string65                 @ DW_AT_name
+	.byte	14                              @ DW_AT_decl_file
+	.short	425                             @ DW_AT_decl_line
+	.long	122                             @ DW_AT_type
+	.byte	23                              @ Abbrev [23] 0x717:0x1a DW_TAG_inlined_subroutine
+	.long	1752                            @ DW_AT_abstract_origin
+	.long	.Ltmp83                         @ DW_AT_low_pc
+	.long	.Ltmp84-.Ltmp83                 @ DW_AT_high_pc
+	.byte	14                              @ DW_AT_call_file
+	.short	425                             @ DW_AT_call_line
+	.byte	53                              @ DW_AT_call_column
+	.byte	16                              @ Abbrev [16] 0x728:0x8 DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	4
+	.long	1765                            @ DW_AT_abstract_origin
+	.byte	0                               @ End Of Children Mark
+	.byte	0                               @ End Of Children Mark
+	.byte	13                              @ Abbrev [13] 0x732:0x5 DW_TAG_pointer_type
+	.long	1847                            @ DW_AT_type
+	.byte	14                              @ Abbrev [14] 0x737:0x5 DW_TAG_const_type
+	.long	129                             @ DW_AT_type
+	.byte	6                               @ Abbrev [6] 0x73c:0xb DW_TAG_typedef
+	.long	1863                            @ DW_AT_type
+	.long	.Linfo_string41                 @ DW_AT_name
+	.byte	15                              @ DW_AT_decl_file
+	.byte	64                              @ DW_AT_decl_line
+	.byte	4                               @ Abbrev [4] 0x747:0x7 DW_TAG_base_type
+	.long	.Linfo_string40                 @ DW_AT_name
+	.byte	7                               @ DW_AT_encoding
+	.byte	4                               @ DW_AT_byte_size
+	.byte	6                               @ Abbrev [6] 0x74e:0xb DW_TAG_typedef
+	.long	1881                            @ DW_AT_type
+	.long	.Linfo_string64                 @ DW_AT_name
+	.byte	15                              @ DW_AT_decl_file
+	.byte	58                              @ DW_AT_decl_line
+	.byte	4                               @ Abbrev [4] 0x759:0x7 DW_TAG_base_type
+	.long	.Linfo_string63                 @ DW_AT_name
+	.byte	5                               @ DW_AT_encoding
+	.byte	4                               @ DW_AT_byte_size
+	.byte	0                               @ End Of Children Mark
+.Ldebug_info_end0:
+	.section	.debug_ranges,"",%progbits
+.Ldebug_ranges0:
+	.long	.Lfunc_begin0
+	.long	.Lfunc_end0
+	.long	.Lfunc_begin1
+	.long	.Lfunc_end1
+	.long	.Lfunc_begin2
+	.long	.Lfunc_end2
+	.long	.Lfunc_begin3
+	.long	.Lfunc_end3
+	.long	.Lfunc_begin4
+	.long	.Lfunc_end4
+	.long	.Lfunc_begin5
+	.long	.Lfunc_end5
+	.long	.Lfunc_begin6
+	.long	.Lfunc_end6
+	.long	.Lfunc_begin7
+	.long	.Lfunc_end7
+	.long	.Lfunc_begin8
+	.long	.Lfunc_end8
+	.long	.Lfunc_begin9
+	.long	.Lfunc_end9
+	.long	.Lfunc_begin10
+	.long	.Lfunc_end10
+	.long	0
+	.long	0
+	.section	.debug_str,"MS",%progbits,1
+.Linfo_string0:
+	.asciz	"Component: Arm Compiler for Embedded 6.24 Tool: armclang [5f371800]" @ string offset=0
+.Linfo_string1:
+	.asciz	"D:/keil_1/keilpacks/ARM/CMSIS-DSP/1.16.2/Source/DistanceFunctions\\DistanceFunctionsF16.c" @ string offset=68
+.Linfo_string2:
+	.asciz	"D:\\RM_projects\\h7_final_4\\MDK-ARM" @ string offset=157
+.Linfo_string3:
+	.asciz	"signed char"                   @ string offset=191
+.Linfo_string4:
+	.asciz	"ARM_MATH_SUCCESS"              @ string offset=203
+.Linfo_string5:
+	.asciz	"ARM_MATH_ARGUMENT_ERROR"       @ string offset=220
+.Linfo_string6:
+	.asciz	"ARM_MATH_LENGTH_ERROR"         @ string offset=244
+.Linfo_string7:
+	.asciz	"ARM_MATH_SIZE_MISMATCH"        @ string offset=266
+.Linfo_string8:
+	.asciz	"ARM_MATH_NANINF"               @ string offset=289
+.Linfo_string9:
+	.asciz	"ARM_MATH_SINGULAR"             @ string offset=305
+.Linfo_string10:
+	.asciz	"ARM_MATH_TEST_FAILURE"         @ string offset=323
+.Linfo_string11:
+	.asciz	"ARM_MATH_DECOMPOSITION_FAILURE" @ string offset=345
+.Linfo_string12:
+	.asciz	"_Float16"                      @ string offset=376
+.Linfo_string13:
+	.asciz	"float"                         @ string offset=385
+.Linfo_string14:
+	.asciz	"float32_t"                     @ string offset=391
+.Linfo_string15:
+	.asciz	"__fp16"                        @ string offset=401
+.Linfo_string16:
+	.asciz	"float16_t"                     @ string offset=408
+.Linfo_string17:
+	.asciz	"arm_sqrt_f16"                  @ string offset=418
+.Linfo_string18:
+	.asciz	"arm_status"                    @ string offset=431
+.Linfo_string19:
+	.asciz	"in"                            @ string offset=442
+.Linfo_string20:
+	.asciz	"pOut"                          @ string offset=445
+.Linfo_string21:
+	.asciz	"r"                             @ string offset=450
+.Linfo_string22:
+	.asciz	"status"                        @ string offset=452
+.Linfo_string23:
+	.asciz	"arm_sqrt_f32"                  @ string offset=459
+.Linfo_string24:
+	.asciz	"__sqrtf"                       @ string offset=472
+.Linfo_string25:
+	.asciz	"f"                             @ string offset=480
+.Linfo_string26:
+	.asciz	"arm_braycurtis_distance_f16"   @ string offset=482
+.Linfo_string27:
+	.asciz	"arm_canberra_distance_f16"     @ string offset=510
+.Linfo_string28:
+	.asciz	"arm_chebyshev_distance_f16"    @ string offset=536
+.Linfo_string29:
+	.asciz	"arm_cityblock_distance_f16"    @ string offset=563
+.Linfo_string30:
+	.asciz	"arm_correlation_distance_f16"  @ string offset=590
+.Linfo_string31:
+	.asciz	"arm_cosine_distance_f16"       @ string offset=619
+.Linfo_string32:
+	.asciz	"arm_euclidean_distance_f16"    @ string offset=643
+.Linfo_string33:
+	.asciz	"arm_jensenshannon_distance_f16" @ string offset=670
+.Linfo_string34:
+	.asciz	"rel_entr"                      @ string offset=701
+.Linfo_string35:
+	.asciz	"arm_minkowski_distance_f16"    @ string offset=710
+.Linfo_string36:
+	.asciz	"_sqrtf"                        @ string offset=737
+.Linfo_string37:
+	.asciz	"pA"                            @ string offset=744
+.Linfo_string38:
+	.asciz	"pB"                            @ string offset=747
+.Linfo_string39:
+	.asciz	"blockSize"                     @ string offset=750
+.Linfo_string40:
+	.asciz	"unsigned int"                  @ string offset=760
+.Linfo_string41:
+	.asciz	"uint32_t"                      @ string offset=773
+.Linfo_string42:
+	.asciz	"accumDiff"                     @ string offset=782
+.Linfo_string43:
+	.asciz	"accumSum"                      @ string offset=792
+.Linfo_string44:
+	.asciz	"tmpA"                          @ string offset=801
+.Linfo_string45:
+	.asciz	"tmpB"                          @ string offset=806
+.Linfo_string46:
+	.asciz	"accum"                         @ string offset=811
+.Linfo_string47:
+	.asciz	"diff"                          @ string offset=817
+.Linfo_string48:
+	.asciz	"sum"                           @ string offset=822
+.Linfo_string49:
+	.asciz	"maxVal"                        @ string offset=826
+.Linfo_string50:
+	.asciz	"ma"                            @ string offset=833
+.Linfo_string51:
+	.asciz	"mb"                            @ string offset=836
+.Linfo_string52:
+	.asciz	"pwra"                          @ string offset=839
+.Linfo_string53:
+	.asciz	"pwrb"                          @ string offset=844
+.Linfo_string54:
+	.asciz	"dot"                           @ string offset=849
+.Linfo_string55:
+	.asciz	"tmp"                           @ string offset=853
+.Linfo_string56:
+	.asciz	"result"                        @ string offset=857
+.Linfo_string57:
+	.asciz	"left"                          @ string offset=864
+.Linfo_string58:
+	.asciz	"right"                         @ string offset=869
+.Linfo_string59:
+	.asciz	"i"                             @ string offset=875
+.Linfo_string60:
+	.asciz	"x"                             @ string offset=877
+.Linfo_string61:
+	.asciz	"y"                             @ string offset=879
+.Linfo_string62:
+	.asciz	"order"                         @ string offset=881
+.Linfo_string63:
+	.asciz	"int"                           @ string offset=887
+.Linfo_string64:
+	.asciz	"int32_t"                       @ string offset=891
+.Linfo_string65:
+	.asciz	"__x"                           @ string offset=899
+	.ident	"Component: Arm Compiler for Embedded 6.24 Tool: armclang [5f371800]"
+	.section	".note.GNU-stack","",%progbits
+	.eabi_attribute	30, 6	@ Tag_ABI_optimization_goals
+	.ARM_attribute	16, 1	@ Tag_AV_eba
+	.section	.debug_line,"",%progbits
+.Lline_table_start0:
