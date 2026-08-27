@@ -1,4 +1,5 @@
 #include "power_meter.h"
+#include "timestamp.h"
 
 
 extern osThreadId_t TaskPTZ02Handle;
@@ -94,19 +95,23 @@ void PowermeterTask05(void *argument)
 uint8_t count=0;
 
 uint32_t flagswtich=0;
+extern uint32_t high_stamp;
 
 void SwtichTask06(void *argument)
 { uint32_t flagsInit=0;
+  TIM5_Init();
+  static uint32_t timstamp_last=0,high_stamp_last=0;
+  static uint8_t onoff=0;
   flagsInit=osThreadFlagsWait(0x00000001,osFlagsWaitAll,osWaitForever);
   for (;;)
   {
 		count++;
-		
     if(flagsInit&0x00000001)
     {  //uint32_t flagswtich=0;
       flagswtich=osThreadFlagsGet();
       if(flagswtich&0x00000001)//online
       {
+        onoff=1;
         if(flagswtich&0x00000002)//open_power
         {
       taskpower_onoff(true);
@@ -124,27 +129,42 @@ void SwtichTask06(void *argument)
       }
       else if(flagswtich==0x0000000)//offline
       {
-        
-//        osDelay(MAX_OFFLINETME);
-//        flagswtich=osThreadFlagsGet();
-				flagswtich=osThreadFlagsWait(0x00000001,(osFlagsWaitAll|osFlagsNoClear),500);
-        if(flagswtich&0x00000001)
+				
+        if(onoff==1)
         {
-         taskpower_onoff(true);
-         task_carmode(flagswtich);
-        // osThreadFlagsClear(0X7FFFFFFF);
-					//break;
+          timstamp_last=TIM5_GetCounter();
+          high_stamp_last=high_stamp;
+          onoff=0;
         }
-        else if(flagswtich==osErrorTimeout)
-        {
-          flagsInit=0x00000000;
-          taskpower_onoff(false);
-        }
-				osThreadFlagsClear(0X7FFFFFFF);
-      }
-        //break;
+       
+          if(high_stamp_last==high_stamp)
+          {
+            if((TIM5_GetCounter()-timstamp_last)>500000)
+            {
+              taskpower_onoff(false);
+              osThreadFlagsClear(0X7FFFFFFF);
+            }
+          }
+          else if(high_stamp_last==high_stamp-1)
+          {
+            if((TIM5_GetCounter()+1000000-timstamp_last)<500000)
+            {
+              taskpower_onoff(true);
+              task_carmode(flagswtich);
+              osThreadFlagsClear(0X7FFFFFFF);
+            }else
+            {
+              taskpower_onoff(false);
+              osThreadFlagsClear(0X7FFFFFFF);
+            }
+          }else
+          {
+            taskpower_onoff(false);
+            osThreadFlagsClear(0X7FFFFFFF);
+          }
+      } 
     }
-    else if(flagsInit==0x0000000)
+    else
     {
        uint32_t flagstran;
      taskpower_onoff(false);
@@ -165,78 +185,5 @@ void SwtichTask06(void *argument)
 
 }
 
-
-
-//uint32_t frq=0;
-
-
-//void SwtichTask06(void *argument)
-//{
-//	uint32_t flagsInit=0;
-//  flagsInit=osThreadFlagsWait(0x00000001,osFlagsWaitAll,osWaitForever);
-//	static uint32_t tickcountdisconnect=0x00000000;
-//  for(;;)
-//  {
-//		count++;
-//		
-//    if(flagsInit&0x00000001)
-//    {  uint32_t flagswtich;
-//      flagswtich=osThreadFlagsGet();
-//      if(flagswtich&0x00000001)//online
-//      {
-//        if(flagswtich&0x00000002)
-//        {
-//      taskpower_onoff(true);
-//      osThreadFlagsClear(0X7FFFFFFF);
-//					//break;
-//        }
-//        else if(flagswtich==0x00000001)
-//        {
-
-//      taskpower_onoff(false);
-//      osThreadFlagsClear(0X7FFFFFFF);
-//					
-//        }
-//      }
-//      else if(flagswtich==0x0000000)//offline
-//      {
-////       static uint8_t init=0;
-////				if(init==0)
-////        {
-////				 tickcountdisconnect=osKernelGetTickCount();
-////					init=1;
-////				}else if(init==1)
-////        {
-////					if(tickcountdisconnect+500<=osKernelGetTickCount())
-////            {
-////						  taskpower_onoff(false);
-////						}else if(tickcountdisconnect)
-////            {
-////							
-////						}
-////				}
-//       
-//				
-//				
-//      }
-//    else if(flagsInit==0x0000000)
-//    {
-//       uint32_t flagstran;
-//     taskpower_onoff(false);
-//      flagstran=osThreadFlagsGet();
-//       if(flagstran&0x00000001)
-//       {
-//          flagsInit=0x00000001;
-//          taskpower_onoff(true);
-//          osThreadFlagsClear(0x7FFFFFFF);
-//				 
-//       }
-//    }
-
-//	
-//		
-//  }
-//}
-//}
 
 

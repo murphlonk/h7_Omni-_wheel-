@@ -744,6 +744,11 @@
               <FileType>1</FileType>
               <FilePath>..\app\src\car_mode.c</FilePath>
             </File>
+            <File>
+              <FileName>timestamp.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\app\src\timestamp.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

@@ -116,7 +116,7 @@ void chassis_modetran()
   {
      //osThreadFlagsSet(TaskChassis03Handle, 0x00000020);
 	 //osThreadFlagsSet(TaskChassis03Handle, 0x00000000);
-  } 
+  } else{}
 }
 
 void ptz_modetran()

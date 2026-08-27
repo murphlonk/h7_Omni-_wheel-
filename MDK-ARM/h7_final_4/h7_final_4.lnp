@@ -66,6 +66,7 @@
 ".\h7_final_4\ptz.o"
 ".\h7_final_4\power_meter.o"
 ".\h7_final_4\car_mode.o"
+".\h7_final_4\timestamp.o"
 ".\h7_final_4\basicmathfunctions.o"
 ".\h7_final_4\basicmathfunctionsf16.o"
 ".\h7_final_4\bayesfunctions.o"

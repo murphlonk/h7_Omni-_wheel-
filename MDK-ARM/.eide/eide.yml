@@ -116,6 +116,7 @@ virtualFolder:
                         - path: ../app/src/PTZ.c
                         - path: ../app/src/power_meter.c
                         - path: ../app/src/car_mode.c
+                        - path: ../app/src/timestamp.c
                       folders: []
     - name: ::CMSIS
       files: []
@@ -167,7 +168,7 @@ targets:
             language-cpp: c++11
             link-time-optimization: false
             one-elf-section-per-function: true
-            optimization: level-3
+            optimization: level-0
             short-enums#wchar: true
             warnings: ac5-like-warnings
           global:
