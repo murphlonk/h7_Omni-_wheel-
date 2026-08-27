@@ -166,7 +166,7 @@ void chassiscan_init()
     Chassiss_Slove(speed[0],speed[1],speed[2],speedsloved);
     for(uint8_t i=0;i<4;i++)
       { 
-        speedinto[i] = (int16_t)(Positional_PID_Compute(&motordata[i].motor_contrl,speedsloved[i],motordata->data.Speed)/6.0f*16384);
+        speedinto[i] = (int16_t)(Positional_PID_Compute(&motordata[i].motor_contrl,speedsloved[i],motordata[i].data.Speed)/6.0f*16384);
       }
 
      //POWER_METER_COMPUTE_PER(rollcrrent, float speed,Power_K* Kvalues);
@@ -204,7 +204,7 @@ void ChassisTask03(void *argument)
       target[0]=normal4chdata.ch0;//vx
       target[1]=normal4chdata.ch1;//vy
       target[2]=normal4chdata.ch2*4;//wr
-    speedptztochassis(target[0],target[1]);
+    speedptztochassis(&target[0],&target[1]);
     Chassiss_Drive(target,chassiss_motor,&chassis_fdcan);
     }
     else if (orderflag&0x00000010)//with
@@ -213,7 +213,7 @@ void ChassisTask03(void *argument)
     target[0]=normal4chdata.ch0;
     target[1]=normal4chdata.ch1;
     target[2]=1.2f*Reverso_Chassiss.status.phase_difference;//
-    speedptztochassis(target[0],target[1]);
+    speedptztochassis(&target[0],&target[1]);
     Chassiss_Drive(target,chassiss_motor,&chassis_fdcan);
     }
 

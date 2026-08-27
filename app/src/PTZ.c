@@ -24,6 +24,18 @@ DJMotor_hander PTZ_motor_yaw;
 
 PTZ_handler Reverso_PTZ;
 
+void get_relativeangle(Angles*angle)
+{
+
+  angle->PITCH=PTZ_motor_pitch.data.Angle-PITCH_FRIST;
+  angle->YAW  =PTZ_motor_yaw.data.Angle-ROLL_FRIST;
+}
+
+float  Gravity_compensation(PTZ_handler *Gravityfix)
+{
+     return  QUALITY*cos(Gravityfix->imudata.PITCH);
+}
+
 #ifdef BSP_CAN_H
 void PTZcanInit()
 {
@@ -41,10 +53,43 @@ void PTZ_Drive_Angle(float Targetpitch,float Targetroll)
 
 }
 
+
+
 void PTZ_Drive_WR(float targetspeeds)
 {
     
    Motor_Drive_Single(&PTZ_motor_yaw  ,&CAN_PTZ_YAW,(int16_t)(targetspeeds*60*25000/6.28f/320));
+}
+
+void PTZ_DISABLE()
+{
+      Motor_Drive_Single(&PTZ_motor_pitch,&CAN_PTZ_PITCH, 0);
+      Motor_Drive_Single(&PTZ_motor_yaw  ,&CAN_PTZ_YAW  , 0);
+
+}
+
+void PTZ_MIXdata_gyrodrive(float WR,float Targetpitch,float Targetroll)
+{
+     int16_t pitchspeed,yawspeed; 
+    pitchspeed= (int16_t)(Positional_PID_Compute(&PID_PITCH,Targetpitch,(float)(PTZ_motor_pitch.data.Angle))
+                 +Gravity_compensation(&Reverso_PTZ))*60*25000/6.28/320;//wait to change
+    yawspeed  = (int16_t)(Positional_PID_Compute(&PID_YAW,Targetroll,(float)(PTZ_motor_yaw.data.Angle))+WR)*60*25000/6.28/320;
+    
+    Motor_Drive_Single(&PTZ_motor_pitch,&CAN_PTZ_PITCH,pitchspeed);
+    Motor_Drive_Single(&PTZ_motor_yaw  ,&CAN_PTZ_YAW  ,yawspeed  );
+
+}
+
+void PTZ_static_drive(float Targetpitch,float Targetroll)
+{
+   int16_t pitchspeed,yawspeed; 
+    pitchspeed= (int16_t)(Positional_PID_Compute(&PID_PITCH,Targetpitch,(float)(pitch))
+                 +Gravity_compensation(&Reverso_PTZ))*60*25000/6.28/320;//wait to change
+    yawspeed  = (int16_t)(Positional_PID_Compute(&PID_YAW,Targetroll,(float)(yaw)))*60*25000/6.28/320;
+    
+    Motor_Drive_Single(&PTZ_motor_pitch,&CAN_PTZ_PITCH,pitchspeed);
+    Motor_Drive_Single(&PTZ_motor_yaw  ,&CAN_PTZ_YAW  ,yawspeed  );
+
 }
 #endif
 
@@ -59,20 +104,15 @@ void PTZcanInit()
 
 void PTZ_Drive_Angle(float Targetpitch,float Targetroll)
 {    int16_t pitchspeed,yawspeed; 
-    pitchspeed= (int16_t)(Positional_PID_Compute(&PID_PITCH,Targetpitch,(float)(PTZ_motor_pitch.data.Angle)))*60*25000/6.28/320;//wait to change
-    yawspeed  = (int16_t)(Positional_PID_Compute(&PID_YAW,Targetroll,(float)(PTZ_motor_yaw.data.Angle)))*60*25000/6.28/320;
+    pitchspeed= (int16_t)(Positional_PID_Compute(&PID_PITCH,Targetpitch,(float)(PTZ_motor_pitch.data.Angle))*60*25000/6.28/320);//wait to change
+    yawspeed  = (int16_t)(Positional_PID_Compute(&PID_YAW,Targetroll,(float)(PTZ_motor_yaw.data.Angle))*60*25000/6.28/320);
     
      Motor_Drive_Single(&PTZ_motor_pitch,&FDCAN_PTZ_PITCH,pitchspeed);
      Motor_Drive_Single(&PTZ_motor_yaw  ,&FDCAN_PTZ_YAW  ,yawspeed  );
 
 }
 
-void get_relativeangle(Angles*angle)
-{
 
-  angle->PITCH=PTZ_motor_pitch.data.Angle-PITCH_FRIST;
-  angle->YAW  =PTZ_motor_yaw.data.Angle-ROLL_FRIST;
-}
 
 void PTZ_Drive_WR(float targetspeeds)
 {
@@ -87,6 +127,30 @@ void PTZ_DISABLE()
 
 }
 
+void PTZ_MIXdata_gyrodrive(float WR,float Targetpitch,float Targetroll)
+{
+     int16_t pitchspeed,yawspeed; 
+    pitchspeed= (int16_t)(Positional_PID_Compute(&PID_PITCH,Targetpitch,(float)(PTZ_motor_pitch.data.Angle))
+                 +Gravity_compensation(&Reverso_PTZ))*60*25000/6.28/320;//wait to change
+    yawspeed  = (int16_t)(Positional_PID_Compute(&PID_YAW,Targetroll,(float)(PTZ_motor_yaw.data.Angle))+WR)*60*25000/6.28/320;
+    
+    Motor_Drive_Single(&PTZ_motor_pitch,&FDCAN_PTZ_PITCH,pitchspeed);
+    Motor_Drive_Single(&PTZ_motor_yaw  ,&FDCAN_PTZ_YAW  ,yawspeed  );
+
+}
+
+
+void PTZ_static_drive(float Targetpitch,float Targetroll)
+{
+   int16_t pitchspeed,yawspeed; 
+    pitchspeed= (int16_t)(Positional_PID_Compute(&PID_PITCH,Targetpitch,(float)(pitch))
+                 +Gravity_compensation(&Reverso_PTZ))*60*25000/6.28/320;//wait to change
+    yawspeed  = (int16_t)(Positional_PID_Compute(&PID_YAW,Targetroll,(float)(yaw)))*60*25000/6.28/320;
+    
+    Motor_Drive_Single(&PTZ_motor_pitch,&FDCAN_PTZ_PITCH,pitchspeed);
+    Motor_Drive_Single(&PTZ_motor_yaw  ,&FDCAN_PTZ_YAW  ,yawspeed  );
+
+}
 #endif
 
 void PTZ_Init(PTZ_handler * ptz)//the value of pid needed to init out of this one function 
@@ -113,10 +177,7 @@ void PTZ_imuupdate()
    Reverso_PTZ.imudata.YAW=yaw*3.14f/180; 
 }
 
-float  Gravity_compensation(PTZ_handler *Gravityfix)
-{
-     return  QUALITY*cos(Gravityfix->imudata.PITCH);
-}
+
 
 
 void PTZ_UPDATE()
@@ -125,29 +186,9 @@ void PTZ_UPDATE()
   get_relativeangle(&Reverso_PTZ.Relative_chassiss_slove);
 }
 
-void PTZ_MIXdata_gyrodrive(float WR,float Targetpitch,float Targetroll)
-{
-     int16_t pitchspeed,yawspeed; 
-    pitchspeed= (int16_t)(Positional_PID_Compute(&PID_PITCH,Targetpitch,(float)(PTZ_motor_pitch.data.Angle))
-                 +Gravity_compensation(&Reverso_PTZ))*60*25000/6.28/320;//wait to change
-    yawspeed  = (int16_t)(Positional_PID_Compute(&PID_YAW,Targetroll,(float)(PTZ_motor_yaw.data.Angle))+WR)*60*25000/6.28/320;
-    
-    Motor_Drive_Single(&PTZ_motor_pitch,&FDCAN_PTZ_PITCH,pitchspeed);
-    Motor_Drive_Single(&PTZ_motor_yaw  ,&FDCAN_PTZ_YAW  ,yawspeed  );
 
-}
 
-void PTZ_static_drive(float Targetpitch,float Targetroll)
-{
-   int16_t pitchspeed,yawspeed; 
-    pitchspeed= (int16_t)(Positional_PID_Compute(&PID_PITCH,Targetpitch,(float)(pitch))
-                 +Gravity_compensation(&Reverso_PTZ))*60*25000/6.28/320;//wait to change
-    yawspeed  = (int16_t)(Positional_PID_Compute(&PID_YAW,Targetroll,(float)(yaw)))*60*25000/6.28/320;
-    
-    Motor_Drive_Single(&PTZ_motor_pitch,&FDCAN_PTZ_PITCH,pitchspeed);
-    Motor_Drive_Single(&PTZ_motor_yaw  ,&FDCAN_PTZ_YAW  ,yawspeed  );
 
-}
 
 
 
