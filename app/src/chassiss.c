@@ -71,6 +71,16 @@ void chassiss_Motors_Init(Motor_hander* motors)//waiting to add
     
 }
 
+float* Chassiss_Slove(float VX,float VY,float WR,float* speed)
+{	
+	 speed[3] = -( 0.7071*VX-0.7071*VY+WR*CAR_L)/WHEEL_S; 
+   speed[2] = -(-0.7071*VX-0.7071*VY+WR*CAR_L)/WHEEL_S; 
+   speed[1] = -( 0.7071*VX+0.7071*VY+WR*CAR_L)/WHEEL_S; 
+   speed[0] = -(-0.7071*VX+0.7071*VY+WR*CAR_L)/WHEEL_S; 
+   return speed;
+}
+
+
 #ifdef BSP_FDCAN_H
 
 void chassiscan_init(void)
@@ -85,8 +95,8 @@ void chassiscan_init(void)
     Chassiss_Slove(targetspeed[0],targetspeed[1],targetspeed[2],speedsloved);
     for(uint8_t i=0;i<4;i++)
       { 
-        //speedinto[i] = (int16_t)(Positional_PID_Compute(&motordata[i].motor_contrl,speedsloved[i],motordata[i].data.Speed)/6.0f*16384);
-        speedinto[i]=(int16_t)(speedsloved[i]/6*16384);
+        speedinto[i] = (int16_t)(Positional_PID_Compute(&motordata[i].motor_contrl,speedsloved[i],motordata[i].data.Speed)/6.0f*16384);
+        //speedinto[i]=(int16_t)(speedsloved[i]/6*16384);
 			}
 
      //POWER_METER_COMPUTE_PER(rollcrrent, float speed,Power_K* Kvalues);
@@ -107,15 +117,6 @@ void Chassiss_Init(chassis_handler * chassiss)//the motor pid and POWER_K modefi
     Chassiss_power_Init(chassiss->chassisspower);
 }
 
-float* Chassiss_Slove(float VX,float VY,float WR,float* speed)
-{
-   
-   speed[3] = ( 0.7071*VX-0.7071*VY+WR*CAR_L)/WHEEL_S; 
-   speed[1] = (-0.7071*VX-0.7071*VY+WR*CAR_L)/WHEEL_S; 
-   speed[2] = ( 0.7071*VX+0.7071*VY+WR*CAR_L)/WHEEL_S; 
-   speed[0] = (-0.7071*VX+0.7071*VY+WR*CAR_L)/WHEEL_S; 
-   return speed;
-}
 
 chassiss_status* Chassiss_Inverse_Slove(float * speeds,chassiss_status * status )
 {
@@ -148,6 +149,10 @@ void chassiss_disabled()
     int16_t speedinto[4]={0,0,0,0};
     //POWER_METER_COMPUTE_PER(rollcrrent, float speed,Power_K* Kvalues);
     Motor_Drive_Frame( &chassis_fdcan,chassiss_motor[0].ContrlID,speedinto);
+    Positional_PID_Reset_nomal(&chassiss_motor[0].motor_contrl);
+    Positional_PID_Reset_nomal(&chassiss_motor[1].motor_contrl);
+    Positional_PID_Reset_nomal(&chassiss_motor[2].motor_contrl);
+    Positional_PID_Reset_nomal(&chassiss_motor[3].motor_contrl);
 }
 
 
@@ -183,10 +188,10 @@ uint32_t debugflag=0;
 void ChassisTask03(void *argument)
 {
 	  Fdcan_FilterInit(&hfdcan1);
-    Positional_PID_Init(&chassissmotor_contrl[0],0,0.0f,0.0f,100,1.45);
-    Positional_PID_Init(&chassissmotor_contrl[1],0,0.0f,0.0f,100,1.45);
-    Positional_PID_Init(&chassissmotor_contrl[2],0,0.0f,0.0f,100,1.45);
-    Positional_PID_Init(&chassissmotor_contrl[3],0.14,0.56f,0.0f,100000,145);
+    Positional_PID_Init(&chassissmotor_contrl[0],0.2f,1.0f,0.0f,100000,145);
+    Positional_PID_Init(&chassissmotor_contrl[1],0.2f,1.0f,0.0f,100000,145);
+    Positional_PID_Init(&chassissmotor_contrl[2],0.2f,1.0f,0.0f,100000,145);
+    Positional_PID_Init(&chassissmotor_contrl[3],0.2f,1.0f,0.0f,100000,145);
     Chassiss_Init(&Reverso_Chassiss);
     osThreadFlagsWait(0x00000002,osFlagsWaitAll,osWaitForever);
   for(;;)
