@@ -9,10 +9,14 @@
 #include "stdint.h"
 #include "stdbool.h"
 
+#include "math.h"
+
 #include "cmsis_os2.h"
 #include "FreeRTOS.h"
 
 #include "timestamp.h"
+#include "motor.h"
+
 
 typedef  struct
 {
@@ -22,6 +26,11 @@ typedef  struct
    float torque_constant;// tor and current Kvalue
 }Power_K;
 
+typedef struct
+{
+ float upper_limit;
+ float lower_limit;
+}Power_limits;
 
 void POWER_METER_INIT(Power_K* Kvalues,float Ka,float Kb,float const_value,float torque_constant);
 float POWER_METER_COMPUTE_PER(float rollcrrent, float speed,Power_K* Kvalues);//calculte the peices

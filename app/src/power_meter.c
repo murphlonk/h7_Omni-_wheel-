@@ -1,12 +1,13 @@
 #include "power_meter.h"
 
-
+#include "chassiss.h"
 
 extern osThreadId_t TaskPTZ02Handle;
 extern osThreadId_t TaskChassis03Handle;
 extern osThreadId_t TaskCan04Handle;
 extern osThreadId_t TaskPowermeter0Handle;
 //extern osThreadId_t TaskIMU07Handle;
+extern chassis_handler Reverso_Chassiss;
 
 void POWER_METER_INIT(Power_K* Kvalues,float Ka,float Kb,float const_value,float torque_constant)
 {
@@ -37,17 +38,48 @@ float Power_caculateall(float* ecost ,uint8_t numbers)// cost all calculater
 }
 
 
-float Power_Remap_ratio(float* powersloved float * nowdata)
+float Power_Remap_ratio(float* powersloved ,float * nowdata)
 {
 float ratio[4];
 
 
 }
 
-float Power_Remap_Bigp(float* powerslove,float* nowdata,float* bigp)
+float Power_to_rollcurrent(float power,float speed,Power_K* Kvalues)//slove the rollcurrent by power and speed
 {
+  float KA=Kvalues->Ka,KB=speed,KC=Kvalues->Kb*speed*speed+Kvalues->const_value-power;
+  if(KB*KB-4*KA*KC>0)
+  {
+    return (float)((-KB+sqrt(KB*KB-4*KA*KC))/(2*KA));
+  }else if(KB*KB-4*KA*KC==0||KB*KB-4*KA*KC<0)
+  {
+    return (float)(-KB/(2*KA));
+  }
 
 }
+
+
+
+float* Power_Remap_Bigp(float* powerslove,float* nowpowerdata,uint8_t numbers,Power_limits* limits,RealMotor_Data* data)//remap the power to the new power
+{
+  float Kcoe=0,errorsum=0,Powersum=0;
+  float powerchanged[4];
+  for(uint8_t i=0;i<numbers;i++)
+  {
+    Kcoe+=(powerslove[i]-nowpowerdata[i]-limits->lower_limit)/(limits->upper_limit-limits->lower_limit);
+    errorsum+=nowpowerdata[i]-powerslove[i];
+    Powersum+=powerslove[i];
+  }
+
+  for(uint8_t i=0;i<numbers;i++)
+  {
+    powerchanged[i]=Kcoe*(nowpowerdata[i]-powerslove[i])/errorsum+(1-Kcoe)*powerslove[i]/Powersum;
+    powerslove[i]=Power_to_rollcurrent(powerchanged[i],data[i].Speed,&Reverso_Chassiss.chassisspower[i]);
+  }
+  
+}
+
+
 
 
 
