@@ -1,5 +1,5 @@
 #include "power_meter.h"
-#include "timestamp.h"
+
 
 
 extern osThreadId_t TaskPTZ02Handle;
@@ -35,6 +35,21 @@ float Power_caculateall(float* ecost ,uint8_t numbers)// cost all calculater
    }
    return allcost;
 }
+
+
+float Power_Remap_ratio(float* powersloved float * nowdata)
+{
+float ratio[4];
+
+
+}
+
+float Power_Remap_Bigp(float* powerslove,float* nowdata,float* bigp)
+{
+
+}
+
+
 
 
 void taskpower_onoff(bool onoff) //ture :poweron:0x00000002 false :poweroff:0x00000000;

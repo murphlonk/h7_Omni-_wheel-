@@ -48,6 +48,16 @@ void Fdcan_Transmit(FDCAN_TxFrame_TypeDef *TxFrame)
 	HAL_FDCAN_AddMessageToTxFifoQ(TxFrame->hcan, &TxFrame->Header, TxFrame->Data);
 }
 
+
+float power_res=0;
+
+void can_to_power(uint8_t* rx_data)
+{// static float power_res=0;
+  const uint16_t voltage_raw = (rx_data[1] << 8) | rx_data[0];
+  const uint16_t current_raw = (rx_data[3] << 8) | rx_data[2];
+   power_res = power_res*0.5 + (uint16_t)voltage_raw * (uint16_t)current_raw * 0.0001f * 0.5f;
+}
+
 void HAL_FDCAN_RxFifo0Callback(FDCAN_HandleTypeDef *hfdcan, uint32_t RxFifo0ITs)
 { FDCAN_RxHeaderTypeDef rx_header_can1;
 	FDCAN_RxHeaderTypeDef rx_header_can2;
@@ -72,7 +82,7 @@ void HAL_FDCAN_RxFifo0Callback(FDCAN_HandleTypeDef *hfdcan, uint32_t RxFifo0ITs)
      FeedBackDataToReal_6020(&PTZ_motor_yaw.data   ,rx_candata);
       break;
 		case 0x213:
-			
+			can_to_power(rx_candata);
       break;			
 		default:
       break;
