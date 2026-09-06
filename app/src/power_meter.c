@@ -37,6 +37,15 @@ float Power_caculateall(float* ecost ,uint8_t numbers)// cost all calculater
    return allcost;
 }
 
+float Power_All(float* speedinto,float* speednow,Power_K* Kvalues,uint8_t numbers)
+{
+  float allpower=0;
+  for(uint8_t i=0;i<numbers;i++)
+  {
+    allpower+=POWER_METER_COMPUTE_PER(speedinto[i],speednow[i],&Kvalues[i]);
+  }
+  return allpower;
+}
 
 float Power_Remap_ratio(float* powersloved ,float * nowdata)
 {
@@ -60,21 +69,21 @@ float Power_to_rollcurrent(float power,float speed,Power_K* Kvalues)//slove the 
 
 
 
-float* Power_Remap_Bigp(float* powerslove,float* nowpowerdata,uint8_t numbers,Power_limits* limits,RealMotor_Data* data)//remap the power to the new power
+float* Power_Remap_Bigp(float* speedslove,float* nowspeeddata,uint8_t numbers,Power_limits* limits)//remap the power to the new power
 {
   float Kcoe=0,errorsum=0,Powersum=0;
   float powerchanged[4];
   for(uint8_t i=0;i<numbers;i++)
   {
-    Kcoe+=(powerslove[i]-nowpowerdata[i]-limits->lower_limit)/(limits->upper_limit-limits->lower_limit);
-    errorsum+=nowpowerdata[i]-powerslove[i];
-    Powersum+=powerslove[i];
+    Kcoe+=(speedslove[i]-nowspeeddata[i]-limits->lower_limit)/(limits->upper_limit-limits->lower_limit);
+    errorsum+=nowspeeddata[i]-speedslove[i];
+    Powersum+=speedslove[i];
   }
 
   for(uint8_t i=0;i<numbers;i++)
   {
-    powerchanged[i]=Kcoe*(nowpowerdata[i]-powerslove[i])/errorsum+(1-Kcoe)*powerslove[i]/Powersum;
-    //powerslove[i]=Power_to_rollcurrent(powerchanged[i],data[i].Speed,&Reverso_Chassiss.chassisspower[i]);
+    powerchanged[i]=Kcoe*(nowspeeddata[i]-speedslove[i])/errorsum+(1-Kcoe)*speedslove[i]/Powersum;
+    speedslove[i]=Power_to_rollcurrent(powerchanged[i],nowspeeddata[i],&Reverso_Chassiss.chassisspower[i]);
   }
   
 }

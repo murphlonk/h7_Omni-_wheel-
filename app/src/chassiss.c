@@ -12,6 +12,9 @@ DJMotor_hander chassiss_motor[4];
  DJMotor_hander chassiss_motor_2;
  DJMotor_hander chassiss_motor_3;
 */
+
+Power_limits chassisspower_limits[4]={{-20.0f,20.0f},{-20.0f,20.0f},{-20.0f,20.0f},{-20.0f,20.0f}};
+
 #ifdef BSP_CAN_H
 
 CAN_TxFrame_TypeDef Chassiss_CAN;
@@ -92,14 +95,16 @@ void chassiscan_init(void)
 {
     float speedsloved[4];
     int16_t speedinto[4];
+    float nowspeeddata[4]={motordata[0].data.Speed,motordata[1].data.Speed,motordata[2].data.Speed,motordata[3].data.Speed};
     Chassiss_Slove(targetspeed[0],targetspeed[1],targetspeed[2],speedsloved);
     for(uint8_t i=0;i<4;i++)
       { 
         speedinto[i] = (int16_t)(Positional_PID_Compute(&motordata[i].motor_contrl,speedsloved[i],((motordata[i].data.Speed)*9.54))/6.0f*16384);
         //speedinto[i]=(int16_t)(speedsloved[i]/6*16384);
 			}
-
-     //POWER_METER_COMPUTE_PER(rollcrrent, float speed,Power_K* Kvalues);
+      
+       if(Power_ALL(speedinto, nowspeeddata, chassiss->chassisspower, 4)>1000)  
+      {Power_Remap_Bigp(speedsloved,nowspeeddata,4,&chassisspower_limits);}
 	   
       //Motor_Drive_Frame( &chassis_fdcan,motordata[0].ContrlID,speedinto);//contrldata is the arry of contrl value
       Motor_Drive_Frame(Txframe,motordata[0].ContrlID,speedinto);//contrldata is the arry of contrl value
