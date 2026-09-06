@@ -95,7 +95,7 @@ void chassiscan_init(void)
     Chassiss_Slove(targetspeed[0],targetspeed[1],targetspeed[2],speedsloved);
     for(uint8_t i=0;i<4;i++)
       { 
-        speedinto[i] = (int16_t)(Positional_PID_Compute(&motordata[i].motor_contrl,speedsloved[i],motordata[i].data.Speed)/6.0f*16384);
+        speedinto[i] = (int16_t)(Positional_PID_Compute(&motordata[i].motor_contrl,speedsloved[i],((motordata[i].data.Speed)*9.54))/6.0f*16384);
         //speedinto[i]=(int16_t)(speedsloved[i]/6*16384);
 			}
 
@@ -171,7 +171,7 @@ void chassiscan_init()
     Chassiss_Slove(speed[0],speed[1],speed[2],speedsloved);
     for(uint8_t i=0;i<4;i++)
       { 
-        speedinto[i] = (int16_t)(Positional_PID_Compute(&motordata[i].motor_contrl,speedsloved[i],motordata[i].data.Speed)/6.0f*16384);
+        speedinto[i] = (int16_t)(Positional_PID_Compute(&motordata[i].motor_contrl,speedsloved[i],((motordata[i].data.Speed)*9.54))/6.0f*16384);
       }
 
      //POWER_METER_COMPUTE_PER(rollcrrent, float speed,Power_K* Kvalues);

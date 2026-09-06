@@ -74,7 +74,7 @@ float* Power_Remap_Bigp(float* powerslove,float* nowpowerdata,uint8_t numbers,Po
   for(uint8_t i=0;i<numbers;i++)
   {
     powerchanged[i]=Kcoe*(nowpowerdata[i]-powerslove[i])/errorsum+(1-Kcoe)*powerslove[i]/Powersum;
-    powerslove[i]=Power_to_rollcurrent(powerchanged[i],data[i].Speed,&Reverso_Chassiss.chassisspower[i]);
+    //powerslove[i]=Power_to_rollcurrent(powerchanged[i],data[i].Speed,&Reverso_Chassiss.chassisspower[i]);
   }
   
 }

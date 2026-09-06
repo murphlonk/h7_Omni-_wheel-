@@ -35,6 +35,7 @@ typedef struct
 void POWER_METER_INIT(Power_K* Kvalues,float Ka,float Kb,float const_value,float torque_constant);
 float POWER_METER_COMPUTE_PER(float rollcrrent, float speed,Power_K* Kvalues);//calculte the peices
 float Power_caculateall(float* ecost ,uint8_t numbers);// cost all calculater
-
+float Power_Remap_ratio(float* powersloved ,float * nowdata);
+float Power_to_rollcurrent(float power,float speed,Power_K* Kvalues);//slove the
 #endif
 

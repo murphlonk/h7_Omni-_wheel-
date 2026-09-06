@@ -23,7 +23,7 @@ void uart_init_bsp(UART_HandleTypeDef* huart)
 
     HAL_UARTEx_ReceiveToIdle_DMA(huart,data_temp_uart,BUFF_SIZE);
 	__HAL_DMA_DISABLE_IT(&hdma_uart5_rx, DMA_IT_HT);
-    //Remote_Contrl_Init();//self add f 
+    Remote_Contrl_Init();//self add f 
 }
 
 void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size)

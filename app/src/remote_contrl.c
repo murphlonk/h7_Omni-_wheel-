@@ -10,11 +10,17 @@
 Dr16_Data Dr16_Data_Receive;
 Dr16_CH_NORMAILIZATION normal4chdata;
 //extern uint8_t data_temp_uart[BUFF_SIZE];
+SemaphoreHandle_t Keyborad_Semaphore;
 
 void Remote_Contrl_Init()
 {
-  
-    
+    Keyborad_Semaphore = xSemaphoreCreateMutex();
+    if (Keyborad_Semaphore == NULL)
+    {
+        // Handle semaphore creation failure
+		Remote_Contrl_Init();
+    }
+
 }
 
 void DR16data_normal()
@@ -63,7 +69,17 @@ extern osThreadId_t  TaskPowermeter0Handle;
 extern osThreadId_t  TaskIMU07Handle;
 UBaseType_t Mark[7];
 
+void Keyborad_Contrl()
+{
+	if(Dr16_Data_Receive.Key_1==39)
+	{
+         
+	}else if(Dr16_Data_Receive.Key_1==40)
+	{
 
+	}
+
+}
 
 void lever_Status_()//quick stop contrl
 {
