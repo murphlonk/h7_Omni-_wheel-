@@ -7,7 +7,7 @@ extern osThreadId_t TaskChassis03Handle;
 extern osThreadId_t TaskCan04Handle;
 extern osThreadId_t TaskPowermeter0Handle;
 //extern osThreadId_t TaskIMU07Handle;
-extern chassis_handler Reverso_Chassiss;
+//extern chassis_handler Reverso_Chassiss;
 
 void POWER_METER_INIT(Power_K* Kvalues,float Ka,float Kb,float const_value,float torque_constant)
 {
@@ -69,7 +69,7 @@ float Power_to_rollcurrent(float power,float speed,Power_K* Kvalues)//slove the 
 
 
 
-float* Power_Remap_Bigp(float* speedslove,float* nowspeeddata,uint8_t numbers,Power_limits* limits)//remap the power to the new power
+float* Power_Remap_Bigp(float* speedslove,float* nowspeeddata,uint8_t numbers,Power_limits* limits,Power_K* Kvalues)//remap the power to the new power
 {
   float Kcoe=0,errorsum=0,Powersum=0;
   float powerchanged[4];
@@ -83,7 +83,7 @@ float* Power_Remap_Bigp(float* speedslove,float* nowspeeddata,uint8_t numbers,Po
   for(uint8_t i=0;i<numbers;i++)
   {
     powerchanged[i]=Kcoe*(nowspeeddata[i]-speedslove[i])/errorsum+(1-Kcoe)*speedslove[i]/Powersum;
-    speedslove[i]=Power_to_rollcurrent(powerchanged[i],nowspeeddata[i],&Reverso_Chassiss.chassisspower[i]);
+    speedslove[i]=Power_to_rollcurrent(powerchanged[i],nowspeeddata[i],&Kvalues[i]);
   }
   
 }

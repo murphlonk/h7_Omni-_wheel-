@@ -13,7 +13,7 @@ DJMotor_hander chassiss_motor[4];
  DJMotor_hander chassiss_motor_3;
 */
 
-Power_limits chassisspower_limits[4]={{-20.0f,20.0f},{-20.0f,20.0f},{-20.0f,20.0f},{-20.0f,20.0f}};
+Power_limits chassisspower_limits={-20.0f,20.0f};//wiating to measure the power limit of the chassis
 
 #ifdef BSP_CAN_H
 
@@ -103,8 +103,8 @@ void chassiscan_init(void)
         //speedinto[i]=(int16_t)(speedsloved[i]/6*16384);
 			}
       
-       if(Power_ALL(speedinto, nowspeeddata, chassiss->chassisspower, 4)>1000)  
-      {Power_Remap_Bigp(speedsloved,nowspeeddata,4,&chassisspower_limits);}
+       if(Power_All(speedsloved, nowspeeddata, Reverso_Chassiss.chassisspower, 4)>1000)  
+      {Power_Remap_Bigp(speedsloved,nowspeeddata,4,&chassisspower_limits,Reverso_Chassiss.chassisspower);}
 	   
       //Motor_Drive_Frame( &chassis_fdcan,motordata[0].ContrlID,speedinto);//contrldata is the arry of contrl value
       Motor_Drive_Frame(Txframe,motordata[0].ContrlID,speedinto);//contrldata is the arry of contrl value

@@ -3,6 +3,7 @@
 #include "cmsis_os2.h"
 #include "FreeRTOS.h"
 #include "task.h"
+#include "semphr.h"
 
 #include  "car_mode.h"
 
