@@ -70,41 +70,64 @@ extern osThreadId_t  TaskPowermeter0Handle;
 extern osThreadId_t  TaskIMU07Handle;
 UBaseType_t Mark[7];
 
+bool must_give_semaphore(SemaphoreHandle_t Keyborad_Semaphore)
+{
+	static uint32_t count=0;
+	if(vSemaphoreGive(Keyborad_Semaphore, (TickType_t)10) == pdFALSE&&count<10)
+	{
+		count++;
+		must_give_semaphore(Keyborad_Semaphore);
+	}else if(count>=10){count = 0;return false;}else{return true;}
+}
+
+bool must_take_semaphore(SemaphoreHandle_t Keyborad_Semaphore)
+{
+	static uint32_t count=0;
+	if(vSemaphoreTake(Keyborad_Semaphore, (TickType_t)10) == pdTRUE&&count<10)
+	{
+		count++;
+		must_take_semaphore(Keyborad_Semaphore);
+	}
+	else if(count>=10){count = 0;return false;}else{return true;}
+}
+
 void Keyborad_Contrl()
 {
-	if(Dr16_Data_Receive.Key_1==39)
-	{
-         
-	}else if(Dr16_Data_Receive.Key_1==40)
-	{
+	
+	
+		if(Dr16_Data_Receive.Key_1==39)
+		{
+			
+		}else if(Dr16_Data_Receive.Key_1==40)
+		{
 
-	}
-
+		}
+   
 }
 
 void lever_Status_()//quick stop contrl
 {
 	extern osThreadId_t TaskSwitch06Handle;
 	static bool enable =false;
-    if(Dr16_Data_Receive.S_1==2&&Dr16_Data_Receive.S_2==2)
-	{
-		enable=false;
-		debugcount=osThreadFlagsSet(TaskSwitch06Handle, 0x00000001);
-	}else 
-	{
-
-		if(enable==true)
+   	if(Dr16_Data_Receive.S_1==2&&Dr16_Data_Receive.S_2==2)
 		{
-           debugcount=osThreadFlagsSet(TaskSwitch06Handle, (0x00000002|0x00000001));//open power:0x00000002 |online :0x00000001
-            
-		}
-		else if(enable==false&&(Dr16_Data_Receive.S_1!=2||Dr16_Data_Receive.S_2!=2))
+			enable=false;
+			debugcount=osThreadFlagsSet(TaskSwitch06Handle, 0x00000001);
+		}else 
 		{
-          enable=true;
-        debugcount=osThreadFlagsSet(TaskSwitch06Handle, (0x00000001|0x00000002));
-		}
-	}
 
+			if(enable==true)
+			{
+			debugcount=osThreadFlagsSet(TaskSwitch06Handle, (0x00000002|0x00000001));//open power:0x00000002 |online :0x00000001
+				
+			}
+			else if(enable==false&&(Dr16_Data_Receive.S_1!=2||Dr16_Data_Receive.S_2!=2))
+			{
+			enable=true;
+			debugcount=osThreadFlagsSet(TaskSwitch06Handle, (0x00000001|0x00000002));
+			}
+		}
+	
 	Mark[0]=uxTaskGetStackHighWaterMark( defaultTaskHandle );
 	 Mark[1]=uxTaskGetStackHighWaterMark( TaskPTZ02Handle   );
 	 Mark[2]=uxTaskGetStackHighWaterMark( TaskChassis03Handle);
