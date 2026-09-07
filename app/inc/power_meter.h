@@ -37,5 +37,8 @@ float POWER_METER_COMPUTE_PER(float rollcrrent, float speed,Power_K* Kvalues);//
 float Power_caculateall(float* ecost ,uint8_t numbers);// cost all calculater
 float Power_Remap_ratio(float* powersloved ,float * nowdata);
 float Power_to_rollcurrent(float power,float speed,Power_K* Kvalues);//slove the
+float Power_All(float* speedinto,float* speednow,Power_K* Kvalues,uint8_t numbers);
+float* Power_Remap_Bigp(float* speedslove,float* nowspeeddata,uint8_t numbers,Power_limits* limits,Power_K* Kvalues);//remap the power to the new power
+void task_power_mode(uint32_t order,bool onoff);//true :gyro:0x00000000/0x00000020,false:with:0x00000010/0x00000010
 #endif
 
