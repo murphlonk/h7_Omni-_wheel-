@@ -8,9 +8,8 @@
 //*/
 
 
-void DJMotor_Init(DJMotor_hander * motor,PID_H_POS *motor_contrl,uint32_t fbID,uint32_t ContrlID,uint8_t number)
+void DJMotor_Init(DJMotor_hander * motor,uint32_t fbID,uint32_t ContrlID,uint8_t number)//pid values needed to set out of this before the motor used
 {
-   motor->motor_contrl = *motor_contrl;
    motor->fbID =fbID;
    motor->number=number;
    motor->ContrlID=ContrlID;
@@ -18,9 +17,8 @@ void DJMotor_Init(DJMotor_hander * motor,PID_H_POS *motor_contrl,uint32_t fbID,u
 }
 
 
-void Motor_Init(DJMotor_hander * motor,PID_H_POS *motor_contrl,uint32_t fbID,uint32_t ContrlID)
+void Motor_Init(DJMotor_hander * motor,uint32_t fbID,uint32_t ContrlID)
 {
-   motor->motor_contrl = *motor_contrl;
    motor->fbID =fbID;
    motor->ContrlID=ContrlID;
 }
@@ -48,7 +46,8 @@ RealMotor_Data* FeedBackDataToReal_6020(RealMotor_Data* Motor,uint8_t* Rx_Data)
 
 float Motor_Speedcricle(float Expected_speed,DJMotor_hander *motorhandle )//
 {
-    return Positional_PID_Compute(&(motorhandle->motor_contrl),Expected_speed,(motorhandle->data.Speed/60*6.28)); 
+    //return Positional_PID_Compute(&(motorhandle->motor_contrl),Expected_speed,(motorhandle->data.Speed/60*6.28)); 
+    return PID_calc(&(motorhandle->motor_contrl), Expected_speed, (motorhandle->data.Speed/60*6.28));
 }
 
 
@@ -76,12 +75,13 @@ void Motor_Drive_Frame( CAN_TxFrame_TypeDef *TxFrame,uint32_t CAN_ID, int16_t* C
 
 void Motor_Drive_Single(DJMotor_hander* singlemotor,CAN_TxFrame_TypeDef *TxFrame,int16_t singledata)
 {
+   TxFrame->Header.StdId = singlemotor->ContrlID;
    for(uint8_t i=0;i<8;i++)
    {
     TxFrame->Data[i]=0;
    }
-    TxFrame->Data[singlemotor->number  ]=(singledata>>8);
-    TxFrame->Data[singlemotor->number+1]=singledata;
+    TxFrame->Data[singlemotor->number*2  ]=(singledata>>8);
+    TxFrame->Data[singlemotor->number*2+1]=singledata;
     CanTransmit(TxFrame);
 }
 
@@ -107,6 +107,7 @@ void Motor_Drive_Frame( FDCAN_TxFrame_TypeDef *TxFrame, uint32_t CAN_ID, int16_t
 
 void Motor_Drive_Single(DJMotor_hander* singlemotor,FDCAN_TxFrame_TypeDef *TxFrame,int16_t singledata)
 {
+   TxFrame->Header.Identifier = singlemotor->ContrlID;
    for(uint8_t i=0;i<8;i++)
    {
     TxFrame->Data[i]=0;

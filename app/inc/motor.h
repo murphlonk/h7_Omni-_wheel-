@@ -5,7 +5,8 @@
 
 #include "stdint.h"
 #include "bsp_fdcan.h"
-#include "PID_T.h"
+//#include "PID_T.h"
+#include "pid.h"
 
 typedef struct {
     double  Angle;
@@ -20,14 +21,16 @@ typedef struct {
     uint32_t fbID;
     uint32_t ContrlID;
     uint8_t number;
-    PID_H_POS motor_contrl;
+    //PID_H_POS motor_contrl;
+    pid_type_def motor_contrl;
 }DJMotor_hander;//because dj one pice could contrl 4 motor for max
 
 typedef struct {
     RealMotor_Data data;
     uint32_t fbID;
     uint32_t ContrlID;
-    PID_H_POS motor_contrl;
+    //PID_H_POS motor_contrl;
+    pid_type_def motor_contrl;
 }Motor_hander;
 
 /*
@@ -38,8 +41,8 @@ DJMotor_hander chassiss_motor_3;
 */
 
 
-void Motor_Init(DJMotor_hander * motor,PID_H_POS *motor_contrl,uint32_t fbID,uint32_t ContrlID);
-void DJMotor_Init(DJMotor_hander * motor,PID_H_POS *motor_contrl,uint32_t fbID,uint32_t ContrlID,uint8_t number);
+void Motor_Init(DJMotor_hander * motor,uint32_t fbID,uint32_t ContrlID);
+void DJMotor_Init(DJMotor_hander * motor,uint32_t fbID,uint32_t ContrlID,uint8_t number);
 RealMotor_Data* FeedBackDataToReal_3508(RealMotor_Data* Motor,uint8_t* Rx_Data);
 RealMotor_Data* FeedBackDataToReal_6020(RealMotor_Data* Motor,uint8_t* Rx_Data);
 float Motor_Speedcricle(float Expected_speed,DJMotor_hander *motorhandle );

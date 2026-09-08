@@ -45,7 +45,15 @@ void Fdcan_Transmit_INIT(FDCAN_TxFrame_TypeDef* hfdcanTxFrame,FDCAN_HandleTypeDe
 
 void Fdcan_Transmit(FDCAN_TxFrame_TypeDef *TxFrame)
 {
-	HAL_FDCAN_AddMessageToTxFifoQ(TxFrame->hcan, &TxFrame->Header, TxFrame->Data);
+	
+	//HAL_FDCAN_AddMessageToTxFifoQ(TxFrame->hcan, &TxFrame->Header, TxFrame->Data);
+	for(uint8_t i=0;i<=10;i++)
+  {
+		if(HAL_FDCAN_AddMessageToTxFifoQ(TxFrame->hcan, &TxFrame->Header, TxFrame->Data)==HAL_OK)
+     {
+		  return;
+		 }
+	}
 }
 
 

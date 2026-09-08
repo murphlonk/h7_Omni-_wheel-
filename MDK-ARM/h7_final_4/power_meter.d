@@ -40,4 +40,4 @@
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_tim_ex.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_uart.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_uart_ex.h \
-  ..\app\inc\PID_T.h ..\app\inc\chassiss.h
+  ..\app\inc\pid.h ..\app\inc\chassiss.h ..\app\inc\PID_T.h

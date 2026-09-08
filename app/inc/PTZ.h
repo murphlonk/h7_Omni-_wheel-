@@ -17,7 +17,8 @@
 
 #include "cmsis_os2.h"
 
-#include "PID_T.h"
+//#include "PID_T.h"
+#include "pid.h"
 #include "motor.h"
 #include "bsp_fdcan.h"
 
@@ -36,7 +37,8 @@ typedef struct {
      Angles imudata;
      Angles Relative_chassiss_slove;
      Angles target;
-     PID_H_POS PTZ_PID;
+     //PID_H_POS PTZ_PID;
+     pid_type_def PTZ_PID;
 }PTZ_handler;
 
 void PTZ_Init(PTZ_handler * ptz);

@@ -1,5 +1,6 @@
 ./h7_final_4/ptz.o: ..\app\src\PTZ.c ..\app\inc\PTZ.h \
-  ..\Drivers\CMSIS\RTOS2\Include\cmsis_os2.h ..\app\inc\PID_T.h \
+  ..\Drivers\CMSIS\RTOS2\Include\cmsis_os2.h ..\app\inc\pid.h \
+  ..\app\inc\motor.h ..\app\inc\bsp_fdcan.h ..\Core\Inc\fdcan.h \
   ..\Core\Inc\main.h ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal.h \
   ..\Core\Inc\stm32h7xx_hal_conf.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_rcc.h \
@@ -31,5 +32,4 @@
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_tim_ex.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_uart.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_uart_ex.h \
-  ..\app\inc\motor.h ..\app\inc\bsp_fdcan.h ..\Core\Inc\fdcan.h \
   ..\app\inc\remote_contrl.h
