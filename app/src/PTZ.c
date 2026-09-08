@@ -28,7 +28,7 @@ void get_relativeangle(Angles*angle)
 {
 
   angle->PITCH=PTZ_motor_pitch.data.Angle-PITCH_FRIST;
-  angle->YAW  =PTZ_motor_yaw.data.Angle-ROLL_FRIST;
+  angle->YAW  =PTZ_motor_yaw.data.Angle  -  YAW_FRIST;
 }
 
 float  Gravity_compensation(PTZ_handler *Gravityfix)
@@ -143,7 +143,7 @@ void PTZ_MIXdata_gyrodrive(float WR,float Targetpitch,float Targetroll)
 void PTZ_static_drive(float Targetpitch,float Targetroll)
 {
    int16_t pitchspeed,yawspeed; 
-    pitchspeed= (int16_t)(Positional_PID_Compute(&PID_PITCH,Targetpitch,(float)(pitch))
+    pitchspeed= (int16_t)(Positional_PID_Compute(&PID_PITCH,Targetpitch,(float)(pitch))//baesed on the imudata
                  +Gravity_compensation(&Reverso_PTZ))*60*25000/6.28/320;//wait to change
     yawspeed  = (int16_t)(Positional_PID_Compute(&PID_YAW,Targetroll,(float)(yaw)))*60*25000/6.28/320;
     
@@ -162,9 +162,9 @@ void PTZ_Init(PTZ_handler * ptz)//the value of pid needed to init out of this on
     PTZcanInit();
     get_relativeangle(&ptz->Relative_chassiss_slove);
     Positional_PID_Init(&PID_PITCH,0.45f,0.0,0.0,2.0,1.34);
-    Positional_PID_Init(&PID_YAW,0.45f,0.0,0.0,2.0,1.34);
-    DJMotor_Init(&PTZ_motor_pitch,&PID_PITCH,PITCHMOTORID_FB,PITCHMOTORID_CON,1);
-    DJMotor_Init(&PTZ_motor_yaw  ,&PID_YAW  ,YAWMOTORID_FB  ,YAWMOTORID_CON  ,2);
+    Positional_PID_Init(&PID_YAW  ,0.45f,0.0,0.0,2.0,1.34);
+    DJMotor_Init(&PTZ_motor_pitch,&PID_PITCH,PITCHMOTORID_FB,PITCHMOTORID_CON,0);
+    DJMotor_Init(&PTZ_motor_yaw  ,&PID_YAW  ,YAWMOTORID_FB  ,YAWMOTORID_CON  ,1);
     ptz->target.PITCH=PTZ_motor_pitch.data.Angle;//use the motor feedback ,but now data is waiting to build
     ptz->target.ROLL =0.0f;
     ptz->target.YAW  =PTZ_motor_yaw.data.Angle;

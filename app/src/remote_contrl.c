@@ -73,7 +73,7 @@ UBaseType_t Mark[7];
 bool must_give_semaphore(SemaphoreHandle_t Keyborad_Semaphore)
 {
 	static uint32_t count=0;
-	if(vSemaphoreGive(Keyborad_Semaphore, (TickType_t)10) == pdFALSE&&count<10)
+	if(xSemaphoreGive(Keyborad_Semaphore) == pdFALSE&&count<10)
 	{
 		count++;
 		must_give_semaphore(Keyborad_Semaphore);
@@ -83,7 +83,7 @@ bool must_give_semaphore(SemaphoreHandle_t Keyborad_Semaphore)
 bool must_take_semaphore(SemaphoreHandle_t Keyborad_Semaphore)
 {
 	static uint32_t count=0;
-	if(vSemaphoreTake(Keyborad_Semaphore, (TickType_t)10) == pdTRUE&&count<10)
+	if(xSemaphoreTake(Keyborad_Semaphore, (TickType_t)10) == pdTRUE&&count<10)
 	{
 		count++;
 		must_take_semaphore(Keyborad_Semaphore);

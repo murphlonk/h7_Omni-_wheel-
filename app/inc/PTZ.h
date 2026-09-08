@@ -2,13 +2,13 @@
 #define PTZ_H
 
 #define PITCHMOTORID_CON 0x1FF
-#define PITCHMOTORID_FB  0x205
+#define PITCHMOTORID_FB  0x206
 #define YAWMOTORID_CON   0X1FF
-#define YAWMOTORID_FB    0x206
+#define YAWMOTORID_FB    0x205
 #define QUALITY          2.0f//waitting to change
 
 #define PITCH_FRIST 1024 //waitting to measure
-#define ROLL_FRIST  1024 //waitting to measure
+#define YAW_FRIST  (-2.04f) //waitting to measure
 
 #include "stdint.h"//1.06,4.10
 #include "stdbool.h"

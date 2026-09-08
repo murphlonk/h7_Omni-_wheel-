@@ -111,8 +111,8 @@ void Motor_Drive_Single(DJMotor_hander* singlemotor,FDCAN_TxFrame_TypeDef *TxFra
    {
     TxFrame->Data[i]=0;
    }
-    TxFrame->Data[singlemotor->number  ]=(singledata>>8);
-    TxFrame->Data[singlemotor->number+1]=singledata;
+    TxFrame->Data[singlemotor->number*2 ]=(singledata>>8);
+    TxFrame->Data[singlemotor->number*2+1]=singledata;
     Fdcan_Transmit(TxFrame);
 }
 

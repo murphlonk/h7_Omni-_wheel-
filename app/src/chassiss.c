@@ -27,7 +27,7 @@ FDCAN_TxFrame_TypeDef chassis_fdcan;
 
 #endif
  
-PID_H_POS chassissmotor_contrl[4];
+//PID_H_POS chassissmotor_contrl[4];
 /*PID_H_POS chassissmotor_contrl_1;
 PID_H_POS chassissmotor_contrl_2;
 PID_H_POS chassissmotor_contrl_3;
@@ -54,10 +54,10 @@ void Chassis_status_Init(chassiss_status* status)
 
 void chassiss_DJMotors_Init()
 {
-    DJMotor_Init(&chassiss_motor[0],&chassissmotor_contrl[0],0x201,0x200,1);//waiting to measure
-    DJMotor_Init(&chassiss_motor[1],&chassissmotor_contrl[1],0x202,0x200,2);
-    DJMotor_Init(&chassiss_motor[2],&chassissmotor_contrl[2],0x203,0x200,3);
-    DJMotor_Init(&chassiss_motor[3],&chassissmotor_contrl[3],0x204,0x200,4);
+    DJMotor_Init(&chassiss_motor[0],&chassiss_motor[0].motor_contrl,0x201,0x200,0);//waiting to measure
+    DJMotor_Init(&chassiss_motor[1],&chassiss_motor[1].motor_contrl,0x202,0x200,1);
+    DJMotor_Init(&chassiss_motor[2],&chassiss_motor[2].motor_contrl,0x203,0x200,2);
+    DJMotor_Init(&chassiss_motor[3],&chassiss_motor[3].motor_contrl,0x204,0x200,3);
 }
 
 
@@ -75,11 +75,17 @@ void chassiss_Motors_Init(Motor_hander* motors)//waiting to add
 }
 
 float* Chassiss_Slove(float VX,float VY,float WR,float* speed)
-{	
+{	/*
 	 speed[3] = -( 0.7071*VX-0.7071*VY+WR*CAR_L)/WHEEL_S; 
    speed[2] = -(-0.7071*VX-0.7071*VY+WR*CAR_L)/WHEEL_S; 
    speed[1] = -( 0.7071*VX+0.7071*VY+WR*CAR_L)/WHEEL_S; 
-   speed[0] = -(-0.7071*VX+0.7071*VY+WR*CAR_L)/WHEEL_S; 
+   speed[0] = -(-0.7071*VX+0.7071*VY+WR*CAR_L)/WHEEL_S; */
+
+   speed[3] = (-0.7071*VX-0.7071*VY+WR*CAR_L)/WHEEL_S; 
+   speed[2] = (-0.7071*VX+0.7071*VY+WR*CAR_L)/WHEEL_S; 
+   speed[1] = ( 0.7071*VX-0.7071*VY+WR*CAR_L)/WHEEL_S; 
+   speed[0] = ( 0.7071*VX+0.7071*VY+WR*CAR_L)/WHEEL_S;
+
    return speed;
 }
 
@@ -91,24 +97,47 @@ void chassiscan_init(void)
 	Fdcan_Transmit_INIT(&chassis_fdcan,&hfdcan1);
 }
 
-  void Chassiss_Drive(float * targetspeed,DJMotor_hander * motordata,FDCAN_TxFrame_TypeDef *Txframe)//speed0/1/2 is vx,vy,wr
-{
-    float speedsloved[4];
-    int16_t speedinto[4];
-    float nowspeeddata[4]={motordata[0].data.Speed,motordata[1].data.Speed,motordata[2].data.Speed,motordata[3].data.Speed};
-    Chassiss_Slove(targetspeed[0],targetspeed[1],targetspeed[2],speedsloved);
-    for(uint8_t i=0;i<4;i++)
-      { 
-        speedinto[i] = (int16_t)(Positional_PID_Compute(&motordata[i].motor_contrl,speedsloved[i],((motordata[i].data.Speed)*9.54))/6.0f*16384);
-        //speedinto[i]=(int16_t)(speedsloved[i]/6*16384);
-			}
-      
-       if(Power_All(speedsloved, nowspeeddata, Reverso_Chassiss.chassisspower, 4)>1000)  
-      {Power_Remap_Bigp(speedsloved,nowspeeddata,4,&chassisspower_limits,Reverso_Chassiss.chassisspower);}
-	   
-      //Motor_Drive_Frame( &chassis_fdcan,motordata[0].ContrlID,speedinto);//contrldata is the arry of contrl value
-      Motor_Drive_Frame(Txframe,motordata[0].ContrlID,speedinto);//contrldata is the arry of contrl value
-}
+//float speedsloved[4]={0,0,0,0};
+//int16_t speedinto[4]={0,0,0,0};
+//int16_t speedintolast[4]={0,0,0,0};
+
+//  void Chassiss_Drive(float * targetspeed,DJMotor_hander * motordata,FDCAN_TxFrame_TypeDef *Txframe)//speed0/1/2 is vx,vy,wr
+//{
+//    //float speedsloved[4]={0,0,0,0};
+//    //int16_t speedinto[4]={0,0,0,0};
+//    float nowspeeddata[4]={motordata[0].data.Speed,motordata[1].data.Speed,motordata[2].data.Speed,motordata[3].data.Speed};
+//    Chassiss_Slove(targetspeed[0],targetspeed[1],targetspeed[2],speedsloved);
+//    for(uint8_t i=0;i<4;i++)
+//      { 
+//        speedinto[i] = (int16_t)((Positional_PID_Compute(&motordata[i].motor_contrl,(speedsloved[i]),(motordata[i].data.Speed))/6.0f)*16384);
+//        //speedinto[i]=(int16_t)(speedsloved[i]/6*16384);
+//				speedinto[i]=(int16_t)(speedintolast[i]*0.9+speedinto[i]*0.1);
+//				speedintolast[i]=speedinto[i];
+//			}
+//      
+//       if(Power_All(speedsloved, nowspeeddata, Reverso_Chassiss.chassisspower, 4)>1000)  
+//      {Power_Remap_Bigp(speedsloved,nowspeeddata,4,&chassisspower_limits,Reverso_Chassiss.chassisspower);}
+//	   
+//      //Motor_Drive_Frame( &chassis_fdcan,motordata[0].ContrlID,speedinto);//contrldata is the arry of contrl value
+//      Motor_Drive_Frame(Txframe,motordata[0].ContrlID,speedinto);//contrldata is the arry of contrl value
+//}
+
+float speedwanted=0;
+float speednow=0;
+int16_t speedinto=0;
+float errorsum=0;
+  
+  void chassissmotorsigletest(float speed,DJMotor_hander * motordata,FDCAN_TxFrame_TypeDef *Txframe,uint8_t motornumber)
+  {static int16_t speedintolast=0;
+    speedinto=(int16_t)((Positional_PID_Compute(&motordata[motornumber].motor_contrl,(speed),(motordata[motornumber].data.Speed))/6.0f)*16384);
+		//speedinto=(int16_t)(speedinto*0.8+speedintolast*0.2); 
+		speedwanted=speed;
+		speednow=(motordata[motornumber].data.Speed);
+		errorsum=(motordata[motornumber].motor_contrl.error_sum);
+    Motor_Drive_Single(&motordata[motornumber],Txframe,speedinto);
+  }
+  
+
 
 #endif
 
@@ -193,10 +222,10 @@ uint32_t debugflag=0;
 void ChassisTask03(void *argument)
 {
 	  Fdcan_FilterInit(&hfdcan1);
-    Positional_PID_Init(&chassissmotor_contrl[0],0.2f,1.0f,0.0f,100000,145);
-    Positional_PID_Init(&chassissmotor_contrl[1],0.2f,1.0f,0.0f,100000,145);
-    Positional_PID_Init(&chassissmotor_contrl[2],0.2f,1.0f,0.0f,100000,145);
-    Positional_PID_Init(&chassissmotor_contrl[3],0.2f,1.0f,0.0f,100000,145);
+    Positional_PID_Init(&chassissmotor_contrl[0],0.08f,0.06f,0.0f,10000,145);
+    Positional_PID_Init(&chassissmotor_contrl[1],0.08f,0.05f,0.01f,10000,145);
+    Positional_PID_Init(&chassissmotor_contrl[2],0.12f,0.00f,0.05f,10000,100);
+    Positional_PID_Init(&chassissmotor_contrl[3],0.08f,0.05f,0.05f,10000,145);
     Chassiss_Init(&Reverso_Chassiss);
     osThreadFlagsWait(0x00000002,osFlagsWaitAll,osWaitForever);
   for(;;)
@@ -211,11 +240,12 @@ void ChassisTask03(void *argument)
     if(orderflag&0x00000020)//gyro
     {
       float target[3];
-      target[0]=normal4chdata.ch0;//vx
-      target[1]=normal4chdata.ch1;//vy
-      target[2]=normal4chdata.ch2*4;//wr
+      target[0]=(normal4chdata.ch0)*30;//vx
+      target[1]=(normal4chdata.ch1)*30;//vy
+      target[2]=normal4chdata.ch2*50;//wr
     speedptztochassis(&target[0],&target[1]);
-    Chassiss_Drive(target,chassiss_motor,&chassis_fdcan);
+    //Chassiss_Drive(target,chassiss_motor,&chassis_fdcan);
+    chassissmotorsigletest(target[0]*10,chassiss_motor,&chassis_fdcan,0);
     }
     else if (orderflag&0x00000010)//with
     {
@@ -223,8 +253,8 @@ void ChassisTask03(void *argument)
     target[0]=normal4chdata.ch0;
     target[1]=normal4chdata.ch1;
     target[2]=1.2f*Reverso_Chassiss.status.phase_difference;//
-    speedptztochassis(&target[0],&target[1]);
-    Chassiss_Drive(target,chassiss_motor,&chassis_fdcan);
+    //speedptztochassis(&target[0],&target[1]);
+    //Chassiss_Drive(target,chassiss_motor,&chassis_fdcan);
     }
 
    }else

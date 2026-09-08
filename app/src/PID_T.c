@@ -25,12 +25,14 @@ float Positional_PID_Compute(PID_H_POS* pid_t,float target,float nowdata)
  {pid_t->error_sum=pid_t->ErrorSumMax;}
  else if (pid_t->error_sum < -pid_t->ErrorSumMax)
  {pid_t->error_sum=-pid_t->ErrorSumMax;}
+ 
  float output =(pid_t->Kp * (target - nowdata) 
                + pid_t->Ki * pid_t->error_sum 
                + pid_t->Kd * (target - nowdata - pid_t->last_error));
+ 
  if(output >pid_t->OutputMAX)//负向对称限幅，这对吗？
  {output=pid_t->OutputMAX;}
- else if (output< -pid_t->OutputMAX||output< -pid_t->OutputMAX)
+ else if (output< (-pid_t->OutputMAX))
  {output=-pid_t->OutputMAX;}
 
  pid_t->last_error = error ;

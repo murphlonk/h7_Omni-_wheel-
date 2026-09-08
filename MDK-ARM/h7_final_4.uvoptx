@@ -298,47 +298,42 @@
         <Ww>
           <count>28</count>
           <WinNumber>1</WinNumber>
-          <ItemText>speedsloved</ItemText>
+          <ItemText>power_res</ItemText>
         </Ww>
         <Ww>
           <count>29</count>
           <WinNumber>1</WinNumber>
-          <ItemText>TxFrame</ItemText>
+          <ItemText>speedinto</ItemText>
         </Ww>
         <Ww>
           <count>30</count>
           <WinNumber>1</WinNumber>
-          <ItemText>target</ItemText>
+          <ItemText>speedslovedsingle</ItemText>
         </Ww>
         <Ww>
           <count>31</count>
           <WinNumber>1</WinNumber>
-          <ItemText>speedinto</ItemText>
+          <ItemText>nowsinglespeeddata</ItemText>
         </Ww>
         <Ww>
           <count>32</count>
           <WinNumber>1</WinNumber>
-          <ItemText>high_stamp</ItemText>
+          <ItemText>speedinto</ItemText>
         </Ww>
         <Ww>
           <count>33</count>
           <WinNumber>1</WinNumber>
-          <ItemText>high_stamp_last</ItemText>
+          <ItemText>PTZ_motor_yaw</ItemText>
         </Ww>
         <Ww>
           <count>34</count>
           <WinNumber>1</WinNumber>
-          <ItemText>timstamp_last</ItemText>
+          <ItemText>PTZ_motor_pitch</ItemText>
         </Ww>
         <Ww>
           <count>35</count>
           <WinNumber>1</WinNumber>
-          <ItemText>onoff</ItemText>
-        </Ww>
-        <Ww>
-          <count>36</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>flagswtich</ItemText>
+          <ItemText>Reverso_PTZ</ItemText>
         </Ww>
       </WatchWindow1>
       <MemoryWindow1>
