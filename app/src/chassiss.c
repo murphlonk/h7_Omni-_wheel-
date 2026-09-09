@@ -125,6 +125,14 @@ int16_t accelerationintoIdata[4]={0,0,0,0};
 
 void Chassiss_Drive_byforce(float * targetspeed,DJMotor_hander * motordata,FDCAN_TxFrame_TypeDef *Txframe)
 {
+	
+//	for(uint8_t i=0;i<3;i++)
+//  {
+//		if(targetspeed[i]<0.001&&targetspeed[i]>-0.001)
+//    { 
+//			targetspeed[i]=0;
+//		}
+//	}
 	debugwantedvx=targetspeed[0];
 	
   for(uint8_t i=0;i<4;i++)
@@ -289,9 +297,9 @@ void ChassisTask03(void *argument)
     Positional_PID_Init(&chassiss_motor[1].motor_contrl,0.08f,0.05f,0.01f,10000,500);
     Positional_PID_Init(&chassiss_motor[2].motor_contrl,0.12f,0.00f,0.05f,10000,500);
     Positional_PID_Init(&chassiss_motor[3].motor_contrl,0.08f,0.05f,0.05f,10000,500);*/
-    PID_init(&chassiss_motor[0].motor_contrl,PID_POSITION,(fp32[]){0.15f,0.07f,0.00f},10000,800);//450/440//when force it just use the heah 3 values
-    PID_init(&chassiss_motor[1].motor_contrl,PID_POSITION,(fp32[]){0.15f,0.07f,0.00f},10000,800);//450/448
-    PID_init(&chassiss_motor[2].motor_contrl,PID_POSITION,(fp32[]){0.02f,0.00f,0.05f},10000,800);//450/442
+    PID_init(&chassiss_motor[0].motor_contrl,PID_POSITION,(fp32[]){0.17f,0.07f,0.00f},10000,800);//450/440//when force it just use the heah 3 values
+    PID_init(&chassiss_motor[1].motor_contrl,PID_POSITION,(fp32[]){0.10f,0.05f,0.00f},10000,800);//450/448
+    PID_init(&chassiss_motor[2].motor_contrl,PID_POSITION,(fp32[]){0.12f,0.00f,0.00f},10000,800);//450/442
     PID_init(&chassiss_motor[3].motor_contrl,PID_POSITION,(fp32[]){0.08f,0.05f,0.05f},10000,800);//450/442
     Chassiss_Init(&Reverso_Chassiss);
     osThreadFlagsWait(0x00000002,osFlagsWaitAll,osWaitForever);
@@ -307,9 +315,9 @@ void ChassisTask03(void *argument)
     if(orderflag&0x00000020)//gyro
     {
       float target[3];
-      target[0]=((normal4chdata.ch0)*30-0.09090)*20;//vx
-      target[1]=((normal4chdata.ch1)*30+0.02272)*20;//vy
-      target[2]=normal4chdata.ch2*200;//wr
+      target[0]=((normal4chdata.ch0)*30-0.09090);//vx
+      target[1]=((normal4chdata.ch1)*30+0.02272);//vy
+      target[2]=normal4chdata.ch2*50;//wr
     //speedptztochassis(&target[0],&target[1]);
     //Chassiss_Drive(target,chassiss_motor,&chassis_fdcan);
     //chassissmotorsigletest((target[0]*30),chassiss_motor,&chassis_fdcan,3);
