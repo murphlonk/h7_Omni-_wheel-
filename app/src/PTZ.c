@@ -62,7 +62,8 @@ void PTZ_DISABLE()
 {
       Motor_Drive_Single(&PTZ_motor_pitch,&CAN_PTZ_PITCH, 0);
       Motor_Drive_Single(&PTZ_motor_yaw  ,&CAN_PTZ_YAW  , 0);
-      PID_
+      PID_clear(&PTZ_motor_pitch.motor_contrl);
+      PID_clear(&PTZ_motor_yaw.motor_contrl  );
 }
 
 void PTZ_MIXdata_gyrodrive(float WR,float Targetpitch,float Targetroll)
@@ -125,13 +126,13 @@ void PTZ_DISABLE()
 
 }
 
-void PTZ_MIXdata_gyrodrive(float WR,float Targetpitch,float Targetroll)
+void PTZ_MIXdata_gyrodrive(float WR,float Targetpitch,float Targetyaw)
 {
      int16_t pitchspeed,yawspeed; 
     pitchspeed= (int16_t)(((PID_calc(&PTZ_motor_pitch.motor_contrl,(float)(PTZ_motor_pitch.data.Angle),Targetpitch))
                  +Gravity_compensation(&Reverso_PTZ))*60*25000/6.28/320);//wait to change
-    yawspeed  = (int16_t)(PID_calc(&PTZ_motor_yaw.motor_contrl,(float)(PTZ_motor_yaw.data.Angle),Targetroll)+WR)*60*25000/6.28/320;
-   // yawspeed  = (int16_t)((WR)*60*25000/6.28/320);
+    //yawspeed  = (int16_t)(PID_calc(&PTZ_motor_yaw.motor_contrl,(float)(PTZ_motor_yaw.data.Angle),Targetroll)+WR)*60*25000/6.28/320;
+    yawspeed  = (int16_t)((PID_calc(&PTZ_motor_yaw.motor_contrl,(float)(PTZ_motor_yaw.data.Angle  -  YAW_FRIST),Targetyaw)+WR)*60*25000/6.28/320);
     Motor_Drive_Single(&PTZ_motor_pitch,&FDCAN_PTZ_PITCH,pitchspeed);
     Motor_Drive_Single(&PTZ_motor_yaw  ,&FDCAN_PTZ_YAW  ,yawspeed  );
 
@@ -165,7 +166,7 @@ void PTZ_Init(PTZ_handler * ptz)//the value of pid needed to init out of this on
     //Positional_PID_Init(&PTZ_motor_pitch.motor_contrl,0.45f,0.0,0.0,2.0,1.34);
     //Positional_PID_Init(&PTZ_motor_yaw.motor_contrl  ,0.45f,0.0,0.0,2.0,1.34);
     PID_init(&PTZ_motor_pitch.motor_contrl,PID_POSITION,(fp32[]){0.45f,0.0f,0.0f},10.0f,1.34f);
-    PID_init(&PTZ_motor_yaw.motor_contrl,PID_POSITION  ,(fp32[]){0.45f,0.0f,0.0f},10.0f,1.34f);
+    PID_init(&PTZ_motor_yaw.motor_contrl,PID_POSITION  ,(fp32[]){0.00f,0.0f,0.0f},10.0f,1.34f);
     DJMotor_Init(&PTZ_motor_pitch,PITCHMOTORID_FB,PITCHMOTORID_CON,1);
     DJMotor_Init(&PTZ_motor_yaw  ,YAWMOTORID_FB  ,YAWMOTORID_CON  ,0);
     ptz->target.PITCH=PTZ_motor_pitch.data.Angle;//use the motor feedback ,but now data is waiting to build
@@ -211,7 +212,7 @@ void PTZTask02(void *argument)
     if(orderflag&0x00000020)
     {
        
-      PTZ_MIXdata_gyrodrive(normal4chdata.ch2*8,normal4chdata.ch0,normal4chdata.ch1);
+      PTZ_MIXdata_gyrodrive(normal4chdata.ch2*6,normal4chdata.ch0,normal4chdata.ch1);
      
     }else if(orderflag&0x00000010)
     {
@@ -221,7 +222,7 @@ void PTZTask02(void *argument)
 
    }else
    {
-    PTZ_DISABLE();
+    //PTZ_DISABLE();
    }
      
     osThreadFlagsClear(0x7FFFFFFF);
