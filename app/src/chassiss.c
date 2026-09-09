@@ -318,7 +318,7 @@ void ChassisTask03(void *argument)
       target[0]=((normal4chdata.ch0)*30-0.09090);//vx
       target[1]=((normal4chdata.ch1)*30+0.02272);//vy
       target[2]=normal4chdata.ch2*50;//wr
-    //speedptztochassis(&target[0],&target[1]);
+      speedptztochassis(&target[0],&target[1]);
     //Chassiss_Drive(target,chassiss_motor,&chassis_fdcan);
     //chassissmotorsigletest((target[0]*30),chassiss_motor,&chassis_fdcan,3);
 			Chassiss_Drive_byforce(target,chassiss_motor,&chassis_fdcan);

@@ -212,7 +212,7 @@ void PTZTask02(void *argument)
     if(orderflag&0x00000020)
     {
        
-      PTZ_MIXdata_gyrodrive(normal4chdata.ch2*6,normal4chdata.ch0,normal4chdata.ch1);
+      PTZ_MIXdata_gyrodrive(normal4chdata.ch2*6.5,normal4chdata.ch0,normal4chdata.ch1);//6.4,6.5,7
      
     }else if(orderflag&0x00000010)
     {

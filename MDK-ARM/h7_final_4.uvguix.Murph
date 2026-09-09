@@ -3633,9 +3633,9 @@
       </Doc>
       <Doc>
         <Name>..\app\src\chassiss.c</Name>
-        <ColumnNumber>0</ColumnNumber>
-        <TopLine>299</TopLine>
-        <CurrentLine>324</CurrentLine>
+        <ColumnNumber>6</ColumnNumber>
+        <TopLine>305</TopLine>
+        <CurrentLine>321</CurrentLine>
         <Folding>1</Folding>
         <ContractedFolders></ContractedFolders>
         <PaneID>0</PaneID>
@@ -3696,8 +3696,8 @@
       </Doc>
       <Doc>
         <Name>..\app\src\PTZ.c</Name>
-        <ColumnNumber>47</ColumnNumber>
-        <TopLine>190</TopLine>
+        <ColumnNumber>49</ColumnNumber>
+        <TopLine>187</TopLine>
         <CurrentLine>215</CurrentLine>
         <Folding>1</Folding>
         <ContractedFolders></ContractedFolders>
