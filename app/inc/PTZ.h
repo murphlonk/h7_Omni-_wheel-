@@ -9,6 +9,7 @@
 
 #define PITCH_FRIST 1024 //waitting to measure
 #define YAW_FRIST  (-2.04f) //waitting to measure
+#define YAW_IMU     (4.0f)
 
 #include "stdint.h"//1.06,4.10
 #include "stdbool.h"

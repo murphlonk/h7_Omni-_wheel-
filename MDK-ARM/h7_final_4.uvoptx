@@ -355,6 +355,11 @@
           <WinNumber>1</WinNumber>
           <ItemText>deleta</ItemText>
         </Ww>
+        <Ww>
+          <count>40</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>debugpower</ItemText>
+        </Ww>
       </WatchWindow1>
       <MemoryWindow1>
         <Mm>

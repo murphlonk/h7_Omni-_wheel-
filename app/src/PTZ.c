@@ -30,6 +30,11 @@ void get_relativeangle(Angles*angle)
   {
 		angle->YAW-=6.28;
 	}
+//	  angle->YAW  =(yaw/360*6.28)-  YAW_FRIST;
+//	if(angle->YAW>3.14f)
+//  {
+//		angle->YAW-=6.28;
+//	}
 }
 
 float  Gravity_compensation(PTZ_handler *Gravityfix)
@@ -188,7 +193,7 @@ void PTZ_Init(PTZ_handler * ptz)//the value of pid needed to init out of this on
     //Positional_PID_Init(&PTZ_motor_pitch.motor_contrl,0.45f,0.0,0.0,2.0,1.34);
     //Positional_PID_Init(&PTZ_motor_yaw.motor_contrl  ,0.45f,0.0,0.0,2.0,1.34);
     PID_init(&PTZ_motor_pitch.motor_contrl,PID_POSITION,(fp32[]){0.45f,0.0f,0.0f},10000.0f,10000.34f);
-    PID_init(&PTZ_motor_yaw.motor_contrl,PID_POSITION  ,(fp32[]){2.20f,0.03f,0.0f},10000.0f,1.34f);
+    PID_init(&PTZ_motor_yaw.motor_contrl,PID_POSITION  ,(fp32[]){2.20f,0.03f,0.0f},10000.0f,1.34f);//good 
     DJMotor_Init(&PTZ_motor_pitch,PITCHMOTORID_FB,PITCHMOTORID_CON,1);
     DJMotor_Init(&PTZ_motor_yaw  ,YAWMOTORID_FB  ,YAWMOTORID_CON  ,0);
     ptz->target.PITCH=PTZ_motor_pitch.data.Angle;//use the motor feedback ,but now data is waiting to build
