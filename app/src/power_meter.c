@@ -131,7 +131,7 @@ void task_carmode(uint32_t order)//true :gyro:0x00000000/0x00000020,false:with:0
 
 void task_power_mode(uint32_t order,bool onoff)//true :gyro:0x00000000/0x00000020,false:with:0x00000010/0x00000010
 {
- if(onoff)
+ if(onoff&&order!=0)
    {
         if(order&0x00000010)
       {
@@ -146,8 +146,12 @@ void task_power_mode(uint32_t order,bool onoff)//true :gyro:0x00000000/0x0000002
       osThreadFlagsSet(TaskCan04Handle,        0x00000002);
       osThreadFlagsSet( TaskPowermeter0Handle, 0x00000002);
       } 
-   }else
+   }else 
    {
+		  osThreadFlagsSet(TaskPTZ02Handle,        0x00000000);//openpower:0x00000002
+      osThreadFlagsSet(TaskChassis03Handle,    0x00000000);
+      osThreadFlagsSet(TaskCan04Handle,        0x00000000);
+      osThreadFlagsSet( TaskPowermeter0Handle, 0x00000000);
    }
 
 
@@ -175,6 +179,14 @@ void PowermeterTask05(void *argument)
 
 uint8_t count=0;
 
+void mustclearbits_swtich()
+{ if(osThreadFlagsClear(0x000000FF)==pdFALSE&&count%100!=0)
+  { 
+		count++;
+		mustclearbits_swtich();
+	}
+}
+
 uint32_t flagswtich=0;
 extern uint32_t high_stamp;
 
@@ -186,7 +198,6 @@ void SwtichTask06(void *argument)
   flagsInit=osThreadFlagsWait(0x00000001,osFlagsWaitAll,osWaitForever);
   for (;;)
   {
-		count++;
     if(flagsInit&0x00000001)
     {  //uint32_t flagswtich=0;
       flagswtich=osThreadFlagsGet();
@@ -198,7 +209,8 @@ void SwtichTask06(void *argument)
       //taskpower_onoff(true);
       //task_carmode(flagswtich);
       task_power_mode(flagswtich,true);
-      osThreadFlagsClear(0X7FFFFFFF);
+      //osThreadFlagsClear(0X7FFFFFFF);
+      mustclearbits_swtich();
 					//break;
         }
         else if((flagswtich&0x00000003)==0x00000001)
@@ -206,7 +218,8 @@ void SwtichTask06(void *argument)
 
         //taskpower_onoff(false);
         task_power_mode(0,false);
-        osThreadFlagsClear(0X7FFFFFFF);
+        //osThreadFlagsClear(0X7FFFFFFF);
+        mustclearbits_swtich();
 					//break;
         }
       }
@@ -226,7 +239,8 @@ void SwtichTask06(void *argument)
             {
               //taskpower_onoff(false);
               task_power_mode(0,false);
-              osThreadFlagsClear(0X7FFFFFFF);
+              //osThreadFlagsClear(0X7FFFFFFF);
+              mustclearbits_swtich();
             }
           }
           else if(high_stamp_last==high_stamp-1)
@@ -236,18 +250,21 @@ void SwtichTask06(void *argument)
               //taskpower_onoff(true);
               //task_carmode(flagswtich);
               task_power_mode(flagswtich,true);
-              osThreadFlagsClear(0X7FFFFFFF);
+              //osThreadFlagsClear(0X7FFFFFFF);
+              mustclearbits_swtich();
             }else
             {
               //taskpower_onoff(false);
               task_power_mode(0,false);
-              osThreadFlagsClear(0X7FFFFFFF);
+              //osThreadFlagsClear(0X7FFFFFFF);
+              mustclearbits_swtich();
             }
           }else
           {
             //taskpower_onoff(false);
             task_power_mode(0,false);
-            osThreadFlagsClear(0X7FFFFFFF);
+            //osThreadFlagsClear(0X7FFFFFFF);
+            mustclearbits_swtich();
           }
       } 
     }
@@ -263,12 +280,14 @@ void SwtichTask06(void *argument)
           //taskpower_onoff(true);
           //task_carmode(flagswtich);
           task_power_mode(flagswtich,true);
-          osThreadFlagsClear(0x7FFFFFFF);
+          //osThreadFlagsClear(0x7FFFFFFF);
+          mustclearbits_swtich();
 				 //break;
        }
     }
 
-    osThreadFlagsClear(0x7FFFFFFF);
+    //osThreadFlagsClear(0x7FFFFFFF);
+    mustclearbits_swtich();
 		osDelay(1);
   }
 

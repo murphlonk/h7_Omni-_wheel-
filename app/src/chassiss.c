@@ -26,7 +26,9 @@ CAN_TxFrame_TypeDef Chassiss_CAN;
 FDCAN_TxFrame_TypeDef chassis_fdcan;
 
 #endif
- 
+
+pid_type_def WRoutcircle;
+
 //PID_H_POS chassissmotor_contrl[4];
 /*PID_H_POS chassissmotor_contrl_1;
 PID_H_POS chassissmotor_contrl_2;
@@ -287,8 +289,18 @@ void chassiscan_init()
 #endif
 
 
-uint32_t debugflag=0;
 
+
+uint32_t debugflag=0;
+uint32_t debugerrcnt=0;
+
+void mustclearbits_chassiss()
+{ if(osThreadFlagsClear(0x000000FF)==pdFALSE&&debugerrcnt%100!=0)
+  { 
+		debugerrcnt++;
+		mustclearbits_chassiss();
+	}
+}
 
 void ChassisTask03(void *argument)
 {
@@ -300,7 +312,8 @@ void ChassisTask03(void *argument)
     PID_init(&chassiss_motor[0].motor_contrl,PID_POSITION,(fp32[]){0.17f,0.07f,0.00f},10000,800);//450/440//when force it just use the heah 3 values
     PID_init(&chassiss_motor[1].motor_contrl,PID_POSITION,(fp32[]){0.10f,0.05f,0.00f},10000,800);//450/448
     PID_init(&chassiss_motor[2].motor_contrl,PID_POSITION,(fp32[]){0.12f,0.00f,0.00f},10000,800);//450/442
-    PID_init(&chassiss_motor[3].motor_contrl,PID_POSITION,(fp32[]){0.08f,0.05f,0.05f},10000,800);//450/442
+    PID_init(&chassiss_motor[3].motor_contrl,PID_POSITION,(fp32[]){0.08f,0.05f,0.05f},10000,800);//450/442//when with use it as the WR pid
+		PID_init(&WRoutcircle                   ,PID_POSITION,(fp32[]){0.08f,0.05f,0.05f},10000,800);
     Chassiss_Init(&Reverso_Chassiss);
     osThreadFlagsWait(0x00000002,osFlagsWaitAll,osWaitForever);
   for(;;)
@@ -325,12 +338,14 @@ void ChassisTask03(void *argument)
     }
     else if (orderflag&0x00000010)//with
     {
+		chassis_relative_ptzupdate();
      float target[3];
     target[0]=normal4chdata.ch0;
     target[1]=normal4chdata.ch1;
     target[2]=1.2f*Reverso_Chassiss.status.phase_difference;//
     //speedptztochassis(&target[0],&target[1]);
     //Chassiss_Drive(target,chassiss_motor,&chassis_fdcan);
+			//Chassiss_Drive_byforce(target,chassiss_motor,&chassis_fdcan);
     }
 
    }else
@@ -339,8 +354,11 @@ void ChassisTask03(void *argument)
     chassiss_disabled();
    }
 
-    osThreadFlagsClear(0x7FFFFFFF);
-
+//    if(osThreadFlagsClear(0x000000FF)==pdFALSE)
+//   { 
+//		 debugerrcnt++;
+//	 }
+    mustclearbits_chassiss();
 
     osDelay(1);
   }

@@ -10,8 +10,11 @@
 
 Dr16_Data Dr16_Data_Receive;
 Dr16_CH_NORMAILIZATION normal4chdata;
+
 //extern uint8_t data_temp_uart[BUFF_SIZE];
 SemaphoreHandle_t Keyborad_Semaphore;
+
+uint32_t thebitwanted=0;
 
 void Remote_Contrl_Init()
 {
@@ -109,22 +112,25 @@ void lever_Status_()//quick stop contrl
 {
 	extern osThreadId_t TaskSwitch06Handle;
 	static bool enable =false;
+	thebitwanted=0x00000000;
    	if(Dr16_Data_Receive.S_1==2&&Dr16_Data_Receive.S_2==2)
 		{
 			enable=false;
-			debugcount=osThreadFlagsSet(TaskSwitch06Handle, 0x00000001);
+			//debugcount=osThreadFlagsSet(TaskSwitch06Handle, 0x00000001);
+			thebitwanted |=0x00000001;
 		}else 
 		{
 
 			if(enable==true)
 			{
-			debugcount=osThreadFlagsSet(TaskSwitch06Handle, (0x00000002|0x00000001));//open power:0x00000002 |online :0x00000001
-				
+			//debugcount=osThreadFlagsSet(TaskSwitch06Handle, (0x00000002|0x00000001));//open power:0x00000002 |online :0x00000001
+			thebitwanted |=(0x00000002|0x00000001);
 			}
 			else if(enable==false&&(Dr16_Data_Receive.S_1!=2||Dr16_Data_Receive.S_2!=2))
 			{
 			enable=true;
-			debugcount=osThreadFlagsSet(TaskSwitch06Handle, (0x00000001|0x00000002));
+			//debugcount=osThreadFlagsSet(TaskSwitch06Handle, (0x00000001|0x00000002));
+			thebitwanted |=(0x00000002|0x00000001);
 			}
 		}
 	
@@ -150,7 +156,8 @@ void chassis_modetran()
   if(Dr16_Data_Receive.S_2==2)
   {
     //osThreadFlagsSet(TaskChassis03Handle, 0x00000010);
-	osThreadFlagsSet(TaskSwitch06Handle, 0x00000010);
+	//osThreadFlagsSet(TaskSwitch06Handle, 0x00000010);
+	thebitwanted |=0x00000010;
   }
   else if(Dr16_Data_Receive.S_2==3)
   {
@@ -166,7 +173,8 @@ void ptz_modetran()
 	if(Dr16_Data_Receive.S_1==2)
 	{
      //osThreadFlagsSet(TaskPTZ02Handle, 0x00000010);
-	 osThreadFlagsSet(TaskSwitch06Handle, 0x00000010);
+	 //osThreadFlagsSet(TaskSwitch06Handle, 0x00000010);
+	 thebitwanted |=0x00000010;
 	}
 	else if(Dr16_Data_Receive.S_1==3)
 	{
@@ -179,13 +187,14 @@ void ptz_modetran()
 
 void dr16_update(uint8_t* Data_Temp)
 {
-  
+  extern osThreadId_t TaskSwitch06Handle;//to keep the only be updated in one go
 	dr16_Dataslove(Data_Temp);
 	lever_Status_();
 	rule_status();
 	chassis_modetran();
 	//ptz_modetran();
 	DR16data_normal();
+	osThreadFlagsSet(TaskSwitch06Handle,thebitwanted);
 }
 
  

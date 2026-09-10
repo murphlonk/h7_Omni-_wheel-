@@ -1,7 +1,15 @@
 ./h7_final_4/ptz.o: ..\app\src\PTZ.c ..\app\inc\PTZ.h \
-  ..\Drivers\CMSIS\RTOS2\Include\cmsis_os2.h ..\app\inc\pid.h \
-  ..\app\inc\motor.h ..\app\inc\bsp_fdcan.h ..\Core\Inc\fdcan.h \
-  ..\Core\Inc\main.h ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal.h \
+  ..\Drivers\CMSIS\RTOS2\Include\cmsis_os2.h \
+  ..\Middlewares\Third_Party\FreeRTOS\Source\include\FreeRTOS.h \
+  ..\Core\Inc\FreeRTOSConfig.h \
+  ..\Middlewares\Third_Party\FreeRTOS\Source\include\projdefs.h \
+  ..\Middlewares\Third_Party\FreeRTOS\Source\include\portable.h \
+  ..\Middlewares\Third_Party\FreeRTOS\Source\include\deprecated_definitions.h \
+  ..\Middlewares\Third_Party\FreeRTOS\Source\portable\RVDS\ARM_CM4F\portmacro.h \
+  ..\Middlewares\Third_Party\FreeRTOS\Source\include\mpu_wrappers.h \
+  ..\app\inc\pid.h ..\app\inc\motor.h ..\app\inc\bsp_fdcan.h \
+  ..\Core\Inc\fdcan.h ..\Core\Inc\main.h \
+  ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal.h \
   ..\Core\Inc\stm32h7xx_hal_conf.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_rcc.h \
   ..\Drivers\STM32H7xx_HAL_Driver\Inc\stm32h7xx_hal_def.h \
