@@ -250,7 +250,12 @@ void PTZTask02(void *argument)
       PTZ_MIXdata_gyrodrive(normal4chdata.ch2*6.5,normal4chdata.ch0,normal4chdata.ch1);//6.4,6.5,7
      
     }else if(orderflag&0x00000010)
-    {
+    {  static bool isinit=false;
+			for(uint8_t i=0;i<10&&isinit==false;i++)
+			{
+			PTZ_MIXdata_gyrodrive(0,normal4chdata.ch0,normal4chdata.ch1);//6.4,6.5,7
+				if(i==9){isinit=true;}
+			}
       PTZ_static_drive(normal4chdata.ch1,(normal4chdata.ch2*6.28));
     }
 

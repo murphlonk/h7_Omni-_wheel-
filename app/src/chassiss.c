@@ -293,6 +293,14 @@ void chassiss_disabled()
     PID_clear(&chassiss_motor[3].motor_contrl);
 }
 
+float motorpower_1=0;
+
+
+
+void chaisspower_debug()
+{
+	
+}
 
 
 #ifdef BSP_CAN_H
@@ -344,7 +352,7 @@ void ChassisTask03(void *argument)
     PID_init(&chassiss_motor[0].motor_contrl,PID_POSITION,(fp32[]){0.17f,0.07f,0.00f},10000,800);//450/440//when force it just use the heah 3 values
     PID_init(&chassiss_motor[1].motor_contrl,PID_POSITION,(fp32[]){0.10f,0.05f,0.00f},10000,800);//450/448
     PID_init(&chassiss_motor[2].motor_contrl,PID_POSITION,(fp32[]){0.12f,0.00f,0.00f},10000,800);//450/442
-    PID_init(&chassiss_motor[3].motor_contrl,PID_POSITION,(fp32[]){1.90f,0.25f,0.00f},10000,800);//450/442//when with use it as the WR pid
+    PID_init(&chassiss_motor[3].motor_contrl,PID_POSITION,(fp32[]){0.90f,0.25f,0.00f},10000,800);//450/442//when with use it as the WR pid
 		PID_init(&WRoutcircle                   ,PID_POSITION,(fp32[]){1.22f,0.00f,0.00f},10000,800);//when with use it as inside pid
     Chassiss_Init(&Reverso_Chassiss);
     osThreadFlagsWait(0x00000002,osFlagsWaitAll,osWaitForever);
