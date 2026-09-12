@@ -108,6 +108,8 @@ void Keyborad_Contrl()
    
 }
 
+
+
 void lever_Status_()//quick stop contrl
 {
 	extern osThreadId_t TaskSwitch06Handle;
@@ -183,7 +185,15 @@ void ptz_modetran()
 	}
 }
 
- 
+ void bitmustset_remote()
+{
+	extern osThreadId_t TaskSwitch06Handle;//to keep the only be updated in one go
+	static uint8_t count=0;
+	if(osThreadFlagsSet(TaskSwitch06Handle,thebitwanted)==pdFALSE&&(count+1)%100!=0)
+   {
+		 bitmustset_remote();
+	 }
+}
 
 void dr16_update(uint8_t* Data_Temp)
 {
@@ -194,7 +204,7 @@ void dr16_update(uint8_t* Data_Temp)
 	chassis_modetran();
 	//ptz_modetran();
 	DR16data_normal();
-	osThreadFlagsSet(TaskSwitch06Handle,thebitwanted);
+	bitmustset_remote();
 }
 
  

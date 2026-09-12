@@ -17,11 +17,16 @@ void POWER_METER_INIT(Power_K* Kvalues,float Ka,float Kb,float const_value,float
      Kvalues->torque_constant=torque_constant;
 }
 
+
 float POWER_METER_COMPUTE_PER(float rollcrrent, float speed,Power_K* Kvalues)//calculte the peices
 {
-    return rollcrrent*Kvalues->torque_constant*speed
+//    return rollcrrent*Kvalues->torque_constant*speed
+//    +Kvalues->Ka*rollcrrent*rollcrrent*Kvalues->torque_constant*Kvalues->torque_constant
+//    +Kvalues->Kb*speed*speed
+//    +Kvalues->const_value;
+		return rollcrrent*Kvalues->torque_constant*speed
     +Kvalues->Ka*rollcrrent*rollcrrent*Kvalues->torque_constant*Kvalues->torque_constant
-    +Kvalues->Kb*speed*speed
+    +Kvalues->Kb*speed
     +Kvalues->const_value;
 }
 

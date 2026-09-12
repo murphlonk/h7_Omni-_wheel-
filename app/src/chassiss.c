@@ -65,10 +65,10 @@ void chassiss_DJMotors_Init()
 
 void Chassiss_power_Init(Power_K* POWERS)
 {
-    POWER_METER_INIT(&POWERS[0],0.1f,0.2f,0.3f,0.4f);
-    POWER_METER_INIT(&POWERS[1],0.1f,0.2f,0.3f,0.4f);
-    POWER_METER_INIT(&POWERS[2],0.1f,0.2f,0.3f,0.4f);
-    POWER_METER_INIT(&POWERS[3],0.1f,0.2f,0.3f,0.4f);
+    POWER_METER_INIT(&POWERS[0],0.0007f,0.1165f,4.4148f,0.0f);
+    POWER_METER_INIT(&POWERS[1],0.0f,0.0f,0.0f,0.0f);
+    POWER_METER_INIT(&POWERS[2],0.0f,0.0f,0.0f,0.0f);
+    POWER_METER_INIT(&POWERS[3],0.0f,0.0f,0.0f,0.0f);
 }
 
 void chassiss_Motors_Init(Motor_hander* motors)//waiting to add
@@ -187,56 +187,63 @@ void ChassisMove_withMode(float * targets,DJMotor_hander * motordata,FDCAN_TxFra
 
 }
 
-float speedsloved[4]={0,0,0,0};
-int16_t speedinto[4]={0,0,0,0};
-int16_t speedintolast[4]={0,0,0,0};
+//float speedsloved[4]={0,0,0,0};
+//int16_t speedinto[4]={0,0,0,0};
+//int16_t speedintolast[4]={0,0,0,0};
 
 
-void Chassiss_Drive(float * targetspeed,DJMotor_hander * motordata,FDCAN_TxFrame_TypeDef *Txframe)//speed0/1/2 is vx,vy,wr
-{
-    //float speedsloved[4]={0,0,0,0};
-    //int16_t speedinto[4]={0,0,0,0};
-    float nowspeeddata[4]={motordata[0].data.Speed,motordata[1].data.Speed,motordata[2].data.Speed,motordata[3].data.Speed};
-    Chassiss_Slove(targetspeed[0],targetspeed[1],targetspeed[2],speedsloved);
-    for(uint8_t i=0;i<4;i++)
-      { 
-        //speedinto[i] = (int16_t)((Positional_PID_Compute(&motordata[i].motor_contrl,(speedsloved[i]),(motordata[i].data.Speed))/6.0f)*16384);
-				speedinto[i] = ((PID_calc(&(motordata[i].motor_contrl),(motordata[i].data.Speed),(speedsloved[i]))/6.0f)*16384); 
-        //speedinto[i]=(int16_t)(speedsloved[i]/6*16384);
-				speedinto[i]=(int16_t)(speedintolast[i]*0.9+speedinto[i]*0.1);
-				speedintolast[i]=speedinto[i];
-          if (speedinto[i] >  16384) speedinto[i] =  16384;
-          if (speedinto[i] < -16384) speedinto[i] = -16384;
-			}
-      debugpower=Power_All(speedsloved, nowspeeddata, Reverso_Chassiss.chassisspower, 4);
-//       if(Power_All(speedsloved, nowspeeddata, Reverso_Chassiss.chassisspower, 4)>1000)  
-//      {Power_Remap_Bigp(speedsloved,nowspeeddata,4,&chassisspower_limits,Reverso_Chassiss.chassisspower);}
-	   
-      //Motor_Drive_Frame( &chassis_fdcan,motordata[0].ContrlID,speedinto);//contrldata is the arry of contrl value
-      Motor_Drive_Frame(Txframe,motordata[0].ContrlID,speedinto);//contrldata is the arry of contrl value
-}
+//void Chassiss_Drive(float * targetspeed,DJMotor_hander * motordata,FDCAN_TxFrame_TypeDef *Txframe)//speed0/1/2 is vx,vy,wr
+//{
+//    //float speedsloved[4]={0,0,0,0};
+//    //int16_t speedinto[4]={0,0,0,0};
+//    float nowspeeddata[4]={motordata[0].data.Speed,motordata[1].data.Speed,motordata[2].data.Speed,motordata[3].data.Speed};
+//    Chassiss_Slove(targetspeed[0],targetspeed[1],targetspeed[2],speedsloved);
+//    for(uint8_t i=0;i<4;i++)
+//      { 
+//        //speedinto[i] = (int16_t)((Positional_PID_Compute(&motordata[i].motor_contrl,(speedsloved[i]),(motordata[i].data.Speed))/6.0f)*16384);
+//				speedinto[i] = ((PID_calc(&(motordata[i].motor_contrl),(motordata[i].data.Speed),(speedsloved[i]))/6.0f)*16384); 
+//        //speedinto[i]=(int16_t)(speedsloved[i]/6*16384);
+//				speedinto[i]=(int16_t)(speedintolast[i]*0.9+speedinto[i]*0.1);
+//				speedintolast[i]=speedinto[i];
+//          if (speedinto[i] >  16384) speedinto[i] =  16384;
+//          if (speedinto[i] < -16384) speedinto[i] = -16384;
+//			}
+//      debugpower=Power_All(speedsloved, nowspeeddata, Reverso_Chassiss.chassisspower, 4);
+////       if(Power_All(speedsloved, nowspeeddata, Reverso_Chassiss.chassisspower, 4)>1000)  
+////      {Power_Remap_Bigp(speedsloved,nowspeeddata,4,&chassisspower_limits,Reverso_Chassiss.chassisspower);}
+//	   
+//      //Motor_Drive_Frame( &chassis_fdcan,motordata[0].ContrlID,speedinto);//contrldata is the arry of contrl value
+//      Motor_Drive_Frame(Txframe,motordata[0].ContrlID,speedinto);//contrldata is the arry of contrl value
+//}
 
 
+float fit_power_T=0;
+float fit_power_W=0;
+float fit_power_pre=0;
 
-//float speedwanted=0;
-//float speednow=0;
-//int16_t speedinto=0;
-//float errorsum=0;
-//  
-//  void chassissmotorsigletest(float speed,DJMotor_hander * motordata,FDCAN_TxFrame_TypeDef *Txframe,uint8_t motornumber)
-//  {static int16_t speedintolast=0;
-//    speedinto = (int16_t)((PID_calc(&(motordata[motornumber].motor_contrl),(motordata[motornumber].data.Speed),(speed))/6.0f)*16384);
-//    //speedinto=(int16_t)((Positional_PID_Compute(&motordata[motornumber].motor_contrl,(speed),((motordata[motornumber].data).Speed))/6.0f)*16384);
-//		//speedinto=(int16_t)(speedinto*0.8+speedintolast*0.2); 
-//		speedwanted=speed;
-//		speednow=(motordata[motornumber].data.Speed);
-//		errorsum=(motordata[motornumber].motor_contrl.Iout);   // Iout = Ki * Σ(历史error)，并被 max_iout 限幅
-//    
-//if (speedinto >  16384) speedinto =  16384;
-//if (speedinto < -16384) speedinto = -16384;
-//    Motor_Drive_Single(&motordata[motornumber],Txframe,speedinto);
-//  }
-//  
+
+float speedwanted=0;
+float speednow=0;
+float speed_a_wanted=0;
+  
+  void chassissmotorsigletest(float speed,DJMotor_hander * motordata,FDCAN_TxFrame_TypeDef *Txframe,uint8_t motornumber)
+  {static int16_t speedintolast=0;
+		int16_t speedinto=0;
+    speedinto = (int16_t)((PID_calc(&(motordata[motornumber].motor_contrl),(motordata[motornumber].data.Speed),(speed))/6.0f)*16384);
+    //speedinto=(int16_t)((Positional_PID_Compute(&motordata[motornumber].motor_contrl,(speed),((motordata[motornumber].data).Speed))/6.0f)*16384);
+	  speedinto=(int16_t)(speedinto*0.2+speedintolast*0.8); 
+		speedwanted=speed;
+		speed_a_wanted=(float)(speedinto/16384*6.0f);
+		speednow=(motordata[motornumber].data.Speed);
+    
+if (speedinto >  16384) speedinto =  16384;
+if (speedinto < -16384) speedinto = -16384;
+		fit_power_T=((motordata[motornumber].data.RollCureet)*0.3);
+		fit_power_W=(motordata[motornumber].data.Speed);
+    fit_power_pre=POWER_METER_COMPUTE_PER(((speedinto)*6.0f/16384),motordata[motornumber].data.Speed,&Reverso_Chassiss.chassisspower[motornumber]);
+    Motor_Drive_Single(&motordata[motornumber],Txframe,speedinto);
+  }
+  
 
 
 #endif
@@ -345,15 +352,16 @@ void mustclearbits_chassiss()
 void ChassisTask03(void *argument)
 {
 	  Fdcan_FilterInit(&hfdcan1);
-  /*  Positional_PID_Init(&chassiss_motor[0].motor_contrl,0.08f,0.06f,0.0f,10000,500);
-    Positional_PID_Init(&chassiss_motor[1].motor_contrl,0.08f,0.05f,0.01f,10000,500);
-    Positional_PID_Init(&chassiss_motor[2].motor_contrl,0.12f,0.00f,0.05f,10000,500);
-    Positional_PID_Init(&chassiss_motor[3].motor_contrl,0.08f,0.05f,0.05f,10000,500);*/
-    PID_init(&chassiss_motor[0].motor_contrl,PID_POSITION,(fp32[]){0.17f,0.07f,0.00f},10000,800);//450/440//when force it just use the heah 3 values
-    PID_init(&chassiss_motor[1].motor_contrl,PID_POSITION,(fp32[]){0.10f,0.05f,0.00f},10000,800);//450/448
-    PID_init(&chassiss_motor[2].motor_contrl,PID_POSITION,(fp32[]){0.12f,0.00f,0.00f},10000,800);//450/442
-    PID_init(&chassiss_motor[3].motor_contrl,PID_POSITION,(fp32[]){0.90f,0.25f,0.00f},10000,800);//450/442//when with use it as the WR pid
-		PID_init(&WRoutcircle                   ,PID_POSITION,(fp32[]){1.22f,0.00f,0.00f},10000,800);//when with use it as inside pid
+//    PID_init(&chassiss_motor[0].motor_contrl,PID_POSITION,(fp32[]){0.17f,0.07f,0.00f},10000,800);//450/440//when force it just use the heah 3 values
+//    PID_init(&chassiss_motor[1].motor_contrl,PID_POSITION,(fp32[]){0.10f,0.05f,0.00f},10000,800);//450/448
+//    PID_init(&chassiss_motor[2].motor_contrl,PID_POSITION,(fp32[]){0.12f,0.00f,0.00f},10000,800);//450/442
+//    PID_init(&chassiss_motor[3].motor_contrl,PID_POSITION,(fp32[]){0.90f,0.25f,0.00f},10000,800);//450/442//when with use it as the WR pid
+//		PID_init(&WRoutcircle                   ,PID_POSITION,(fp32[]){1.22f,0.00f,0.00f},10000,800);//when with use it as inside pid
+      PID_init(&chassiss_motor[0].motor_contrl,PID_POSITION,(fp32[]){1.53f,0.00f,0.00f},10000,800);//450/440//when force it just use the heah 3 values
+      PID_init(&chassiss_motor[1].motor_contrl,PID_POSITION,(fp32[]){0.10f,0.05f,0.00f},10000,800);//450/448
+      PID_init(&chassiss_motor[2].motor_contrl,PID_POSITION,(fp32[]){0.12f,0.00f,0.00f},10000,800);//450/442
+      PID_init(&chassiss_motor[3].motor_contrl,PID_POSITION,(fp32[]){0.90f,0.25f,0.00f},10000,800);//450/442//when with use it as the WR pid
+    	PID_init(&WRoutcircle                   ,PID_POSITION,(fp32[]){1.22f,0.00f,0.00f},10000,800);//when with use it as inside pid
     Chassiss_Init(&Reverso_Chassiss);
     osThreadFlagsWait(0x00000002,osFlagsWaitAll,osWaitForever);
   for(;;)
@@ -373,8 +381,8 @@ void ChassisTask03(void *argument)
       target[2]=normal4chdata.ch2*50;//wr
       speedptztochassis(&target[0],&target[1]);
     //Chassiss_Drive(target,chassiss_motor,&chassis_fdcan);
-    //chassissmotorsigletest((target[0]*30),chassiss_motor,&chassis_fdcan,3);
-			Chassiss_Drive_byforce(target,chassiss_motor,&chassis_fdcan);
+      chassissmotorsigletest((target[0]),chassiss_motor,&chassis_fdcan,0);
+			//Chassiss_Drive_byforce(target,chassiss_motor,&chassis_fdcan);
     }
     else if (orderflag&0x00000010)//with
     {
@@ -388,7 +396,9 @@ void ChassisTask03(void *argument)
 	  ChassisMove_withMode(target,chassiss_motor,&chassis_fdcan);
     }
 
-   }else
+   }
+	 
+	 else
    {
     
     chassiss_disabled();

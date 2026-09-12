@@ -27,11 +27,19 @@ Project File Date:  08/27/2026
 <h2>Output:</h2>
 *** Using Compiler 'V6.24', folder: 'D:\keil_1\keil\ARM\ARMCLANG\Bin'
 Build target 'h7_final_4'
-compiling PTZ.c...
+../app/src/remote_contrl.c(84): warning: non-void function does not return a value in all control paths [-Wreturn-type]
+   84 | }
+      | ^
+../app/src/remote_contrl.c(95): warning: non-void function does not return a value in all control paths [-Wreturn-type]
+   95 | }
+      | ^
+2 warnings generated.
+compiling remote_contrl.c...
+compiling chassiss.c...
 linking...
-Program Size: Code=103476 RO-data=3828 RW-data=272 ZI-data=24340  
+Program Size: Code=102740 RO-data=3828 RW-data=272 ZI-data=24348  
 FromELF: creating hex file...
-".\h7_final_4\h7_final_4.axf" - 0 Error(s), 0 Warning(s).
+".\h7_final_4\h7_final_4.axf" - 0 Error(s), 2 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -64,40 +72,40 @@ Package Vendor: Keil
       Include file:  CMSIS/Core/Include/tz_context.h
 
    * Component: ARM::CMSIS:DSP&Source@1.16.2
-      Include file:  Include/arm_const_structs.h
-      Include file:  Include/arm_common_tables_f16.h
       Source file:   Source/DistanceFunctions/DistanceFunctions.c
-      Source file:   Source/MatrixFunctions/MatrixFunctions.c
-      Source file:   Source/SupportFunctions/SupportFunctions.c
-      Source file:   Source/StatisticsFunctions/StatisticsFunctions.c
-      Include file:  Include/arm_const_structs_f16.h
-      Source file:   Source/BasicMathFunctions/BasicMathFunctionsF16.c
-      Include file:  Include/arm_common_tables.h
-      Source file:   Source/InterpolationFunctions/InterpolationFunctions.c
       Include file:  Include/arm_math.h
-      Source file:   Source/QuaternionMathFunctions/QuaternionMathFunctions.c
-      Source file:   Source/BayesFunctions/BayesFunctions.c
-      Source file:   Source/SVMFunctions/SVMFunctions.c
-      Source file:   Source/FastMathFunctions/FastMathFunctions.c
-      Source file:   Source/FilteringFunctions/FilteringFunctions.c
-      Source file:   Source/ControllerFunctions/ControllerFunctions.c
-      Include file:  Include/arm_math_f16.h
-      Source file:   Source/CommonTables/CommonTables.c
-      Source file:   Source/TransformFunctions/TransformFunctions.c
       Source file:   Source/BasicMathFunctions/BasicMathFunctions.c
-      Source file:   Source/WindowFunctions/WindowFunctions.c
-      Source file:   Source/ComplexMathFunctions/ComplexMathFunctionsF16.c
-      Source file:   Source/FilteringFunctions/FilteringFunctionsF16.c
       Source file:   Source/ComplexMathFunctions/ComplexMathFunctions.c
+      Source file:   Source/FilteringFunctions/FilteringFunctions.c
+      Source file:   Source/StatisticsFunctions/StatisticsFunctions.c
+      Source file:   Source/CommonTables/CommonTables.c
+      Source file:   Source/SVMFunctions/SVMFunctions.c
+      Source file:   Source/TransformFunctions/TransformFunctions.c
+      Source file:   Source/InterpolationFunctions/InterpolationFunctions.c
+      Include file:  Include/arm_math_f16.h
+      Source file:   Source/BayesFunctions/BayesFunctions.c
+      Include file:  Include/arm_const_structs.h
+      Source file:   Source/FastMathFunctions/FastMathFunctions.c
+      Source file:   Source/BasicMathFunctions/BasicMathFunctionsF16.c
+      Source file:   Source/ComplexMathFunctions/ComplexMathFunctionsF16.c
+      Source file:   Source/ControllerFunctions/ControllerFunctions.c
+      Source file:   Source/SupportFunctions/SupportFunctions.c
+      Source file:   Source/FilteringFunctions/FilteringFunctionsF16.c
+      Source file:   Source/QuaternionMathFunctions/QuaternionMathFunctions.c
+      Source file:   Source/MatrixFunctions/MatrixFunctions.c
+      Source file:   Source/WindowFunctions/WindowFunctions.c
+      Include file:  Include/arm_common_tables.h
       Source file:   Source/TransformFunctions/TransformFunctionsF16.c
-      Source file:   Source/CommonTables/CommonTablesF16.c
+      Include file:  Include/arm_common_tables_f16.h
       Source file:   Source/MatrixFunctions/MatrixFunctionsF16.c
-      Source file:   Source/SupportFunctions/SupportFunctionsF16.c
-      Source file:   Source/DistanceFunctions/DistanceFunctionsF16.c
+      Include file:  Include/arm_const_structs_f16.h
+      Source file:   Source/CommonTables/CommonTablesF16.c
       Source file:   Source/InterpolationFunctions/InterpolationFunctionsF16.c
+      Source file:   Source/DistanceFunctions/DistanceFunctionsF16.c
+      Source file:   Source/FastMathFunctions/FastMathFunctionsF16.c
+      Source file:   Source/SupportFunctions/SupportFunctionsF16.c
       Source file:   Source/StatisticsFunctions/StatisticsFunctionsF16.c
       Source file:   Source/BayesFunctions/BayesFunctionsF16.c
-      Source file:   Source/FastMathFunctions/FastMathFunctionsF16.c
       Source file:   Source/SVMFunctions/SVMFunctionsF16.c
 Build Time Elapsed:  00:00:01
 </pre>
