@@ -399,13 +399,15 @@ void ChassisTask03(void *argument)
 
     if(orderflag==0x00000000&&(lastEffectivecnt>=10))//cleartoofasterrorhandle
     { lastEffectivecnt++;
-      if(lastEffectivecnt<100000000)
+      if(lastEffectivecnt<40)
       {
         orderflag=lastEffectiveorderflag_cha;
 				edebug=lastEffectiveorderflag_cha;
 				
-      }else{//orderflag=0x00000001;
-				lastEffectivecnt=0;}
+      }else
+      {orderflag=0x00000001;
+				//lastEffectivecnt=0;
+      }
     }
 
 		
@@ -415,12 +417,14 @@ void ChassisTask03(void *argument)
     if(orderflag&0x00000020)//gyro
     {
       lastEffectiveorderflag_cha=orderflag;
+      lastEffectivecnt=0;
 			edebug=lastEffectiveorderflag_cha;
       //chasiss_gyrodrive();
     }
     else if (orderflag&0x00000010)//with
     {
       lastEffectiveorderflag_cha=orderflag;
+      lastEffectivecnt=0;
 			edebug=lastEffectiveorderflag_cha;
 	 	  //chassiss_withdrive();
     }

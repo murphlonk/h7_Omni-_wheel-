@@ -8,8 +8,8 @@ void TIM5_Init(void)
     RCC->APB1LENR |= RCC_APB1LENR_TIM5EN; // enable the apb line,
     TIM5->CR1 &= ~TIM_CR1_CEN;//disable the tim1
     TIM5->PSC =APBFRE - 1; 
-    //TIM5->ARR =0xFFFFFFFF-1;//set the max conut space,tim2,tim5 are the 32 bit timer,else are 16 bit timer
-    TIM5->ARR =1000000-1;
+    TIM5->ARR =0xFFFFFFFF-1;//set the max conut space,tim2,tim5 are the 32 bit timer,else are 16 bit timer
+    //TIM5->ARR =1000000-1;
 	  TIM5->CR1 |= TIM_CR1_ARPE; 
     TIM5->EGR |= TIM_EGR_UG;//sei the interrupt event
 	  TIM5->DIER |= TIM_DIER_UIE;  //  enable refreash interrupt  
@@ -28,7 +28,7 @@ void TIM5_Init(void)
 uint32_t TIM5_GetCounterSafe(void)
 {
     
-    uint32_t cnt = TIM2->CNT;
+    uint32_t cnt = TIM5->CNT;
     if (cnt & 0x80000000) {
         
     }
@@ -59,3 +59,9 @@ void TIM5_IRQHandler(void)//tim1 is highlevel timer ,use TIM1_UP_IRQHandler(over
 }
 
 
+uint64_t TIM5_GETTIMESTAMP()
+{   
+    uint32_t high, low;
+do { high = high_stamp; low= TIM5->CNT; } while (high != high_stamp);
+return (uint64_t)(((uint64_t)high<<32)|low);
+}

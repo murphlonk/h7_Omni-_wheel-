@@ -45,6 +45,6 @@
 
 void TIM5_Init(void);
 uint32_t TIM5_GetCounter(void);
-
+uint64_t TIM5_GETTIMESTAMP();
 
 #endif 

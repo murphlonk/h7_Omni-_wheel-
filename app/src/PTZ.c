@@ -237,6 +237,7 @@ void PTZTask02(void *argument)
   osThreadFlagsWait(0x00000002,osFlagsWaitAll,osWaitForever);
   static uint32_t lastEffectiveorderflag=0;
   static uint32_t lastEffectivecnt=0;
+  static bool isinit=false;
   for(;;)
   { uint32_t orderflag;
     orderflag=osThreadFlagsGet();
@@ -257,25 +258,28 @@ void PTZTask02(void *argument)
 
     PTZ_UPDATE();
     if(orderflag&0x00000020)
-    {
+    {  isinit=false;
        lastEffectiveorderflag=orderflag;
-      //PTZ_MIXdata_gyrodrive(normal4chdata.ch2*6.5,normal4chdata.ch0,normal4chdata.ch1);//6.4,6.5,7
+       lastEffectivecnt=0;
+      PTZ_MIXdata_gyrodrive(normal4chdata.ch2*6.5,normal4chdata.ch0,normal4chdata.ch1);//6.4,6.5,7
      
     }else if(orderflag&0x00000010)
-    {  static bool isinit=false;
+    {  
 			for(uint8_t i=0;i<10&&isinit==false;i++)
 			{
 			PTZ_MIXdata_gyrodrive(0,normal4chdata.ch0,normal4chdata.ch1);//6.4,6.5,7
 				if(i==9){isinit=true;}
 			}
       lastEffectiveorderflag=orderflag;
-      //PTZ_static_drive(normal4chdata.ch1,(normal4chdata.ch2*6.28));
+      lastEffectivecnt=0;
+      PTZ_static_drive(normal4chdata.ch1,(normal4chdata.ch2*6.28));
     }
 
 
    }else if(orderflag==0x00000001)
    {
     lastEffectiveorderflag=orderflag;
+    isinit=false;
     PTZ_DISABLE();
    }else
    {

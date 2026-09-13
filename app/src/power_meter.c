@@ -322,7 +322,55 @@ extern Dr16_Data Dr16_Data_Receive;
 
 //}
 
+extern uint32_t thebitlast;
+extern Dr16_Data Dr16_Data_Receive;
 
+
+bool ifouttimedefine(uint64_t last,uint64_t now)
+{
+  if(now-last>=500000)
+  {return true;}
+  else
+  {return false;}
+}
+
+void SwtichTask06()
+{
+  uint32_t flagsInit=0;
+  uint32_t last_update=0;
+  uint64_t last_fullstamp;
+  TIM5_Init();
+  flagsInit=osThreadFlagsWait(0x00000001,osFlagsWaitAll,osWaitForever);
+  for(;;)
+  {
+    if(flagsInit&0x00000001)
+    {
+      uint32_t dr16_update=Dr16_Data_Receive.get_data_cnt_low;
+      if(dr16_update!=last_update)
+      {
+         last_update=dr16_update;
+         last_fullstamp=TIM5_GETTIMESTAMP();
+      }
+
+      bool ifouttime=ifouttimedefine(last_fullstamp,TIM5_GETTIMESTAMP());
+      bool ifcontrl=(!ifouttime&&(thebitlast& 0x00000002));
+      if(ifcontrl)
+      {
+        task_power_mode(thebitlast, true); 
+      }else
+      {
+        task_power_mode(0, false);
+      }
+
+
+    }
+    else 
+    {
+
+    }
+    osDelay(1);
+  }
+}
 
 
 
