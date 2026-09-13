@@ -15,6 +15,7 @@ Dr16_CH_NORMAILIZATION normal4chdata;
 SemaphoreHandle_t Keyborad_Semaphore;
 
 uint32_t thebitwanted=0;
+uint32_t thebitlast=0;
 
 void Remote_Contrl_Init()
 {
@@ -50,6 +51,17 @@ Dr16_Data_Receive.Mouse_Y = (uint16_t)(Data_Temp[8] | (Data_Temp[9] << 8));
 Dr16_Data_Receive.Mouse_Z = (uint16_t)(Data_Temp[10] | (Data_Temp[11] << 8));
 Dr16_Data_Receive.Key_1 = Data_Temp[12];
 Dr16_Data_Receive.wheel = (uint16_t)(Data_Temp[16] | (Data_Temp[17] << 8));
+if(Dr16_Data_Receive.get_data_cnt_low==0xFFFFFFFF)
+{
+	Dr16_Data_Receive.get_data_cnt_high++;
+	Dr16_Data_Receive.get_data_cnt_low=0;
+}
+Dr16_Data_Receive.get_data_cnt_low++;
+if(Dr16_Data_Receive.get_data_cnt_low==0xFFFFFFFF&&Dr16_Data_Receive.get_data_cnt_high==0xFFFFFFFF)
+{
+	Dr16_Data_Receive.get_data_cnt_high=0;
+	Dr16_Data_Receive.get_data_cnt_low=0;
+}
 }
 
 volatile uint32_t debugcount=0;
@@ -114,24 +126,22 @@ void lever_Status_()//quick stop contrl
 {
 	extern osThreadId_t TaskSwitch06Handle;
 	static bool enable =false;
+	thebitlast=thebitwanted;
 	thebitwanted=0x00000000;
    	if(Dr16_Data_Receive.S_1==2&&Dr16_Data_Receive.S_2==2)
 		{
 			enable=false;
-			//debugcount=osThreadFlagsSet(TaskSwitch06Handle, 0x00000001);
 			thebitwanted |=0x00000001;
 		}else 
 		{
 
 			if(enable==true)
 			{
-			//debugcount=osThreadFlagsSet(TaskSwitch06Handle, (0x00000002|0x00000001));//open power:0x00000002 |online :0x00000001
 			thebitwanted |=(0x00000002|0x00000001);
 			}
 			else if(enable==false&&(Dr16_Data_Receive.S_1!=2||Dr16_Data_Receive.S_2!=2))
 			{
 			enable=true;
-			//debugcount=osThreadFlagsSet(TaskSwitch06Handle, (0x00000001|0x00000002));
 			thebitwanted |=(0x00000002|0x00000001);
 			}
 		}
@@ -157,14 +167,10 @@ void chassis_modetran()
 	extern osThreadId_t TaskSwitch06Handle;
   if(Dr16_Data_Receive.S_2==2)
   {
-    //osThreadFlagsSet(TaskChassis03Handle, 0x00000010);
-	//osThreadFlagsSet(TaskSwitch06Handle, 0x00000010);
 	thebitwanted |=0x00000010;
   }
   else if(Dr16_Data_Receive.S_2==3)
   {
-     //osThreadFlagsSet(TaskChassis03Handle, 0x00000020);
-	 //osThreadFlagsSet(TaskChassis03Handle, 0x00000000);
   } else{}
 }
 
@@ -174,25 +180,17 @@ void ptz_modetran()
 	extern osThreadId_t TaskSwitch06Handle;
 	if(Dr16_Data_Receive.S_1==2)
 	{
-     //osThreadFlagsSet(TaskPTZ02Handle, 0x00000010);
-	 //osThreadFlagsSet(TaskSwitch06Handle, 0x00000010);
 	 thebitwanted |=0x00000010;
 	}
 	else if(Dr16_Data_Receive.S_1==3)
 	{
-     //osThreadFlagsSet(TaskPTZ02Handle, 0x00000020); //gyro0x0
-	 //osThreadFlagsSet(TaskChassis03Handle, 0x00000000);
 	}
 }
 
  void bitmustset_remote()
 {
 	extern osThreadId_t TaskSwitch06Handle;//to keep the only be updated in one go
-	static uint8_t count=0;
-	if(osThreadFlagsSet(TaskSwitch06Handle,thebitwanted)==pdFALSE&&(count+1)%100!=0)
-   {
-		 bitmustset_remote();
-	 }
+	 for(uint8_t count=0;count<100&&osThreadFlagsSet(TaskSwitch06Handle,thebitwanted)==pdFALSE;count++){}
 }
 
 void dr16_update(uint8_t* Data_Temp)

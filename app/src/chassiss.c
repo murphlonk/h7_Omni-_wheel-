@@ -309,6 +309,30 @@ void chaisspower_debug()
 	
 }
 
+void chasiss_gyrodrive()
+{
+  float target[3];
+      target[0]=((normal4chdata.ch0)*30-0.09090);//vx
+      target[1]=((normal4chdata.ch1)*30+0.02272);//vy
+      target[2]=normal4chdata.ch2*50;//wr
+      speedptztochassis(&target[0],&target[1]);
+    //Chassiss_Drive(target,chassiss_motor,&chassis_fdcan);
+      chassissmotorsigletest((target[0]),chassiss_motor,&chassis_fdcan,0);
+			//Chassiss_Drive_byforce(target,chassiss_motor,&chassis_fdcan);
+}
+
+void chassiss_withdrive()
+{
+  chassis_relative_ptzupdate();
+     float target[3];
+    target[0]=((normal4chdata.ch0)*30-0.09090);//vx
+    target[1]=((normal4chdata.ch1)*30+0.02272);//vy
+    target[2]=Reverso_Chassiss.status.phase_difference;//
+    speedptztochassis(&target[0],&target[1]);
+    //Chassiss_Drive(target,chassiss_motor,&chassis_fdcan);
+	  ChassisMove_withMode(target,chassiss_motor,&chassis_fdcan);
+}
+
 
 #ifdef BSP_CAN_H
 void chassiscan_init()
@@ -342,12 +366,11 @@ uint32_t debugflag=0;
 uint32_t debugerrcnt=0;
 
 void mustclearbits_chassiss()
-{ if(osThreadFlagsClear(0x000000FF)==pdFALSE&&debugerrcnt%100!=0)
-  { 
-		debugerrcnt++;
-		mustclearbits_chassiss();
-	}
+{ 
+  for(uint8_t count=0;count<100&&osThreadFlagsClear(0x000000FF)==pdFALSE;count++){}
 }
+
+uint32_t edebug=0;
 
 void ChassisTask03(void *argument)
 {
@@ -364,50 +387,54 @@ void ChassisTask03(void *argument)
     	PID_init(&WRoutcircle                   ,PID_POSITION,(fp32[]){1.22f,0.00f,0.00f},10000,800);//when with use it as inside pid
     Chassiss_Init(&Reverso_Chassiss);
     osThreadFlagsWait(0x00000002,osFlagsWaitAll,osWaitForever);
+
+  static uint32_t lastEffectiveorderflag_cha=0;
+  static uint32_t lastEffectivecnt=0;  
+   
   for(;;)
   {
     static uint32_t orderflag;
 	  orderflag=osThreadFlagsGet();
     debugflag= osThreadFlagsGet();
+
+    if(orderflag==0x00000000&&(lastEffectivecnt>=10))//cleartoofasterrorhandle
+    { lastEffectivecnt++;
+      if(lastEffectivecnt<100000000)
+      {
+        orderflag=lastEffectiveorderflag_cha;
+				edebug=lastEffectiveorderflag_cha;
+				
+      }else{//orderflag=0x00000001;
+				lastEffectivecnt=0;}
+    }
+
 		
    if(orderflag&0x00000002)
    {
     chassis_relative_ptzupdate();
     if(orderflag&0x00000020)//gyro
     {
-      float target[3];
-      target[0]=((normal4chdata.ch0)*30-0.09090);//vx
-      target[1]=((normal4chdata.ch1)*30+0.02272);//vy
-      target[2]=normal4chdata.ch2*50;//wr
-      speedptztochassis(&target[0],&target[1]);
-    //Chassiss_Drive(target,chassiss_motor,&chassis_fdcan);
-      chassissmotorsigletest((target[0]),chassiss_motor,&chassis_fdcan,0);
-			//Chassiss_Drive_byforce(target,chassiss_motor,&chassis_fdcan);
+      lastEffectiveorderflag_cha=orderflag;
+			edebug=lastEffectiveorderflag_cha;
+      //chasiss_gyrodrive();
     }
     else if (orderflag&0x00000010)//with
     {
-		chassis_relative_ptzupdate();
-     float target[3];
-    target[0]=((normal4chdata.ch0)*30-0.09090);//vx
-    target[1]=((normal4chdata.ch1)*30+0.02272);//vy
-    target[2]=Reverso_Chassiss.status.phase_difference;//
-    speedptztochassis(&target[0],&target[1]);
-    //Chassiss_Drive(target,chassiss_motor,&chassis_fdcan);
-	  ChassisMove_withMode(target,chassiss_motor,&chassis_fdcan);
+      lastEffectiveorderflag_cha=orderflag;
+			edebug=lastEffectiveorderflag_cha;
+	 	  //chassiss_withdrive();
     }
-
    }
-	 
-	 else
+	 else if(orderflag==0x00000001)
    {
-    
+    lastEffectiveorderflag_cha=orderflag;
+		edebug=lastEffectiveorderflag_cha;
     chassiss_disabled();
+   }else
+   {
+    lastEffectivecnt++;
    }
 
-//    if(osThreadFlagsClear(0x000000FF)==pdFALSE)
-//   { 
-//		 debugerrcnt++;
-//	 }
     mustclearbits_chassiss();
 
     osDelay(1);

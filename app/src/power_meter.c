@@ -134,6 +134,7 @@ void task_carmode(uint32_t order)//true :gyro:0x00000000/0x00000020,false:with:0
 
 } 
 
+
 void task_power_mode(uint32_t order,bool onoff)//true :gyro:0x00000000/0x00000020,false:with:0x00000010/0x00000010
 {
  if(onoff&&order!=0)
@@ -143,25 +144,122 @@ void task_power_mode(uint32_t order,bool onoff)//true :gyro:0x00000000/0x0000002
       osThreadFlagsSet(TaskPTZ02Handle,        0x00000012);//openpower:0x00000002
       osThreadFlagsSet(TaskChassis03Handle,    0x00000012);
       osThreadFlagsSet(TaskCan04Handle,        0x00000002);
-      osThreadFlagsSet( TaskPowermeter0Handle, 0x00000002);
+      osThreadFlagsSet(TaskPowermeter0Handle,  0x00000002);
       }else
       {
       osThreadFlagsSet(TaskPTZ02Handle,        0x00000022);//openpower:0x00000002
       osThreadFlagsSet(TaskChassis03Handle,    0x00000022);
       osThreadFlagsSet(TaskCan04Handle,        0x00000002);
-      osThreadFlagsSet( TaskPowermeter0Handle, 0x00000002);
+      osThreadFlagsSet(TaskPowermeter0Handle,  0x00000002);
       } 
-   }else 
+   }else if(onoff&&order==0)
    {
-		  osThreadFlagsSet(TaskPTZ02Handle,        0x00000000);//openpower:0x00000002
-      osThreadFlagsSet(TaskChassis03Handle,    0x00000000);
-      osThreadFlagsSet(TaskCan04Handle,        0x00000000);
-      osThreadFlagsSet( TaskPowermeter0Handle, 0x00000000);
+	   
+	 
+	 }
+	  else 
+   {
+		  osThreadFlagsSet(TaskPTZ02Handle,        0x00000001);//openpower:0x00000002
+      osThreadFlagsSet(TaskChassis03Handle,    0x00000001);//offpower:0x00000001
+      osThreadFlagsSet(TaskCan04Handle,        0x00000001);
+      osThreadFlagsSet(TaskPowermeter0Handle,  0x00000001);
    }
 
 
 }
 
+
+void mustclearbits_swtich()
+{
+ for(uint8_t count=0;count<100&&osThreadFlagsClear(0x000000FF)==pdFALSE;count++){}
+}
+
+extern uint32_t high_stamp;
+
+void if_outlineouttime_detected(uint8_t* onoff,uint32_t flagswtich)
+{
+      uint32_t timestamp=TIM5_GetCounter();
+      static uint32_t high_stamp_last=0,timstamp_last=0;
+        if(*onoff==1)
+        {
+          timstamp_last=TIM5_GetCounter();
+          high_stamp_last=high_stamp;
+          *onoff=0;
+        }
+       
+          if(high_stamp_last==high_stamp)
+          {
+            if((timestamp-timstamp_last)>500000)
+            {
+              //taskpower_onoff(false);
+              task_power_mode(0,false);//?
+              //osThreadFlagsClear(0X7FFFFFFF);
+              mustclearbits_swtich();
+            }
+          }
+          else if(high_stamp_last==high_stamp-1)
+          {
+            if((timestamp+1000000-timstamp_last)<500000)
+            {
+              //taskpower_onoff(true);
+              //task_carmode(flagswtich);
+							flagswtich=osThreadFlagsGet();
+              task_power_mode(flagswtich,true);
+              //osThreadFlagsClear(0X7FFFFFFF);
+              mustclearbits_swtich();
+            }else
+            {
+              task_power_mode(0,false);//?
+              //osThreadFlagsClear(0X7FFFFFFF);
+              mustclearbits_swtich();
+            }
+          }else
+          {
+            //taskpower_onoff(false);
+            task_power_mode(0,false);
+            //osThreadFlagsClear(0X7FFFFFFF);
+            mustclearbits_swtich();
+          }
+       
+}
+
+
+void online_powercomtrl(uint32_t flagswtich,uint8_t* onoff)
+{
+         *onoff=1;
+        if(flagswtich&0x00000002)//open_power
+        {
+      task_power_mode(flagswtich,true);
+      //osThreadFlagsClear(0X7FFFFFFF);
+      mustclearbits_swtich();
+					//break;
+        }
+        else if((flagswtich&0x00000003)==0x00000001)
+        {
+        task_power_mode(0,false);
+        mustclearbits_swtich();
+					//break;
+        }
+}
+
+
+void init_errorhandle(uint32_t flagsInit,uint32_t flagswtich)
+{
+   uint32_t flagstran;
+     //taskpower_onoff(false);
+     task_power_mode(0,false);
+      flagstran=osThreadFlagsGet();
+       if(flagstran&0x00000001)
+       {
+          flagsInit=0x00000001;
+          //taskpower_onoff(true)
+          //task_carmode(flagswtich);
+          task_power_mode(flagswtich,true);
+          //osThreadFlagsClear(0x7FFFFFFF);
+          mustclearbits_swtich();
+				 //break;
+       }
+}
 
  uint32_t orderflag;
 
@@ -182,121 +280,49 @@ void PowermeterTask05(void *argument)
   
 }
 
-uint8_t count=0;
+extern Dr16_Data Dr16_Data_Receive;
 
-void mustclearbits_swtich()
-{ if(osThreadFlagsClear(0x000000FF)==pdFALSE&&count%100!=0)
-  { 
-		count++;
-		mustclearbits_swtich();
-	}
-}
+//uint32_t flagswtich=0;
 
-uint32_t flagswtich=0;
-extern uint32_t high_stamp;
+//void SwtichTask06(void *argument)
+//{ uint32_t flagsInit=0;
+//  TIM5_Init();
+//  static uint8_t onoff=0;
+//  static uint32_t Dr16_high_last=0;
+//  static uint32_t Dr16_low_last=0;
+//  static uint8_t compare=0;
+//  flagsInit=osThreadFlagsWait(0x00000001,osFlagsWaitAll,osWaitForever);
+//  for (;;)
+//  {
+//    if(flagsInit&0x00000001)
+//    {  //uint32_t flagswtich=0;
+//      flagswtich=osThreadFlagsGet();
+//      if(flagswtich&0x00000001)//online
+//      { 
+//      compare=0;
+//      Dr16_high_last=Dr16_Data_Receive.get_data_cnt_high;
+//      Dr16_low_last=Dr16_Data_Receive.get_data_cnt_low;
+//       online_powercomtrl(flagswtich,&onoff); 
+//      }
+//      else if(flagswtich==0x0000000)//offline
+//      {
+//      if(Dr16_high_last==Dr16_Data_Receive.get_data_cnt_high&&Dr16_low_last==Dr16_Data_Receive.get_data_cnt_low) 
+//       {if_outlineouttime_detected(&onoff,flagswtich);}
+//       else{}
+//      }
+//    }
+//    else
+//    {
+//      init_errorhandle(flagsInit,flagswtich);
+//    }
 
-void SwtichTask06(void *argument)
-{ uint32_t flagsInit=0;
-  TIM5_Init();
-  static uint32_t timstamp_last=0,high_stamp_last=0;
-  static uint8_t onoff=0;
-  flagsInit=osThreadFlagsWait(0x00000001,osFlagsWaitAll,osWaitForever);
-  for (;;)
-  {
-    if(flagsInit&0x00000001)
-    {  //uint32_t flagswtich=0;
-      flagswtich=osThreadFlagsGet();
-      if(flagswtich&0x00000001)//online
-      {
-        onoff=1;
-        if(flagswtich&0x00000002)//open_power
-        {
-      //taskpower_onoff(true);
-      //task_carmode(flagswtich);
-      task_power_mode(flagswtich,true);
-      //osThreadFlagsClear(0X7FFFFFFF);
-      mustclearbits_swtich();
-					//break;
-        }
-        else if((flagswtich&0x00000003)==0x00000001)
-        {
+//    mustclearbits_swtich();
+//		osDelay(1);
+//  }
 
-        //taskpower_onoff(false);
-        task_power_mode(0,false);
-        //osThreadFlagsClear(0X7FFFFFFF);
-        mustclearbits_swtich();
-					//break;
-        }
-      }
-      else if(flagswtich==0x0000000)//offline
-      {
-				
-        if(onoff==1)
-        {
-          timstamp_last=TIM5_GetCounter();
-          high_stamp_last=high_stamp;
-          onoff=0;
-        }
-       
-          if(high_stamp_last==high_stamp)
-          {
-            if((TIM5_GetCounter()-timstamp_last)>500000)
-            {
-              //taskpower_onoff(false);
-              task_power_mode(0,false);
-              //osThreadFlagsClear(0X7FFFFFFF);
-              mustclearbits_swtich();
-            }
-          }
-          else if(high_stamp_last==high_stamp-1)
-          {
-            if((TIM5_GetCounter()+1000000-timstamp_last)<500000)
-            {
-              //taskpower_onoff(true);
-              //task_carmode(flagswtich);
-              task_power_mode(flagswtich,true);
-              //osThreadFlagsClear(0X7FFFFFFF);
-              mustclearbits_swtich();
-            }else
-            {
-              //taskpower_onoff(false);
-              task_power_mode(0,false);
-              //osThreadFlagsClear(0X7FFFFFFF);
-              mustclearbits_swtich();
-            }
-          }else
-          {
-            //taskpower_onoff(false);
-            task_power_mode(0,false);
-            //osThreadFlagsClear(0X7FFFFFFF);
-            mustclearbits_swtich();
-          }
-      } 
-    }
-    else
-    {
-       uint32_t flagstran;
-     //taskpower_onoff(false);
-     task_power_mode(0,false);
-      flagstran=osThreadFlagsGet();
-       if(flagstran&0x00000001)
-       {
-          flagsInit=0x00000001;
-          //taskpower_onoff(true);
-          //task_carmode(flagswtich);
-          task_power_mode(flagswtich,true);
-          //osThreadFlagsClear(0x7FFFFFFF);
-          mustclearbits_swtich();
-				 //break;
-       }
-    }
+//}
 
-    //osThreadFlagsClear(0x7FFFFFFF);
-    mustclearbits_swtich();
-		osDelay(1);
-  }
 
-}
 
 
 

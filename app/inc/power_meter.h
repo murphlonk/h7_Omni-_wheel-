@@ -16,6 +16,7 @@
 
 #include "timestamp.h"
 #include "motor.h"
+#include "remote_contrl.h"
 
 
 typedef  struct

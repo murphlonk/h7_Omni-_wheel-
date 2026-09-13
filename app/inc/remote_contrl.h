@@ -21,6 +21,8 @@ typedef struct
     uint8_t Mouse_R;
     uint16_t Key_1;
     uint16_t wheel;
+    uint32_t get_data_cnt_high;
+    uint32_t get_data_cnt_low;//use the timestamp defined to be better but to fit my have logic ,it more easy to fit
 } Dr16_Data;
 
 typedef struct 

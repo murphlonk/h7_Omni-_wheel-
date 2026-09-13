@@ -221,12 +221,11 @@ uint32_t debugePTZcount=0;
 
 
 void mustclearbits_PTZ()
-{ if(osThreadFlagsClear(0x000000FF)==pdFALSE&&debugePTZcount%100!=0)
-  { 
-		debugePTZcount++;
-		mustclearbits_PTZ();
-	}
+{ 
+  for(uint8_t count=0;count<100&&osThreadFlagsClear(0x000000FF)==pdFALSE;count++){}
 }
+
+
 
 uint32_t debugorderflag=0;
 
@@ -236,9 +235,22 @@ void PTZTask02(void *argument)
 
   PTZ_Init(&Reverso_PTZ);
   osThreadFlagsWait(0x00000002,osFlagsWaitAll,osWaitForever);
+  static uint32_t lastEffectiveorderflag=0;
+  static uint32_t lastEffectivecnt=0;
   for(;;)
   { uint32_t orderflag;
     orderflag=osThreadFlagsGet();
+
+
+    if(orderflag==0x00000000&&(lastEffectivecnt>=10))//cleartoofasterrorhandle
+    { lastEffectivecnt++;
+      if(lastEffectivecnt<40)
+      {
+        orderflag=lastEffectiveorderflag;
+      }else{orderflag=0x00000001;}
+    }
+
+
 		debugorderflag=orderflag;
 	  if(orderflag&0x00000002)
    {
@@ -246,7 +258,7 @@ void PTZTask02(void *argument)
     PTZ_UPDATE();
     if(orderflag&0x00000020)
     {
-       
+       lastEffectiveorderflag=orderflag;
       //PTZ_MIXdata_gyrodrive(normal4chdata.ch2*6.5,normal4chdata.ch0,normal4chdata.ch1);//6.4,6.5,7
      
     }else if(orderflag&0x00000010)
@@ -256,16 +268,20 @@ void PTZTask02(void *argument)
 			PTZ_MIXdata_gyrodrive(0,normal4chdata.ch0,normal4chdata.ch1);//6.4,6.5,7
 				if(i==9){isinit=true;}
 			}
+      lastEffectiveorderflag=orderflag;
       //PTZ_static_drive(normal4chdata.ch1,(normal4chdata.ch2*6.28));
     }
 
 
+   }else if(orderflag==0x00000001)
+   {
+    lastEffectiveorderflag=orderflag;
+    PTZ_DISABLE();
    }else
    {
-    //PTZ_DISABLE();
+    lastEffectivecnt++;
    }
      
-    //osThreadFlagsClear(0x7FFFFFFF);
 		mustclearbits_PTZ();
 	 
 	 
