@@ -225,16 +225,20 @@ float fit_power_pre=0;
 float speedwanted=0;
 float speednow=0;
 float speed_a_wanted=0;
+int16_t speedproblem=0;
   
   void chassissmotorsigletest(float speed,DJMotor_hander * motordata,FDCAN_TxFrame_TypeDef *Txframe,uint8_t motornumber)
   {static int16_t speedintolast=0;
 		int16_t speedinto=0;
-    speedinto = (int16_t)((PID_calc(&(motordata[motornumber].motor_contrl),(motordata[motornumber].data.Speed),(speed))/6.0f)*16384);
+		float speedfiter=0;
+		if(speed<=0.1&&speed>=-0.1){speedfiter=0;}else{speedfiter=speed;}
+    speedinto = (int16_t)((PID_calc(&(motordata[motornumber].motor_contrl),(motordata[motornumber].data.Speed),(speedfiter))/6.0f)*16384);
     //speedinto=(int16_t)((Positional_PID_Compute(&motordata[motornumber].motor_contrl,(speed),((motordata[motornumber].data).Speed))/6.0f)*16384);
 	  speedinto=(int16_t)(speedinto*0.2+speedintolast*0.8); 
 		speedwanted=speed;
 		speed_a_wanted=(float)(speedinto/16384*6.0f);
 		speednow=(motordata[motornumber].data.Speed);
+		speedproblem=speedinto;
     
 if (speedinto >  16384) speedinto =  16384;
 if (speedinto < -16384) speedinto = -16384;
@@ -309,17 +313,22 @@ void chaisspower_debug()
 	
 }
 
+float speedwanted_gyro=0;
+
 void chasiss_gyrodrive()
 {
   float target[3];
-      target[0]=((normal4chdata.ch0)*30-0.09090);//vx
-      target[1]=((normal4chdata.ch1)*30+0.02272);//vy
-      target[2]=normal4chdata.ch2*50;//wr
+      target[0]=((normal4chdata.ch0)*30-0.09090)*10;//vx
+      target[1]=((normal4chdata.ch1)*30+0.02272)*10;//vy
+      target[2]=normal4chdata.ch2*500;//wr
       speedptztochassis(&target[0],&target[1]);
+	    speedwanted_gyro=target[0];
     //Chassiss_Drive(target,chassiss_motor,&chassis_fdcan);
-      chassissmotorsigletest((target[0]),chassiss_motor,&chassis_fdcan,0);
-			//Chassiss_Drive_byforce(target,chassiss_motor,&chassis_fdcan);
+      //chassissmotorsigletest((target[0]*15),chassiss_motor,&chassis_fdcan,0);
+			Chassiss_Drive_byforce(target,chassiss_motor,&chassis_fdcan);
 }
+
+
 
 void chassiss_withdrive()
 {
@@ -330,7 +339,7 @@ void chassiss_withdrive()
     target[2]=Reverso_Chassiss.status.phase_difference;//
     speedptztochassis(&target[0],&target[1]);
     //Chassiss_Drive(target,chassiss_motor,&chassis_fdcan);
-	  ChassisMove_withMode(target,chassiss_motor,&chassis_fdcan);
+	  //ChassisMove_withMode(target,chassiss_motor,&chassis_fdcan);
 }
 
 
@@ -380,9 +389,9 @@ void ChassisTask03(void *argument)
 //    PID_init(&chassiss_motor[2].motor_contrl,PID_POSITION,(fp32[]){0.12f,0.00f,0.00f},10000,800);//450/442
 //    PID_init(&chassiss_motor[3].motor_contrl,PID_POSITION,(fp32[]){0.90f,0.25f,0.00f},10000,800);//450/442//when with use it as the WR pid
 //		PID_init(&WRoutcircle                   ,PID_POSITION,(fp32[]){1.22f,0.00f,0.00f},10000,800);//when with use it as inside pid
-      PID_init(&chassiss_motor[0].motor_contrl,PID_POSITION,(fp32[]){1.53f,0.00f,0.00f},10000,800);//450/440//when force it just use the heah 3 values
-      PID_init(&chassiss_motor[1].motor_contrl,PID_POSITION,(fp32[]){0.10f,0.05f,0.00f},10000,800);//450/448
-      PID_init(&chassiss_motor[2].motor_contrl,PID_POSITION,(fp32[]){0.12f,0.00f,0.00f},10000,800);//450/442
+      PID_init(&chassiss_motor[0].motor_contrl,PID_POSITION,(fp32[]){0.07f,0.00f,0.00f},10000,800);//450/440//when force it just use the heah 3 values
+      PID_init(&chassiss_motor[1].motor_contrl,PID_POSITION,(fp32[]){0.05f,0.00f,0.00f},10000,800);//450/448
+      PID_init(&chassiss_motor[2].motor_contrl,PID_POSITION,(fp32[]){0.02f,0.00f,0.00f},10000,800);//450/442
       PID_init(&chassiss_motor[3].motor_contrl,PID_POSITION,(fp32[]){0.90f,0.25f,0.00f},10000,800);//450/442//when with use it as the WR pid
     	PID_init(&WRoutcircle                   ,PID_POSITION,(fp32[]){1.22f,0.00f,0.00f},10000,800);//when with use it as inside pid
     Chassiss_Init(&Reverso_Chassiss);
@@ -420,13 +429,14 @@ void ChassisTask03(void *argument)
       lastEffectivecnt=0;
 			edebug=lastEffectiveorderflag_cha;
       //chasiss_gyrodrive();
+			
     }
     else if (orderflag&0x00000010)//with
     {
       lastEffectiveorderflag_cha=orderflag;
       lastEffectivecnt=0;
 			edebug=lastEffectiveorderflag_cha;
-	 	  //chassiss_withdrive();
+	 	  chassiss_withdrive();
     }
    }
 	 else if(orderflag==0x00000001)

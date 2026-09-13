@@ -190,6 +190,7 @@ void ptz_modetran()
  void bitmustset_remote()
 {
 	extern osThreadId_t TaskSwitch06Handle;//to keep the only be updated in one go
+	thebitlast=thebitwanted;
 	 for(uint8_t count=0;count<100&&osThreadFlagsSet(TaskSwitch06Handle,thebitwanted)==pdFALSE;count++){}
 }
 

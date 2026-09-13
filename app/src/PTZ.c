@@ -261,7 +261,7 @@ void PTZTask02(void *argument)
     {  isinit=false;
        lastEffectiveorderflag=orderflag;
        lastEffectivecnt=0;
-      PTZ_MIXdata_gyrodrive(normal4chdata.ch2*6.5,normal4chdata.ch0,normal4chdata.ch1);//6.4,6.5,7
+      //PTZ_MIXdata_gyrodrive(normal4chdata.ch2*6.5,normal4chdata.ch0,normal4chdata.ch1);//6.4,6.5,7
      
     }else if(orderflag&0x00000010)
     {  
